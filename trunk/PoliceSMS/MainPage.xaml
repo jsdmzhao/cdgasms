@@ -3,10 +3,173 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+    xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation" 
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="400">
 
-    <Grid x:Name="LayoutRoot" Background="White">
+    
+    <Grid Background="{StaticResource background}">
+        <Grid x:Name="contentGrid" Visibility="Visible">
+            <Border  VerticalAlignment="Top">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Border BorderBrush="White" BorderThickness="3" CornerRadius="4" Width="60" Height="60">
+                            <Border.Background>
+                                <ImageBrush Stretch="Fill" ImageSource="/Images/1.png"/>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1"/>
+                            </Border.Effect>
+                        </Border>
 
+                        <StackPanel Margin="8,0,0,0" VerticalAlignment="Top">
+
+                            <TextBlock TextWrapping="Wrap" FontSize="16" Foreground="White" Margin="0,0,0,0" >欢迎您, <Run x:Name="NameBlock"></Run></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="退出" Style="{StaticResource GreenButton}" Click="Button_Click" Margin="0,8,0,0" Padding="5" Width="60" Height="26" HorizontalAlignment="Left"></Button>
+
+                                <Button Content="修改密码" Style="{StaticResource GreenButton}" Click="Button_Click_1" Margin="0,8,0,0" Padding="5" Width="68" Height="26" HorizontalAlignment="Left"></Button>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+
+
+            <Grid Margin="10"  VerticalAlignment="Top" HorizontalAlignment="Right">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  >
+                        <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="Index" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="daoru" Content="数据导入" Tag="!daoruS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="chuis" Content="催收管理" Tag="!chuisS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="wf" Content="外访管理" Tag="!wfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="sf" Content="第三方资料查询" Tag="!sfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="jx" Content="结项管理" Tag="EndTask" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="tj" Content="查询统计" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="xit" Tag="!xitS" Content="系统管理" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="daoruS"
+                        Visibility="{Binding ElementName=daoru,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="欠款信息导入" Tag="@ImportArrearRecord"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="还款信息导入" Checked="RadRadioButton_Click" 
+                                            Tag="@ImportReturnRecord"
+                                            Style="{StaticResource RadRadioButtonSmallStyle}"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="chuisS"
+                        Visibility="{Binding ElementName=chuis,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton Content="催收任务分配" Checked="RadRadioButton_Click" Tag="CollectionTaskAllot" IsEnabled="True"
+                                        IsChecked="{Binding ElementName=chuis,Path=IsChecked,Mode=OneWay}"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="催收任务处理" Checked="RadRadioButton_Click" Tag="CollectionTaskDeal"
+                                            Style="{StaticResource RadRadioButtonSmallStyle}"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="wfS"
+                        Visibility="{Binding ElementName=wf,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton Content="任务审批" Checked="RadRadioButton_Click" Tag="VisitsApproval"
+                                        IsChecked="{Binding ElementName=wf,Path=IsChecked,Mode=OneWay}"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="sfS"
+                        Visibility="{Binding ElementName=sf,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton Content="任务审批" Checked="RadRadioButton_Click" Tag="ThirdApproval"
+                                        IsChecked="{Binding ElementName=sf,Path=IsChecked,Mode=OneWay}"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  
+                        Visibility="{Binding ElementName=jx,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Visibility="{Binding ElementName=tj,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton Content="Word文档生成" Checked="RadRadioButton_Click" Tag="WordPage" 
+                                        IsChecked="{Binding ElementName=tj,Path=IsChecked,Mode=OneWay}" 
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="Excel文档生成" Checked="RadRadioButton_Click" Tag="ExcelPage" 
+                                        
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="催收情况查询" Checked="RadRadioButton_Click" Tag="PhoneCallQuery" 
+                                        
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="催收工作量统计" Checked="RadRadioButton_Click" Tag="PhoneCallStatistic" Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="回款率统计" Checked="RadRadioButton_Click" Tag="CaseReturnStatistic" Style="{StaticResource RadRadioButtonSmallStyle}"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="xitS"
+                        Visibility="{Binding ElementName=xit,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton Content="组织机构管理" Checked="RadRadioButton_Click" Tag="UserPanel"
+                                        
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="权限管理" Checked="RadRadioButton_Click" Tag="RightPage" Style="{StaticResource RadRadioButtonSmallStyle}"
+                                                 />
+                        <telerik:RadRadioButton Content="权限分配" Checked="RadRadioButton_Click" Tag="RolePanel" Style="{StaticResource RadRadioButtonSmallStyle}"
+                                                 IsChecked="{Binding ElementName=xit,Path=IsChecked,Mode=OneWay}"/>
+
+                        <telerik:RadRadioButton Content="基础信息配置" Checked="RadRadioButton_Click" Tag="BaseInfo" Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton Content="操作日志查询" Checked="RadRadioButton_Click" Tag="OperationLogPage" Style="{StaticResource RadRadioButtonSmallStyle}"/>
+
+                    </StackPanel>
+                </StackPanel>
+                <Rectangle Fill="{StaticResource AccentBrush}" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="4 30 4 4 "/>
+
+            </Grid>
+
+            <Grid Margin="0 86 0 0" >
+
+                <navigation:Frame  HorizontalAlignment="Stretch" x:Name="contentFrame" BorderThickness="0" VerticalAlignment="Stretch" >
+                    <navigation:Frame.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                        </LinearGradientBrush>
+                    </navigation:Frame.Background>
+
+                </navigation:Frame>
+
+
+                <!--<Rectangle Fill="#FF000000" Height="6" Opacity="0.7" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />-->
+            </Grid>
+
+            <Rectangle Height="6" Fill="#FFFFFFFF" Margin="0 80 0 0"  VerticalAlignment="Top">
+                <Rectangle.Effect>
+                    <DropShadowEffect Direction="300" BlurRadius="6" Opacity="0.2" ShadowDepth="0"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Rectangle x:Name="stripe" Margin="0 80 0 0" Height="6"  VerticalAlignment="Top" StrokeThickness="0" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF137CB5" Offset="0"/>
+                        <GradientStop Color="#FF2CB2FB" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Rectangle x:Name="shadow_A" Height="6" Margin="0 80 0 0"  VerticalAlignment="Top"  StrokeThickness="0" >
+                <Rectangle.OpacityMask>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                        <GradientStop Color="White"/>
+                        <GradientStop Offset="0.9" Color="#4C000000"/>
+                    </LinearGradientBrush>
+                </Rectangle.OpacityMask>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#4C000000" Offset="0"/>
+                        <GradientStop Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <telerik:RadBusyIndicator x:Name="busyIndicator" 
+								  IsBusy="False"
+								  telerik:AnimationManager.IsAnimationEnabled="False" DisplayAfter="0:0:0.2" />
     </Grid>
 </UserControl>
