@@ -44,7 +44,7 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  >
                         <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="SMSRecordList" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="daoru" Content="数据导入" Tag="!daoruS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="daoru" Content="短信评警" Tag="!daoruS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="chuis" Content="催收管理" Tag="!chuisS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="wf" Content="外访管理" Tag="!wfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="sf" Content="第三方资料查询" Tag="!sfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
@@ -55,12 +55,17 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="daoruS"
                         Visibility="{Binding ElementName=daoru,Path=IsChecked,Converter={StaticResource boolToVis}}">
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="群众办事登记" Tag="SMSRecordList"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="办事内容管理" Tag="WorkTypeList"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="评分内容管理" Tag="GradeTypeList"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="评分系统图" Tag="StationRankReport"
+                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
                         <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="“阳光民意评警”排名表" Tag="StationRankReport"
                                         Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="还款信息导入" Checked="RadRadioButton_Click" 
-                                            Tag="@ImportReturnRecord"
-                                            Style="{StaticResource RadRadioButtonSmallStyle}"/>
-
+                      
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="chuisS"
                         Visibility="{Binding ElementName=chuis,Path=IsChecked,Converter={StaticResource boolToVis}}">
