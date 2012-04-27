@@ -11,7 +11,7 @@
 
     
     <Grid Background="{StaticResource background}">
-        <Grid x:Name="contentGrid" Visibility="Visible">
+        <Grid x:Name="contentGrid" Visibility="Collapsed">
             <Border  VerticalAlignment="Top">
                 <Grid>
                     <StackPanel Orientation="Horizontal" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left">
@@ -43,7 +43,7 @@
             <Grid Margin="10"  VerticalAlignment="Top" HorizontalAlignment="Right">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  >
-                        <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="Index" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="SMSRecord" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="daoru" Content="数据导入" Tag="!daoruS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="chuis" Content="催收管理" Tag="!chuisS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="wf" Content="外访管理" Tag="!wfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>

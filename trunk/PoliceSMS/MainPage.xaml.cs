@@ -9,6 +9,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
+using PoliceSMS.Comm;
+using System.Windows.Browser;
+using PoliceSMS.Views;
 
 namespace PoliceSMS
 {
@@ -31,14 +35,30 @@ namespace PoliceSMS
 
         private void onLoad()
         {
+            AppGlobal.CurrentUser = new Lib.Organization.Officer { Name = "测试用户" };
+            NameBlock.Text = AppGlobal.CurrentUser.Name;
+            contentGrid.Visibility = Visibility.Visible;
+
+            sy.IsChecked = true;
+
+            //LoginForm logFrm = new LoginForm();
+            //logFrm.CallBack = () =>
+            //{
+            //    NameBlock.Text = AppGlobal.CurrentUser.Name;
+            //    contentGrid.Visibility = Visibility.Visible;
+
+            //    sy.IsChecked = true;
+            //    (logFrm.Parent as RadWindow).Close();
+
+            //};
+            //Tools.OpenWindow("登录", logFrm, null);
             
         }
 
         private void onExit()
         {
-
-           
-
+            HtmlWindow html = HtmlPage.Window;
+            html.Navigate(new Uri("DunSilverlightTestPage.aspx", UriKind.Relative));//相对
         }
 
         /// <summary>
@@ -63,8 +83,43 @@ namespace PoliceSMS
 
         private void RadRadioButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            RadRadioButton btn = sender as RadRadioButton;
+            if (btn != null && btn.Tag != null && VerifyRight(btn.Tag.ToString()))
+            {
+                if (btn.Tag.ToString().IndexOf("!") != -1)
+                {
+                    StackPanel panel = this.FindName(btn.Tag.ToString().Replace("!", "")) as StackPanel;
+                    IEnumerable<RadRadioButton> btns = panel.ChildrenOfType<RadRadioButton>();
+                    foreach (RadRadioButton bn in btns)
+                    {
+                        if (bn.IsChecked.Value && bn.Tag != null)
+                        {
+                            if (bn.Tag.ToString().IndexOf("@") != -1)
+                            {
+                                Type type = Type.GetType("DunSilverlight.Views." + bn.Tag.ToString().Replace("@", ""));
+                                Object obj = Activator.CreateInstance(type);
+                                Tools.OpenWindow(bn.Content.ToString(), obj, null);
+                            }
+                            else
+                            {
+                                contentFrame.Navigate(new Uri("/Views/" + bn.Tag.ToString() + ".xaml", UriKind.Relative));
+                            }
+                        }
+                    }
+                }
+                else if (btn.Tag.ToString().IndexOf("@") != -1)
+                {
+                    Type type = Type.GetType("DunSilverlight.Views." + btn.Tag.ToString().Replace("@", ""));
+                    Object obj = Activator.CreateInstance(type);
+                    Tools.OpenWindow(btn.Content.ToString(), obj, null);
+                }
+                else
+                {
+                    contentFrame.Navigate(new Uri("/Views/" + btn.Tag.ToString() + ".xaml", UriKind.Relative));
+                }
+            }
         }
+
         /// <summary>
         /// 权限验证
         /// </summary>
