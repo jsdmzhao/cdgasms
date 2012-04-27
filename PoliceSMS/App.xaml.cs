@@ -9,17 +9,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
+using PoliceSMS.Comm;
 
 namespace PoliceSMS
 {
     public partial class App : Application
     {
-
         public App()
         {
             this.Startup += this.Application_Startup;
             this.Exit += this.Application_Exit;
             this.UnhandledException += this.Application_UnhandledException;
+
+            StyleManager.ApplicationTheme = new MetroTheme();
 
             InitializeComponent();
         }
@@ -58,7 +61,8 @@ namespace PoliceSMS
                 string errorMsg = e.ExceptionObject.Message + e.ExceptionObject.StackTrace;
                 errorMsg = errorMsg.Replace('"', '\'').Replace("\r\n", @"\n");
 
-                System.Windows.Browser.HtmlPage.Window.Eval("throw new Error(\"Unhandled Error in Silverlight Application " + errorMsg + "\");");
+                //  System.Windows.Browser.HtmlPage.Window.Eval("throw new Error(\"Unhandled Error in Silverlight Application " + errorMsg + "\");");
+                Tools.ShowMessage("应用程序内部错误", errorMsg, false);
             }
             catch (Exception)
             {

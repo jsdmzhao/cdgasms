@@ -17,6 +17,64 @@ namespace PoliceSMS
         public MainPage()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
         }
+
+
+
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            onLoad();
+
+        }
+
+
+        private void onLoad()
+        {
+            
+        }
+
+        private void onExit()
+        {
+
+           
+
+        }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void RadRadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        /// <summary>
+        /// 权限验证
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        private bool VerifyRight(string tag)
+        {
+            
+            return true;
+        }
+
     }
 }
