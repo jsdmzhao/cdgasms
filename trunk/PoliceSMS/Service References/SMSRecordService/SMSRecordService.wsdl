@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SMSRecordService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISMSRecordService_SaveOrUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrUpdate" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_SaveOrUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetByHql_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetByHql" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetByHql_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByHqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListByHQL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQL" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListByHQL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListBySQL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBySQL" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListBySQL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBySQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListByHQLWithPaging_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLWithPaging" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListByHQLWithPaging_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLWithPagingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListByProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByProperties" />
+  </wsdl:message>
+  <wsdl:message name="ISMSRecordService_GetListByProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISMSRecordService">
+    <wsdl:operation name="SaveOrUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/SaveOrUpdate" message="tns:ISMSRecordService_SaveOrUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/SaveOrUpdateResponse" message="tns:ISMSRecordService_SaveOrUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/DeleteById" message="tns:ISMSRecordService_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/DeleteByIdResponse" message="tns:ISMSRecordService_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/GetById" message="tns:ISMSRecordService_GetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/GetByIdResponse" message="tns:ISMSRecordService_GetById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByHql">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/GetByHql" message="tns:ISMSRecordService_GetByHql_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/GetByHqlResponse" message="tns:ISMSRecordService_GetByHql_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/GetListByHQL" message="tns:ISMSRecordService_GetListByHQL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/GetListByHQLResponse" message="tns:ISMSRecordService_GetListByHQL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListBySQL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/GetListBySQL" message="tns:ISMSRecordService_GetListBySQL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/GetListBySQLResponse" message="tns:ISMSRecordService_GetListBySQL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQLWithPaging">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/GetListByHQLWithPaging" message="tns:ISMSRecordService_GetListByHQLWithPaging_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/GetListByHQLWithPagingResponse" message="tns:ISMSRecordService_GetListByHQLWithPaging_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByProperties">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/GetListByProperties" message="tns:ISMSRecordService_GetListByProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/GetListByPropertiesResponse" message="tns:ISMSRecordService_GetListByProperties_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISMSRecordService" type="tns:ISMSRecordService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveOrUpdate">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/SaveOrUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteById">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/DeleteById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/GetById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByHql">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/GetByHql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQL">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/GetListByHQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListBySQL">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/GetListBySQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQLWithPaging">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/GetListByHQLWithPaging" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByProperties">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/GetListByProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMSRecordService">
+    <wsdl:port name="BasicHttpBinding_ISMSRecordService" binding="tns:BasicHttpBinding_ISMSRecordService">
+      <soap:address location="http://localhost:1415/SMSWcf/SMSRecordService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

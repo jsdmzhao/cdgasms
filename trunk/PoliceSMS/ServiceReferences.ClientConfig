@@ -1,0 +1,59 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_ISexService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IOfficerTypeService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IWorkTypeService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IGradeTypeService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IOfficerService1" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IOrganizationService1" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_ISMSRecordService1" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:1415/BaseWcf/SexService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISexService"
+                contract="SexService.ISexService" name="BasicHttpBinding_ISexService" />
+            <endpoint address="http://localhost:1415/OrganizationWcf/OfficerTypeService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOfficerTypeService"
+                contract="OfficerTypeService.IOfficerTypeService" name="BasicHttpBinding_IOfficerTypeService" />
+            <endpoint address="http://localhost:1415/SMSWcf/WorkTypeService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IWorkTypeService"
+                contract="WorkTypeService.IWorkTypeService" name="BasicHttpBinding_IWorkTypeService" />
+            <endpoint address="http://localhost:1415/SMSWcf/GradeTypeService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGradeTypeService"
+                contract="GradeTypeService.IGradeTypeService" name="BasicHttpBinding_IGradeTypeService" />
+            <endpoint address="http://localhost:1415/OrganizationWcf/OfficerService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOfficerService1"
+                contract="OfficerService.IOfficerService" name="BasicHttpBinding_IOfficerService1" />
+            <endpoint address="http://localhost:1415/OrganizationWcf/OrganizationService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrganizationService1"
+                contract="OrganizationService.IOrganizationService" name="BasicHttpBinding_IOrganizationService1" />
+            <endpoint address="http://localhost:1415/SMSWcf/SMSRecordService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISMSRecordService1"
+                contract="SMSRecordService.ISMSRecordService" name="BasicHttpBinding_ISMSRecordService1" />
+        </client>
+    </system.serviceModel>
+</configuration>

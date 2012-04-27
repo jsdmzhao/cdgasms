@@ -11,7 +11,7 @@
 
     <property name="Score" column="Mark" type="int"/>
 
-    <property name="IsUsed" column="IsUsed" type="bool"/>
+    <property name="IsUsed" column="Used" type="bool"/>
     
   </class>
 

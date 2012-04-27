@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c641b276-66a6-46ee-8f6b-685eecf1b03c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1415/OrganizationWcf/OrganizationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OrganizationService.xsd" MetadataType="Schema" ID="f12c841e-11f2-4dda-9ae3-f171e4fb86c4" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OrganizationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="OrganizationService1.xsd" MetadataType="Schema" ID="aaa91b61-9511-4e6c-a3ca-822e15e260f2" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OrganizationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="OrganizationService.disco" MetadataType="Disco" ID="16e86a50-fd25-4312-88f8-1285c1420b18" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OrganizationService.svc?disco" />
+    <MetadataFile FileName="OrganizationService.wsdl" MetadataType="Wsdl" ID="eb020a35-2dcb-436b-bd50-92a16b7e93b2" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OrganizationService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

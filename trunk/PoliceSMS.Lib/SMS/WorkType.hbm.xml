@@ -5,11 +5,10 @@
       <generator class="identity" />
     </id>
 
-    <property name="Number" column="Number" type="string"/>
 
     <property name="Name" column="Name" type="string"/>
 
-    <property name="IsUsed" column="IsUsed" type="bool"/>
+    <property name="IsUsed" column="Used" type="bool"/>
     
   </class>
 

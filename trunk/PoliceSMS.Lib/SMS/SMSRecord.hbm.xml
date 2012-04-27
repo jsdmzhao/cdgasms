@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PoliceSMS.Lib" namespace="PoliceSMS.Lib.SMS">
-  <class name="PoliceSMS.Lib.SMS.WorkType,PoliceSMS.Lib" table="SMS_WorkType">
+  <class name="PoliceSMS.Lib.SMS.SMSRecord,PoliceSMS.Lib" table="SMS_Work">
     <id name="Id" column="Id" type="int"  >
       <generator class="identity" />
     </id>
@@ -15,7 +15,7 @@
 
     <property name="Address" column="Address" type="string"/>
 
-    <property name="WorkDate" column="CreateTime" type="DateTime"/>
+    <property name="WorkDate" column="CreatTime" type="DateTime"/>
 
     <many-to-one name="WorkType" column="WorkTypeId" not-found="ignore" class="PoliceSMS.Lib.SMS.WorkType" cascade="none" lazy="proxy"/>
 
@@ -30,8 +30,6 @@
     <property name="IsResponse" column="IsValuation" type="bool"/>
 
     <many-to-one name="GradeType" column="ValuationId" not-found="ignore" class="PoliceSMS.Lib.SMS.GradeType" cascade="none" lazy="proxy"/>
-
-    <many-to-one name="LoginOfficer" column="PoliceManId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
 
     <property name="IsSend" column="isSend" type="bool"/>
 

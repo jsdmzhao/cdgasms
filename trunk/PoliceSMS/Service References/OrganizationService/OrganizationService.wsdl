@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrganizationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1415/OrganizationWcf/OrganizationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1415/OrganizationWcf/OrganizationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOrganizationService_SaveOrUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_SaveOrUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetByHql_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetByHql" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetByHql_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByHqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListByHQL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQL" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListByHQL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListBySQL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBySQL" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListBySQL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBySQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListByHQLWithPaging_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLWithPaging" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListByHQLWithPaging_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLWithPagingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListByProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByProperties" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationService_GetListByProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOrganizationService">
+    <wsdl:operation name="SaveOrUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/SaveOrUpdate" message="tns:IOrganizationService_SaveOrUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/SaveOrUpdateResponse" message="tns:IOrganizationService_SaveOrUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/DeleteById" message="tns:IOrganizationService_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/DeleteByIdResponse" message="tns:IOrganizationService_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/GetById" message="tns:IOrganizationService_GetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/GetByIdResponse" message="tns:IOrganizationService_GetById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByHql">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/GetByHql" message="tns:IOrganizationService_GetByHql_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/GetByHqlResponse" message="tns:IOrganizationService_GetByHql_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/GetListByHQL" message="tns:IOrganizationService_GetListByHQL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/GetListByHQLResponse" message="tns:IOrganizationService_GetListByHQL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListBySQL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/GetListBySQL" message="tns:IOrganizationService_GetListBySQL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/GetListBySQLResponse" message="tns:IOrganizationService_GetListBySQL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQLWithPaging">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/GetListByHQLWithPaging" message="tns:IOrganizationService_GetListByHQLWithPaging_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/GetListByHQLWithPagingResponse" message="tns:IOrganizationService_GetListByHQLWithPaging_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByProperties">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationService/GetListByProperties" message="tns:IOrganizationService_GetListByProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationService/GetListByPropertiesResponse" message="tns:IOrganizationService_GetListByProperties_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOrganizationService" type="tns:IOrganizationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveOrUpdate">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/SaveOrUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteById">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/DeleteById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/GetById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByHql">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/GetByHql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQL">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/GetListByHQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListBySQL">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/GetListBySQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQLWithPaging">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/GetListByHQLWithPaging" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByProperties">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationService/GetListByProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrganizationService">
+    <wsdl:port name="BasicHttpBinding_IOrganizationService" binding="tns:BasicHttpBinding_IOrganizationService">
+      <soap:address location="http://localhost:1415/OrganizationWcf/OrganizationService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
