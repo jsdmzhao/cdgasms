@@ -129,8 +129,8 @@
     <Compile Include="Views\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SMSRecord.xaml.cs">
-      <DependentUpon>SMSRecord.xaml</DependentUpon>
+    <Compile Include="Views\SMSRecordList.xaml.cs">
+      <DependentUpon>SMSRecordList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +178,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\SMSRecord.xaml">
+    <Page Include="Views\SMSRecordList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
