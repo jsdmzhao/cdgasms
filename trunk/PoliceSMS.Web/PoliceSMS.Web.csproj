@@ -61,6 +61,8 @@
     <Reference Include="NHibernate.ByteCode.Castle">
       <HintPath>..\Library\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -78,7 +80,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BaseWcf\SexService.svc" />
     <Content Include="ClientBin\PoliceSMS.xap" />
+    <Content Include="OrganizationWcf\OfficerService.svc" />
+    <Content Include="OrganizationWcf\OrganizationService.svc" />
     <Content Include="PoliceSMSTestPage.aspx" />
     <Content Include="PoliceSMSTestPage.html" />
     <Content Include="Silverlight.js" />
@@ -91,11 +96,31 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseWcf\ISexService.cs" />
+    <Compile Include="BaseWcf\SexService.svc.cs">
+      <DependentUpon>SexService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Comm\SessionFactory.cs" />
+    <Compile Include="OrganizationWcf\IOfficerService.cs" />
+    <Compile Include="OrganizationWcf\IOrganizationService.cs" />
+    <Compile Include="OrganizationWcf\OfficerService.svc.cs">
+      <DependentUpon>OfficerService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationWcf\OrganizationService.svc.cs">
+      <DependentUpon>OrganizationService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializable\JsonSerializerHelper.cs" />
+    <Compile Include="Serializable\NhbSerialzableHelper.cs" />
+    <Compile Include="Serializable\NHibernateContractResolver.cs" />
+    <Compile Include="Serializable\NHibernateProxyJsonConverter.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BaseWcf\" />
-    <Folder Include="Organization\" />
+    <ProjectReference Include="..\PoliceSMS.Lib\PoliceSMS.Lib.csproj">
+      <Project>{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}</Project>
+      <Name>PoliceSMS.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

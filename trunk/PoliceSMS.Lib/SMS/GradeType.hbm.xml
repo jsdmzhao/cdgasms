@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PoliceSMS.Lib" namespace="PoliceSMS.Lib.SMS">
-  <class name="PoliceSMS.Lib.SMS.GradeType,PoliceSMS.Lib" table="SMS_GradeType">
+  <class name="PoliceSMS.Lib.SMS.GradeType,PoliceSMS.Lib" table="SMS_WorkValuationType">
     <id name="Id" column="Id" type="int"  >
       <generator class="identity" />
     </id>
 
-    <property name="Number" column="Number" type="string"/>
+    <property name="Number" column="Code" type="string"/>
     
     <property name="Name" column="Name" type="string"/>
 
-    <property name="Score" column="Score" type="int"/>
+    <property name="Score" column="Mark" type="int"/>
 
+    <property name="IsUsed" column="IsUsed" type="bool"/>
+    
   </class>
 
 </hibernate-mapping>
