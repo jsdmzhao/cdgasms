@@ -1,0 +1,94 @@
+﻿<navigation:Page x:Class="PoliceSMS.Views.GradeTypeList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+                 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+    Title="评分内容管理">
+
+    <Grid x:Name="LayoutRoot">
+        <Border VerticalAlignment="Stretch" >
+
+            <Grid Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="10 4" Orientation="Horizontal" VerticalAlignment="Top">
+                    <TextBlock Text="评分内容管理" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{StaticResource DarkBackground}"  FontSize="20" 
+                               Margin="0 0 0 0"/>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 4">
+
+                    <!--<telerik:RadComboBox  IsEditable="True" IsReadOnly="True" EmptyText="请选择所属银行" Width="10" Height="24" Margin="0 0 0 0"  HorizontalAlignment="Left"/>-->
+                    <telerik:RadRibbonButton Margin="10 0 0 0" Name="btnRefresh" Click="btnRefresh_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/search.png" Margin="2 0 0 0" Height="16" Width="16"/>
+                            <TextBlock Foreground="{StaticResource DarkBackground}" Text="刷新" VerticalAlignment="Center"
+                                                   FontSize="12"
+                                                   Margin="6 0 6 0" />
+                        </StackPanel>
+                    </telerik:RadRibbonButton>
+                    <telerik:RadRibbonButton x:Name="btnAdd" Margin="10 0 0 0" Click="btnAdd_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/refresh.png" Margin="2 0 0 0" Height="16" Width="16"/>
+                            <TextBlock Foreground="{StaticResource DarkBackground}" Text="新建" VerticalAlignment="Center"
+                                                   FontSize="12"
+                                                   Margin="6 0 6 0" />
+                        </StackPanel>
+                    </telerik:RadRibbonButton>
+                    <telerik:RadRibbonButton x:Name="btnEdit" Margin="2 0 0 0" Click="btnEdit_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/add.png" Margin="2 0 0 0" Height="16" Width="16"/>
+                            <TextBlock Foreground="{StaticResource DarkBackground}" Text="修改" VerticalAlignment="Center"
+                                                   FontSize="12"
+                                                   Margin="6 0 6 0" />
+                        </StackPanel>
+                    </telerik:RadRibbonButton>
+                    <telerik:RadRibbonButton x:Name="btnDelete" Margin="10 0 0 0" Click="btnDelete_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/refresh.png" Margin="2 0 0 0" Height="16" Width="16"/>
+                            <TextBlock Foreground="{StaticResource DarkBackground}" Text="删除" VerticalAlignment="Center"
+                                                   FontSize="12"
+                                                   Margin="6 0 6 0" />
+                        </StackPanel>
+                    </telerik:RadRibbonButton>
+                </StackPanel>
+
+                <!--<Rectangle Height="1" VerticalAlignment="Top" Grid.Row="1"
+                       Fill="{StaticResource GridViewSplitter}"
+                       Margin="0 0 0 0" >
+                        </Rectangle>-->
+                <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="dgeReciveType" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                                             CanUserResizeColumns="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
+								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewSelectColumn/>
+                        <telerik:GridViewDataColumn Header="评价内容" MinWidth="240"  DataMemberBinding="{Binding Path=Number}" >
+
+                        </telerik:GridViewDataColumn>
+
+                        <telerik:GridViewDataColumn Header="编码" MinWidth="100"  DataMemberBinding="{Binding Path=Name}" HeaderTextAlignment="Center">
+
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="分值" MinWidth="100"  DataMemberBinding="{Binding Path=Description}" HeaderTextAlignment="Center">
+
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="是否使用" MinWidth="100"  DataMemberBinding="{Binding Path=Description}" HeaderTextAlignment="Center">
+
+                        </telerik:GridViewDataColumn>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </Grid>
+        </Border>
+
+    </Grid>
+</navigation:Page>
