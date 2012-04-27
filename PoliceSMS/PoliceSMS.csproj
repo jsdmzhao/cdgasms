@@ -112,6 +112,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppGlobal.cs" />
     <Compile Include="Comm\BasePage.cs" />
     <Compile Include="Comm\ExportingModel.cs" />
     <Compile Include="Comm\ILoadMask.cs" />
@@ -124,6 +125,13 @@
     <Compile Include="MyConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Themes\FarmerItemStyleSelector.cs" />
+    <Compile Include="ViewModel\ExportintModel.cs" />
+    <Compile Include="Views\LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SMSRecord.xaml.cs">
+      <DependentUpon>SMSRecord.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -166,12 +174,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\LoginForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SMSRecord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <ProjectReference Include="..\PoliceSMS.Lib\PoliceSMS.Lib.csproj">
+      <Project>{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}</Project>
+      <Name>PoliceSMS.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
