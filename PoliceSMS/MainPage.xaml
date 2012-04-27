@@ -55,7 +55,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="daoruS"
                         Visibility="{Binding ElementName=daoru,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="欠款信息导入" Tag="@ImportArrearRecord"
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="“阳光民意评警”排名表" Tag="StationRankReport"
                                         Style="{StaticResource RadRadioButtonSmallStyle}"/>
                         <telerik:RadRadioButton Content="还款信息导入" Checked="RadRadioButton_Click" 
                                             Tag="@ImportReturnRecord"
