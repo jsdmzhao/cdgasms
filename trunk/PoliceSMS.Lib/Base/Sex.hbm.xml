@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PoliceSMS.Lib" namespace="PoliceSMS.Lib.Base">
+  <class name="PoliceSMS.Lib.Base.Sex,PoliceSMS.Lib" table="Sex">
+    <id name="Id" column="Id" type="int"  >
+      <generator class="identity" />
+    </id>
+
+    <property name="Name" column="Name" type="string"/>
+    <property name="Number" column="Code" type="string"/>
+    <property name="Description" column="PinYin"  type="string" />
+
+  </class>
+
+</hibernate-mapping>

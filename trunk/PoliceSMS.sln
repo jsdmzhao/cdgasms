@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceSMS.Lib", "PoliceSMS.Lib\PoliceSMS.Lib.csproj", "{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceSMS", "PoliceSMS\PoliceSMS.csproj", "{E62CD257-E0C9-4F80-9712-B92D07D284A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EF53DE58-B481-4F7D-A27F-605A723CBD91} = {EF53DE58-B481-4F7D-A27F-605A723CBD91}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceSMS.Web", "PoliceSMS.Web\PoliceSMS.Web.csproj", "{EF53DE58-B481-4F7D-A27F-605A723CBD91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E62CD257-E0C9-4F80-9712-B92D07D284A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E62CD257-E0C9-4F80-9712-B92D07D284A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E62CD257-E0C9-4F80-9712-B92D07D284A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E62CD257-E0C9-4F80-9712-B92D07D284A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

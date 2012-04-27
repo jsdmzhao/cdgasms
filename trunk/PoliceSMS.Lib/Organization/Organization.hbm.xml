@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PoliceSMS.Lib" namespace="PoliceSMS.Lib.Organization">
+  <class name="PoliceSMS.Lib.Organization.Organization,PoliceSMS.Lib" table="PoliceStation">
+    <id name="Id" column="Id" type="int"  >
+      <generator class="identity" />
+    </id>
+
+    <property name="Name" column="Name" type="string"/>
+
+    <many-to-one name="Parent" column="ParentId" not-found="ignore" class="PoliceSMS.Lib.Organization.Organization" cascade="none" lazy="proxy"/>
+
+    <bag name="Childs" table="PoliceStation" lazy="true" cascade="none" inverse="true">
+      <key column= "ParentId"/>
+      <one-to-many class= "PoliceSMS.Lib.Organization.Organization"/>
+    </bag>
+
+  </class>
+
+</hibernate-mapping>
