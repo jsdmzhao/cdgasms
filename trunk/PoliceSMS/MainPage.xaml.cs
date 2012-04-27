@@ -58,7 +58,7 @@ namespace PoliceSMS
         private void onExit()
         {
             HtmlWindow html = HtmlPage.Window;
-            html.Navigate(new Uri("DunSilverlightTestPage.aspx", UriKind.Relative));//相对
+            html.Navigate(new Uri("PoliceSMSTestPage.aspx", UriKind.Relative));//相对
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace PoliceSMS
                         {
                             if (bn.Tag.ToString().IndexOf("@") != -1)
                             {
-                                Type type = Type.GetType("DunSilverlight.Views." + bn.Tag.ToString().Replace("@", ""));
+                                Type type = Type.GetType("PoliceSMS.Views." + bn.Tag.ToString().Replace("@", ""));
                                 Object obj = Activator.CreateInstance(type);
                                 Tools.OpenWindow(bn.Content.ToString(), obj, null);
                             }
@@ -109,7 +109,7 @@ namespace PoliceSMS
                 }
                 else if (btn.Tag.ToString().IndexOf("@") != -1)
                 {
-                    Type type = Type.GetType("DunSilverlight.Views." + btn.Tag.ToString().Replace("@", ""));
+                    Type type = Type.GetType("PoliceSMS.Views." + btn.Tag.ToString().Replace("@", ""));
                     Object obj = Activator.CreateInstance(type);
                     Tools.OpenWindow(btn.Content.ToString(), obj, null);
                 }
