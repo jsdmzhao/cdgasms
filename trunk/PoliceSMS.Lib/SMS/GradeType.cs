@@ -17,6 +17,9 @@ namespace PoliceSMS.Lib.SMS
     /// </summary>
     public class GradeType:Item
     {
+        /// <summary>
+        /// 得分
+        /// </summary>
         public int Score { get; set; }
 
 
