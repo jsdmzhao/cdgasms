@@ -13,9 +13,9 @@ using System.Windows.Navigation;
 
 namespace PoliceSMS.Views
 {
-    public partial class SMSRecord : Page
+    public partial class SMSRecordList : Page
     {
-        public SMSRecord()
+        public SMSRecordList()
         {
            
             InitializeComponent(); 
