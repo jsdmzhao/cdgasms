@@ -13,6 +13,7 @@ using Telerik.Windows.Controls;
 using PoliceSMS.Comm;
 using System.Windows.Browser;
 using PoliceSMS.Views;
+using PoliceSMS.Lib.SMS;
 
 namespace PoliceSMS
 {
@@ -30,12 +31,25 @@ namespace PoliceSMS
         {
             onLoad();
 
+            
+
+            SMSRecord record = new SMSRecord();
+
+            record.Organization = AppGlobal.CurrentOrganization;
+            record.LoginOfficer = AppGlobal.CurrentUser;
+
+            SMSRecordForm smsFrom = new SMSRecordForm();
+            smsFrom.SMSRecord = record;
+
+            Tools.OpenWindow("评警信息", smsFrom,null,600,375);
+
         }
 
 
         private void onLoad()
         {
-            AppGlobal.CurrentUser = new Lib.Organization.Officer { Name = "测试用户" };
+            AppGlobal.CurrentUser = new Lib.Organization.Officer { Name = "测试用户",Password="111111",Id=100};
+            AppGlobal.CurrentOrganization = new Lib.Organization.Organization { Name = "青羊区分局草市街派出所", Id = 742 };
             NameBlock.Text = AppGlobal.CurrentUser.Name;
             contentGrid.Visibility = Visibility.Visible;
 

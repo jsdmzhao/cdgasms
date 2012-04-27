@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c9c3fc32-3543-4a30-9d3e-5b97d2764fb3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1415/SMSWcf/WorkTypeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WorkTypeService.wsdl" MetadataType="Wsdl" ID="335b4e0f-1461-42f6-9bd4-45c99ba1231a" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/WorkTypeService.svc?wsdl" />
+    <MetadataFile FileName="WorkTypeService.disco" MetadataType="Disco" ID="695e9a12-6128-4b1a-a9cf-6d539688a43c" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/WorkTypeService.svc?disco" />
+    <MetadataFile FileName="WorkTypeService.xsd" MetadataType="Schema" ID="58c9758c-4dbc-479a-bdc3-b4ce621d20fd" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/WorkTypeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WorkTypeService1.xsd" MetadataType="Schema" ID="e12c05d7-5f99-4233-9ba6-c0f3949cfba6" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/WorkTypeService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GradeTypeService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1415/SMSWcf/GradeTypeService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1415/SMSWcf/GradeTypeService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGradeTypeService_SaveOrUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_SaveOrUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetByHql_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetByHql" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetByHql_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByHqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListByHQL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQL" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListByHQL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListBySQL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBySQL" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListBySQL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBySQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListByHQLWithPaging_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLWithPaging" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListByHQLWithPaging_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByHQLWithPagingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListByProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByProperties" />
+  </wsdl:message>
+  <wsdl:message name="IGradeTypeService_GetListByProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListByPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGradeTypeService">
+    <wsdl:operation name="SaveOrUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/SaveOrUpdate" message="tns:IGradeTypeService_SaveOrUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/SaveOrUpdateResponse" message="tns:IGradeTypeService_SaveOrUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/DeleteById" message="tns:IGradeTypeService_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/DeleteByIdResponse" message="tns:IGradeTypeService_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/GetById" message="tns:IGradeTypeService_GetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/GetByIdResponse" message="tns:IGradeTypeService_GetById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByHql">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/GetByHql" message="tns:IGradeTypeService_GetByHql_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/GetByHqlResponse" message="tns:IGradeTypeService_GetByHql_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/GetListByHQL" message="tns:IGradeTypeService_GetListByHQL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/GetListByHQLResponse" message="tns:IGradeTypeService_GetListByHQL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListBySQL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/GetListBySQL" message="tns:IGradeTypeService_GetListBySQL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/GetListBySQLResponse" message="tns:IGradeTypeService_GetListBySQL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQLWithPaging">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/GetListByHQLWithPaging" message="tns:IGradeTypeService_GetListByHQLWithPaging_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/GetListByHQLWithPagingResponse" message="tns:IGradeTypeService_GetListByHQLWithPaging_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListByProperties">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGradeTypeService/GetListByProperties" message="tns:IGradeTypeService_GetListByProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGradeTypeService/GetListByPropertiesResponse" message="tns:IGradeTypeService_GetListByProperties_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGradeTypeService" type="tns:IGradeTypeService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveOrUpdate">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/SaveOrUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteById">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/DeleteById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/GetById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByHql">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/GetByHql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQL">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/GetListByHQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListBySQL">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/GetListBySQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByHQLWithPaging">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/GetListByHQLWithPaging" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListByProperties">
+      <soap:operation soapAction="http://tempuri.org/IGradeTypeService/GetListByProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GradeTypeService">
+    <wsdl:port name="BasicHttpBinding_IGradeTypeService" binding="tns:BasicHttpBinding_IGradeTypeService">
+      <soap:address location="http://localhost:1415/SMSWcf/GradeTypeService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -5,20 +5,22 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using NHibernate;
-using PoliceSMS.Lib.SMS;
-using PoliceSMS.Web.Serializable;
 using PoliceSMS.Web.Comm;
-using Newtonsoft.Json;
+using PoliceSMS.Lib.Organization;
+using PoliceSMS.Web.Serializable;
 using PoliceSMS.Lib.Query;
+using Newtonsoft.Json;
 using System.ServiceModel.Activation;
 
-namespace PoliceSMS.Web.SMSWcf
+namespace PoliceSMS.Web.OrganizationWcf
 {
-    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“WorkTypeService”。
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“OfficerTypeService”。
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
-    public class WorkTypeService : IWorkTypeService
+    public class OfficerTypeService : IOfficerTypeService
     {
+        
         private ISessionFactory hbmSessionFactory;
+
         #region IBaseService 成员
 
         public ISessionFactory HbmSessionFactory
@@ -48,7 +50,7 @@ namespace PoliceSMS.Web.SMSWcf
             {
                 ITransaction tx = null;
 
-                SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
+                OfficerType entity = JsonSerializerHelper.JsonToEntity<OfficerType>(json);
 
                 //DunLibrary.User.User u = sess.Get<DunLibrary.User.User>(2);
 
@@ -89,7 +91,7 @@ namespace PoliceSMS.Web.SMSWcf
                 ITransaction tx = sess.BeginTransaction();
                 try
                 {
-                    SMSRecord entity = sess.Load<SMSRecord>(id);
+                    OfficerType entity = sess.Load<OfficerType>(id);
                     sess.Delete(entity);
                     tx.Commit();
                     return PackJsonResult("true", "true", string.Empty);
@@ -113,7 +115,7 @@ namespace PoliceSMS.Web.SMSWcf
             {
                 try
                 {
-                    WorkType entity = sess.Get<WorkType>(id);
+                    OfficerType entity = sess.Get<OfficerType>(id);
 
                     string s = JsonSerializerHelper.EntityToJson(entity);
 
@@ -132,7 +134,7 @@ namespace PoliceSMS.Web.SMSWcf
             {
                 try
                 {
-                    WorkType entity = sess.CreateQuery(hql).UniqueResult<WorkType>();
+                    OfficerType entity = sess.CreateQuery(hql).UniqueResult<OfficerType>();
 
                     string s = JsonSerializerHelper.EntityToJson(entity);
 
@@ -158,7 +160,7 @@ namespace PoliceSMS.Web.SMSWcf
             {
                 try
                 {
-                    IList<WorkType> ls = sess.CreateQuery(hql).List<WorkType>();
+                    IList<OfficerType> ls = sess.CreateQuery(hql).List<OfficerType>();
 
                     if (ls.Count > 0 && ls[0] == null)
                         ls.RemoveAt(0);
@@ -230,7 +232,7 @@ namespace PoliceSMS.Web.SMSWcf
                 //qc.HQL = "from Case";
                 IQuery q = sess.CreateQuery(qc.HQL);
                 //设置分页
-                IList<WorkType> ls = q.SetFirstResult(qc.FirstResult).SetMaxResults(qc.MaxResults).List<WorkType>();
+                IList<OfficerType> ls = q.SetFirstResult(qc.FirstResult).SetMaxResults(qc.MaxResults).List<OfficerType>();
                 //IList<T> ls = q.List<T>();
 
                 string json = JsonSerializerHelper.EntityToJson(ls);
@@ -289,10 +291,5 @@ namespace PoliceSMS.Web.SMSWcf
         }
 
         #endregion
-
-        public string Login(string userName, string password)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

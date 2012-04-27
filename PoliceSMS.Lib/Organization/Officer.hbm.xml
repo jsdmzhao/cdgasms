@@ -8,10 +8,6 @@
     <property name="Name" column="Name" type="string"/>
     <property name="Password" column="Password" type="string"/>
     <property name="Code" column="Code" type="string"/>
-    <!--<property name="Number" column="Number" type="string"/>-->
-    <!--<property name="GUID" column="GUID" type="Guid" />-->
-    <!--<property name="Description" column="Description"  type="string" />-->
-    <!--<property name="IsUsed" column="IsUsed" type="bool"/>-->
     
     <many-to-one name="Organization" column="OrganizationId"
                  class="PoliceSMS.Lib.Organization.Organization" cascade="none" not-found="ignore"/>

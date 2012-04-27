@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="PoliceSMS.Web.OrganizationWcf.OfficerTypeService" CodeBehind="OfficerTypeService.svc.cs" %>

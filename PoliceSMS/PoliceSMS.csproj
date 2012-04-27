@@ -69,6 +69,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.DomainServices.Client, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel.DomainServices.Client.Web, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.ServiceModel.Web.Extensions, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -116,6 +117,7 @@
     <Compile Include="Comm\BasePage.cs" />
     <Compile Include="Comm\ExportingModel.cs" />
     <Compile Include="Comm\ILoadMask.cs" />
+    <Compile Include="Comm\JsonSerializerHelper.cs" />
     <Compile Include="Comm\ReturnMessage.cs" />
     <Compile Include="Comm\SessionManager.cs" />
     <Compile Include="Comm\Tools.cs" />
@@ -124,6 +126,41 @@
     </Compile>
     <Compile Include="MyConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\GradeTypeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OfficerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OfficerTypeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrganizationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SexService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SMSRecordService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WorkTypeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Themes\FarmerItemStyleSelector.cs" />
     <Compile Include="ViewModel\ExportintModel.cs" />
     <Compile Include="Views\GradeTypeForm.xaml.cs">
@@ -138,12 +175,18 @@
     <Compile Include="Views\SMSRecordList.xaml.cs">
       <DependentUpon>SMSRecordList.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Views\SMSRecordForm.xaml.cs">
+      <DependentUpon>SMSRecordForm.xaml</DependentUpon>
+    </Compile>
+
     <Compile Include="Views\StationRankReport.xaml.cs">
       <DependentUpon>StationRankReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkTypeList.xaml.cs">
       <DependentUpon>WorkTypeList.xaml</DependentUpon>
     </Compile>
+
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -202,6 +245,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
+    <Page Include="Views\SMSRecordForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+
     <Page Include="Views\StationRankReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,15 +259,127 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
+    <None Include="Service References\GradeTypeService\GradeTypeService.wsdl" />
+    <None Include="Service References\GradeTypeService\GradeTypeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GradeTypeService\GradeTypeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OfficerService\OfficerService.wsdl" />
+    <None Include="Service References\OfficerService\OfficerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OfficerService\OfficerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OfficerTypeService\OfficerTypeService.wsdl" />
+    <None Include="Service References\OfficerTypeService\OfficerTypeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OfficerTypeService\OfficerTypeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationService\OrganizationService.wsdl" />
+    <None Include="Service References\OrganizationService\OrganizationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationService\OrganizationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SexService\SexService.wsdl" />
+    <None Include="Service References\SexService\SexService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SexService\SexService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SMSRecordService\SMSRecordService.wsdl" />
+    <None Include="Service References\SMSRecordService\SMSRecordService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SMSRecordService\SMSRecordService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SexService\SexService.disco" />
+    <None Include="Service References\SexService\configuration91.svcinfo" />
+    <None Include="Service References\SexService\configuration.svcinfo" />
+    <None Include="Service References\SexService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\OfficerTypeService\OfficerTypeService.disco" />
+    <None Include="Service References\OfficerTypeService\configuration91.svcinfo" />
+    <None Include="Service References\OfficerTypeService\configuration.svcinfo" />
+    <None Include="Service References\OfficerTypeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WorkTypeService\WorkTypeService.disco" />
+    <None Include="Service References\WorkTypeService\configuration91.svcinfo" />
+    <None Include="Service References\WorkTypeService\configuration.svcinfo" />
+    <None Include="Service References\WorkTypeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\GradeTypeService\GradeTypeService.disco" />
+    <None Include="Service References\GradeTypeService\configuration91.svcinfo" />
+    <None Include="Service References\GradeTypeService\configuration.svcinfo" />
+    <None Include="Service References\GradeTypeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\OfficerService\OfficerService.disco" />
+    <None Include="Service References\OfficerService\configuration91.svcinfo" />
+    <None Include="Service References\OfficerService\configuration.svcinfo" />
+    <None Include="Service References\OfficerService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\OrganizationService\OrganizationService.disco" />
+    <None Include="Service References\OrganizationService\configuration91.svcinfo" />
+    <None Include="Service References\OrganizationService\configuration.svcinfo" />
+    <None Include="Service References\OrganizationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SMSRecordService\SMSRecordService.disco" />
+    <None Include="Service References\SMSRecordService\configuration91.svcinfo" />
+    <None Include="Service References\SMSRecordService\configuration.svcinfo" />
+    <None Include="Service References\SMSRecordService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\WorkTypeService\WorkTypeService.wsdl" />
+    <None Include="Service References\WorkTypeService\WorkTypeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkTypeService\WorkTypeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PoliceSMS.Lib\PoliceSMS.Lib.csproj">
       <Project>{9D525CFB-53FB-4B5F-A1CC-BB7A96941493}</Project>
       <Name>PoliceSMS.Lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GradeTypeService\" />
+    <WCFMetadataStorage Include="Service References\OfficerService\" />
+    <WCFMetadataStorage Include="Service References\OfficerTypeService\" />
+    <WCFMetadataStorage Include="Service References\OrganizationService\" />
+    <WCFMetadataStorage Include="Service References\SexService\" />
+    <WCFMetadataStorage Include="Service References\SMSRecordService\" />
+    <WCFMetadataStorage Include="Service References\WorkTypeService\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

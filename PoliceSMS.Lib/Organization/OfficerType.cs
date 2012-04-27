@@ -10,18 +10,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using PoliceSMS.Lib.Core;
 
-namespace PoliceSMS.Lib.SMS
+namespace PoliceSMS.Lib.Organization
 {
-    /// <summary>
-    /// 评分类型
-    /// </summary>
-    public class GradeType:Item
+    public class OfficerType:Item
     {
-        /// <summary>
-        /// 得分
-        /// </summary>
-        public virtual int Score { get; set; }
-
 
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="69886368-ec7c-4138-985a-0031dfd4984d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1415/OrganizationWcf/OfficerTypeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OfficerTypeService.wsdl" MetadataType="Wsdl" ID="87ba60e6-71a0-4774-8571-b669374f0f4a" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OfficerTypeService.svc?wsdl" />
+    <MetadataFile FileName="OfficerTypeService.disco" MetadataType="Disco" ID="df26e6df-3a0c-485c-8e61-f5c1e280df03" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OfficerTypeService.svc?disco" />
+    <MetadataFile FileName="OfficerTypeService.xsd" MetadataType="Schema" ID="a0d660a8-0513-42a0-8ba4-5b68108babd8" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OfficerTypeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="OfficerTypeService1.xsd" MetadataType="Schema" ID="892b841f-dd92-4985-bdd2-5a3c36810b77" SourceId="1" SourceUrl="http://localhost:1415/OrganizationWcf/OfficerTypeService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

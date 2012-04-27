@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5caca7c7-e149-4286-8206-e56c7de24904" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1415/SMSWcf/SMSRecordService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SMSRecordService.xsd" MetadataType="Schema" ID="475c8a7c-5dfa-494a-a550-fa0ed059dab5" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SMSRecordService1.xsd" MetadataType="Schema" ID="cbbde19b-7c48-4712-85e4-c798d0612225" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SMSRecordService.wsdl" MetadataType="Wsdl" ID="bf9c1f86-e86a-4ff4-a36c-313f8563bb0b" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?wsdl" />
+    <MetadataFile FileName="SMSRecordService.disco" MetadataType="Disco" ID="12e3a796-8456-4674-adb6-886d6e98e288" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
