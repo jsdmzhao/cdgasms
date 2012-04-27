@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using PoliceSMS.Comm;
 
 namespace PoliceSMS.Views
 {
@@ -26,12 +27,16 @@ namespace PoliceSMS.Views
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            GradeTypeForm frm = new GradeTypeForm();
 
+            Tools.OpenWindow("评分内容-新增", frm, null);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            GradeTypeForm frm = new GradeTypeForm();
 
+            Tools.OpenWindow("评分内容-编辑", frm, null);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
