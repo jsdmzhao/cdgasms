@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PoliceSMS.Lib" namespace="PoliceSMS.Lib.SMS">
+  <class name="PoliceSMS.Lib.SMS.WorkType,PoliceSMS.Lib" table="SMS_WorkType">
+    <id name="Id" column="Id" type="int"  >
+      <generator class="identity" />
+    </id>
+
+    <property name="PersonName" column="Name" type="string"/>
+
+    <many-to-one name="PersonSex" column="Sex" not-found="ignore" class="PoliceSMS.Lib.Base.Sex" cascade="none" lazy="proxy"/>
+
+    <property name="PersonIdCard" column="PersonIdCard" type="string"/>
+
+    <property name="PersonMobile" column="TelPhone" type="string"/>
+
+    <property name="Address" column="Address" type="string"/>
+
+    <property name="WorkDate" column="CreateTime" type="DateTime"/>
+
+    <many-to-one name="WorkType" column="WorkTypeId" not-found="ignore" class="PoliceSMS.Lib.SMS.WorkType" cascade="none" lazy="proxy"/>
+
+    <property name="WorkContent" column="WorkDetail" type="string"/>
+
+    <many-to-one name="Organization" column="UnitId" not-found="ignore" class="PoliceSMS.Lib.Organization.Organization" cascade="none" lazy="proxy"/>
+
+    <many-to-one name="LoginOfficer" column="PoliceManId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
+
+    <many-to-one name="WorkOfficer" column="WorkOfficerId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
+
+    <property name="IsResponse" column="IsValuation" type="bool"/>
+
+    <many-to-one name="GradeType" column="ValuationId" not-found="ignore" class="PoliceSMS.Lib.SMS.GradeType" cascade="none" lazy="proxy"/>
+
+    <many-to-one name="LoginOfficer" column="PoliceManId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
+
+    <property name="IsSend" column="isSend" type="bool"/>
+
+    <property name="WorkNo" column="Number" type="string"/>
+    
+  </class>
+
+</hibernate-mapping>

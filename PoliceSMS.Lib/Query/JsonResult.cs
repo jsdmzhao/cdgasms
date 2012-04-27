@@ -9,9 +9,12 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace PoliceSMS.Lib
+namespace PoliceSMS.Lib.Query
 {
-    public class Class1
+    /// <summary>
+    /// 返回sl端的数据对象包装
+    /// </summary>
+    public class JsonResult:JsonBaseResult
     {
 
     }

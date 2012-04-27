@@ -9,6 +9,8 @@
 
     <property name="Name" column="Name" type="string"/>
 
+    <property name="IsUsed" column="IsUsed" type="bool"/>
+    
   </class>
 
 </hibernate-mapping>

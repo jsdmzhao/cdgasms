@@ -35,24 +35,37 @@ namespace PoliceSMS.Lib.SMS
         /// </summary>
         public WorkType WorkType { get; set; }
         /// <summary>
-        /// 内容
+        /// 办事内容
         /// </summary>
         public string WorkContent { get; set; }
-
+        /// <summary>
+        /// 机构
+        /// </summary>
         public Organization.Organization Organization { get; set; }
-
-        public Organization.Officer Officer { get; set; }
-
-
+        /// <summary>
+        /// 办事警员
+        /// </summary>
+        public Organization.Officer LoginOfficer { get; set; }
+        /// <summary>
+        /// 评分类别
+        /// </summary>
+        public GradeType GradeType { get; set; }
+        /// <summary>
+        /// 是否发送
+        /// </summary>
+        public bool IsSend { get; set; }
         /// <summary>
         /// 是否反馈信息
         /// </summary>
         public bool IsResponse { get; set; }
         /// <summary>
-        /// 
+        /// 回复内容
         /// </summary>
-        public GradeType GradeType { get; set; }
-
+        public string ReceiveContent { get; set; }
+        /// <summary>
+        /// 记录号
+        /// </summary>
+        public string WorkNo { get; set; }
 
     }
 }

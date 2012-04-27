@@ -56,14 +56,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Sex.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Core\IItem.cs" />
     <Compile Include="Core\INode.cs" />
     <Compile Include="Core\Item.cs" />
     <Compile Include="Organization\Officer.cs" />
     <Compile Include="Organization\Organization.cs" />
-    <Compile Include="Person\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\JsonBaseResult.cs" />
+    <Compile Include="Query\JsonListResult.cs" />
+    <Compile Include="Query\JsonResult.cs" />
+    <Compile Include="Query\QueryCondition.cs" />
     <Compile Include="SMS\GradeType.cs" />
     <Compile Include="SMS\SMSRecord.cs" />
     <Compile Include="SMS\WorkType.cs" />
@@ -72,7 +74,9 @@
     <Content Include="Base\Sex.hbm.xml" />
     <Content Include="Organization\Officer.hbm.xml" />
     <Content Include="Organization\Organization.hbm.xml" />
-    <Content Include="Person\Person.hbm.xml" />
+    <EmbeddedResource Include="SMS\SMSRecord.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SMS\WorkType.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
