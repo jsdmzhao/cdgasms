@@ -14,6 +14,7 @@
     <AssemblyName>PoliceSMS.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightApplicationList>{E62CD257-E0C9-4F80-9712-B92D07D284A3}|..\PoliceSMS\PoliceSMS.csproj|ClientBin|False</SilverlightApplicationList>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,6 +82,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BaseWcf\SexService.svc" />
+    <Content Include="ClientBin\Images\1.png" />
+    <Content Include="ClientBin\Images\add.png" />
+    <Content Include="ClientBin\Images\blue-folder-horizontal-open.png" />
+    <Content Include="ClientBin\Images\blue-folder-horizontal.png" />
+    <Content Include="ClientBin\Images\cancel.png" />
+    <Content Include="ClientBin\Images\chart.png" />
+    <Content Include="ClientBin\Images\del.png" />
+    <Content Include="ClientBin\Images\edit.png" />
+    <Content Include="ClientBin\Images\refresh.png" />
+    <Content Include="ClientBin\Images\save.png" />
+    <Content Include="ClientBin\Images\search.png" />
     <Content Include="ClientBin\PoliceSMS.xap" />
     <Content Include="Global.asax" />
     <Content Include="OrganizationWcf\OfficerService.svc" />

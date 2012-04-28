@@ -5,12 +5,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+             xmlns:sp="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
     xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation" 
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="800" d:DesignWidth="1000">
 
-    
+
     <Grid Background="{StaticResource background}">
+
         <Grid x:Name="contentGrid" Visibility="Collapsed">
             <Border  VerticalAlignment="Top">
                 <Grid>
@@ -39,103 +41,111 @@
                 </Grid>
             </Border>
 
-
-            <Grid Margin="10"  VerticalAlignment="Top" HorizontalAlignment="Right">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  >
-                        <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="StationRankReport" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="daoru" Content="短信评警" Tag="!daoruS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="chuis" Content="催收管理" Tag="!chuisS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="wf" Content="外访管理" Tag="!wfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="sf" Content="第三方资料查询" Tag="!sfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="jx" Content="结项管理" Tag="EndTask" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="tj" Content="查询统计" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                        <telerik:RadRadioButton x:Name="xit" Tag="!xitS" Content="系统管理" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="daoruS"
-                        Visibility="{Binding ElementName=daoru,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="群众办事登记" Tag="SMSRecordList"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="办事内容管理" Tag="WorkTypeList"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="评分内容管理" Tag="GradeTypeList"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="阳光民意评警排名表" Tag="StationRankReport"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                      
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="chuisS"
-                        Visibility="{Binding ElementName=chuis,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton Content="催收任务分配" Checked="RadRadioButton_Click" Tag="CollectionTaskAllot" IsEnabled="True"
-                                        IsChecked="{Binding ElementName=chuis,Path=IsChecked,Mode=OneWay}"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="催收任务处理" Checked="RadRadioButton_Click" Tag="CollectionTaskDeal"
-                                            Style="{StaticResource RadRadioButtonSmallStyle}"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="wfS"
-                        Visibility="{Binding ElementName=wf,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton Content="任务审批" Checked="RadRadioButton_Click" Tag="VisitsApproval"
-                                        IsChecked="{Binding ElementName=wf,Path=IsChecked,Mode=OneWay}"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="sfS"
-                        Visibility="{Binding ElementName=sf,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton Content="任务审批" Checked="RadRadioButton_Click" Tag="ThirdApproval"
-                                        IsChecked="{Binding ElementName=sf,Path=IsChecked,Mode=OneWay}"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  
-                        Visibility="{Binding ElementName=jx,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"
-                        Visibility="{Binding ElementName=tj,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton Content="Word文档生成" Checked="RadRadioButton_Click" Tag="WordPage" 
-                                        IsChecked="{Binding ElementName=tj,Path=IsChecked,Mode=OneWay}" 
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="Excel文档生成" Checked="RadRadioButton_Click" Tag="ExcelPage" 
-                                        
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="催收情况查询" Checked="RadRadioButton_Click" Tag="PhoneCallQuery" 
-                                        
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="催收工作量统计" Checked="RadRadioButton_Click" Tag="PhoneCallStatistic" Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="回款率统计" Checked="RadRadioButton_Click" Tag="CaseReturnStatistic" Style="{StaticResource RadRadioButtonSmallStyle}"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="xitS"
-                        Visibility="{Binding ElementName=xit,Path=IsChecked,Converter={StaticResource boolToVis}}">
-                        <telerik:RadRadioButton Content="组织机构管理" Checked="RadRadioButton_Click" Tag="UserPanel"
-                                        
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="权限管理" Checked="RadRadioButton_Click" Tag="RightPage" Style="{StaticResource RadRadioButtonSmallStyle}"
-                                                 />
-                        <telerik:RadRadioButton Content="权限分配" Checked="RadRadioButton_Click" Tag="RolePanel" Style="{StaticResource RadRadioButtonSmallStyle}"
-                                                 IsChecked="{Binding ElementName=xit,Path=IsChecked,Mode=OneWay}"/>
-
-                        <telerik:RadRadioButton Content="基础信息配置" Checked="RadRadioButton_Click" Tag="BaseInfo" Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton Content="操作日志查询" Checked="RadRadioButton_Click" Tag="OperationLogPage" Style="{StaticResource RadRadioButtonSmallStyle}"/>
-
-                    </StackPanel>
-                </StackPanel>
-                <Rectangle Fill="{StaticResource AccentBrush}" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="4 30 4 4 "/>
-
-            </Grid>
-
             <Grid Margin="0 86 0 0" >
 
-                <navigation:Frame  HorizontalAlignment="Stretch" x:Name="contentFrame" BorderThickness="0" VerticalAlignment="Stretch" >
-                    <navigation:Frame.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
-                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
-                        </LinearGradientBrush>
-                    </navigation:Frame.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                </navigation:Frame>
+                <telerik:RadOutlookBar x:Name="bar" Width="250"  MaxWidth="760"
+                            
+                            IsMinimized="False"
+                            IsMinimizable="True"
+                            IsVerticalResizerVisible="False"
+							HorizontalAlignment="Stretch">
+                    <telerik:RadOutlookBarItem Header="如实立案" FontWeight="Bold"
+								Icon="/Images/add.png"
+								SmallIcon="/Images/add.png"
+								Tag="SMS">
+                        <telerik:RadPanelBar Grid.Column="0"  x:Name="menu" VerticalAlignment="Stretch" 
+					            BorderBrush="#FFCBD8E8" BorderThickness="1 1 0 1" SelectionChanged="menu_SelectionChanged"
+					             >
+                            <telerik:RadPanelBarItem IsExpanded="True">
+                                <telerik:RadPanelBarItem.Header>
+                                    <TextBlock Text="短信评警" Margin="5 3" />
+                                </telerik:RadPanelBarItem.Header>
+                                <ListBox BorderThickness="0" BorderBrush="Transparent" SelectionChanged="ListBox_SelectionChanged">
+                                    <ListBoxItem Tag="SMSRecordList">
+                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
+											BorderThickness="1">
+                                                <Image Source="/Images/add.png"  Stretch="None" />
+                                            </Border>
+                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
+											Text="群众办事登记" />
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Tag="WorkTypeList">
+                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
+											BorderThickness="1">
+                                                <Image Source="/Images/add.png"  Stretch="None" />
+                                            </Border>
+                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
+											Text="办事内容管理" />
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Tag="GradeTypeList">
+                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
+											BorderThickness="1">
+                                                <Image Source="/Images/add.png"  Stretch="None" />
+                                            </Border>
+                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
+											Text="评分内容管理" />
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                </ListBox>
+                            </telerik:RadPanelBarItem>
+                            <telerik:RadPanelBarItem>
+                                <telerik:RadPanelBarItem.Header>
+                                    <TextBlock Text="用户管理" Margin="5 3" />
+                                </telerik:RadPanelBarItem.Header>
+                                <ListBox  BorderThickness="0" BorderBrush="Transparent" SelectionChanged="ListBox_SelectionChanged"
+                                          >
+                                    <ListBoxItem Tag="StationRankReport">
+                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
+											BorderThickness="1">
+                                                <Image Source="/Images/add.png"  Stretch="None" />
+                                            </Border>
+                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
+											Text="用户权限管理" />
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                </ListBox>
+                            </telerik:RadPanelBarItem>
+                        </telerik:RadPanelBar>
+                    </telerik:RadOutlookBarItem>
+
+                </telerik:RadOutlookBar>
+
+                <telerik:RadDocking  BorderThickness="0" Padding="0" Grid.Column="1">
+                    <telerik:RadDocking.DocumentHost>
+
+                        <telerik:RadSplitContainer>
+                            <telerik:RadPaneGroup>
+                                <telerik:RadDocumentPane Header="首页" Title="首页" CanFloat="False" CanUserClose="False" >
+                                    <navigation:Frame  Visibility="Visible"  HorizontalAlignment="Stretch" x:Name="contentFrame" BorderThickness="0" VerticalAlignment="Stretch" >
+                                        <navigation:Frame.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                                            </LinearGradientBrush>
+                                        </navigation:Frame.Background>
+
+                                    </navigation:Frame>
+                                </telerik:RadDocumentPane>
+                            </telerik:RadPaneGroup>
+                        </telerik:RadSplitContainer>
+
+                    </telerik:RadDocking.DocumentHost>
+                </telerik:RadDocking>
+
+
+
+
 
 
                 <!--<Rectangle Fill="#FF000000" Height="6" Opacity="0.7" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />-->
