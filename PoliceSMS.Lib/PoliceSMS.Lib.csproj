@@ -67,6 +67,7 @@
     <Compile Include="Query\JsonListResult.cs" />
     <Compile Include="Query\JsonResult.cs" />
     <Compile Include="Query\QueryCondition.cs" />
+    <Compile Include="Report\StationReportResult.cs" />
     <Compile Include="SMS\GradeType.cs" />
     <Compile Include="SMS\SMSRecord.cs" />
     <Compile Include="SMS\WorkType.cs" />
@@ -86,6 +87,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SMS\SMSRecord.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SMS\WorkType.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

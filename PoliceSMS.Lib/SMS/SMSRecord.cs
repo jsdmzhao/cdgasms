@@ -58,6 +58,10 @@ namespace PoliceSMS.Lib.SMS
         /// </summary>
         public virtual GradeType GradeType { get; set; }
         /// <summary>
+        /// 得分
+        /// </summary>
+        public virtual int Score { get; set; }
+        /// <summary>
         /// 是否发送
         /// </summary>
         public virtual bool IsSend { get; set; }

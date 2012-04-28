@@ -100,6 +100,7 @@
     <Content Include="OrganizationWcf\OrganizationService.svc" />
     <Content Include="PoliceSMSTestPage.aspx" />
     <Content Include="PoliceSMSTestPage.html" />
+    <Content Include="Report\ReportWcf.svc" />
     <Content Include="Silverlight.js" />
     <Content Include="SMSWcf\GradeTypeService.svc" />
     <Content Include="SMSWcf\SMSRecordService.svc" />
@@ -135,6 +136,10 @@
       <DependentUpon>OrganizationService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\IReportWcf.cs" />
+    <Compile Include="Report\ReportWcf.svc.cs">
+      <DependentUpon>ReportWcf.svc</DependentUpon>
+    </Compile>
     <Compile Include="Serializable\JsonSerializerHelper.cs" />
     <Compile Include="Serializable\NhbSerialzableHelper.cs" />
     <Compile Include="Serializable\NHibernateContractResolver.cs" />
