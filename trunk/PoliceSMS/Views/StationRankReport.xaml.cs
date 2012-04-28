@@ -12,19 +12,35 @@ using System.Windows.Shapes;
 using System.Text;
 using PoliceSMS.Comm;
 using PoliceSMS.ViewModel;
+using PoliceSMS.Lib.Report;
+using Telerik.Windows.Controls;
 
 namespace PoliceSMS.Views
 {
     public partial class StationRankReport : Page
     {
+        private IList<StationReportResult> result;
+        
+        public int UnitType { get; set; }
+        
         public StationRankReport()
         {
             InitializeComponent();
+            Loaded += new RoutedEventHandler(StationRankReport_Loaded);
+        }
+
+        void StationRankReport_Loaded(object sender, RoutedEventArgs e)
+        {
+            DateTime endTime=DateTime.Now;
+            DateTime beginTime=new DateTime(endTime.Year,endTime.Month,1);
+
+            dateEnd.SelectedDate = endTime;
+            dateStart.SelectedDate = beginTime;
         }
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadReport();
         }
 
         private void allSelect_Click(object sender, RoutedEventArgs e)
@@ -39,6 +55,33 @@ namespace PoliceSMS.Views
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void LoadReport()
+        {
+            ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
+
+            ser.LoadStationReportResultCompleted+=(object sender,ReportService.LoadStationReportResultCompletedEventArgs e)=>
+                {
+                    int total = 0;
+                    IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
+                    gv.ItemsSource = result;
+
+                    gv.Items.Refresh();
+                };
+
+            DateTime beginTime1=dateStart.SelectedDate.Value;
+            DateTime endTime1=dateEnd.SelectedDate.Value;
+
+            TimeSpan span=endTime1-beginTime1;
+
+            
+            DateTime endTime2=beginTime1.AddDays(-1);
+
+            DateTime beginTime2= endTime1.Add(-span);
+
+            ser.LoadStationReportResultAsync(1, beginTime1, endTime1, beginTime2, endTime2);
 
         }
 

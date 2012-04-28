@@ -79,6 +79,7 @@
       <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v3.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
     <Reference Include="Telerik.Windows.Controls">
@@ -148,6 +149,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\OrganizationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReportService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -306,6 +312,13 @@
     <None Include="Service References\OrganizationService\OrganizationService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ReportService\ReportWcf.wsdl" />
+    <None Include="Service References\ReportService\ReportWcf.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportService\ReportWcf1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SexService\SexService.wsdl" />
     <None Include="Service References\SexService\SexService.xsd">
       <SubType>Designer</SubType>
@@ -369,6 +382,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ReportService\ReportWcf.disco" />
+    <None Include="Service References\ReportService\configuration91.svcinfo" />
+    <None Include="Service References\ReportService\configuration.svcinfo" />
+    <None Include="Service References\ReportService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\WorkTypeService\WorkTypeService.wsdl" />
     <None Include="Service References\WorkTypeService\WorkTypeService.xsd">
@@ -392,6 +412,7 @@
     <WCFMetadataStorage Include="Service References\OfficerService\" />
     <WCFMetadataStorage Include="Service References\OfficerTypeService\" />
     <WCFMetadataStorage Include="Service References\OrganizationService\" />
+    <WCFMetadataStorage Include="Service References\ReportService\" />
     <WCFMetadataStorage Include="Service References\SexService\" />
     <WCFMetadataStorage Include="Service References\SMSRecordService\" />
     <WCFMetadataStorage Include="Service References\WorkTypeService\" />
