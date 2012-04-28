@@ -36,7 +36,7 @@
                                                    Margin="6 0 6 0" />
                         </StackPanel>
                     </telerik:RadRibbonButton>
-                    <telerik:RadRibbonButton x:Name="btnAdd" Margin="10 0 0 0" Click="btnAdd_Click">
+                    <telerik:RadRibbonButton Visibility="Collapsed" x:Name="btnAdd" Margin="10 0 0 0" Click="btnAdd_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/refresh.png" Margin="2 0 0 0" Height="16" Width="16"/>
                             <TextBlock Foreground="{StaticResource DarkBackground}" Text="新建" VerticalAlignment="Center"
