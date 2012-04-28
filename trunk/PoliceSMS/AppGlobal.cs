@@ -52,7 +52,6 @@ namespace PoliceSMS
             }
         }
 
-        public static Organization CurrentOrganization { get; set; }
 
         public static BasicHttpBinding CreateHttpBinding()
         {
