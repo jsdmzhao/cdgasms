@@ -16,7 +16,7 @@ namespace PoliceSMS.Lib.Report
         public int UnitId { get; set; }
         public string UnitName { get; set; }
         public string OfficerName { get; set; }
-        public int UpRank { get; set; }
+        public int? UpRank { get; set; }
         public int Rank { get; set; }
         public double StationRate { get; set; }
         public double Score { get; set; }

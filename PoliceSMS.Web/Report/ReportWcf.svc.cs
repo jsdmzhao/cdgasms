@@ -45,13 +45,20 @@ namespace PoliceSMS.Web.Report
             IDbCommand cmd = session.Connection.CreateCommand();
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "exec SMS_UnitReportWithCompare @UnitType,@BeginTim1,@EndTime1,@BeginTime2,@EndTime2";
+            //exec (SMS_UnitReportWithCompare @UnitType,@BeginTim1,@EndTime1,@BeginTime2,@EndTime2)
+            cmd.CommandText = "SMS_UnitReportWithCompare";
 
             SqlParameter pUnitType = new SqlParameter("@unitType", SqlDbType.Int);
             SqlParameter pBeginTime1 = new SqlParameter("@beginTime1", SqlDbType.DateTime);
             SqlParameter pEndTime1 = new SqlParameter("@endTime1", SqlDbType.DateTime);
             SqlParameter pBeginTime2 = new SqlParameter("@beginTime2", SqlDbType.DateTime);
             SqlParameter pEndTime2 = new SqlParameter("@endTime2", SqlDbType.DateTime);
+
+            pUnitType.Value = UnitType;
+            pBeginTime1.Value = beginTime1;
+            pEndTime1.Value = endTime1;
+            pBeginTime2.Value = beginTime2;
+            pEndTime2.Value = endTime2;
 
             cmd.Parameters.Add(pUnitType);
             cmd.Parameters.Add(pBeginTime1);
@@ -61,43 +68,49 @@ namespace PoliceSMS.Web.Report
 
             IDataReader reader = cmd.ExecuteReader();
 
+            
+
             IList<StationReportResult> result = new List<StationReportResult>();
 
             while (reader.Read())
             {
                 StationReportResult srr = new StationReportResult();
 
-                srr.UpRank = reader.GetInt32(0);
+                srr.UpRank = reader.IsDBNull(0) ? null : (int?)reader.GetInt32(0);
                 srr.UnitName = reader.GetString(1);
                 srr.Rank = reader.GetInt32(2);
                 srr.UnitId = reader.GetInt32(3);
                 srr.TotalCount = reader.GetInt32(4);
-                srr.StationRate = reader.GetDouble(5);
-                srr.Score = reader.GetDouble(6);
+                srr.StationRate = (double)reader.GetDecimal(5);
+                srr.Score = (double)reader.GetDecimal(6);
 
                 srr.G1Count = reader.GetInt32(7);
-                srr.G1Rate = reader.GetDouble(8);
+                srr.G1Rate = (double)reader.GetDecimal(8);
 
                 srr.G2Count = reader.GetInt32(9);
-                srr.G2Rate = reader.GetDouble(10);
+                srr.G2Rate = (double)reader.GetDecimal(10);
 
                 srr.G3Count = reader.GetInt32(11);
-                srr.G3Rate = reader.GetDouble(12);
+                srr.G3Rate = (double)reader.GetDecimal(12);
 
                 srr.G3Count = reader.GetInt32(13);
-                srr.G3Rate = reader.GetDouble(14);
+                srr.G3Rate = (double)reader.GetDecimal(14);
 
                 srr.G4Count = reader.GetInt32(15);
-                srr.G4Rate = reader.GetDouble(16);
+                srr.G4Rate = (double)reader.GetDecimal(16);
 
                 result.Add(srr);
             }
 
             string json = JsonSerializerHelper.EntityToJson(result);
 
-            string s = PackJsonListResultForArray("true", json, string.Empty, result.Count);
+            return PackJsonListResult("true", json, string.Empty, result.Count);
+        }
 
-            return s;
+        protected string PackJsonListResult(string success, string json, string message, long total)
+        {
+            //"{ 'Success': {0}, 'Data': {1},'Message':{2},'Total':{3}}"
+            return string.Format("{0}'Success':'{1}','Data':{2},'Message':'{3}','Total':{4}{5}", "{", success, json, message, total.ToString(), "}");
         }
 
         protected string PackJsonListResultForArray(string success, string json, string message, long total)
