@@ -115,7 +115,6 @@
     </Compile>
     <Compile Include="AppGlobal.cs" />
     <Compile Include="Comm\BasePage.cs" />
-    <Compile Include="Comm\ExportingModel.cs" />
     <Compile Include="Comm\ILoadMask.cs" />
     <Compile Include="Comm\JsonSerializerHelper.cs" />
     <Compile Include="Comm\ReturnMessage.cs" />
@@ -163,6 +162,7 @@
     </Compile>
     <Compile Include="Themes\FarmerItemStyleSelector.cs" />
     <Compile Include="ViewModel\ExportintModel.cs" />
+    <Compile Include="ViewModel\UsedState.cs" />
     <Compile Include="Views\GradeTypeForm.xaml.cs">
       <DependentUpon>GradeTypeForm.xaml</DependentUpon>
     </Compile>
@@ -175,18 +175,18 @@
     <Compile Include="Views\SMSRecordList.xaml.cs">
       <DependentUpon>SMSRecordList.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Views\SMSRecordForm.xaml.cs">
       <DependentUpon>SMSRecordForm.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Views\StationRankReport.xaml.cs">
       <DependentUpon>StationRankReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkTypeForm.xaml.cs">
+      <DependentUpon>WorkTypeForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkTypeList.xaml.cs">
       <DependentUpon>WorkTypeList.xaml</DependentUpon>
     </Compile>
-
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -245,13 +245,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="Views\SMSRecordForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="Views\StationRankReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkTypeForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -259,7 +261,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />

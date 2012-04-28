@@ -33,15 +33,15 @@ namespace PoliceSMS
 
             
 
-            SMSRecord record = new SMSRecord();
+            //SMSRecord record = new SMSRecord();
 
-            record.Organization = AppGlobal.CurrentOrganization;
-            record.LoginOfficer = AppGlobal.CurrentUser;
+            //record.Organization = AppGlobal.CurrentOrganization;
+            //record.LoginOfficer = AppGlobal.CurrentUser;
 
-            SMSRecordForm smsFrom = new SMSRecordForm();
-            smsFrom.SMSRecord = record;
+            //SMSRecordForm smsFrom = new SMSRecordForm();
+            //smsFrom.SMSRecord = record;
 
-            Tools.OpenWindow("评警信息", smsFrom,null,600,375);
+            //Tools.OpenWindow("评警信息", smsFrom,null,600,375);
 
         }
 

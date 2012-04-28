@@ -48,7 +48,7 @@
                                 <TextBlock Text="查询"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
                         </telerik:RadButton>
-                        <Rectangle Width="1" VerticalAlignment="Stretch" Margin="0 0 20 0"
+                        <!--<Rectangle Width="1" VerticalAlignment="Stretch" Margin="0 0 20 0"
                        Fill="{StaticResource GridViewSplitter}">
                             <Rectangle.Effect>
                                 <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
@@ -67,7 +67,7 @@
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="取消选择"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
-                        </telerik:RadButton>
+                        </telerik:RadButton>-->
 
 
                         <Rectangle Width="1"  VerticalAlignment="Stretch" Margin="0 0 20 0"
@@ -92,13 +92,13 @@
                         </Rectangle>
                         <TextBlock Text="导出格式:" Margin="0 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                         <telerik:RadComboBox Margin="0,2 10 0"  Width="80" HorizontalAlignment="Right"
-                                                          Height="24"
+                                                          Height="24" x:Name="exportType"
                                  ItemsSource="{Binding ExportFormats, Source={StaticResource context}}"
                                  SelectedItem="{Binding SelectedExportFormat, Source={StaticResource context}, Mode=TwoWay}" SelectedIndex="0" />
 
                         <telerik:RadButton  HorizontalAlignment="Right" Margin="0 0 20 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="80" Height="22" 
-                                       Command="{Binding ExportCommand, Source={StaticResource context}}"
+                                       Click="btnExport_Click"
                                CommandParameter="{Binding ElementName=RadGridView1}">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="导出"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
@@ -155,9 +155,9 @@
                 </Rectangle>
                 <Grid Grid.Row="4" >
 
-                    <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="RadGridView1" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                    <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              CanUserResizeColumns="False" IsFilteringAllowed="False"
-                                                IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Multiple"
+                                                IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
 								            AutoGenerateColumns="False" ShowColumnFooters="True" 
                                          
                                          >

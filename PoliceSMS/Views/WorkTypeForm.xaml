@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PoliceSMS.Views.GradeTypeForm"
+﻿<UserControl x:Class="PoliceSMS.Views.WorkTypeForm"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -39,7 +39,7 @@
         <Border HorizontalAlignment="Left" Grid.Row="1">
             <StackPanel Orientation="Vertical" Margin="20 10 20 20" x:Name="userInfo">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="评价内容:" Foreground="{StaticResource DarkBackground}"
+                    <TextBlock Text="办事内容:" Foreground="{StaticResource DarkBackground}"
                                            Width="60"
                                            
                                            VerticalAlignment="Center" />
@@ -50,30 +50,7 @@
                                                           Margin="10,0,0,0"></TextBox>
 
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBlock Text="编码:" Foreground="{StaticResource DarkBackground}"
-                                           Width="60" 
-                                           
-                                           VerticalAlignment="Center" />
-                    <TextBox x:Name="txtCode"    Text="{Binding Path=Number, Mode=TwoWay}"  
-                                                          Height="24" Width="300" telerik:StyleManager.Theme="{StaticResource STheme}"
-                                                          Margin="10,0,0,0"></TextBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBlock Text="分值:" Foreground="{StaticResource DarkBackground}"
-                                           Width="60" 
-                                           
-                                           VerticalAlignment="Center" />
-                    <telerik:RadMaskedTextBox Value="{Binding Path=Score, Mode=TwoWay}"
-                                                          Width="300"
-                                                        MaskType="Numeric"
-                                                              Mask="d"
-                                                         x:Name="txtScore"
-                                                          Height="24"
-                                                          Margin="10,0,0,0"
-                                                          VerticalAlignment="Center" />
-                </StackPanel>
+               
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <TextBlock Text="是否使用:" Foreground="{StaticResource DarkBackground}"
                                            Width="60" 

@@ -113,6 +113,59 @@ namespace PoliceSMS.ViewModel
             }
         }
 
+        public void Export(List<RadGridView> parameter)
+        {
+            string extension = "";
+            ExportFormat format = ExportFormat.Html;
+
+            switch (SelectedExportFormat)
+            {
+                case "Excel": extension = "xls";
+                    format = ExportFormat.Html;
+                    break;
+                case "ExcelML": extension = "xml";
+                    format = ExportFormat.ExcelML;
+                    break;
+                case "Word": extension = "doc";
+                    format = ExportFormat.Html;
+                    break;
+                case "Csv": extension = "csv";
+                    format = ExportFormat.Csv;
+                    break;
+            }
+            if (parameter != null)
+            {
+
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.DefaultExt = extension;
+                dialog.Filter = String.Format("{1} files (*.{0})|*.{0}|All files (*.*)|*.*", extension, SelectedExportFormat);
+                dialog.FilterIndex = 1;
+
+                if (dialog.ShowDialog() == true)
+                {
+
+                    using (Stream stream = dialog.OpenFile())
+                    {
+
+                        foreach (RadGridView grid in parameter)
+                        {
+                            grid.ElementExporting -= this.ElementExporting;
+                            grid.ElementExporting += this.ElementExporting;
+
+
+                            GridViewExportOptions exportOptions = new GridViewExportOptions();
+                            exportOptions.Format = format;
+                            exportOptions.ShowColumnFooters = false;
+                            exportOptions.ShowColumnHeaders = true;
+                            exportOptions.ShowGroupFooters = false;
+                            exportOptions.Encoding = Encoding.Unicode;
+
+                            grid.Export(stream, exportOptions);
+                        }
+                    }
+                }
+            }
+        }
         public void ExportWithOptions(object parameter, GridViewExportOptions exportOptions)
         {
             RadGridView grid = parameter as RadGridView;
@@ -150,6 +203,154 @@ namespace PoliceSMS.ViewModel
             }
         }
 
+        private string createHeaderStr(Header header)
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            sb.Append("<tr style=\"background: #D3D3D3; color: #000000; font-size: 16; font-weight: Bold\">");
+            foreach (var item in header.cells)
+            {
+                sb.Append(string.Format("<td style=\"text-align:center;\" colspan=\"{0}\">{1}</td>", item.ColSpan, item.Name));
+            }
+            
+            sb.Append("</tr>");
+
+            return sb.ToString();
+        }
+
+        public void ExportWithHeader(object parameter, Header header)
+        {
+            RadGridView grid = parameter as RadGridView;
+            if (grid != null)
+            {
+                grid.ElementExporting -= this.ElementExporting;
+                grid.ElementExporting += this.ElementExporting;
+
+                string extension = "";
+                ExportFormat format = ExportFormat.Html;
+
+                switch (SelectedExportFormat)
+                {
+                    case "Excel": extension = "xls";
+                        format = ExportFormat.Html;
+                        break;
+                    case "ExcelML": extension = "xml";
+                        format = ExportFormat.ExcelML;
+                        break;
+                    case "Word": extension = "doc";
+                        format = ExportFormat.Html;
+                        break;
+                    case "Csv": extension = "csv";
+                        format = ExportFormat.Csv;
+                        break;
+                }
+
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.DefaultExt = extension;
+                dialog.Filter = String.Format("{1} files (*.{0})|*.{0}|All files (*.*)|*.*", extension, SelectedExportFormat);
+                dialog.FilterIndex = 1;
+
+                if (dialog.ShowDialog() == true)
+                {
+                    using (Stream stream = dialog.OpenFile())
+                    {
+
+                        GridViewExportOptions exportOptions = new GridViewExportOptions();
+                        exportOptions.Format = format;
+                        exportOptions.ShowColumnFooters = true;
+                        exportOptions.ShowColumnHeaders = true;
+                        exportOptions.ShowGroupFooters = true;
+                        exportOptions.Encoding = Encoding.UTF8;
+
+                        grid.Export(stream, exportOptions);
+
+                        byte[] bs = new byte[stream.Length];
+                        stream.Seek(0, SeekOrigin.Begin);
+                        stream.Read(bs, 0, bs.Length);
+                        string str = Encoding.UTF8.GetString(bs, 0, bs.Length);
+                        string str1 = str.Insert(str.IndexOf('>', 0) + 1, createHeaderStr(header));
+                        byte[] bys = Encoding.UTF8.GetBytes(str1);
+                        stream.Seek(0, SeekOrigin.Begin);
+                        stream.Write(bys, 0, bys.Length);
+                        stream.Flush();
+                    }
+
+                }
+            }
+        }
+
+        public void ExportWithHeader(List<object> parameter, List<Header> headers, List<bool> showFooter)
+        {
+            string extension = "";
+            ExportFormat format = ExportFormat.Html;
+
+            switch (SelectedExportFormat)
+            {
+                case "Excel": extension = "xls";
+                    format = ExportFormat.Html;
+                    break;
+                case "ExcelML": extension = "xml";
+                    format = ExportFormat.ExcelML;
+                    break;
+                case "Word": extension = "doc";
+                    format = ExportFormat.Html;
+                    break;
+                case "Csv": extension = "csv";
+                    format = ExportFormat.Csv;
+                    break;
+            }
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.DefaultExt = extension;
+            dialog.Filter = String.Format("{1} files (*.{0})|*.{0}|All files (*.*)|*.*", extension, SelectedExportFormat);
+            dialog.FilterIndex = 1;
+
+            if (dialog.ShowDialog() == true)
+            {
+                using (Stream stream = dialog.OpenFile())
+                {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < parameter.Count; i++)
+                    {
+                        string header = createHeaderStr(headers[i]);
+                        RadGridView grid = parameter[i] as RadGridView;
+                        if (grid != null)
+                        {
+                            grid.ElementExporting -= this.ElementExporting;
+                            grid.ElementExporting += this.ElementExporting;
+
+
+
+                            GridViewExportOptions exportOptions = new GridViewExportOptions();
+                            exportOptions.Format = format;
+                            exportOptions.ShowColumnFooters = showFooter[i];
+                            exportOptions.ShowColumnHeaders = true;
+                            exportOptions.ShowGroupFooters = true;
+                            exportOptions.Encoding = Encoding.UTF8;
+
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                grid.Export(ms, exportOptions);
+
+                                byte[] bs = new byte[ms.Length];
+                                ms.Seek(0, SeekOrigin.Begin);
+                                ms.Read(bs, 0, bs.Length);
+                                string str = Encoding.UTF8.GetString(bs, 0, bs.Length);
+                                string str1 = str.Insert(str.IndexOf('>', 0) + 1, header);
+
+                                sb.Append(str1);
+                            }
+
+                        }
+                    }
+                    byte[] bysall = Encoding.UTF8.GetBytes(sb.ToString());
+                    stream.Seek(0, SeekOrigin.Begin);
+                    stream.Write(bysall, 0, bysall.Length);
+                    stream.Flush();
+                }
+            }
+        }
+
         IEnumerable<string> _exportFormats;
         public IEnumerable<string> ExportFormats
         {
@@ -157,7 +358,7 @@ namespace PoliceSMS.ViewModel
             {
                 if (_exportFormats == null)
                 {
-                    _exportFormats = new string[] { "Excel", "ExcelML", "Word", "Csv" };
+                    _exportFormats = new string[] { "Excel", "Word" };
                 }
 
                 return _exportFormats;
@@ -184,9 +385,11 @@ namespace PoliceSMS.ViewModel
 
         private void ElementExporting(object sender, GridViewElementExportingEventArgs e)
         {
+            e.Width *= 1.4;
             if (e.Element == ExportElement.HeaderRow || e.Element == ExportElement.FooterRow
                 || e.Element == ExportElement.GroupFooterRow)
             {
+
                 e.Background = HeaderBackground;
                 e.Foreground = HeaderForeground;
                 e.FontSize = 16;
@@ -312,5 +515,19 @@ namespace PoliceSMS.ViewModel
                 }
             }
         }
+
     }
+
+    public class Header
+    {
+        public HeaderCell[] cells { get; set; }
+    }
+
+    public class HeaderCell
+    {
+        public string Name { get; set; }
+
+        public int ColSpan { get; set; }
+    }
+    
 }
