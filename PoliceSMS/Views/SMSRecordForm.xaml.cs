@@ -179,7 +179,7 @@ namespace PoliceSMS.Views
 
                 };
 
-                ser.GetListByHQLAsync("from Officer as e where e.Organization.id ="+AppGlobal.CurrentOrganization.Id);
+                ser.GetListByHQLAsync("from Officer as e where e.Organization.id ="+AppGlobal.CurrentUser.Organization.Id);
 
             }
             catch (Exception ex)
@@ -204,6 +204,12 @@ namespace PoliceSMS.Views
                                 SaveCallBack();
                         }
                     };
+                if (smsRecord.Id == 0)
+                {
+                    smsRecord.LoginOfficer = AppGlobal.CurrentUser;
+                    smsRecord.Organization = AppGlobal.CurrentUser.Organization;
+                    smsRecord.WorkDate = DateTime.Now;
+                }
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
                 ser.SaveOrUpdateAsync(json);
                 (this.Parent as RadWindow).Close();
@@ -217,37 +223,6 @@ namespace PoliceSMS.Views
 
         private bool CheckVerify()
         {
-            if (string.IsNullOrEmpty(smsRecord.PersonName))
-            {
-                Tools.ShowMessage("请输入姓名!", "", false);
-                return false;
-            }
-
-            if (smsRecord.PersonSex == null)
-            {
-                Tools.ShowMessage("请选择性别", "", false);
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(smsRecord.PersonMobile))
-            {
-                Tools.ShowMessage("请输入电话号码", "", false);
-                return false;
-            }
-
-            if (smsRecord.WorkType == null)
-            {
-                Tools.ShowMessage("请选择办事类别", "", false);
-                return false;
-            }
-
-            if (smsRecord.WorkOfficer == null)
-            {
-                Tools.ShowMessage("请选择受理人", "", false);
-                return false;
-            }
-
-
             return true;//temp!
         }
     }
