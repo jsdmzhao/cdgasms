@@ -9,7 +9,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using Telerik.Windows.Controls;
 using PoliceSMS.Comm;
 using System.Windows.Browser;
 using PoliceSMS.Views;
@@ -53,8 +52,6 @@ namespace PoliceSMS
             NameBlock.Text = AppGlobal.CurrentUser.Name;
             contentGrid.Visibility = Visibility.Visible;
 
-            sy.IsChecked = true;
-
             //LoginForm logFrm = new LoginForm();
             //logFrm.CallBack = () =>
             //{
@@ -95,44 +92,6 @@ namespace PoliceSMS
           
         }
 
-        private void RadRadioButton_Click(object sender, RoutedEventArgs e)
-        {
-            RadRadioButton btn = sender as RadRadioButton;
-            if (btn != null && btn.Tag != null && VerifyRight(btn.Tag.ToString()))
-            {
-                if (btn.Tag.ToString().IndexOf("!") != -1)
-                {
-                    StackPanel panel = this.FindName(btn.Tag.ToString().Replace("!", "")) as StackPanel;
-                    IEnumerable<RadRadioButton> btns = panel.ChildrenOfType<RadRadioButton>();
-                    foreach (RadRadioButton bn in btns)
-                    {
-                        if (bn.IsChecked.Value && bn.Tag != null)
-                        {
-                            if (bn.Tag.ToString().IndexOf("@") != -1)
-                            {
-                                Type type = Type.GetType("PoliceSMS.Views." + bn.Tag.ToString().Replace("@", ""));
-                                Object obj = Activator.CreateInstance(type);
-                                Tools.OpenWindow(bn.Content.ToString(), obj, null);
-                            }
-                            else
-                            {
-                                contentFrame.Navigate(new Uri("/Views/" + bn.Tag.ToString() + ".xaml", UriKind.Relative));
-                            }
-                        }
-                    }
-                }
-                else if (btn.Tag.ToString().IndexOf("@") != -1)
-                {
-                    Type type = Type.GetType("PoliceSMS.Views." + btn.Tag.ToString().Replace("@", ""));
-                    Object obj = Activator.CreateInstance(type);
-                    Tools.OpenWindow(btn.Content.ToString(), obj, null);
-                }
-                else
-                {
-                    contentFrame.Navigate(new Uri("/Views/" + btn.Tag.ToString() + ".xaml", UriKind.Relative));
-                }
-            }
-        }
 
         /// <summary>
         /// 权限验证
@@ -144,6 +103,30 @@ namespace PoliceSMS
             
             return true;
         }
+
+        private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            ListBox lb = sender as ListBox;
+            ListBoxItem item = lb.SelectedItem as ListBoxItem;
+            if (item != null && item.Tag != null)
+                contentFrame.Navigate(new Uri("/Views/" + item.Tag.ToString() + ".xaml", UriKind.Relative));
+        }
+
+        private void menu_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var bar = (sender as Telerik.Windows.Controls.RadPanelBar);
+            var baritem = bar.SelectedItem as Telerik.Windows.Controls.RadPanelBarItem;
+            foreach (var item in baritem.Items)
+            {
+                if (item is ListBox)
+                {
+                    (item as ListBox).SelectedIndex = -1;
+                    break;
+                }
+            }
+        }
+
+
 
     }
 }
