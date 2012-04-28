@@ -112,7 +112,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="70"></ColumnDefinition>
-                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="240"></ColumnDefinition>
                         <ColumnDefinition Width="70"></ColumnDefinition>
                         <ColumnDefinition Width="150"></ColumnDefinition>
                         <ColumnDefinition Width="80"></ColumnDefinition>
@@ -123,15 +123,16 @@
 
                     <TextBlock Text="时间:" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"></TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1">
-                        <telerik:RadDateTimePicker  
-                                                          Width="95"
+                        <telerik:RadDateTimePicker  InputMode="DatePicker"
+                                                     DisplayFormat="Long"
+                                                          Width="115"
                                                          x:Name="dateStart"
                                                           Height="22"
                                                           Margin="5,0,0,0"
                                                           VerticalAlignment="Center" />
                         <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
-                        <telerik:RadDateTimePicker  
-                                                          Width="95"
+                        <telerik:RadDateTimePicker  InputMode="DatePicker" DisplayFormat="Long"
+                                                          Width="115"
                                                          x:Name="dateEnd"
                                                           Height="22"
                                                           Margin="0,0,0,0"
@@ -148,7 +149,7 @@
 
                     <TextBlock Text="是否评价:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="4"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5"
-                                                DisplayMemberPath="Name"  x:Name="cboxMark"
+                                                DisplayMemberPath="Name" x:Name="cboxMark"
                                                           Width="100"
                                                           Height="24"
                                                           Margin="5,0,0,0">
@@ -157,7 +158,7 @@
                     <TextBlock Text="办事内容:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1"
                                                 DisplayMemberPath="Name"  x:Name="cboxContent"
-                                                          Width="196"
+                                                          Width="236"
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
@@ -189,11 +190,13 @@
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewSelectColumn Header="" Width="40" />
 
-                            <telerik:GridViewDataColumn Header="姓名" MinWidth="60" DataMemberBinding="{Binding PersonName}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="姓名" MinWidth="60" DataMemberBinding="{Binding PersonName}"
+                                                    HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="办事内容" MinWidth="240" MaxWidth="240"  DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="办事内容" MaxWidth="400"
+                                                        MinWidth="200"   DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="200" DataMemberBinding="{Binding YearPeriod}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="100" DataMemberBinding="{Binding YearPeriod}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="受理人" MinWidth="100" DataMemberBinding="{Binding WorkOfficer.Name}" HeaderTextAlignment="Center" />
 
@@ -203,17 +206,23 @@
 
                             <telerik:GridViewDataColumn Header="单位" MinWidth="150" DataMemberBinding="{Binding Organization.Name}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="评价得分" MinWidth="80" DataMemberBinding="{Binding GradeType.Score}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="评价得分" MinWidth="80" DataMemberBinding="{Binding Score}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="是否评价" MinWidth="80" DataMemberBinding="{Binding YearPeriod}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="是否评价" MinWidth="80" DataMemberBinding="{Binding IsResponse}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="办事人电话" MinWidth="120" DataMemberBinding="{Binding PersonMobile}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="办事人地址" MinWidth="200" MaxWidth="200"  DataMemberBinding="{Binding Address}" HeaderTextAlignment="Center" />
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
-
+                   
                 </Grid>
+                <telerik:RadDataPager Source="{Binding ItemSource, ElementName=gv}" Grid.Row="5" 
+                                            x:Name="rDataPager1" Margin="0 0 0 4"
+                                            BorderThickness="0"
+                                            PageSize="19"  PageIndexChanged="rDataPager1_PageIndexChanged"
+                                            IsTotalItemCountFixed="True"
+                                            DisplayMode="FirstLastPreviousNextNumeric"/>
                 <!--<Rectangle Height="1" VerticalAlignment="Top" Grid.Row="3"
                        Fill="{StaticResource GridViewSplitter}"
                        Margin="0 0 0 0" >
