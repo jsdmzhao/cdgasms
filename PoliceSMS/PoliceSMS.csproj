@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="AppGlobal.cs" />
     <Compile Include="Comm\BasePage.cs" />
+    <Compile Include="Comm\Dict.cs" />
     <Compile Include="Comm\ILoadMask.cs" />
     <Compile Include="Comm\JsonSerializerHelper.cs" />
     <Compile Include="Comm\ReturnMessage.cs" />
