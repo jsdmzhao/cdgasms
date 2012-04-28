@@ -8,7 +8,7 @@
            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
            xmlns:local="clr-namespace:PoliceSMS.ViewModel"
              Title ="“阳光民意评警”排名表"
-    d:DesignHeight="1000" d:DesignWidth="600">
+    d:DesignHeight="1000" d:DesignWidth="677">
 
     <navigation:Page.Resources>
         <local:ExportingModel x:Key="context" />

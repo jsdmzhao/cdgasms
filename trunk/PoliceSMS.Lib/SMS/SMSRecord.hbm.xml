@@ -31,6 +31,8 @@
 
     <many-to-one name="GradeType" column="ValuationId" not-found="ignore" class="PoliceSMS.Lib.SMS.GradeType" cascade="none" lazy="proxy"/>
 
+    <property name="Score" column="Valuation" type="int"/>
+
     <property name="IsSend" column="isSend" type="bool"/>
 
     <property name="WorkNo" column="Number" type="string"/>
