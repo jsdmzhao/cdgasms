@@ -15,31 +15,29 @@ using PoliceSMS.ViewModel;
 
 namespace PoliceSMS.Views
 {
-    public partial class GradeTypeForm : UserControl
+    public partial class WorkTypeForm : UserControl
     {
-        GradeType obj = new GradeType();
+        WorkType obj = new WorkType();
 
         Action refreshAction;
 
-        public GradeTypeForm(Action refreshAction)
+        public WorkTypeForm(Action refreshAction)
         {
             InitializeComponent();
             this.refreshAction = refreshAction;
-            this.Loaded += new RoutedEventHandler(GradeTypeForm_Loaded);
+            this.Loaded += new RoutedEventHandler(WorkTypeFormForm_Loaded);
         }
 
-        public GradeTypeForm(GradeType editObj, Action refreshAction)
+        public WorkTypeForm(WorkType editObj, Action refreshAction)
             : this(refreshAction)
         {
             //复制可能被改变的属性，避免退出修改的刷新
             obj.Id = editObj.Id;
             obj.Name = editObj.Name;
-            obj.Number = editObj.Number;
-            obj.Score = editObj.Score;
             obj.IsUsed = editObj.IsUsed;
         }
 
-        void GradeTypeForm_Loaded(object sender, RoutedEventArgs e)
+        void WorkTypeFormForm_Loaded(object sender, RoutedEventArgs e)
         {
             comboUsed.ItemsSource = UsedState.CreateAry();
             this.DataContext = obj;
@@ -47,18 +45,19 @@ namespace PoliceSMS.Views
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            GradeTypeService.GradeTypeServiceClient ser = new GradeTypeService.GradeTypeServiceClient();
-            ser.SaveOrUpdateCompleted += new EventHandler<GradeTypeService.SaveOrUpdateCompletedEventArgs>(ser_SaveOrUpdateCompleted);
+            WorkTypeService.WorkTypeServiceClient ser = new WorkTypeService.WorkTypeServiceClient();
+            ser.SaveOrUpdateCompleted += new EventHandler<WorkTypeService.SaveOrUpdateCompletedEventArgs>(ser_SaveOrUpdateCompleted);
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
             ser.SaveOrUpdateAsync(json);
         }
 
-        void ser_SaveOrUpdateCompleted(object sender, GradeTypeService.SaveOrUpdateCompletedEventArgs e)
+        void ser_SaveOrUpdateCompleted(object sender, WorkTypeService.SaveOrUpdateCompletedEventArgs e)
         {
             (this.Parent as RadWindow).Close();
             if (refreshAction != null)
                 refreshAction();
         }
+
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {

@@ -20,7 +20,7 @@ namespace PoliceSMS.Views
 {
     public partial class SMSRecordForm : UserControl
     {
-        private SMSRecord smsRecord;
+        private SMSRecord smsRecord = null;
 
         private IList<Sex> sexs;
 
@@ -32,18 +32,36 @@ namespace PoliceSMS.Views
 
         private IList<Officer> officers;
 
-        public Action<SMSRecord> SaveCallBack { get; set; }
+        public Action SaveCallBack { get; set; }
 
         public SMSRecordForm()
         {
             InitializeComponent();
             Loaded += new RoutedEventHandler(SMSRecordForm_Loaded);
+            smsRecord = new SMSRecord();
+            DataContext = smsRecord;
+            
+        }
+
+        public SMSRecordForm(SMSRecord editObj)
+        {
+            InitializeComponent();
+            Loaded += new RoutedEventHandler(SMSRecordForm_Loaded);
+            SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
+            ser.GetByIdCompleted +=
+            (object sender, SMSRecordService.GetByIdCompletedEventArgs e) =>
+            {
+                SMSRecord obj = JsonSerializerHelper.JsonToEntity<SMSRecord>(e.Result);
+                this.smsRecord = obj;
+                DataContext = smsRecord;
+                chkIsResponse.IsChecked = smsRecord.GradeType != null;
+                
+            };
+            ser.GetByIdAsync(editObj.Id);
         }
 
         void SMSRecordForm_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = smsRecord;
-
             LoadSexs();
             LoadGradeTypes();
             LoadWorkTypes();
@@ -51,17 +69,10 @@ namespace PoliceSMS.Views
             LoadOfficers();
         }
 
-        public SMSRecord SMSRecord
-        {
-            get { return smsRecord; }
-            set { smsRecord = value; }
-        }
-
         private void LoadSexs()
         {
             try
             {
-                //SexService.SexServiceClient ser = new SexService.SexServiceClient(AppGlobal.CreateHttpBinding(), new EndpointAddress(new Uri(Application.Current.Host.Source, "../../BaseWcf/SexService.svc")));
                 SexService.SexServiceClient ser = new SexService.SexServiceClient();
                 ser.GetListByHQLCompleted += (object sender, SexService.GetListByHQLCompletedEventArgs e) =>
                 {
@@ -190,7 +201,7 @@ namespace PoliceSMS.Views
                         {
                             smsRecord.Id = id;
                             if (SaveCallBack != null)
-                                SaveCallBack(smsRecord);
+                                SaveCallBack();
                         }
                     };
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);

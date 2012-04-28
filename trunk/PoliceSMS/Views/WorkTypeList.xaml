@@ -66,16 +66,16 @@
                        Fill="{StaticResource GridViewSplitter}"
                        Margin="0 0 0 0" >
                         </Rectangle>-->
-                <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="dgeReciveType" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              CanUserResizeColumns="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
 								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True">
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewSelectColumn/>
-                        <telerik:GridViewDataColumn Header="办事内容" MinWidth="240"  DataMemberBinding="{Binding Path=Number}" >
+                        <telerik:GridViewDataColumn Header="办事内容" MinWidth="240"  DataMemberBinding="{Binding Path=Name}" >
 
                         </telerik:GridViewDataColumn>
 
-                        <telerik:GridViewDataColumn Header="是否使用" MinWidth="100"  DataMemberBinding="{Binding Path=Name}" HeaderTextAlignment="Center">
+                        <telerik:GridViewDataColumn Header="是否使用" MinWidth="100"  DataMemberBinding="{Binding Path=Description}" HeaderTextAlignment="Center">
 
                         </telerik:GridViewDataColumn>
                     </telerik:RadGridView.Columns>

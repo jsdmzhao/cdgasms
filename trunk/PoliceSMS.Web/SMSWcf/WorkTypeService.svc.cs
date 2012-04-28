@@ -48,7 +48,7 @@ namespace PoliceSMS.Web.SMSWcf
             {
                 ITransaction tx = null;
 
-                SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
+                WorkType entity = JsonSerializerHelper.JsonToEntity<WorkType>(json);
 
                 //DunLibrary.User.User u = sess.Get<DunLibrary.User.User>(2);
 
@@ -89,7 +89,7 @@ namespace PoliceSMS.Web.SMSWcf
                 ITransaction tx = sess.BeginTransaction();
                 try
                 {
-                    SMSRecord entity = sess.Load<SMSRecord>(id);
+                    WorkType entity = sess.Load<WorkType>(id);
                     sess.Delete(entity);
                     tx.Commit();
                     return PackJsonResult("true", "true", string.Empty);

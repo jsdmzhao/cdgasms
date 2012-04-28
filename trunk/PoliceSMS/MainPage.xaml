@@ -43,7 +43,7 @@
             <Grid Margin="10"  VerticalAlignment="Top" HorizontalAlignment="Right">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"  >
-                        <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="SMSRecordList" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
+                        <telerik:RadRadioButton x:Name="sy" Content="首页" Tag="StationRankReport" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="daoru" Content="短信评警" Tag="!daoruS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="chuis" Content="催收管理" Tag="!chuisS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
                         <telerik:RadRadioButton x:Name="wf" Content="外访管理" Tag="!wfS" Checked="RadRadioButton_Click" Style="{StaticResource RadRadioButtonLargeStyle}"/>
@@ -61,9 +61,7 @@
                                         Style="{StaticResource RadRadioButtonSmallStyle}"/>
                         <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="评分内容管理" Tag="GradeTypeList"
                                         Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="评分系统图" Tag="StationRankReport"
-                                        Style="{StaticResource RadRadioButtonSmallStyle}"/>
-                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="“阳光民意评警”排名表" Tag="StationRankReport"
+                        <telerik:RadRadioButton  Checked="RadRadioButton_Click" Content="阳光民意评警排名表" Tag="StationRankReport"
                                         Style="{StaticResource RadRadioButtonSmallStyle}"/>
                       
                     </StackPanel>
