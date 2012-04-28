@@ -13,6 +13,10 @@ using PoliceSMS.Comm;
 using System.Windows.Browser;
 using PoliceSMS.Views;
 using PoliceSMS.Lib.SMS;
+using Telerik.Windows.Controls;
+
+using mc = System.Windows.Controls;
+using System.Reflection;
 
 namespace PoliceSMS
 {
@@ -29,18 +33,6 @@ namespace PoliceSMS
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             onLoad();
-
-            
-
-            //SMSRecord record = new SMSRecord();
-
-            //record.Organization = AppGlobal.CurrentOrganization;
-            //record.LoginOfficer = AppGlobal.CurrentUser;
-
-            //SMSRecordForm smsFrom = new SMSRecordForm();
-            //smsFrom.SMSRecord = record;
-
-            //Tools.OpenWindow("评警信息", smsFrom,null,600,375);
 
         }
 
@@ -103,30 +95,58 @@ namespace PoliceSMS
             
             return true;
         }
-
+        
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            ListBox lb = sender as ListBox;
-            ListBoxItem item = lb.SelectedItem as ListBoxItem;
+            mc.ListBox lb = sender as mc.ListBox;
+            mc.ListBoxItem item = lb.SelectedItem as mc.ListBoxItem;
             if (item != null && item.Tag != null)
-                contentFrame.Navigate(new Uri("/Views/" + item.Tag.ToString() + ".xaml", UriKind.Relative));
+            {
+                string tag = item.Tag.ToString();
+                //如果不存在tab创建一个，否则直接跳转
+                var existTab = tabGroup.Items.SingleOrDefault(c => (c as RadDocumentPane).Tag.ToString() == tag) as RadDocumentPane;
+                if (existTab == null)
+                {
+                    RadDocumentPane tab = cretateTab(tag);
+                    tab.Tag = tag;
+                    tabGroup.Items.Add(tab);
+                    
+                }
+                else
+                {
+                    tabGroup.SelectedItem = existTab;
+                }
+            }
         }
 
         private void menu_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
         {
-            var bar = (sender as Telerik.Windows.Controls.RadPanelBar);
-            var baritem = bar.SelectedItem as Telerik.Windows.Controls.RadPanelBarItem;
+            var bar = (sender as RadPanelBar);
+            var baritem = bar.SelectedItem as RadPanelBarItem;
             foreach (var item in baritem.Items)
             {
-                if (item is ListBox)
+                if (item is mc.ListBox)
                 {
-                    (item as ListBox).SelectedIndex = -1;
+                    (item as mc.ListBox).SelectedIndex = -1;
                     break;
                 }
             }
         }
 
+        List<Frame> list = new List<Frame>();
 
+        //创建一个tab页
+        RadDocumentPane cretateTab(string key)
+        {
+            RadDocumentPane tab = new RadDocumentPane();
+            tab.Header = tab.Title = Dict.GetStr(key);
+
+            Type ttt = Type.GetType("PoliceSMS.Views." + key);
+            var obj = ttt.GetConstructor(Type.EmptyTypes).Invoke(null);
+            tab.Content = obj;
+            return tab;
+
+        }
 
     }
 }
