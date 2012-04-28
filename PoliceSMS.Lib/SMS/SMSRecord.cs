@@ -60,7 +60,7 @@ namespace PoliceSMS.Lib.SMS
         /// <summary>
         /// 得分
         /// </summary>
-        public virtual int Score { get; set; }
+        public virtual string Score { get; set; }
         /// <summary>
         /// 是否发送
         /// </summary>

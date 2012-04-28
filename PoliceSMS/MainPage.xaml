@@ -8,6 +8,7 @@
              xmlns:sp="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
     xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation" 
     mc:Ignorable="d"
+             
     d:DesignHeight="800" d:DesignWidth="1000">
 
 
@@ -127,7 +128,7 @@
                         <telerik:RadSplitContainer>
                             <telerik:RadPaneGroup x:Name="tabGroup">
                                 <telerik:RadDocumentPane Header="首页" Title="首页" CanFloat="False" CanUserClose="False" 
-                                                         Tag="Index">
+                                                         Tag="Index" >
                                     <navigation:Frame  Source="/Views/StationRankReport.xaml"
                                                        HorizontalAlignment="Stretch" BorderThickness="0" VerticalAlignment="Stretch" >
                                         <navigation:Frame.Background>

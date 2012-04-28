@@ -133,8 +133,6 @@ namespace PoliceSMS
             }
         }
 
-        List<Frame> list = new List<Frame>();
-
         //创建一个tab页
         RadDocumentPane cretateTab(string key)
         {
