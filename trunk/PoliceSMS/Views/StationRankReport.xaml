@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+	xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
      xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
            xmlns:local="clr-namespace:PoliceSMS.ViewModel"
@@ -154,13 +155,19 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <Grid Grid.Row="4" >
-
+					<telerikNavigation:RadTabControl Grid.Row="1" VerticalAlignment="Top"
+				DisplayMemberPath="Content" DropDownDisplayMode="Visible" ScrollMode="Viewport"
+				Background="#dde1ea" BorderThickness="0" SelectionChanged="RadTabControl_SelectionChanged" >
+			<telerikNavigation:RadTabItem Padding="4 1" DropDownContent="各派出所排名统计">
+				<telerikNavigation:RadTabItem.Header>
+					<TextBlock Text="各派出所排名统计" Margin="19 2 19 0" />
+				</telerikNavigation:RadTabItem.Header>
+				<telerikNavigation:RadTabItem.Content>
+                    
                     <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              CanUserResizeColumns="False" IsFilteringAllowed="False"
                                                 IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
-								            AutoGenerateColumns="False" ShowColumnFooters="True" 
-                                         
-                                         >
+								            AutoGenerateColumns="False" ShowColumnFooters="True" >
                         <telerik:RadGridView.ColumnGroups>
                             <telerik:GridViewColumnGroup Name="best" Header="非常满意" />
                             <telerik:GridViewColumnGroup Name="better" Header="满意"/>
@@ -201,13 +208,170 @@
                             <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst"/>
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
+				</telerikNavigation:RadTabItem.Content>
+			</telerikNavigation:RadTabItem>
+			<telerikNavigation:RadTabItem Padding="4 1" DropDownContent="巡大排名统计">
+				<telerikNavigation:RadTabItem.Header>
+					<TextBlock Text="巡大排名统计" Margin="19 2 19 0" />
+				</telerikNavigation:RadTabItem.Header>
+				<telerikNavigation:RadTabItem.Content>
+                    
+                    <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv1" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                                             CanUserResizeColumns="False" IsFilteringAllowed="False"
+                                                IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
+								            AutoGenerateColumns="False" ShowColumnFooters="True" >
+                        <telerik:RadGridView.ColumnGroups>
+                            <telerik:GridViewColumnGroup Name="best1" Header="非常满意" />
+                            <telerik:GridViewColumnGroup Name="better1" Header="满意"/>
+                            <telerik:GridViewColumnGroup Name="normal1" Header="一般"/>
+                            <telerik:GridViewColumnGroup Name="bad1" Header="业务不熟"/>
+                            <telerik:GridViewColumnGroup Name="worst1" Header="态度欠佳"/>
+                        </telerik:RadGridView.ColumnGroups>
+                        <telerik:RadGridView.Columns>
 
-                </Grid>
-                <!--<Rectangle Height="1" VerticalAlignment="Top" Grid.Row="3"
-                       Fill="{StaticResource GridViewSplitter}"
-                       Margin="0 0 0 0" >
-                        </Rectangle>-->
-            </Grid>
-        </Border>
+                            <telerik:GridViewDataColumn MinWidth="30" Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="100" Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="120" Header="短信评价满意" DataMemberBinding="{Binding StationRate}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="70" Header="得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best1" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst1"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst1"/>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+				</telerikNavigation:RadTabItem.Content>
+			</telerikNavigation:RadTabItem>
+                        <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="各科队排名统计">
+				<telerikNavigation:RadTabItem.Header>
+                                <TextBlock Text="各科队排名统计" Margin="19 2 19 0" />
+				</telerikNavigation:RadTabItem.Header>
+				<telerikNavigation:RadTabItem.Content>
+                    
+                    <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv2" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                                             CanUserResizeColumns="False" IsFilteringAllowed="False"
+                                                IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
+								            AutoGenerateColumns="False" ShowColumnFooters="True" >
+                        <telerik:RadGridView.ColumnGroups>
+                            <telerik:GridViewColumnGroup Name="best2" Header="非常满意" />
+                            <telerik:GridViewColumnGroup Name="better2" Header="满意"/>
+                            <telerik:GridViewColumnGroup Name="normal2" Header="一般"/>
+                            <telerik:GridViewColumnGroup Name="bad2" Header="业务不熟"/>
+                            <telerik:GridViewColumnGroup Name="worst2" Header="态度欠佳"/>
+                        </telerik:RadGridView.ColumnGroups>
+                        <telerik:RadGridView.Columns>
+
+                            <telerik:GridViewDataColumn MinWidth="30" Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                                        <telerik:GridViewDataColumn MinWidth="100" Header="姓名" DataMemberBinding="{Binding PoliceName}" HeaderTextAlignment="Center" />
+
+                                        <telerik:GridViewDataColumn MinWidth="100" Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="120" Header="短信评价满意" DataMemberBinding="{Binding StationRate}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="70" Header="得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best2" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst2"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst2"/>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+				</telerikNavigation:RadTabItem.Content>
+			</telerikNavigation:RadTabItem>
+                        <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="个人排名统计">
+                <telerikNavigation:RadTabItem.Header>
+                                <TextBlock Text="个人排名统计" Margin="19 2 19 0" />
+                </telerikNavigation:RadTabItem.Header>
+                <telerikNavigation:RadTabItem.Content>
+
+                    <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv3" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                                    CanUserResizeColumns="False" IsFilteringAllowed="False"
+                                    IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
+								AutoGenerateColumns="False" ShowColumnFooters="True" >
+                        <telerik:RadGridView.ColumnGroups>
+                            <telerik:GridViewColumnGroup Name="best3" Header="非常满意" />
+                            <telerik:GridViewColumnGroup Name="better3" Header="满意"/>
+                            <telerik:GridViewColumnGroup Name="normal3" Header="一般"/>
+                            <telerik:GridViewColumnGroup Name="bad3" Header="业务不熟"/>
+                            <telerik:GridViewColumnGroup Name="worst3" Header="态度欠佳"/>
+                        </telerik:RadGridView.ColumnGroups>
+                        <telerik:RadGridView.Columns>
+
+                            <telerik:GridViewDataColumn MinWidth="30" Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="100" Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="120" Header="短信评价满意" DataMemberBinding="{Binding StationRate}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="70" Header="得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best3" />
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst3"/>
+
+                            <telerik:GridViewDataColumn MinWidth="60" Header="百分比" DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst3"/>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </telerikNavigation:RadTabItem.Content>
+            </telerikNavigation:RadTabItem>
+                    </telerikNavigation:RadTabControl>				
+
+	</Grid>
+    </Grid>
+    </Border>
     </Grid>
 </navigation:Page>

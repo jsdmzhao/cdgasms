@@ -39,27 +39,27 @@ namespace PoliceSMS
 
         private void onLoad()
         {
-            AppGlobal.CurrentUser = new Lib.Organization.Officer { Name = "测试用户",Password="111111",Id=1,Organization= new Lib.Organization.Organization { Name = "青羊区分局草市街派出所", Id = 742 }};
+            //AppGlobal.CurrentUser = new Lib.Organization.Officer { Name = "测试用户",Password="111111",Id=1,Organization= new Lib.Organization.Organization { Name = "青羊区分局草市街派出所", Id = 742 }};
             
-            NameBlock.Text = AppGlobal.CurrentUser.Name;
-            contentGrid.Visibility = Visibility.Visible;
+            //NameBlock.Text = AppGlobal.CurrentUser.Name;
+            //contentGrid.Visibility = Visibility.Visible;
 
-            //LoginForm logFrm = new LoginForm();
-            //logFrm.CallBack = () =>
-            //{
-            //    NameBlock.Text = AppGlobal.CurrentUser.Name;
-            //    contentGrid.Visibility = Visibility.Visible;
+            LoginForm logFrm = new LoginForm();
+            logFrm.CallBack = () =>
+            {
+                NameBlock.Text = AppGlobal.CurrentUser.Name;
+                contentGrid.Visibility = Visibility.Visible;
 
-            //    sy.IsChecked = true;
-            //    (logFrm.Parent as RadWindow).Close();
+                (logFrm.Parent as RadWindow).Close();
 
-            //};
-            //Tools.OpenWindow("登录", logFrm, null);
+            };
+            Tools.OpenWindow("登录", logFrm, null);
             
         }
 
         private void onExit()
         {
+            //AppGlobal.CurrentUser = new Lib.Organization.Officer();
             HtmlWindow html = HtmlPage.Window;
             html.Navigate(new Uri("PoliceSMSTestPage.aspx", UriKind.Relative));//相对
         }
@@ -71,7 +71,7 @@ namespace PoliceSMS
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+            onExit();
         }
 
         /// <summary>

@@ -67,6 +67,12 @@ namespace PoliceSMS.Views
             LoadWorkTypes();
             LoadOfficerTypes();
             LoadOfficers();
+
+            if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
+            {
+                this.cmbGradeType.IsReadOnly = false;
+                this.cmbGradeType.IsEnabled = true;
+            }
         }
 
         private void LoadSexs()
