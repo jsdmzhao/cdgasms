@@ -150,7 +150,7 @@
                     <TextBlock Text="是否评价:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="4"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5"
                                                 DisplayMemberPath="Name" x:Name="cboxMark"
-                                                          Width="100"
+                                                          Width="140"
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
@@ -170,7 +170,19 @@
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
+					<TextBlock Text="评分类型:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="4"></TextBlock>
+                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5"
+                                                DisplayMemberPath="Name"  x:Name="cboxGradeType"
+                                                          Width="140"
+                                                          Height="24"
+                                                          Margin="5,0,0,0">
+                    </telerik:RadComboBox>
 
+                   <TextBlock Text="办事人姓名:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="6"></TextBlock>
+                    <TextBox Visibility="Visible" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="7" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="cboxName" Width="140" Height="24" Margin="5,0,0,0">
+                    </TextBox>
+
+                   
                    
                    
 
@@ -206,7 +218,7 @@
 
                             <telerik:GridViewDataColumn Header="单位" MinWidth="150" DataMemberBinding="{Binding Organization.Name}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="评价得分" MinWidth="80" DataMemberBinding="{Binding Score}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="评价得分" MinWidth="80" DataMemberBinding="{Binding GradeType.Score}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="是否评价" MinWidth="80" DataMemberBinding="{Binding IsResponse}" HeaderTextAlignment="Center" />
 
