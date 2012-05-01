@@ -27,12 +27,13 @@ namespace PoliceSMS.Views
 
         public SMSRecordList()
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
         }
 
         void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
         {
+            Tools.ShowMask(true);
             ser.GetListByHQLCompleted += new EventHandler<SMSRecordService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
@@ -61,7 +62,7 @@ namespace PoliceSMS.Views
 
                 };
 
-                ser.GetListByHQLAsync("from WorkType");
+                ser.GetListByHQLAsync("from WorkType where IsUsed = " + true);
 
             }
             catch (Exception ex)
@@ -108,7 +109,7 @@ namespace PoliceSMS.Views
                 };
 
                 //这里没有考虑权限
-                ser.GetListByHQLAsync("from Organization");
+                ser.GetListByHQLAsync("from Organization where Name like '%青羊%'");
 
             }
             catch (Exception ex)
@@ -150,6 +151,7 @@ namespace PoliceSMS.Views
                 gv.ItemsSource = list;
 
                 rDataPager1.ItemCount = total;
+                Tools.ShowMask(false);
             }
             catch (Exception ex)
             {
@@ -160,6 +162,7 @@ namespace PoliceSMS.Views
 
         void getData()
         {
+            Tools.ShowMask(true);
             BuildHql();
 
             queryCondition.FirstResult = 0;

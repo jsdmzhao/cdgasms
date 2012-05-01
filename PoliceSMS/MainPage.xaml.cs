@@ -39,11 +39,6 @@ namespace PoliceSMS
 
         private void onLoad()
         {
-            //AppGlobal.CurrentUser = new Lib.Organization.Officer { Name = "测试用户",Password="111111",Id=1,Organization= new Lib.Organization.Organization { Name = "青羊区分局草市街派出所", Id = 742 }};
-            
-            //NameBlock.Text = AppGlobal.CurrentUser.Name;
-            //contentGrid.Visibility = Visibility.Visible;
-
             LoginForm logFrm = new LoginForm();
             logFrm.CallBack = () =>
             {
@@ -59,7 +54,6 @@ namespace PoliceSMS
 
         private void onExit()
         {
-            //AppGlobal.CurrentUser = new Lib.Organization.Officer();
             HtmlWindow html = HtmlPage.Window;
             html.Navigate(new Uri("PoliceSMSTestPage.aspx", UriKind.Relative));//相对
         }
@@ -81,7 +75,14 @@ namespace PoliceSMS
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-          
+            PassWordForm form = new PassWordForm();
+            form.CallBack = () =>
+            {
+                Tools.ShowMessage("修改密码成功！", "", true);
+                (form.Parent as RadWindow).Close();
+
+            };
+            Tools.OpenWindow("修改密码", form, null, 450, 250);
         }
 
 

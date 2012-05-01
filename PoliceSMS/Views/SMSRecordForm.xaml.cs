@@ -68,6 +68,8 @@ namespace PoliceSMS.Views
             LoadOfficerTypes();
             LoadOfficers();
 
+            this.cmbWorkOrg.Text = (AppGlobal.CurrentUser.Organization).Name;
+
             if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
             {
                 this.cmbGradeType.IsReadOnly = false;
@@ -137,7 +139,7 @@ namespace PoliceSMS.Views
 
                 };
 
-                ser.GetListByHQLAsync("from WorkType");
+                ser.GetListByHQLAsync("from WorkType where IsUsed = " + true);
 
             }
             catch (Exception ex)
@@ -185,7 +187,7 @@ namespace PoliceSMS.Views
 
                 };
 
-                ser.GetListByHQLAsync("from Officer as e where e.Organization.id ="+AppGlobal.CurrentUser.Organization.Id);
+                ser.GetListByHQLAsync("from Officer as e where e.Organization.id =" + AppGlobal.CurrentUser.Organization.Id);
 
             }
             catch (Exception ex)
@@ -215,6 +217,7 @@ namespace PoliceSMS.Views
                     smsRecord.LoginOfficer = AppGlobal.CurrentUser;
                     smsRecord.Organization = AppGlobal.CurrentUser.Organization;
                     smsRecord.WorkDate = DateTime.Now;
+                    smsRecord.GradeType = new GradeType() { Id = 3 };
                 }
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
                 ser.SaveOrUpdateAsync(json);

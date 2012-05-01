@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Telerik.Windows.Controls;
 using PoliceSMS.Lib.SMS;
 using PoliceSMS.ViewModel;
+using PoliceSMS.Comm;
 
 namespace PoliceSMS.Views
 {
@@ -45,6 +46,7 @@ namespace PoliceSMS.Views
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            Tools.ShowMask(true, "正在保存数据");
             WorkTypeService.WorkTypeServiceClient ser = new WorkTypeService.WorkTypeServiceClient();
             ser.SaveOrUpdateCompleted += new EventHandler<WorkTypeService.SaveOrUpdateCompletedEventArgs>(ser_SaveOrUpdateCompleted);
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
@@ -53,6 +55,7 @@ namespace PoliceSMS.Views
 
         void ser_SaveOrUpdateCompleted(object sender, WorkTypeService.SaveOrUpdateCompletedEventArgs e)
         {
+            Tools.ShowMask(false);
             (this.Parent as RadWindow).Close();
             if (refreshAction != null)
                 refreshAction();

@@ -89,12 +89,10 @@ namespace PoliceSMS.Web.OrganizationWcf
 
                 Officer entity = JsonSerializerHelper.JsonToEntity<Officer>(json);
 
-                //DunLibrary.User.User u = sess.Get<DunLibrary.User.User>(2);
-
-                //DunLibrary.Dun.VisitRecord vr = entity as DunLibrary.Dun.VisitRecord;
-
-                //vr.Visitors.Add(u);
-
+                MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+                string md5_password = BitConverter.ToString(md5.ComputeHash(UTF8Encoding.Default.GetBytes(entity.Password)));
+                md5_password = md5_password.Replace("-", "");
+                entity.Password = md5_password;
                 try
                 {
                     tx = sess.BeginTransaction();

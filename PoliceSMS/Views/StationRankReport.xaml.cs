@@ -60,6 +60,7 @@ namespace PoliceSMS.Views
 
         private void LoadReport()
         {
+            Tools.ShowMask(true);
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
 
             ser.LoadStationReportResultCompleted += (object sender, ReportService.LoadStationReportResultCompletedEventArgs e) =>
@@ -69,6 +70,7 @@ namespace PoliceSMS.Views
                     gv.ItemsSource = result;
 
                     gv.Items.Refresh();
+                    Tools.ShowMask(false);
                 };
 
             DateTime beginTime1 = dateStart.SelectedDate.Value;
