@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using PoliceSMS.Lib.Organization;
 using PoliceSMS.Comm;
 using System.ServiceModel;
+using System.Windows.Browser;
 
 namespace PoliceSMS
 {
@@ -81,12 +82,16 @@ namespace PoliceSMS
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            ScriptObject Show = HtmlPage.Window.GetProperty("closeWin") as ScriptObject;
+            Show.InvokeSelf();
         }
 
         private void txtPass_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Enter)
+            {
+                login();
+            }
         }
     }
 }

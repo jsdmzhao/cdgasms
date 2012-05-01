@@ -114,7 +114,7 @@ namespace PoliceSMS.Comm
                 busy.BusyContent = message;
             }
         }
-
+        
         public static RadWindow OpenWindow(string header, object content)
         {
 

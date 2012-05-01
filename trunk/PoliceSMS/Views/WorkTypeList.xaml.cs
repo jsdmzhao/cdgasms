@@ -46,10 +46,15 @@ namespace PoliceSMS.Views
                 }
 
                 gv.ItemsSource = list;
+
             }
             catch (Exception ex)
             {
                 Tools.ShowMessage(ex.Message, "", false);
+            }
+            finally
+            {
+                Tools.ShowMask(false);
             }
         }
         void ser_DeleteByIdCompleted(object sender, WorkTypeService.DeleteByIdCompletedEventArgs e)
@@ -63,6 +68,7 @@ namespace PoliceSMS.Views
 
         void getData()
         {
+            Tools.ShowMask(true);
             ser.GetListByHQLAsync("from WorkType");
         }
 

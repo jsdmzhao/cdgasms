@@ -57,24 +57,24 @@
 
 
             <TextBlock Text="姓名:" VerticalAlignment="Center" TextAlignment="Right" Height="24" Margin="5,0,0,0" Grid.Column="0" Grid.Row="0"/>
-            <TextBox Text="{Binding Path=PersonName,Mode=TwoWay}" Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="0"/>
+            <TextBox Text="{Binding Path=PersonName,Mode=TwoWay}" Height="24" Margin="5,0,5,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"/>
 
             <TextBlock Text="性别:" VerticalAlignment="Center" TextAlignment="Right"  Height="24" Grid.Column="2" Margin="5,0,5,0" Grid.Row="0"/>
             <telerik:RadComboBox x:Name="cmbSex" VerticalAlignment="Center" SelectedValue="{Binding Path=PersonSex,Mode=TwoWay}" DisplayMemberPath="Name"
                                            Height="24" Margin="5,0,5,0" Grid.Column="3" Grid.Row="0" />
 
             <TextBlock Text="电话:" VerticalAlignment="Center" TextAlignment="Right" Height="24" Margin="5,0,5,0" Grid.Column="0" Grid.Row="1"/>
-            <TextBox Text="{Binding Path=PersonMobile, Mode=TwoWay}" Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"/>
+            <TextBox Text="{Binding Path=PersonMobile, Mode=TwoWay}" Height="24" Margin="5,0,5,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" VerticalAlignment="Center"/>
 
             <TextBlock Text="地址:" VerticalAlignment="Center" TextAlignment="Right" Height="24" Margin="5,0,0,0" Grid.Column="0" Grid.Row="2"/>
-            <TextBox Text="{Binding Path=Address, Mode=TwoWay}" Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
+            <TextBox Text="{Binding Path=Address, Mode=TwoWay}" Height="24" Margin="5,0,5,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center"/>
 
             <TextBlock Text="办事类别:" VerticalAlignment="Center" TextAlignment="Right" Height="24" Margin="5,0,5,0" Grid.Column="0" Grid.Row="3"/>
             <telerik:RadComboBox x:Name="cmbWorkType" VerticalAlignment="Center"  SelectedValue="{Binding Path=WorkType,Mode=TwoWay}" DisplayMemberPath="Name"
                                            Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" />
 
             <TextBlock Text="办事内容:" VerticalAlignment="Center" TextAlignment="Right" Height="24" Margin="5,0,5,0" Grid.Column="0" Grid.Row="4"/>
-            <TextBox Text="{Binding Path=WorkContent, Mode=TwoWay}" Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4"/>
+            <TextBox Text="{Binding Path=WorkContent, Mode=TwoWay}" Height="24" Margin="5,0,5,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4" VerticalAlignment="Center"/>
 
             <TextBlock Text="得分:"  VerticalAlignment="Center"  TextAlignment="Right" Height="24" Grid.Column="0" Margin="5,0,5,0" Grid.Row="5"/>
             <telerik:RadComboBox x:Name="cmbGradeType" VerticalAlignment="Center"  SelectedValue="{Binding Path=GradeType,Mode=TwoWay}" DisplayMemberPath="Name"
@@ -84,7 +84,7 @@
             <CheckBox Name="chkIsResponse" VerticalAlignment="Center"   Height="24" Margin="5,0,5,0" Grid.Column="3" Grid.Row="5"  IsEnabled="False"/>
 
             <TextBlock Text="受理单位:"  VerticalAlignment="Center"  TextAlignment="Right" Height="24" Grid.Column="0" Margin="5,0,5,0" Grid.Row="6"/>
-            <TextBox Text="{Binding Path=Organization.Name, Mode=TwoWay}" Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" IsReadOnly="True"/>
+            <TextBox x:Name="cmbWorkOrg" Text="{Binding Path=Organization.Name, Mode=TwoWay}" telerik:StyleManager.Theme="{StaticResource STheme}" Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" IsReadOnly="True" VerticalAlignment="Center"/>
 
             <TextBlock Text="受理人:"  VerticalAlignment="Center"  TextAlignment="Right" Height="24" Grid.Column="0" Margin="5,0,5,0" Grid.Row="7"/>
             <telerik:RadComboBox x:Name="cmbWorkOfficer" VerticalAlignment="Center"  SelectedValue="{Binding Path=WorkOfficer,Mode=TwoWay}" DisplayMemberPath="Name"

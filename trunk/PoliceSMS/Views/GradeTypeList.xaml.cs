@@ -43,12 +43,16 @@ namespace PoliceSMS.Views
                 {
                     item.Description = UsedState.CreateAry()[Convert.ToInt32(item.IsUsed)].Name;
                 }
-                
+
                 gv.ItemsSource = list;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Tools.ShowMessage(ex.Message, "", false);
+            }
+            finally
+            {
+                Tools.ShowMask(false);
             }
         }
 
@@ -63,6 +67,7 @@ namespace PoliceSMS.Views
 
         void getData()
         {
+            Tools.ShowMask(true);
             ser.GetListByHQLAsync("from GradeType");
         }
 
