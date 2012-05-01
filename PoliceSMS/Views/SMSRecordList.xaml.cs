@@ -41,11 +41,36 @@ namespace PoliceSMS.Views
             LoadWorkTypes();
             LoadOfficers();
             LoadStation();
+            LoadGradeType();
+
             cboxMark.ItemsSource = MarkState.CreateAry();
 
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now; ;
             getData();
+        }
+
+        private void LoadGradeType()
+        {
+            try
+            {
+                GradeTypeService.GradeTypeServiceClient ser = new GradeTypeService.GradeTypeServiceClient();
+                ser.GetListByHQLCompleted += (object sender, GradeTypeService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    var list = JsonSerializerHelper.JsonToEntities<GradeType>(e.Result, out total);
+
+                    cboxGradeType.ItemsSource = list;
+
+                };
+
+                ser.GetListByHQLAsync("from GradeType where IsUsed = " + true);
+
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取评分类别发生错误", ex.Message, false);
+            }
         }
 
         private void LoadWorkTypes()
@@ -208,6 +233,18 @@ namespace PoliceSMS.Views
                 Organization org = cboxStation.SelectedItem as Organization;
                 if (org != null)
                     hql.Append(" and r.Organization.Id =" + org.Id);
+            }
+
+            if ( cboxGradeType.SelectedItem != null)
+            {
+                GradeType grade = cboxGradeType.SelectedItem as GradeType;
+                if (grade != null)
+                    hql.Append(" and r.GradeType.Id =" + grade.Id);
+            }
+
+            if (!string.IsNullOrEmpty(cboxName.Text))
+            {
+                hql.Append(" and r.PersonName like '%" + cboxName.Text + "%'");
             }
 
             queryCondition = new QueryCondition();
