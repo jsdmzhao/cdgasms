@@ -64,7 +64,7 @@ namespace PoliceSMS.Views
             Tools.ShowMask(true);
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
 
-            ser+= (object sender, ReportService.LoadStationReportResultCompletedEventArgs e) =>
+            ser.LoadOfficerReportResultCompleted+= (object sender, ReportService.LoadOfficerReportResultCompletedEventArgs e) =>
                 {
                     int total = 0;
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
@@ -84,7 +84,7 @@ namespace PoliceSMS.Views
 
             DateTime beginTime2 = endTime1.Add(-span);
 
-            ser.LoadStationReportResultAsync(1, beginTime1, endTime1, beginTime2, endTime2);
+            ser.LoadOfficerReportResultAsync(1, beginTime1, endTime1, beginTime2, endTime2);
 
         }
 
@@ -106,43 +106,43 @@ namespace PoliceSMS.Views
             export.ExportWithHeader(gv, header);
         }
 
-        private void RadTabControl_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
-        {
+        //private void RadTabControl_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
+        //{
 
-            RadGridView gridView = gv;
-            int unitId = 0;
-
-
-            ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
-
-            ser.LoadOfficerReportResultCompleted += (object sender1, ReportService.LoadOfficerReportResultCompletedEventArgs e1) =>
-            {
-                int total = 0;
-                IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e1.Result, out total);
-                gridView.ItemsSource = result;
-
-                gridView.Items.Refresh();
-            };
-
-            DateTime endTime1 = DateTime.Now;
-            DateTime beginTime1 = new DateTime(endTime1.Year, endTime1.Month, 1);
-
-            if (dateStart.SelectedDate != null && dateEnd.SelectedDate != null)
-            {
-                beginTime1 = dateStart.SelectedDate.Value;
-                endTime1 = dateEnd.SelectedDate.Value;
-            }
-
-            TimeSpan span = endTime1 - beginTime1;
+        //    RadGridView gridView = gv;
+        //    int unitId = 0;
 
 
-            DateTime endTime2 = beginTime1.AddDays(-1);
+        //    ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
 
-            DateTime beginTime2 = endTime1.Add(-span);
+        //    ser.LoadOfficerReportResultCompleted += (object sender1, ReportService.LoadOfficerReportResultCompletedEventArgs e1) =>
+        //    {
+        //        int total = 0;
+        //        IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e1.Result, out total);
+        //        gridView.ItemsSource = result;
 
-            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2);
+        //        gridView.Items.Refresh();
+        //    };
 
-        }
+        //    DateTime endTime1 = DateTime.Now;
+        //    DateTime beginTime1 = new DateTime(endTime1.Year, endTime1.Month, 1);
+
+        //    if (dateStart.SelectedDate != null && dateEnd.SelectedDate != null)
+        //    {
+        //        beginTime1 = dateStart.SelectedDate.Value;
+        //        endTime1 = dateEnd.SelectedDate.Value;
+        //    }
+
+        //    TimeSpan span = endTime1 - beginTime1;
+
+
+        //    DateTime endTime2 = beginTime1.AddDays(-1);
+
+        //    DateTime beginTime2 = endTime1.Add(-span);
+
+        //    ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2);
+
+        //}
 
     }
 }
