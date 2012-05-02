@@ -193,6 +193,9 @@
     <Compile Include="Views\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OfficerRankReport.xaml.cs">
+      <DependentUpon>OfficerRankReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PassWordForm.xaml.cs">
       <DependentUpon>PassWordForm.xaml</DependentUpon>
     </Compile>
@@ -270,6 +273,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LoginForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OfficerRankReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
