@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
+using PoliceSMS.Lib.Report;
 
 namespace PoliceSMS.Themes
 {
@@ -16,17 +17,9 @@ namespace PoliceSMS.Themes
     {
         public override Style SelectStyle(object item, DependencyObject container)
         {
-            //var farmer = item as Company;
-            //if (null == farmer.CompanyState)
-            //    return this.NormalStyle;
-            //else if (farmer.CompanyState.Id == 1)
-            //    return this.NormalStyle;
-            //else if (farmer.CompanyState.Id == 2)
-            //    return this.GreenStyle;
-            //else if (farmer.CompanyState.Id == 3)
-            //    return this.OrangeStyle;
-            //else if (farmer.CompanyState.Id == 4)
-            //    return this.RedStyle;
+            var farmer = item as StationReportResult;
+            if (farmer.StationRate<70)
+                return this.RedStyle;
 
             return this.NormalStyle;
         }
