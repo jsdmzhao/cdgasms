@@ -46,20 +46,6 @@ namespace PoliceSMS.Views
             LoadReport();
         }
 
-        private void allSelect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void noneSelect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnReset_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void LoadStation()
         {
@@ -139,49 +125,6 @@ namespace PoliceSMS.Views
             export.SelectedExportFormat = exportType.SelectedItem as string;
             export.ExportWithHeader(gv, header);
         }
-
-        private void RadTabControl_SelectionChanged(object sender, RadSelectionChangedEventArgs e)
-        {
-
-        }
-
-        //private void RadTabControl_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
-        //{
-
-        //    RadGridView gridView = gv;
-        //    int unitId = 0;
-
-
-        //    ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
-
-        //    ser.LoadOfficerReportResultCompleted += (object sender1, ReportService.LoadOfficerReportResultCompletedEventArgs e1) =>
-        //    {
-        //        int total = 0;
-        //        IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e1.Result, out total);
-        //        gridView.ItemsSource = result;
-
-        //        gridView.Items.Refresh();
-        //    };
-
-        //    DateTime endTime1 = DateTime.Now;
-        //    DateTime beginTime1 = new DateTime(endTime1.Year, endTime1.Month, 1);
-
-        //    if (dateStart.SelectedDate != null && dateEnd.SelectedDate != null)
-        //    {
-        //        beginTime1 = dateStart.SelectedDate.Value;
-        //        endTime1 = dateEnd.SelectedDate.Value;
-        //    }
-
-        //    TimeSpan span = endTime1 - beginTime1;
-
-
-        //    DateTime endTime2 = beginTime1.AddDays(-1);
-
-        //    DateTime beginTime2 = endTime1.Add(-span);
-
-        //    ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2);
-
-        //}
 
     }
 }
