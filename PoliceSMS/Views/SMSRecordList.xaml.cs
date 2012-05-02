@@ -16,6 +16,8 @@ using PoliceSMS.Lib.Query;
 using System.Text;
 using PoliceSMS.Lib.Organization;
 using PoliceSMS.ViewModel;
+using Telerik.Windows.Controls.GridView;
+using Telerik.Windows;
 
 namespace PoliceSMS.Views
 {
@@ -29,6 +31,7 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();            
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
+            this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
         }
 
         void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
@@ -327,5 +330,17 @@ namespace PoliceSMS.Views
         }
 
 
+
+        public void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
+        {
+            SMSRecord obj = gv.SelectedItem as SMSRecord;
+
+            if (obj != null)
+            {
+                SMSRecordForm form = new SMSRecordForm(obj);
+                form.IsEnabled = false;
+                Tools.OpenWindow("群众办事登记", form, null, 600, 375);
+            }
+        }
     }
 }
