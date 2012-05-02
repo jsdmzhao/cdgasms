@@ -142,7 +142,7 @@ namespace PoliceSMS.Web.Report
                 StationReportResult srr = new StationReportResult();
 
                 srr.UpRank = reader.IsDBNull(0) ? null : (int?)reader.GetInt32(0);
-                srr.UnitName = reader.GetString(1);
+                srr.UnitName = reader.IsDBNull(1) ? "" : reader.GetString(1);
                 srr.Rank = reader.GetInt32(2);
                 srr.UnitId = reader.GetInt32(3);
                 srr.TotalCount = reader.GetInt32(4);
