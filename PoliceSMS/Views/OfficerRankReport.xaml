@@ -8,7 +8,7 @@
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
     xmlns:local="clr-namespace:PoliceSMS.ViewModel"
-    Title ="阳光民意评警排名表"
+    
     d:DesignHeight="1024" d:DesignWidth="900">
 
     <navigation:Page.Resources>
@@ -29,14 +29,15 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="500"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Row="0" Grid.Column="0"  Margin="10 0 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="260"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
 
@@ -55,6 +56,19 @@
                                                           Height="22"
                                                           Margin="0,0,0,0"
                                                           VerticalAlignment="Center" />
+
+
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
+                            <TextBlock Text="派出所:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                            <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" 
+                                                    DisplayMemberPath="Name"  
+                                                              Width="140" x:Name="cmbStation"
+                                                              Height="24"
+                                                              Margin="5,0,0,0">
+                            </telerik:RadComboBox>
                         </StackPanel>
 
                     </Grid>
