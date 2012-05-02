@@ -14,6 +14,7 @@ using PoliceSMS.Lib.Report;
 using PoliceSMS.Comm;
 using PoliceSMS.ViewModel;
 using Telerik.Windows.Controls;
+using PoliceSMS.Lib.Organization;
 
 namespace PoliceSMS.Views
 {
@@ -23,6 +24,7 @@ namespace PoliceSMS.Views
         private IList<StationReportResult> result;
 
         public int UnitType { get; set; }
+        public IList<Orientation> stations;
 
         public OfficerRankReport()
         {
@@ -57,6 +59,30 @@ namespace PoliceSMS.Views
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void LoadStation()
+        {
+            try
+            {
+                OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
+                ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
+
+                    cboxStation.ItemsSource = stations;
+
+                };
+
+                //这里没有考虑权限
+                ser.GetListByHQLAsync("from Organization where Name like '%青羊%'");
+
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取单位发生错误", ex.Message, false);
+            }
         }
 
         private void LoadReport()
