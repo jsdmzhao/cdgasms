@@ -8,7 +8,7 @@
      xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
            xmlns:local="clr-namespace:PoliceSMS.ViewModel"
-             Title ="“阳光民意评警”排名表"
+             Title ="阳光民意评警"
     d:DesignHeight="1024" d:DesignWidth="768">
 
     <navigation:Page.Resources>

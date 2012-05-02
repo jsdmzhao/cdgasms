@@ -15,7 +15,7 @@
     <Grid Background="{StaticResource background}">
 
         <Grid x:Name="contentGrid" >
-            <Border  VerticalAlignment="Top" >
+            <Border  VerticalAlignment="Top" Height="80">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="320"></ColumnDefinition>
@@ -42,7 +42,7 @@
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Grid.Column="1" Margin="0 0 100 0" HorizontalAlignment="Right" VerticalAlignment="Center"  FontSize="24"  Text="短信评警系统"></TextBlock>
+                    <TextBlock Grid.Column="1" Margin="0 0 100 0" Foreground="White"  HorizontalAlignment="Right" VerticalAlignment="Center"  FontSize="24"  Text="短信评警系统"></TextBlock>
                 </Grid>
             </Border>
 
