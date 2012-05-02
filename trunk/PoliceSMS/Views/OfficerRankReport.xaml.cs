@@ -24,7 +24,7 @@ namespace PoliceSMS.Views
         private IList<StationReportResult> result;
 
         public int UnitType { get; set; }
-        public IList<Orientation> stations;
+        public IList<Organization> stations;
 
         public OfficerRankReport()
         {
@@ -71,7 +71,11 @@ namespace PoliceSMS.Views
                     int total = 0;
                     stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
 
-                    cboxStation.ItemsSource = stations;
+                    Organization orgNull = new Organization { Name = "全部", Id = 0 };
+
+                    stations.Insert(0, orgNull);
+
+                    cmbStation.ItemsSource = stations;
 
                 };
 
@@ -89,6 +93,8 @@ namespace PoliceSMS.Views
         {
             Tools.ShowMask(true);
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
+
+            Organization selOrg =(Organization) cmbStation.SelectedItem;
 
             ser.LoadOfficerReportResultCompleted+= (object sender, ReportService.LoadOfficerReportResultCompletedEventArgs e) =>
                 {
@@ -110,7 +116,9 @@ namespace PoliceSMS.Views
 
             DateTime beginTime2 = endTime1.Add(-span);
 
-            ser.LoadOfficerReportResultAsync(1, beginTime1, endTime1, beginTime2, endTime2);
+            int unitId = selOrg == null ? 0 : selOrg.Id;
+
+            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2);
 
         }
 
@@ -130,6 +138,11 @@ namespace PoliceSMS.Views
 
             export.SelectedExportFormat = exportType.SelectedItem as string;
             export.ExportWithHeader(gv, header);
+        }
+
+        private void RadTabControl_SelectionChanged(object sender, RadSelectionChangedEventArgs e)
+        {
+
         }
 
         //private void RadTabControl_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
