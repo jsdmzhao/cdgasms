@@ -268,6 +268,7 @@ namespace PoliceSMS.Views
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             SMSRecordForm frm = new SMSRecordForm();
+            rDataPager1.PageIndex = 0;
             frm.SaveCallBack = getData;
 
             Tools.OpenWindow("群众办事登记-新增", frm, null, 600, 375);
