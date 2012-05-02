@@ -9,7 +9,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using System.Windows.Navigation;
+using System.Text;
+using PoliceSMS.Comm;
+using PoliceSMS.ViewModel;
+using PoliceSMS.Lib.Report;
+using Telerik.Windows.Controls;
 
 namespace PoliceSMS.Views
 {
@@ -18,12 +22,12 @@ namespace PoliceSMS.Views
         public Index()
         {
             InitializeComponent();
+
+            page1.UnitType = 1;
+            page2.UnitType = 2;
+            page3.UnitType = 3;
         }
 
-        // 当用户导航到此页面时执行。
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-        }
 
     }
 }

@@ -123,7 +123,7 @@
                             <telerik:RadPaneGroup x:Name="tabGroup">
                                 <telerik:RadDocumentPane Header="首页" Title="首页" CanFloat="False" CanUserClose="False" 
                                                          Tag="Index" >
-                                    <navigation:Frame  Source="/Views/StationRankReport.xaml"
+                                    <navigation:Frame  Source="/Views/Index.xaml"
                                                        HorizontalAlignment="Stretch" BorderThickness="0" VerticalAlignment="Stretch" >
                                         <navigation:Frame.Background>
                                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

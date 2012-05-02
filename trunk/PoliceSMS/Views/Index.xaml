@@ -1,13 +1,64 @@
-﻿<navigation:Page x:Class="PoliceSMS.Views.Index" 
-           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-           mc:Ignorable="d"
-           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
-           d:DesignWidth="1000" d:DesignHeight="700"
-           Title="Index Page">
+﻿<navigation:Page x:Class="PoliceSMS.Views.Index"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+	xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
+     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+           xmlns:local="clr-namespace:PoliceSMS.ViewModel"
+                 xmlns:views="clr-namespace:PoliceSMS.Views"
+             Title ="阳光民意评警"
+    d:DesignHeight="1024" d:DesignWidth="768">
+
+    <navigation:Page.Resources>
+        <local:ExportingModel x:Key="context" />
+    </navigation:Page.Resources>
+
     <Grid x:Name="LayoutRoot">
-        
+        <Border VerticalAlignment="Stretch" >
+
+            <Grid>
+                <telerikNavigation:RadTabControl Grid.Row="1" VerticalAlignment="Top"
+				DisplayMemberPath="Content" DropDownDisplayMode="Visible" ScrollMode="Viewport"
+				Background="#dde1ea" BorderThickness="0">
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="派出所排名统计">
+                        <telerikNavigation:RadTabItem.Header>
+                            <TextBlock Text="派出所排名统计" Margin="19 2 19 0" />
+                        </telerikNavigation:RadTabItem.Header>
+                        <telerikNavigation:RadTabItem.Content>
+                            <views:StationRankReport x:Name="page1"></views:StationRankReport>
+                        </telerikNavigation:RadTabItem.Content>
+                    </telerikNavigation:RadTabItem>
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="巡大排名统计">
+                        <telerikNavigation:RadTabItem.Header>
+                            <TextBlock Text="巡大排名统计" Margin="19 2 19 0" />
+                        </telerikNavigation:RadTabItem.Header>
+                        <telerikNavigation:RadTabItem.Content>
+                            <views:StationRankReport x:Name="page2"></views:StationRankReport>
+                        </telerikNavigation:RadTabItem.Content>
+                    </telerikNavigation:RadTabItem>
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="科队排名统计">
+                        <telerikNavigation:RadTabItem.Header>
+                            <TextBlock Text="科队排名统计" Margin="19 2 19 0" />
+                        </telerikNavigation:RadTabItem.Header>
+                        <telerikNavigation:RadTabItem.Content>
+                            <views:StationRankReport x:Name="page3"></views:StationRankReport>
+                        </telerikNavigation:RadTabItem.Content>
+                    </telerikNavigation:RadTabItem>
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="个人排名统计" x:Name="officerRank">
+                        <telerikNavigation:RadTabItem.Header>
+                            <TextBlock Text="个人排名统计" Margin="19 2 19 0" />
+                        </telerikNavigation:RadTabItem.Header>
+                        <telerikNavigation:RadTabItem.Content>
+                            <views:OfficerRankReport></views:OfficerRankReport>
+                        </telerikNavigation:RadTabItem.Content>
+                    </telerikNavigation:RadTabItem>
+                </telerikNavigation:RadTabControl>
+
+            </Grid>
+
+        </Border>
     </Grid>
 </navigation:Page>
