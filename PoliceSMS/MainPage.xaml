@@ -43,7 +43,7 @@
                         </StackPanel>
                     </StackPanel>
 				 	<StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <Image  Height="75" Width="75" Source="/Images/jinghui.png" Margin="10,0,0,0" />
+                        <Image  Height="75" Width="75" Source="/Images/jihui.png" Margin="10,0,0,0" />
                         <StackPanel VerticalAlignment="Center">
 							<TextBlock  Margin="10,5,100,5" Foreground="White"  FontSize="24"  Text="   阳光民意评警" VerticalAlignment="Center" FontWeight="Bold"/>
 							<TextBlock  Margin="10,5,100,5" Foreground="White"  FontSize="18"  Text="成都市公安局青羊区分局" VerticalAlignment="Center"/>
