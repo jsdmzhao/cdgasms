@@ -19,8 +19,6 @@ namespace PoliceSMS.Views
 {
     public partial class StationRankReport : Page
     {
-        private IList<StationReportResult> result;
-
         public int UnitType { get; set; }
 
         public StationRankReport()
@@ -41,21 +39,6 @@ namespace PoliceSMS.Views
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
             LoadReport();
-        }
-
-        private void allSelect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void noneSelect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnReset_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void LoadReport()
@@ -83,7 +66,7 @@ namespace PoliceSMS.Views
 
             DateTime beginTime2 = endTime1.Add(-span);
 
-            ser.LoadStationReportResultAsync(1, beginTime1, endTime1, beginTime2, endTime2);
+            ser.LoadStationReportResultAsync(UnitType, beginTime1, endTime1, beginTime2, endTime2);
 
         }
 
@@ -105,58 +88,5 @@ namespace PoliceSMS.Views
             export.ExportWithHeader(gv, header);
         }
 
-        private void RadTabControl_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-            RadGridView gridView = gv;
-            int unitType = 1;
-
-            string tabTxt = ((e.AddedItems[0] as HeaderedContentControl).Header as TextBlock).Text;
-
-            switch (tabTxt)
-            {
-                case "巡大排名统计":
-                    gridView = gv1;
-                    unitType = 2;
-                    break;
-                case "各科队排名统计":
-                    gridView = gv2;
-                    unitType = 3;
-                    break;
-                case"个人排名统计":
-                    break;
-            }
-
-
-            ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
-
-            ser.LoadStationReportResultCompleted += (object sender1, ReportService.LoadStationReportResultCompletedEventArgs e1) =>
-            {
-                int total = 0;
-                IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e1.Result, out total);
-                gridView.ItemsSource = result;
-
-                gridView.Items.Refresh();
-            };
-
-            DateTime endTime1 = DateTime.Now;
-            DateTime beginTime1 = new DateTime(endTime1.Year, endTime1.Month, 1);
-
-            if (dateStart.SelectedDate != null && dateEnd.SelectedDate != null)
-            {
-                beginTime1 = dateStart.SelectedDate.Value;
-                endTime1 = dateEnd.SelectedDate.Value;
-            }
-
-            TimeSpan span = endTime1 - beginTime1;
-
-
-            DateTime endTime2 = beginTime1.AddDays(-1);
-
-            DateTime beginTime2 = endTime1.Add(-span);
-
-            ser.LoadStationReportResultAsync(unitType, beginTime1, endTime1, beginTime2, endTime2);
-
-        }
     }
 }
