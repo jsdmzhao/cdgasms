@@ -251,7 +251,7 @@ namespace PoliceSMS.Views
             queryCondition = new QueryCondition();
 
             string hqlStr = hql.ToString();
-            queryCondition.HQL = "select r " + hqlStr;
+            queryCondition.HQL = "select r " + hqlStr + " order by r.WorkDate desc";
 
             queryCondition.TotalHQL = "select count(r) " + hqlStr;
 
