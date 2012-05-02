@@ -139,7 +139,7 @@
 
                             <telerik:GridViewDataColumn MinWidth="60" Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn MinWidth="70" Header="得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn MinWidth="70" Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn MinWidth="60" Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
