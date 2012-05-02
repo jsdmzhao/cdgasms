@@ -62,7 +62,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
-                            <TextBlock Text="派出所:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                            <TextBlock Text="单位:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
                             <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" 
                                                     DisplayMemberPath="Name"  
                                                               Width="140" x:Name="cmbStation"
