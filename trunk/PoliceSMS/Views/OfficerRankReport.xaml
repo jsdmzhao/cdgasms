@@ -119,6 +119,7 @@
                     <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
+                                         RowStyleSelector="{StaticResource rowStyleSelector}"  
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
                         <telerik:RadGridView.ColumnGroups>
                             <telerik:GridViewColumnGroup Name="best3" Header="非常满意" />
