@@ -21,8 +21,6 @@ namespace PoliceSMS.Views
     public partial class OfficerRankReport : Page
     {
 
-        private IList<StationReportResult> result;
-
         public int UnitType { get; set; }
         public IList<Organization> stations;
 
@@ -39,6 +37,8 @@ namespace PoliceSMS.Views
 
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
+
+            LoadStation();
         }
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
