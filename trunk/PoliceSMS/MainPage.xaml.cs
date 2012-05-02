@@ -43,8 +43,8 @@ namespace PoliceSMS
             logFrm.CallBack = () =>
             {
                 NameBlock.Text = AppGlobal.CurrentUser.Name;
-                contentGrid.Visibility = Visibility.Visible;
-
+                userPnl.Visibility = Visibility.Visible;
+                dataGrid.Visibility = Visibility.Visible;
                 (logFrm.Parent as RadWindow).Close();
 
             };

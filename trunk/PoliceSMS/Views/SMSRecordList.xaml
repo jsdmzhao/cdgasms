@@ -208,7 +208,7 @@
                             <telerik:GridViewDataColumn Header="办事内容" MaxWidth="100"
                                                         MinWidth="200"   DataMemberBinding="{Binding WorkType.Name}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="400" DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="160" DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="受理人" MinWidth="100" DataMemberBinding="{Binding WorkOfficer.Name}" HeaderTextAlignment="Center" />
 

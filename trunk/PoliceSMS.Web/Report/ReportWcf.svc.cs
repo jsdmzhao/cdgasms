@@ -93,11 +93,11 @@ namespace PoliceSMS.Web.Report
                 srr.G3Count = reader.GetInt32(11);
                 srr.G3Rate = (double)reader.GetDecimal(12);
 
-                srr.G3Count = reader.GetInt32(13);
-                srr.G3Rate = (double)reader.GetDecimal(14);
+                srr.G4Count = reader.GetInt32(13);
+                srr.G4Rate = (double)reader.GetDecimal(14);
 
-                srr.G4Count = reader.GetInt32(15);
-                srr.G4Rate = (double)reader.GetDecimal(16);
+                srr.G5Count = reader.GetInt32(15);
+                srr.G5Rate = (double)reader.GetDecimal(16);
 
                 result.Add(srr);
             }

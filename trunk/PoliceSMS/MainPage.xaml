@@ -14,10 +14,14 @@
 
     <Grid Background="{StaticResource background}">
 
-        <Grid x:Name="contentGrid" Visibility="Collapsed">
-            <Border  VerticalAlignment="Top">
+        <Grid x:Name="contentGrid" >
+            <Border  VerticalAlignment="Top" >
                 <Grid>
-                    <StackPanel Orientation="Horizontal" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="userPnl" Visibility="Collapsed"  Grid.Column="0"  Orientation="Horizontal" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Border BorderBrush="White" BorderThickness="3" CornerRadius="4" Width="60" Height="60">
                             <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="/Images/1.png"/>
@@ -38,28 +42,28 @@
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
-
+                    <TextBlock Grid.Column="1" Margin="0 0 100 0" HorizontalAlignment="Right" VerticalAlignment="Center"  FontSize="24"  Text="短信评警系统"></TextBlock>
                 </Grid>
             </Border>
 
-            <Grid Margin="0 86 0 0" >
+            <Grid Margin="0 86 0 0" x:Name ="dataGrid" Visibility="Collapsed">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <telerik:RadOutlookBar x:Name="bar" Width="250"  MaxWidth="760"
+                <!--<telerik:RadOutlookBar x:Name="bar" Width="150"  MaxWidth="760"
                             
                             IsMinimized="False"
-                            IsMinimizable="True"
+                            IsMinimizable="False"
                             IsVerticalResizerVisible="False"
 							HorizontalAlignment="Stretch">
                     <telerik:RadOutlookBarItem Header="如实立案" FontWeight="Bold"
 								Icon="/Images/add.png"
 								SmallIcon="/Images/add.png"
-								Tag="SMS">
-                        <telerik:RadPanelBar Grid.Column="0"  x:Name="menu" VerticalAlignment="Stretch" 
+								Tag="SMS">-->
+                <telerik:RadPanelBar Grid.Column="0"  x:Name="menu" VerticalAlignment="Stretch" Width="150"  MaxWidth="760"
 					            BorderBrush="#FFCBD8E8" BorderThickness="1 1 0 1" SelectionChanged="menu_SelectionChanged"
 					             >
                             <telerik:RadPanelBarItem IsExpanded="True">
@@ -99,28 +103,11 @@
                                     </ListBoxItem>
                                 </ListBox>
                             </telerik:RadPanelBarItem>
-                            <telerik:RadPanelBarItem>
-                                <telerik:RadPanelBarItem.Header>
-                                    <TextBlock Text="用户管理" Margin="5 3" />
-                                </telerik:RadPanelBarItem.Header>
-                                <ListBox  BorderThickness="0" BorderBrush="Transparent" SelectionChanged="ListBox_SelectionChanged"
-                                          >
-                                    <ListBoxItem Tag="StationRankReport">
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
-											BorderThickness="1">
-                                                <Image Source="/Images/add.png"  Stretch="None" />
-                                            </Border>
-                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
-											Text="用户权限管理" />
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                </ListBox>
-                            </telerik:RadPanelBarItem>
+                            
                         </telerik:RadPanelBar>
-                    </telerik:RadOutlookBarItem>
+                    <!--</telerik:RadOutlookBarItem>
 
-                </telerik:RadOutlookBar>
+                </telerik:RadOutlookBar>-->
 
                 <telerik:RadDocking  BorderThickness="0" Padding="0" Grid.Column="1">
                     <telerik:RadDocking.DocumentHost>
