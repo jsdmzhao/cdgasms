@@ -90,6 +90,7 @@
     <Content Include="ClientBin\Images\chart.png" />
     <Content Include="ClientBin\Images\del.png" />
     <Content Include="ClientBin\Images\edit.png" />
+    <Content Include="ClientBin\Images\jinghui.png" />
     <Content Include="ClientBin\Images\refresh.png" />
     <Content Include="ClientBin\Images\save.png" />
     <Content Include="ClientBin\Images\search.png" />

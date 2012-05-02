@@ -60,21 +60,21 @@
                                 <TextBlock Text="新建"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
                         </telerik:RadButton>
-                        <telerik:RadButton x:Name="btnEdit" HorizontalAlignment="Right" Margin="0 0 20 0"
+                        <!--<telerik:RadButton x:Name="btnEdit" HorizontalAlignment="Right" Margin="0 0 20 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="80" Height="22" 
                                        Click="btnEdit_Click">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="修改"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
-                        </telerik:RadButton>
+                        </telerik:RadButton>-->
 
-                        <telerik:RadButton x:Name="btnDelete" HorizontalAlignment="Right" Margin="0 0 20 0"
+                        <!--<telerik:RadButton x:Name="btnDelete" HorizontalAlignment="Right" Margin="0 0 20 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="80" Height="22" 
                                        Click="btnDelete_Click">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="删除"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
-                        </telerik:RadButton>
+                        </telerik:RadButton>-->
 
                         <Rectangle Width="1" VerticalAlignment="Stretch" Margin="0 0 20 0"
                             Fill="{StaticResource GridViewSplitter}">
@@ -205,10 +205,9 @@
                             <telerik:GridViewDataColumn Header="姓名" MinWidth="60" DataMemberBinding="{Binding PersonName}"
                                                     HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="办事内容" MaxWidth="100"
-                                                        MinWidth="200"   DataMemberBinding="{Binding WorkType.Name}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="办事内容" MaxWidth="140" DataMemberBinding="{Binding WorkType.Name}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="160" DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="160" MaxWidth="160" DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="受理人" MinWidth="100" DataMemberBinding="{Binding WorkOfficer.Name}" HeaderTextAlignment="Center" />
 
