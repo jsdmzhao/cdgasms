@@ -121,7 +121,7 @@
 
                         <telerik:RadSplitContainer>
                             <telerik:RadPaneGroup x:Name="tabGroup">
-                                <telerik:RadDocumentPane Header="首页" Title="首页" CanFloat="False" CanUserClose="False" 
+                                <telerik:RadDocumentPane Header="排名表" Title="排名表" CanFloat="False" CanUserClose="False" 
                                                          Tag="Index" >
                                     <navigation:Frame  Source="/Views/Index.xaml"
                                                        HorizontalAlignment="Stretch" BorderThickness="0" VerticalAlignment="Stretch" >
