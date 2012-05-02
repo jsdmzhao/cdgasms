@@ -53,7 +53,7 @@ namespace PoliceSMS.Views
                 };
 
             DateTime beginTime1 = dateStart.SelectedDate.Value;
-            DateTime endTime1 = dateEnd.SelectedDate.Value;
+            DateTime endTime1 = dateEnd.SelectedDate.Value.AddDays(1);
 
             TimeSpan span = endTime1 - beginTime1;
 
