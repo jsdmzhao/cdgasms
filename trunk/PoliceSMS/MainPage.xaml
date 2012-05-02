@@ -22,14 +22,14 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel x:Name="userPnl" Visibility="Collapsed"  Grid.Column="1"  Orientation="Horizontal" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right">
-                        <Border BorderBrush="White" BorderThickness="3" CornerRadius="4" Width="60" Height="60">
+                        <!--<Border BorderBrush="White" BorderThickness="3" CornerRadius="4" Width="60" Height="60">
                             <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="/Images/1.png"/>
                             </Border.Background>
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="1"/>
                             </Border.Effect>
-                        </Border>
+                        </Border>-->
 
                         <StackPanel Margin="8,0,0,0" VerticalAlignment="Top">
 

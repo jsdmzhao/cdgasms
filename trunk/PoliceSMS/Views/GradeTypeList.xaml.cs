@@ -13,6 +13,8 @@ using PoliceSMS.Comm;
 using System.Collections;
 using PoliceSMS.Lib.SMS;
 using PoliceSMS.ViewModel;
+using Telerik.Windows.Controls.GridView;
+using Telerik.Windows;
 
 namespace PoliceSMS.Views
 {
@@ -23,6 +25,7 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(GradeTypeList_Loaded);
+            this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
         }
 
         void GradeTypeList_Loaded(object sender, RoutedEventArgs e)
@@ -112,6 +115,17 @@ namespace PoliceSMS.Views
                             }
                         }
                         ));
+            }
+        }
+
+        public void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
+        {
+            GradeType obj = gv.SelectedItem as GradeType;
+
+            if (obj != null)
+            {
+                GradeTypeForm form = new GradeTypeForm(obj, getData);
+                Tools.OpenWindow("评分内容-编辑", form, null);
             }
         }
     }

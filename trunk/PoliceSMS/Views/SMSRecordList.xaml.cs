@@ -338,7 +338,13 @@ namespace PoliceSMS.Views
             if (obj != null)
             {
                 SMSRecordForm form = new SMSRecordForm(obj);
+
                 form.IsEnabled = false;
+
+                //允许政治处修改数据
+                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
+                    form.IsEnabled = true;
+
                 Tools.OpenWindow("群众办事登记", form, null, 600, 375);
             }
         }
