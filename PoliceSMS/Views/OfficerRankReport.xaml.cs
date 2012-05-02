@@ -27,11 +27,7 @@ namespace PoliceSMS.Views
         public OfficerRankReport()
         {
             InitializeComponent();
-            Loaded += new RoutedEventHandler(StationRankReport_Loaded);
-        }
 
-        void StationRankReport_Loaded(object sender, RoutedEventArgs e)
-        {
             DateTime endTime = DateTime.Now;
             DateTime beginTime = new DateTime(endTime.Year, endTime.Month, 1);
 
@@ -40,6 +36,7 @@ namespace PoliceSMS.Views
 
             LoadStation();
         }
+
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +60,8 @@ namespace PoliceSMS.Views
 
                     
                     cmbStation.ItemsSource = stations;
+                    if (cmbStation.Items.Count > 0)
+                        cmbStation.SelectedIndex = 0;
 
                 };
 

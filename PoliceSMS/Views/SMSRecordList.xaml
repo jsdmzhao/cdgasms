@@ -198,7 +198,7 @@
                     <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              IsFilteringAllowed="False" CanUserResizeColumns="True" CanUserReorderColumns="False"
                                                 IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
-								            AutoGenerateColumns="False" ShowColumnFooters="True" >
+								            AutoGenerateColumns="False" ShowColumnFooters="False" >
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewSelectColumn Header="" Width="40" />
 
@@ -207,7 +207,7 @@
 
                             <telerik:GridViewDataColumn Header="办事内容" MaxWidth="140" DataMemberBinding="{Binding WorkType.Name}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="160" MaxWidth="160" DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="160" DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn Header="受理人" MinWidth="100" DataMemberBinding="{Binding WorkOfficer.Name}" HeaderTextAlignment="Center" />
 
