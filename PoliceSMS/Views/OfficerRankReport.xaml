@@ -131,7 +131,7 @@
 
                             <telerik:GridViewDataColumn MinWidth="30" Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn MinWidth="30" Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn MinWidth="100" Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Right" HeaderTextAlignment="Center" />
                             
                             <telerik:GridViewDataColumn MinWidth="100" Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Center" />
 
