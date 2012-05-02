@@ -24,17 +24,13 @@ namespace PoliceSMS.Views
         public StationRankReport()
         {
             InitializeComponent();
-            Loaded += new RoutedEventHandler(StationRankReport_Loaded);
-        }
-
-        void StationRankReport_Loaded(object sender, RoutedEventArgs e)
-        {
             DateTime endTime = DateTime.Now;
             DateTime beginTime = new DateTime(endTime.Year, endTime.Month, 1);
 
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
         }
+
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
