@@ -42,7 +42,7 @@
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Grid.Column="1" Margin="0 0 100 0" Foreground="White"  HorizontalAlignment="Right" VerticalAlignment="Center"  FontSize="24"  Text="短信评警系统"></TextBlock>
+                    <TextBlock Grid.Column="1" Margin="0 0 100 0" Foreground="White"  HorizontalAlignment="Right" VerticalAlignment="Center"  FontSize="24"  Text="阳光民意评警"></TextBlock>
                 </Grid>
             </Border>
 
