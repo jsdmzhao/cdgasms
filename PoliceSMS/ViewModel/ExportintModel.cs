@@ -102,7 +102,7 @@ namespace PoliceSMS.ViewModel
                     {
                         GridViewExportOptions exportOptions = new GridViewExportOptions();
                         exportOptions.Format = format;
-                        exportOptions.ShowColumnFooters = true;
+                        exportOptions.ShowColumnFooters = false;
                         exportOptions.ShowColumnHeaders = true;
                         exportOptions.ShowGroupFooters = true;
                         exportOptions.Encoding = Encoding.Unicode;
@@ -257,7 +257,7 @@ namespace PoliceSMS.ViewModel
 
                         GridViewExportOptions exportOptions = new GridViewExportOptions();
                         exportOptions.Format = format;
-                        exportOptions.ShowColumnFooters = true;
+                        exportOptions.ShowColumnFooters = false;
                         exportOptions.ShowColumnHeaders = true;
                         exportOptions.ShowGroupFooters = true;
                         exportOptions.Encoding = Encoding.UTF8;

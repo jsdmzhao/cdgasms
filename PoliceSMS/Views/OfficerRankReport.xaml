@@ -119,6 +119,7 @@
                     <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
+                                          CanUserSelect="False"
                                          RowStyleSelector="{StaticResource rowStyleSelector}"  
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
                         <telerik:RadGridView.ColumnGroups>
@@ -132,11 +133,11 @@
 
                             <telerik:GridViewDataColumn MinWidth="30" Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn MinWidth="100" Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn MinWidth="60" Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Right" HeaderTextAlignment="Center" />
                             
-                            <telerik:GridViewDataColumn MinWidth="100" Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn MinWidth="120" Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Center" />
 
-                            <telerik:GridViewDataColumn MinWidth="120" Header="短信评价满意" DataMemberBinding="{Binding StationRate}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn MinWidth="60" Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
                             <telerik:GridViewDataColumn MinWidth="70" Header="得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
