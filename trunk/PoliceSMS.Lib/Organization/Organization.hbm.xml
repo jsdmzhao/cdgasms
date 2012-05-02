@@ -7,6 +7,8 @@
 
     <property name="Name" column="Name" type="string"/>
 
+    <property name="SMSUnitType" column="SMSUnitType" type="int"/>
+
     <many-to-one name="Parent" column="ParentId" not-found="ignore" class="PoliceSMS.Lib.Organization.Organization" cascade="none" lazy="proxy"/>
 
     <bag name="Childs" table="PoliceStation" lazy="true" cascade="none" inverse="true">
