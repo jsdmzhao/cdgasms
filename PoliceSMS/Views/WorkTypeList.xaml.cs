@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using PoliceSMS.Comm;
 using PoliceSMS.Lib.SMS;
 using PoliceSMS.ViewModel;
+using Telerik.Windows;
+using Telerik.Windows.Controls.GridView;
 
 namespace PoliceSMS.Views
 {
@@ -23,6 +25,7 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(WorkTypeList_Loaded);
+            this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
         }
 
         void WorkTypeList_Loaded(object sender, RoutedEventArgs e)
@@ -115,6 +118,15 @@ namespace PoliceSMS.Views
                         ));
             }
         }
+        public void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
+        {
+            WorkType obj = gv.SelectedItem as WorkType;
+            if (obj != null)
+            {
+                WorkTypeForm frm = new WorkTypeForm(obj, getData);
 
+                Tools.OpenWindow("办事内容-编辑", frm, null);
+            }
+        }
     }
 }

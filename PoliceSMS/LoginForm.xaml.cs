@@ -82,8 +82,15 @@ namespace PoliceSMS
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            ScriptObject Show = HtmlPage.Window.GetProperty("closeWin") as ScriptObject;
-            Show.InvokeSelf();
+            try
+            {
+                ScriptObject Show = HtmlPage.Window.GetProperty("closeWin") as ScriptObject;
+                Show.InvokeSelf();
+            }
+            catch (Exception ex)
+            { 
+            
+            }
         }
 
         private void txtPass_KeyDown(object sender, KeyEventArgs e)
