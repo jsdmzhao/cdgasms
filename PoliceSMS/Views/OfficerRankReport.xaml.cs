@@ -67,7 +67,7 @@ namespace PoliceSMS.Views
                 };
 
                 //这里没有考虑权限
-                ser.GetListByHQLAsync("from Organization where Name like '%青羊%'");
+                ser.GetListByHQLAsync("from Organization where Name like '%青羊%' and SMSUnitType>0");
 
             }
             catch (Exception ex)

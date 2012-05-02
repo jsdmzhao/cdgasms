@@ -14,5 +14,7 @@ namespace PoliceSMS.Lib.Organization
 
         public virtual IList<Organization> Childs { get; set; }
 
+
+        public virtual int SMSUnitType { get; set; }
     }
 }
