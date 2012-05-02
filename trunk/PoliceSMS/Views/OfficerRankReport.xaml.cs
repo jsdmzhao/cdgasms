@@ -61,6 +61,7 @@ namespace PoliceSMS.Views
 
                     stations.Insert(0, orgNull);
 
+                    
                     cmbStation.ItemsSource = stations;
 
                 };
@@ -77,11 +78,16 @@ namespace PoliceSMS.Views
 
         private void LoadReport()
         {
+            if (cmbStation.SelectedItem == null)
+            {
+                Tools.ShowMessage("请选择单位!", "", false);
+                return;
+            }
             Tools.ShowMask(true);
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
-
+            
             Organization selOrg =(Organization) cmbStation.SelectedItem;
-
+            
             ser.LoadOfficerReportResultCompleted+= (object sender, ReportService.LoadOfficerReportResultCompletedEventArgs e) =>
                 {
                     int total = 0;
@@ -97,7 +103,7 @@ namespace PoliceSMS.Views
 
             TimeSpan span = endTime1 - beginTime1;
 
-
+            
             DateTime endTime2 = beginTime1.AddDays(-1);
 
             DateTime beginTime2 = endTime1.Add(-span);
