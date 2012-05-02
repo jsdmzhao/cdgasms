@@ -46,7 +46,8 @@ namespace PoliceSMS.Views
             cboxMark.ItemsSource = MarkState.CreateAry();
 
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
-            dateEnd.SelectedDate = DateTime.Now; ;
+            dateEnd.SelectedDate = DateTime.Now;
+
             getData();
         }
 
@@ -190,7 +191,7 @@ namespace PoliceSMS.Views
             Tools.ShowMask(true);
             BuildHql();
 
-            queryCondition.FirstResult = 0;
+            queryCondition.FirstResult = rDataPager1.PageIndex * PageSize; ;
 
             QueryPaging(queryCondition);
         }
@@ -260,6 +261,7 @@ namespace PoliceSMS.Views
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
+            rDataPager1.PageIndex = 0;
             getData();
         }
 
