@@ -42,11 +42,7 @@ namespace PoliceSMS.Views
             }
             else
             {
-                BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
-                binding.MaxReceivedMessageSize = int.MaxValue;
-                binding.MaxBufferSize = int.MaxValue;
-
-                OfficerService.OfficerServiceClient ser1 = new OfficerService.OfficerServiceClient(binding, new EndpointAddress(new Uri(Application.Current.Host.Source, "../OrganizationWcf/OfficerService.svc")));
+                OfficerService.OfficerServiceClient ser1 = new OfficerService.OfficerServiceClient();
                 //登录完成的事件
                 ser1.LoginCompleted += (object sender1, OfficerService.LoginCompletedEventArgs e1) =>
                 {

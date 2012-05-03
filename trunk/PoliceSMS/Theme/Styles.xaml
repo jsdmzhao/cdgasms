@@ -30,7 +30,9 @@
     for the content, then just delete the lines where it shows up.
     ***************************************************************************
     -->
-
+    <SolidColorBrush x:Key="HeaderBackground" Color="White" />
+    <SolidColorBrush x:Key="HeaderPanelInnerBorder" Color="White" />
+    <SolidColorBrush x:Key="HeaderPanelOuterBorder" telerik:MetroColors.Color="Accent"/>
 
     <System:Double x:Key="ContentMaxWidth">960</System:Double>
     <Style TargetType="TextBlock">

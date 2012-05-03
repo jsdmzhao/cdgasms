@@ -82,8 +82,8 @@
                                 <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
                             </Rectangle.Effect>
                         </Rectangle>
-                        <TextBlock Text="导出格式:" Margin="0 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                        <telerik:RadComboBox Margin="0,2 10 0"  Width="80" HorizontalAlignment="Right"
+                        <TextBlock Visibility="Collapsed"  Text="导出格式:" Margin="0 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        <telerik:RadComboBox Visibility="Collapsed"  Margin="0,2 10 0"  Width="80" HorizontalAlignment="Right"
                                                           Height="24"
                                  ItemsSource="{Binding ExportFormats, Source={StaticResource context}}"
                                  SelectedItem="{Binding SelectedExportFormat, Source={StaticResource context}, Mode=TwoWay}" SelectedIndex="0" />
@@ -138,11 +138,11 @@
                                                           Margin="0,0,0,0"
                                                           VerticalAlignment="Center" />
                     </StackPanel>
-                    
-                    <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2"></TextBlock>
-                    <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3"
-                                                DisplayMemberPath="Name"  x:Name="cboxOper"
-                                                          Width="140" 
+
+                    <TextBlock Text="评分类型:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2"></TextBlock>
+                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3"
+                                                DisplayMemberPath="Name"  x:Name="cboxGradeType"
+                                                          Width="140"
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
@@ -165,20 +165,22 @@
 
                     <TextBlock Text="单位:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3"
-                                                DisplayMemberPath="Name"  x:Name="cboxStation"
+                                                DisplayMemberPath="Name"  x:Name="cboxStation" SelectionChanged="cboxStation_SelectionChanged"
                                                           Width="140"
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
-					<TextBlock Text="评分类型:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="4"></TextBlock>
-                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5"
-                                                DisplayMemberPath="Name"  x:Name="cboxGradeType"
-                                                          Width="140"
+					
+
+                    <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="4"></TextBlock>
+                    <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5"
+                                                DisplayMemberPath="Name"  x:Name="cboxOper"
+                                                          Width="140" 
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
 
-                   <TextBlock Text="办事人姓名:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="6"></TextBlock>
+                    <TextBlock Text="办事人姓名:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="6"></TextBlock>
                     <TextBox Visibility="Visible" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="7" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="cboxName" Width="140" Height="24" Margin="5,0,0,0">
                     </TextBox>
 

@@ -218,6 +218,67 @@ namespace PoliceSMS.ViewModel
             return sb.ToString();
         }
 
+        public void ExportWithHeader(object parameter, string headerStr)
+        {
+            RadGridView grid = parameter as RadGridView;
+            if (grid != null)
+            {
+                grid.ElementExporting -= this.ElementExporting;
+                grid.ElementExporting += this.ElementExporting;
+
+                string extension = "";
+                ExportFormat format = ExportFormat.Html;
+
+                switch (SelectedExportFormat)
+                {
+                    case "Excel": extension = "xls";
+                        format = ExportFormat.Html;
+                        break;
+                    case "ExcelML": extension = "xml";
+                        format = ExportFormat.ExcelML;
+                        break;
+                    case "Word": extension = "doc";
+                        format = ExportFormat.Html;
+                        break;
+                    case "Csv": extension = "csv";
+                        format = ExportFormat.Csv;
+                        break;
+                }
+
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.DefaultExt = extension;
+                dialog.Filter = String.Format("{1} files (*.{0})|*.{0}|All files (*.*)|*.*", extension, SelectedExportFormat);
+                dialog.FilterIndex = 1;
+
+                if (dialog.ShowDialog() == true)
+                {
+                    using (Stream stream = dialog.OpenFile())
+                    {
+
+                        GridViewExportOptions exportOptions = new GridViewExportOptions();
+                        exportOptions.Format = format;
+                        exportOptions.ShowColumnFooters = false;
+                        exportOptions.ShowColumnHeaders = false;
+                        exportOptions.ShowGroupFooters = false;
+                        exportOptions.Encoding = Encoding.UTF8;
+
+                        grid.Export(stream, exportOptions);
+
+                        byte[] bs = new byte[stream.Length];
+                        stream.Seek(0, SeekOrigin.Begin);
+                        stream.Read(bs, 0, bs.Length);
+                        string str = Encoding.UTF8.GetString(bs, 0, bs.Length);
+                        string str1 = str.Insert(str.IndexOf('>', 0) + 1, headerStr);
+                        byte[] bys = Encoding.UTF8.GetBytes(str1);
+                        stream.Seek(0, SeekOrigin.Begin);
+                        stream.Write(bys, 0, bys.Length);
+                        stream.Flush();
+                    }
+
+                }
+            }
+        }
+
         public void ExportWithHeader(object parameter, Header header)
         {
             RadGridView grid = parameter as RadGridView;
