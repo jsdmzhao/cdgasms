@@ -25,11 +25,14 @@ namespace PoliceSMS.Views
         public StationRankReport()
         {
             InitializeComponent();
-            DateTime endTime = DateTime.Now;
-            DateTime beginTime = new DateTime(endTime.Year, endTime.Month, 1);
+            DateTime currMonth = DateTime.Now;
+            DateTime preMonth = currMonth.AddMonths(-1);
+            DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
+            DateTime endTime = new DateTime(currMonth.Year, currMonth.Month, 1);
 
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
+            
         }
 
 
@@ -38,7 +41,7 @@ namespace PoliceSMS.Views
             LoadReport();
         }
 
-        private void LoadReport()
+        public void LoadReport()
         {
             Tools.ShowMask(true);
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
@@ -54,14 +57,14 @@ namespace PoliceSMS.Views
                 };
 
             DateTime beginTime1 = dateStart.SelectedDate.Value;
-            DateTime endTime1 = dateEnd.SelectedDate.Value.AddDays(1);
+            DateTime endTime1 = dateEnd.SelectedDate.Value;
 
             TimeSpan span = endTime1 - beginTime1;
-
+            endTime1 = endTime1.AddDays(1);
 
             DateTime endTime2 = beginTime1.AddDays(-1);
 
-            DateTime beginTime2 = endTime1.Add(-span);
+            DateTime beginTime2 = endTime2.Add(-span);
 
             ser.LoadStationReportResultAsync(UnitType, beginTime1, endTime1, beginTime2, endTime2);
 

@@ -114,7 +114,9 @@ namespace PoliceSMS.Views
                     {
                         int total = 0;
                         var list = JsonSerializerHelper.JsonToEntities<Officer>(e.Result, out total);
-
+                        var removeList = list.Where(c => c.Name == "吴涛" || c.Name == "贾红兵").ToList();
+                        for (int i = 0; i < removeList.Count; i++)
+                            list.Remove(removeList[i]);
                         cboxOper.ItemsSource = list;
 
                     };
