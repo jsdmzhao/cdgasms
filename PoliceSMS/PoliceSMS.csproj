@@ -414,6 +414,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="HeaderTemplate\StationHeader.htm" />
+    <EmbeddedResource Include="HeaderTemplate\OfficerHeader.htm" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\WorkTypeService\WorkTypeService.wsdl" />
     <None Include="Service References\WorkTypeService\WorkTypeService.xsd">

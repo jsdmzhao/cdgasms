@@ -14,6 +14,7 @@ using PoliceSMS.Comm;
 using PoliceSMS.ViewModel;
 using PoliceSMS.Lib.Report;
 using Telerik.Windows.Controls;
+using System.Reflection;
 
 namespace PoliceSMS.Views
 {
@@ -70,18 +71,19 @@ namespace PoliceSMS.Views
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
             ExportingModel export = new ExportingModel();
-            Header header = new Header();
-            HeaderCell[] cells = new HeaderCell[6];
-            cells[0] = new HeaderCell { ColSpan = 5, Name = "" };
-            cells[1] = new HeaderCell { ColSpan = 2, Name = "非常满意" };
-            cells[2] = new HeaderCell { ColSpan = 2, Name = "满意" };
-            cells[3] = new HeaderCell { ColSpan = 2, Name = "一般" };
-            cells[4] = new HeaderCell { ColSpan = 2, Name = "业务不熟" };
-            cells[5] = new HeaderCell { ColSpan = 2, Name = "态度欠佳" };
-            header.cells = cells;
 
-            export.SelectedExportFormat = exportType.SelectedItem as string;
-            export.ExportWithHeader(gv, header);
+            export.SelectedExportFormat = "Excel";
+
+            Assembly assembly = GetType().Assembly;
+            string html = string.Empty;
+            using (System.IO.Stream htmlStream = assembly.GetManifestResourceStream("PoliceSMS.HeaderTemplate.StationHeader.htm"))
+            {
+                byte[] bsHtml = new byte[htmlStream.Length];
+                htmlStream.Read(bsHtml, 0, (int)htmlStream.Length);
+                html = Encoding.UTF8.GetString(bsHtml, 0, bsHtml.Length);
+            }
+
+            export.ExportWithHeader(gv, html);
         }
 
     }

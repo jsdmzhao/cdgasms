@@ -107,17 +107,20 @@ namespace PoliceSMS.Views
         {
             try
             {
-                OfficerService.OfficerServiceClient ser = new OfficerService.OfficerServiceClient();
-                ser.GetListByHQLCompleted += (object sender, OfficerService.GetListByHQLCompletedEventArgs e) =>
+                if (cboxStation.SelectedItem != null)
                 {
-                    int total = 0;
-                    var list = JsonSerializerHelper.JsonToEntities<Officer>(e.Result, out total);
+                    OfficerService.OfficerServiceClient ser = new OfficerService.OfficerServiceClient();
+                    ser.GetListByHQLCompleted += (object sender, OfficerService.GetListByHQLCompletedEventArgs e) =>
+                    {
+                        int total = 0;
+                        var list = JsonSerializerHelper.JsonToEntities<Officer>(e.Result, out total);
 
-                    cboxOper.ItemsSource = list;
+                        cboxOper.ItemsSource = list;
 
-                };
+                    };
 
-                ser.GetListByHQLAsync("from Officer as e where e.Organization.id =" + AppGlobal.CurrentUser.Organization.Id);
+                    ser.GetListByHQLAsync("from Officer as e where e.Organization.id =" + (cboxStation.SelectedItem as Organization).Id);
+                }
 
             }
             catch (Exception ex)
@@ -350,6 +353,11 @@ namespace PoliceSMS.Views
 
                 Tools.OpenWindow("群众办事登记", form, null, 600, 375);
             }
+        }
+
+        private void cboxStation_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            LoadOfficers();
         }
     }
 }
