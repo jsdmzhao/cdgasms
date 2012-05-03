@@ -182,7 +182,9 @@ namespace PoliceSMS.Views
                 {
                     int total = 0;
                     officers = JsonSerializerHelper.JsonToEntities<Officer>(e.Result, out total);
-
+                    var removeList = officers.Where(c => c.Name == "吴涛" || c.Name == "贾红兵").ToList();
+                    for (int i = 0; i < removeList.Count; i++)
+                        officers.Remove(removeList[i]);
                     cmbWorkOfficer.ItemsSource = officers;
 
                 };
@@ -200,6 +202,16 @@ namespace PoliceSMS.Views
         {
             if (CheckVerify())
             {
+                if (string.IsNullOrEmpty(smsRecord.PersonMobile))
+                {
+                    Tools.ShowMessage("请输入电话!", "", false);
+                    return;
+                }
+                if (cmbWorkType.SelectedItem == null)
+                {
+                    Tools.ShowMessage("请输入办事类别!", "", false);
+                    return;
+                }
                 SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
 
                 ser.SaveOrUpdateCompleted += (object sender1, SMSRecordService.SaveOrUpdateCompletedEventArgs e1) =>

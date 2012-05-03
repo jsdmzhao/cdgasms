@@ -26,6 +26,9 @@ namespace PoliceSMS.Views
             page1.UnitType = 1;
             //page2.UnitType = 2;
             page3.UnitType = 3;
+
+            page1.LoadReport();
+            page3.LoadReport();
         }
 
 

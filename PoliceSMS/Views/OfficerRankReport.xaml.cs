@@ -30,11 +30,11 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
 
-            DateTime endTime = DateTime.Now;
-            DateTime beginTime = new DateTime(endTime.Year, endTime.Month, 1);
+            DateTime currWeek = DateTime.Now;
+            DateTime preWeek = currWeek.AddDays(-7);
 
-            dateEnd.SelectedDate = endTime;
-            dateStart.SelectedDate = beginTime;
+            dateEnd.SelectedDate = currWeek;
+            dateStart.SelectedDate = preWeek;
 
             LoadStation();
         }
@@ -100,14 +100,15 @@ namespace PoliceSMS.Views
                 };
 
             DateTime beginTime1 = dateStart.SelectedDate.Value;
-            DateTime endTime1 = dateEnd.SelectedDate.Value.AddDays(1);
+            DateTime endTime1 = dateEnd.SelectedDate.Value;
 
             TimeSpan span = endTime1 - beginTime1;
+            endTime1 = endTime1.AddDays(1);
 
             
             DateTime endTime2 = beginTime1.AddDays(-1);
 
-            DateTime beginTime2 = endTime1.Add(-span);
+            DateTime beginTime2 = endTime2.Add(-span);
 
             int unitId = selOrg == null ? 0 : selOrg.Id;
 
