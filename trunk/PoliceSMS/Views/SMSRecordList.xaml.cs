@@ -185,6 +185,12 @@ namespace PoliceSMS.Views
                 int total = 0;
                 IList<SMSRecord> list = JsonSerializerHelper.JsonToEntities<SMSRecord>(e.Result, out total);
 
+                foreach (var item in list)
+                {
+                    if(item.IsResponse)
+                        item.CheckImage = new Uri(@"/Images/check.png", UriKind.Relative);
+                }
+
                 gv.ItemsSource = list;
 
                 rDataPager1.ItemCount = total;
