@@ -38,7 +38,7 @@ namespace PoliceSMS.Web.Report
             }
         }
 
-        public string LoadStationReportResult(int UnitType, DateTime beginTime1, DateTime endTime1,DateTime beginTime2, DateTime endTime2)
+        public string LoadStationReportResult(int UnitType, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2)
         {
             ISession session=HbmSessionFactory.OpenSession();
 
@@ -105,7 +105,7 @@ namespace PoliceSMS.Web.Report
             return PackJsonListResult("true", json, string.Empty, result.Count);
         }
 
-        public string LoadOfficerReportResult(int UnitId, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2)
+        public string LoadOfficerReportResult(int UnitId, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2, string officerName)
         {
             ISession session = HbmSessionFactory.OpenSession();
 
@@ -168,6 +168,9 @@ namespace PoliceSMS.Web.Report
 
                 result.Add(srr);
             }
+
+            if (!string.IsNullOrEmpty(officerName))
+                result = result.Where(c => c.OfficerName.Contains(officerName)).ToList();
 
             string json = JsonSerializerHelper.EntityToJson(result);
 

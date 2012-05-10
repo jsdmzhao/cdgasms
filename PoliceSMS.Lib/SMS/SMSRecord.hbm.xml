@@ -27,6 +27,8 @@
 
     <many-to-one name="WorkOfficer" column="WorkOfficerId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
 
+    <many-to-one name="Leader" column="LeaderId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
+
     <property name="IsResponse" column="IsValuation" type="bool"/>
 
     <many-to-one name="GradeType" column="ValuationId" not-found="ignore" class="PoliceSMS.Lib.SMS.GradeType" cascade="none" lazy="proxy"/>
@@ -36,6 +38,8 @@
     <property name="IsSend" column="isSend" type="bool"/>
 
     <property name="WorkNo" column="Number" type="string"/>
+
+    <property name="YearMonth" column="YearMonth" type="string"/>
     
   </class>
 

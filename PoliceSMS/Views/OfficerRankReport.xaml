@@ -25,57 +25,56 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Margin="10 6" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
+
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="500"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width="195"/>
+                        <ColumnDefinition Width="195"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Row="0" Grid.Column="0"  Margin="10 0 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"></ColumnDefinition>
-                            <ColumnDefinition Width="260"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Text="时间:" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"></TextBlock>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+                        <TextBlock Text="时间:" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
                             <telerik:RadDateTimePicker  InputMode="DatePicker"
-                                                     DisplayFormat="Long"
-                                                          Width="120"
-                                                         x:Name="dateStart"
-                                                          Height="22"
-                                                          Margin="5,0,0,0"
-                                                          VerticalAlignment="Center" />
+                                                         DisplayFormat="Long"
+                                                              Width="120"
+                                                             x:Name="dateStart"
+                                                              Height="22"
+                                                              Margin="5,0,0,0"
+                                                              VerticalAlignment="Center" />
                             <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
                             <telerik:RadDateTimePicker  InputMode="DatePicker"
-                                                     DisplayFormat="Long"
-                                                          Width="120"
-                                                         x:Name="dateEnd"
-                                                          Height="22"
-                                                          Margin="0,0,0,0"
-                                                          VerticalAlignment="Center" />
+                                                         DisplayFormat="Long"
+                                                              Width="120"
+                                                             x:Name="dateEnd"
+                                                              Height="22"
+                                                              Margin="0,0,0,0"
+                                                              VerticalAlignment="Center" />
 
 
 
                         </StackPanel>
+                    </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
-                            <TextBlock Text="单位:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
-                            <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" 
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1">
+                        <TextBlock Text="单位:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                        <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" 
                                                     DisplayMemberPath="Name"  
                                                               Width="140" x:Name="cmbStation"
                                                               Height="24"
                                                               Margin="5,0,0,0">
-                            </telerik:RadComboBox>
-                        </StackPanel>
+                        </telerik:RadComboBox>
+                    </StackPanel>
 
-                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
+                        <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                        <TextBox Height="24" Margin="5,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"
+                                 FontSize="11"  Width="120" x:Name="tbOfficerName"/>
+                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="20 0 0 0"
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="3" Margin="20 0 0 0"
                                     HorizontalAlignment="Right" VerticalAlignment="Center" >
 
                         <telerik:RadButton x:Name="btnQuery" HorizontalAlignment="Right" Margin="0 0 20 0"

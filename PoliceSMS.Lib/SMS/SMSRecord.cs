@@ -52,6 +52,11 @@ namespace PoliceSMS.Lib.SMS
         /// </summary>
         public virtual Officer WorkOfficer { get; set; }
 
+        /// <summary>
+        /// 值班领导
+        /// </summary>
+        public virtual Officer Leader { get; set; }
+
         public virtual OfficerType OfficerType { get; set; }
         /// <summary>
         /// 评分类别
@@ -77,6 +82,9 @@ namespace PoliceSMS.Lib.SMS
         /// 记录号
         /// </summary>
         public virtual string WorkNo { get; set; }
+
+
+        public virtual string YearMonth { get; set; }
 
     }
 }

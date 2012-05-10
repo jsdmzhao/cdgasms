@@ -26,6 +26,7 @@
         <xs:element minOccurs="0" name="endTime1" type="xs:dateTime" />
         <xs:element minOccurs="0" name="beginTime2" type="xs:dateTime" />
         <xs:element minOccurs="0" name="endTime2" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="officerName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
