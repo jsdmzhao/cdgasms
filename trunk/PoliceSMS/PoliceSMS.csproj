@@ -210,6 +210,9 @@
     <Compile Include="Views\StationRankReport.xaml.cs">
       <DependentUpon>StationRankReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TotalReport.xaml.cs">
+      <DependentUpon>TotalReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WorkTypeForm.xaml.cs">
       <DependentUpon>WorkTypeForm.xaml</DependentUpon>
     </Compile>
@@ -295,6 +298,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StationRankReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TotalReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -416,6 +423,7 @@
     </None>
     <EmbeddedResource Include="HeaderTemplate\StationHeader.htm" />
     <EmbeddedResource Include="HeaderTemplate\OfficerHeader.htm" />
+    <EmbeddedResource Include="HeaderTemplate\TotalHeader.htm" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\WorkTypeService\WorkTypeService.wsdl" />
     <None Include="Service References\WorkTypeService\WorkTypeService.xsd">

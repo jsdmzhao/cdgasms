@@ -27,6 +27,11 @@ namespace PoliceSMS.ReportService {
         System.IAsyncResult BeginLoadOfficerReportResult(int UnitId, System.DateTime beginTime1, System.DateTime endTime1, System.DateTime beginTime2, System.DateTime endTime2, string officerName, System.AsyncCallback callback, object asyncState);
         
         string EndLoadOfficerReportResult(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IReportWcf/LoadTotalReportResult", ReplyAction="http://tempuri.org/IReportWcf/LoadTotalReportResultResponse")]
+        System.IAsyncResult BeginLoadTotalReportResult(int start, int end, System.AsyncCallback callback, object asyncState);
+        
+        string EndLoadTotalReportResult(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,6 +78,25 @@ namespace PoliceSMS.ReportService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LoadTotalReportResultCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public LoadTotalReportResultCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ReportWcfClient : System.ServiceModel.ClientBase<PoliceSMS.ReportService.IReportWcf>, PoliceSMS.ReportService.IReportWcf {
         
         private BeginOperationDelegate onBeginLoadStationReportResultDelegate;
@@ -86,6 +110,12 @@ namespace PoliceSMS.ReportService {
         private EndOperationDelegate onEndLoadOfficerReportResultDelegate;
         
         private System.Threading.SendOrPostCallback onLoadOfficerReportResultCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginLoadTotalReportResultDelegate;
+        
+        private EndOperationDelegate onEndLoadTotalReportResultDelegate;
+        
+        private System.Threading.SendOrPostCallback onLoadTotalReportResultCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -143,6 +173,8 @@ namespace PoliceSMS.ReportService {
         public event System.EventHandler<LoadStationReportResultCompletedEventArgs> LoadStationReportResultCompleted;
         
         public event System.EventHandler<LoadOfficerReportResultCompletedEventArgs> LoadOfficerReportResultCompleted;
+        
+        public event System.EventHandler<LoadTotalReportResultCompletedEventArgs> LoadTotalReportResultCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -258,6 +290,54 @@ namespace PoliceSMS.ReportService {
                         officerName}, this.onEndLoadOfficerReportResultDelegate, this.onLoadOfficerReportResultCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PoliceSMS.ReportService.IReportWcf.BeginLoadTotalReportResult(int start, int end, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginLoadTotalReportResult(start, end, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string PoliceSMS.ReportService.IReportWcf.EndLoadTotalReportResult(System.IAsyncResult result) {
+            return base.Channel.EndLoadTotalReportResult(result);
+        }
+        
+        private System.IAsyncResult OnBeginLoadTotalReportResult(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int start = ((int)(inValues[0]));
+            int end = ((int)(inValues[1]));
+            return ((PoliceSMS.ReportService.IReportWcf)(this)).BeginLoadTotalReportResult(start, end, callback, asyncState);
+        }
+        
+        private object[] OnEndLoadTotalReportResult(System.IAsyncResult result) {
+            string retVal = ((PoliceSMS.ReportService.IReportWcf)(this)).EndLoadTotalReportResult(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnLoadTotalReportResultCompleted(object state) {
+            if ((this.LoadTotalReportResultCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.LoadTotalReportResultCompleted(this, new LoadTotalReportResultCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void LoadTotalReportResultAsync(int start, int end) {
+            this.LoadTotalReportResultAsync(start, end, null);
+        }
+        
+        public void LoadTotalReportResultAsync(int start, int end, object userState) {
+            if ((this.onBeginLoadTotalReportResultDelegate == null)) {
+                this.onBeginLoadTotalReportResultDelegate = new BeginOperationDelegate(this.OnBeginLoadTotalReportResult);
+            }
+            if ((this.onEndLoadTotalReportResultDelegate == null)) {
+                this.onEndLoadTotalReportResultDelegate = new EndOperationDelegate(this.OnEndLoadTotalReportResult);
+            }
+            if ((this.onLoadTotalReportResultCompletedDelegate == null)) {
+                this.onLoadTotalReportResultCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLoadTotalReportResultCompleted);
+            }
+            base.InvokeAsync(this.onBeginLoadTotalReportResultDelegate, new object[] {
+                        start,
+                        end}, this.onEndLoadTotalReportResultDelegate, this.onLoadTotalReportResultCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -366,6 +446,20 @@ namespace PoliceSMS.ReportService {
             public string EndLoadOfficerReportResult(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("LoadOfficerReportResult", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginLoadTotalReportResult(int start, int end, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = start;
+                _args[1] = end;
+                System.IAsyncResult _result = base.BeginInvoke("LoadTotalReportResult", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndLoadTotalReportResult(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("LoadTotalReportResult", _args, result)));
                 return _result;
             }
         }

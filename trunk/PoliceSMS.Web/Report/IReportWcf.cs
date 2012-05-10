@@ -17,5 +17,7 @@ namespace PoliceSMS.Web.Report
         [OperationContract]
         string LoadOfficerReportResult(int UnitId, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2,string officerName);
 
+        [OperationContract]
+        string LoadTotalReportResult(int start, int end);
     }
 }
