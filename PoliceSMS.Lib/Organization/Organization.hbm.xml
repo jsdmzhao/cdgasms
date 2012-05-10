@@ -16,6 +16,7 @@
       <one-to-many class= "PoliceSMS.Lib.Organization.Organization"/>
     </bag>
 
+    <property name="OrderIndex" column="OrderIndex" type="int"/>
   </class>
 
 </hibernate-mapping>

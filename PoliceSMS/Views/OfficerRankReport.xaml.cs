@@ -68,7 +68,7 @@ namespace PoliceSMS.Views
                 };
 
                 //这里没有考虑权限
-                ser.GetListByHQLAsync("from Organization where Name like '%青羊%' and SMSUnitType>0");
+                ser.GetListByHQLAsync("from Organization where Name like '%青羊%' and SMSUnitType>0 order by OrderIndex ");
 
             }
             catch (Exception ex)
@@ -112,7 +112,7 @@ namespace PoliceSMS.Views
 
             int unitId = selOrg == null ? 0 : selOrg.Id;
 
-            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2, tbOfficerName.Text);
+            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2, string.Format("{0}%", tbOfficerName.Text));
 
         }
 

@@ -55,6 +55,14 @@
                             <views:OfficerRankReport></views:OfficerRankReport>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="全局统计">
+                        <telerikNavigation:RadTabItem.Header>
+                            <TextBlock Text="全局统计" Margin="19 2 19 0" />
+                        </telerikNavigation:RadTabItem.Header>
+                        <telerikNavigation:RadTabItem.Content>
+                            <views:TotalReport></views:TotalReport>
+                        </telerikNavigation:RadTabItem.Content>
+                    </telerikNavigation:RadTabItem>
                 </telerikNavigation:RadTabControl>
 
             </Grid>

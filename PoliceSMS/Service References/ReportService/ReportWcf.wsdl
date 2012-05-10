@@ -18,6 +18,12 @@
   <wsdl:message name="IReportWcf_LoadOfficerReportResult_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoadOfficerReportResultResponse" />
   </wsdl:message>
+  <wsdl:message name="IReportWcf_LoadTotalReportResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadTotalReportResult" />
+  </wsdl:message>
+  <wsdl:message name="IReportWcf_LoadTotalReportResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadTotalReportResultResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReportWcf">
     <wsdl:operation name="LoadStationReportResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IReportWcf/LoadStationReportResult" message="tns:IReportWcf_LoadStationReportResult_InputMessage" />
@@ -26,6 +32,10 @@
     <wsdl:operation name="LoadOfficerReportResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IReportWcf/LoadOfficerReportResult" message="tns:IReportWcf_LoadOfficerReportResult_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReportWcf/LoadOfficerReportResultResponse" message="tns:IReportWcf_LoadOfficerReportResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadTotalReportResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportWcf/LoadTotalReportResult" message="tns:IReportWcf_LoadTotalReportResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportWcf/LoadTotalReportResultResponse" message="tns:IReportWcf_LoadTotalReportResult_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReportWcf" type="tns:IReportWcf">
@@ -41,6 +51,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoadOfficerReportResult">
       <soap:operation soapAction="http://tempuri.org/IReportWcf/LoadOfficerReportResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTotalReportResult">
+      <soap:operation soapAction="http://tempuri.org/IReportWcf/LoadTotalReportResult" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

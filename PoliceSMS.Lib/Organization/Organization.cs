@@ -16,5 +16,7 @@ namespace PoliceSMS.Lib.Organization
 
 
         public virtual int SMSUnitType { get; set; }
+
+        public virtual int OrderIndex { get; set; }
     }
 }
