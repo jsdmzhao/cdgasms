@@ -86,5 +86,26 @@ namespace PoliceSMS.Lib.SMS
 
         public virtual string YearMonth { get; set; }
 
+        /// <summary>
+        /// 是否回复图片
+        /// </summary>
+        public virtual Uri CheckImage { get; set; }
+
+        /// <summary>
+        /// 是否回复图片
+        /// </summary>
+        public virtual string IsResponseStr
+        {
+            get
+            {
+                if (IsResponse)
+                    return "是";
+                else
+                    return "";
+            }
+            set
+            {
+            }
+        }
     }
 }
