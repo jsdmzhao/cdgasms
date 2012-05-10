@@ -30,11 +30,12 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
 
-            DateTime currWeek = DateTime.Now;
-            DateTime preWeek = currWeek.AddDays(-7);
+            DateTime preMonth = DateTime.Now.AddMonths(-1);
+            DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
+            DateTime endTime = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
 
-            dateEnd.SelectedDate = currWeek;
-            dateStart.SelectedDate = preWeek;
+            dateEnd.SelectedDate = endTime;
+            dateStart.SelectedDate = beginTime;
 
             LoadStation();
         }
@@ -84,7 +85,7 @@ namespace PoliceSMS.Views
                 Tools.ShowMessage("请选择单位!", "", false);
                 return;
             }
-            Tools.ShowMask(true);
+            //Tools.ShowMask(true);
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
             
             Organization selOrg =(Organization) cmbStation.SelectedItem;
@@ -95,8 +96,8 @@ namespace PoliceSMS.Views
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                     gv.ItemsSource = result;
 
-                    gv.Items.Refresh();
-                    Tools.ShowMask(false);
+                    //gv.Items.Refresh();
+                    //Tools.ShowMask(false);
                 };
 
             DateTime beginTime1 = dateStart.SelectedDate.Value;

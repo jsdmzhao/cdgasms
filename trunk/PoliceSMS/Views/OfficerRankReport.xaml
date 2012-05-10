@@ -1,4 +1,4 @@
-﻿<navigation:Page x:Class="PoliceSMS.Views.OfficerRankReport"
+﻿<navigation:Page xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  x:Class="PoliceSMS.Views.OfficerRankReport"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -317,7 +317,7 @@
                                     </Border>
                                 </Border>
                             </Grid>
-                            <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                            <telerik:RadGridView  BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single"
                                           CanUserSelect="False" ShowColumnHeaders="False"

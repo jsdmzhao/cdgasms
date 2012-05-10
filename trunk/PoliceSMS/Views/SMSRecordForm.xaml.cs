@@ -249,6 +249,7 @@ namespace PoliceSMS.Views
                     smsRecord.LoginOfficer = AppGlobal.CurrentUser;
                     smsRecord.Organization = AppGlobal.CurrentUser.Organization;
                     smsRecord.WorkDate = DateTime.Now;
+                    smsRecord.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
                     smsRecord.GradeType = new GradeType() { Id = 3 };
                 }
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);

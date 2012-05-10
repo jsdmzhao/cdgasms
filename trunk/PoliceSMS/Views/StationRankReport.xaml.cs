@@ -25,10 +25,9 @@ namespace PoliceSMS.Views
         public StationRankReport()
         {
             InitializeComponent();
-            DateTime currMonth = DateTime.Now;
-            DateTime preMonth = currMonth.AddMonths(-1);
+            DateTime preMonth = DateTime.Now.AddMonths(-1);
             DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
-            DateTime endTime = new DateTime(currMonth.Year, currMonth.Month, 1);
+            DateTime endTime = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
 
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
