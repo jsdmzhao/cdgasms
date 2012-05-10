@@ -282,7 +282,7 @@ namespace PoliceSMS.Views
             rDataPager1.PageIndex = 0;
             frm.SaveCallBack = getData;
 
-            Tools.OpenWindow("群众办事登记-新增", frm, null, 600, 375);
+            Tools.OpenWindow("群众办事登记-新增", frm, null, 600, 400);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -292,7 +292,7 @@ namespace PoliceSMS.Views
             {
                 SMSRecordForm frm = new SMSRecordForm(obj);
                 frm.SaveCallBack = getData;
-                Tools.OpenWindow("群众办事登记-编辑", frm, null, 600, 375);
+                Tools.OpenWindow("群众办事登记-编辑", frm, null, 600, 400);
             }
         }
 
@@ -353,7 +353,7 @@ namespace PoliceSMS.Views
                 if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
                     form.IsEnabled = true;
 
-                Tools.OpenWindow("群众办事登记", form, null, 600, 375);
+                Tools.OpenWindow("群众办事登记", form, null, 600, 400);
             }
         }
 

@@ -112,7 +112,7 @@ namespace PoliceSMS.Views
 
             int unitId = selOrg == null ? 0 : selOrg.Id;
 
-            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2);
+            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2, tbOfficerName.Text);
 
         }
 

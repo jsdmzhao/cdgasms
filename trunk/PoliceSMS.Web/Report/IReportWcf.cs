@@ -15,7 +15,7 @@ namespace PoliceSMS.Web.Report
         string LoadStationReportResult(int UnitType, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2);
 
         [OperationContract]
-        string LoadOfficerReportResult(int UnitId, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2);
+        string LoadOfficerReportResult(int UnitId, DateTime beginTime1, DateTime endTime1, DateTime beginTime2, DateTime endTime2,string officerName);
 
     }
 }

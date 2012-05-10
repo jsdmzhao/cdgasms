@@ -185,7 +185,7 @@ namespace PoliceSMS.Views
                     var removeList = officers.Where(c => c.Name == "吴涛" || c.Name == "贾红兵").ToList();
                     for (int i = 0; i < removeList.Count; i++)
                         officers.Remove(removeList[i]);
-                    cmbWorkOfficer.ItemsSource = officers;
+                    cmbWorkOfficer.ItemsSource = cmbLeader.ItemsSource = officers;
 
                 };
 
@@ -202,6 +202,11 @@ namespace PoliceSMS.Views
         {
             if (CheckVerify())
             {
+                if (string.IsNullOrEmpty(smsRecord.PersonName))
+                {
+                    Tools.ShowMessage("请输入姓名!", "", false);
+                    return;
+                }
                 if (string.IsNullOrEmpty(smsRecord.PersonMobile))
                 {
                     Tools.ShowMessage("请输入电话!", "", false);
@@ -210,6 +215,21 @@ namespace PoliceSMS.Views
                 if (cmbWorkType.SelectedItem == null)
                 {
                     Tools.ShowMessage("请输入办事类别!", "", false);
+                    return;
+                }
+                if (string.IsNullOrEmpty(smsRecord.WorkNo))
+                {
+                    Tools.ShowMessage("请输入流水号!", "", false);
+                    return;
+                }
+                if (cmbLeader.SelectedItem == null)
+                {
+                    Tools.ShowMessage("请输入值班领导!", "", false);
+                    return;
+                }
+                if (cmbWorkOfficer.SelectedItem == null)
+                {
+                    Tools.ShowMessage("请输入受理人!", "", false);
                     return;
                 }
                 SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
