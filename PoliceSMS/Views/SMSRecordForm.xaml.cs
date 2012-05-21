@@ -43,9 +43,12 @@ namespace PoliceSMS.Views
             
         }
 
+        bool isEdit = false;
         public SMSRecordForm(SMSRecord editObj)
         {
             InitializeComponent();
+            isEdit = true;
+            smsRecord = editObj;
             Loaded += new RoutedEventHandler(SMSRecordForm_Loaded);
             SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
             ser.GetByIdCompleted +=
@@ -189,7 +192,8 @@ namespace PoliceSMS.Views
 
                 };
 
-                ser.GetListByHQLAsync("from Officer as e where e.Organization.id =" + AppGlobal.CurrentUser.Organization.Id);
+                int orgId = isEdit ? smsRecord.Organization.Id : AppGlobal.CurrentUser.Organization.Id;
+                ser.GetListByHQLAsync(string.Format("from Officer as e where e.Organization.id = {0} order by e.Name", orgId));
 
             }
             catch (Exception ex)

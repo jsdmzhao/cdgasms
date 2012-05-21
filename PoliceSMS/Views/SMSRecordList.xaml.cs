@@ -121,7 +121,7 @@ namespace PoliceSMS.Views
 
                     };
 
-                    ser.GetListByHQLAsync("from Officer as e where e.Organization.id =" + (cboxStation.SelectedItem as Organization).Id);
+                    ser.GetListByHQLAsync(string.Format("from Officer as e where e.Organization.id = {0} order by e.Name" , (cboxStation.SelectedItem as Organization).Id));
                 }
 
             }
