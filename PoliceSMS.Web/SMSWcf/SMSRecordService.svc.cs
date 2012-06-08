@@ -49,7 +49,11 @@ namespace PoliceSMS.Web.SMSWcf
                 ITransaction tx = null;
 
                 SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
-
+                if (entity.Id == 0)
+                {
+                    entity.WorkDate = DateTime.Now;
+                    entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
+                }
                 //DunLibrary.User.User u = sess.Get<DunLibrary.User.User>(2);
 
                 //DunLibrary.Dun.VisitRecord vr = entity as DunLibrary.Dun.VisitRecord;
@@ -66,6 +70,41 @@ namespace PoliceSMS.Web.SMSWcf
                     //正确的做法是定义个包含Id的interface，所有要持久化的类都实现这个interface
                     dynamic d = entity;
                     return PackJsonResult("true", d.Id.ToString(), string.Empty);
+                }
+                catch (Exception ex)
+                {
+                    if (tx != null && tx.IsActive)
+                        tx.Rollback();
+
+                    return PackJsonResult("false", "0", ex.Message);
+                }
+            }
+        }
+
+
+        public virtual string SaveOrUpdateList(string json)
+        {
+            using (ISession sess = HbmSessionFactory.OpenSession())
+            {
+                ITransaction tx = null;
+
+                List<SMSRecord> list = JsonSerializerHelper.JsonToEntity<List<SMSRecord>>(json);
+
+                try
+                {
+                    tx = sess.BeginTransaction();
+                    foreach (var entity in list)
+                    {
+                        if (entity.Id == 0)
+                        {
+                            entity.WorkDate = DateTime.Now;
+                            entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
+                        }
+                        sess.SaveOrUpdate(entity);
+                        
+                    }
+                    tx.Commit();
+                    return PackJsonResult("true", "0", string.Empty);
                 }
                 catch (Exception ex)
                 {

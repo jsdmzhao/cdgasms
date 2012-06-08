@@ -26,11 +26,11 @@
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
-                <binding name="BasicHttpBinding_ISMSRecordService1" maxBufferSize="2147483647"
+                <binding name="BasicHttpBinding_IReportWcf" maxBufferSize="2147483647"
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
-                <binding name="BasicHttpBinding_IReportWcf" maxBufferSize="2147483647"
+                <binding name="BasicHttpBinding_ISMSRecordService" maxBufferSize="2147483647"
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
@@ -55,12 +55,12 @@
             <endpoint address="http://localhost:1415/OrganizationWcf/OrganizationService.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IOrganizationService1"
                 contract="OrganizationService.IOrganizationService" name="BasicHttpBinding_IOrganizationService1" />
-            <endpoint address="http://localhost:1415/SMSWcf/SMSRecordService.svc"
-                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISMSRecordService1"
-                contract="SMSRecordService.ISMSRecordService" name="BasicHttpBinding_ISMSRecordService1" />
             <endpoint address="http://localhost:1415/Report/ReportWcf.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IReportWcf"
                 contract="ReportService.IReportWcf" name="BasicHttpBinding_IReportWcf" />
+            <endpoint address="http://localhost:1415/SMSWcf/SMSRecordService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISMSRecordService"
+                contract="SMSRecordService.ISMSRecordService" name="BasicHttpBinding_ISMSRecordService" />
         </client>
     </system.serviceModel>
 </configuration>

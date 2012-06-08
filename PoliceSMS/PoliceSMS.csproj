@@ -212,6 +212,12 @@
     <Compile Include="Views\StationRankReport.xaml.cs">
       <DependentUpon>StationRankReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SupervisionList.xaml.cs">
+      <DependentUpon>SupervisionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SupervisionForm.xaml.cs">
+      <DependentUpon>SupervisionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TotalReport.xaml.cs">
       <DependentUpon>TotalReport.xaml</DependentUpon>
     </Compile>
@@ -300,6 +306,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StationRankReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SupervisionList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SupervisionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

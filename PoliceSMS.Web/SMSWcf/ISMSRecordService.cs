@@ -24,6 +24,9 @@ namespace PoliceSMS.Web.SMSWcf
         /// <returns></returns>
         [OperationContract]
         string SaveOrUpdate(string json);
+
+        [OperationContract]
+        string SaveOrUpdateList(string json);
         /// <summary>
         /// 删除实体对象
         /// </summary>

@@ -117,8 +117,7 @@ namespace PoliceSMS.Views
                     cmbGradeType.ItemsSource = gradeTypes;
 
                 };
-
-                ser.GetListByHQLAsync("from GradeType");
+                ser.GetListByHQLAsync("from GradeType where IsSupervise = " + false + " and IsUsed = " + true);
 
             }
             catch (Exception ex)
@@ -198,7 +197,7 @@ namespace PoliceSMS.Views
             }
             catch (Exception ex)
             {
-                Tools.ShowMessage("读取民警发生错误", ex.Message, false);
+                Tools.ShowMessage("读取受理人发生错误", ex.Message, false);
             }
         }
 
@@ -252,8 +251,8 @@ namespace PoliceSMS.Views
                 {
                     smsRecord.LoginOfficer = AppGlobal.CurrentUser;
                     smsRecord.Organization = AppGlobal.CurrentUser.Organization;
-                    smsRecord.WorkDate = DateTime.Now;
-                    smsRecord.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
+                    //smsRecord.WorkDate = DateTime.Now;
+                    //smsRecord.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
                     smsRecord.GradeType = new GradeType() { Id = 3 };
                 }
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
