@@ -29,7 +29,6 @@ namespace PoliceSMS.Views
             dateStart.Culture.DateTimeFormat.ShortDatePattern = "yyyy-MM";
             dateEnd.Culture.DateTimeFormat.ShortDatePattern = "yyyy-MM";
 
-            
         }
 
         // Executes when the user navigates to this page.
