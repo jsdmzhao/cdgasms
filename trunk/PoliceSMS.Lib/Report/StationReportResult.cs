@@ -40,5 +40,11 @@ namespace PoliceSMS.Lib.Report
 
         public double Rate { get; set; }
 
+        public int G6Count { get; set; }
+        public double G6Rate { get; set; }
+
+        public int G7Count { get; set; }
+        public double G7Rate { get; set; }
+
     }
 }
