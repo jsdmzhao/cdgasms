@@ -12,7 +12,8 @@
     <property name="Score" column="Mark" type="int"/>
 
     <property name="IsUsed" column="Used" type="bool"/>
-    
+
+    <property name="IsSupervise" column="IsSupervise" type="bool"/>
   </class>
 
 </hibernate-mapping>
