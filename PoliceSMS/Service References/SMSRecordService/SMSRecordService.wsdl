@@ -12,11 +12,11 @@
   <wsdl:message name="ISMSRecordService_SaveOrUpdate_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveOrUpdateResponse" />
   </wsdl:message>
-  <wsdl:message name="ISMSRecordService_SaveOrUpdateList_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveOrUpdateList" />
+  <wsdl:message name="ISMSRecordService_SaveList_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveList" />
   </wsdl:message>
-  <wsdl:message name="ISMSRecordService_SaveOrUpdateList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveOrUpdateListResponse" />
+  <wsdl:message name="ISMSRecordService_SaveList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveListResponse" />
   </wsdl:message>
   <wsdl:message name="ISMSRecordService_DeleteById_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteById" />
@@ -65,9 +65,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/SaveOrUpdate" message="tns:ISMSRecordService_SaveOrUpdate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/SaveOrUpdateResponse" message="tns:ISMSRecordService_SaveOrUpdate_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SaveOrUpdateList">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/SaveOrUpdateList" message="tns:ISMSRecordService_SaveOrUpdateList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/SaveOrUpdateListResponse" message="tns:ISMSRecordService_SaveOrUpdateList_OutputMessage" />
+    <wsdl:operation name="SaveList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/SaveList" message="tns:ISMSRecordService_SaveList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISMSRecordService/SaveListResponse" message="tns:ISMSRecordService_SaveList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteById">
       <wsdl:input wsaw:Action="http://tempuri.org/ISMSRecordService/DeleteById" message="tns:ISMSRecordService_DeleteById_InputMessage" />
@@ -109,8 +109,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SaveOrUpdateList">
-      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/SaveOrUpdateList" style="document" />
+    <wsdl:operation name="SaveList">
+      <soap:operation soapAction="http://tempuri.org/ISMSRecordService/SaveList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

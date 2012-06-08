@@ -23,10 +23,10 @@ namespace PoliceSMS.SMSRecordService {
         
         string EndSaveOrUpdate(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISMSRecordService/SaveOrUpdateList", ReplyAction="http://tempuri.org/ISMSRecordService/SaveOrUpdateListResponse")]
-        System.IAsyncResult BeginSaveOrUpdateList(string json, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISMSRecordService/SaveList", ReplyAction="http://tempuri.org/ISMSRecordService/SaveListResponse")]
+        System.IAsyncResult BeginSaveList(string json, int cnt, System.AsyncCallback callback, object asyncState);
         
-        string EndSaveOrUpdateList(System.IAsyncResult result);
+        string EndSaveList(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISMSRecordService/DeleteById", ReplyAction="http://tempuri.org/ISMSRecordService/DeleteByIdResponse")]
         System.IAsyncResult BeginDeleteById(int id, System.AsyncCallback callback, object asyncState);
@@ -89,11 +89,11 @@ namespace PoliceSMS.SMSRecordService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SaveOrUpdateListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SaveListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public SaveOrUpdateListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public SaveListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -249,11 +249,11 @@ namespace PoliceSMS.SMSRecordService {
         
         private System.Threading.SendOrPostCallback onSaveOrUpdateCompletedDelegate;
         
-        private BeginOperationDelegate onBeginSaveOrUpdateListDelegate;
+        private BeginOperationDelegate onBeginSaveListDelegate;
         
-        private EndOperationDelegate onEndSaveOrUpdateListDelegate;
+        private EndOperationDelegate onEndSaveListDelegate;
         
-        private System.Threading.SendOrPostCallback onSaveOrUpdateListCompletedDelegate;
+        private System.Threading.SendOrPostCallback onSaveListCompletedDelegate;
         
         private BeginOperationDelegate onBeginDeleteByIdDelegate;
         
@@ -352,7 +352,7 @@ namespace PoliceSMS.SMSRecordService {
         
         public event System.EventHandler<SaveOrUpdateCompletedEventArgs> SaveOrUpdateCompleted;
         
-        public event System.EventHandler<SaveOrUpdateListCompletedEventArgs> SaveOrUpdateListCompleted;
+        public event System.EventHandler<SaveListCompletedEventArgs> SaveListCompleted;
         
         public event System.EventHandler<DeleteByIdCompletedEventArgs> DeleteByIdCompleted;
         
@@ -419,49 +419,51 @@ namespace PoliceSMS.SMSRecordService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult PoliceSMS.SMSRecordService.ISMSRecordService.BeginSaveOrUpdateList(string json, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSaveOrUpdateList(json, callback, asyncState);
+        System.IAsyncResult PoliceSMS.SMSRecordService.ISMSRecordService.BeginSaveList(string json, int cnt, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveList(json, cnt, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string PoliceSMS.SMSRecordService.ISMSRecordService.EndSaveOrUpdateList(System.IAsyncResult result) {
-            return base.Channel.EndSaveOrUpdateList(result);
+        string PoliceSMS.SMSRecordService.ISMSRecordService.EndSaveList(System.IAsyncResult result) {
+            return base.Channel.EndSaveList(result);
         }
         
-        private System.IAsyncResult OnBeginSaveOrUpdateList(object[] inValues, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult OnBeginSaveList(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string json = ((string)(inValues[0]));
-            return ((PoliceSMS.SMSRecordService.ISMSRecordService)(this)).BeginSaveOrUpdateList(json, callback, asyncState);
+            int cnt = ((int)(inValues[1]));
+            return ((PoliceSMS.SMSRecordService.ISMSRecordService)(this)).BeginSaveList(json, cnt, callback, asyncState);
         }
         
-        private object[] OnEndSaveOrUpdateList(System.IAsyncResult result) {
-            string retVal = ((PoliceSMS.SMSRecordService.ISMSRecordService)(this)).EndSaveOrUpdateList(result);
+        private object[] OnEndSaveList(System.IAsyncResult result) {
+            string retVal = ((PoliceSMS.SMSRecordService.ISMSRecordService)(this)).EndSaveList(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnSaveOrUpdateListCompleted(object state) {
-            if ((this.SaveOrUpdateListCompleted != null)) {
+        private void OnSaveListCompleted(object state) {
+            if ((this.SaveListCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.SaveOrUpdateListCompleted(this, new SaveOrUpdateListCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.SaveListCompleted(this, new SaveListCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void SaveOrUpdateListAsync(string json) {
-            this.SaveOrUpdateListAsync(json, null);
+        public void SaveListAsync(string json, int cnt) {
+            this.SaveListAsync(json, cnt, null);
         }
         
-        public void SaveOrUpdateListAsync(string json, object userState) {
-            if ((this.onBeginSaveOrUpdateListDelegate == null)) {
-                this.onBeginSaveOrUpdateListDelegate = new BeginOperationDelegate(this.OnBeginSaveOrUpdateList);
+        public void SaveListAsync(string json, int cnt, object userState) {
+            if ((this.onBeginSaveListDelegate == null)) {
+                this.onBeginSaveListDelegate = new BeginOperationDelegate(this.OnBeginSaveList);
             }
-            if ((this.onEndSaveOrUpdateListDelegate == null)) {
-                this.onEndSaveOrUpdateListDelegate = new EndOperationDelegate(this.OnEndSaveOrUpdateList);
+            if ((this.onEndSaveListDelegate == null)) {
+                this.onEndSaveListDelegate = new EndOperationDelegate(this.OnEndSaveList);
             }
-            if ((this.onSaveOrUpdateListCompletedDelegate == null)) {
-                this.onSaveOrUpdateListCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveOrUpdateListCompleted);
+            if ((this.onSaveListCompletedDelegate == null)) {
+                this.onSaveListCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveListCompleted);
             }
-            base.InvokeAsync(this.onBeginSaveOrUpdateListDelegate, new object[] {
-                        json}, this.onEndSaveOrUpdateListDelegate, this.onSaveOrUpdateListCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginSaveListDelegate, new object[] {
+                        json,
+                        cnt}, this.onEndSaveListDelegate, this.onSaveListCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -875,16 +877,17 @@ namespace PoliceSMS.SMSRecordService {
                 return _result;
             }
             
-            public System.IAsyncResult BeginSaveOrUpdateList(string json, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
+            public System.IAsyncResult BeginSaveList(string json, int cnt, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
                 _args[0] = json;
-                System.IAsyncResult _result = base.BeginInvoke("SaveOrUpdateList", _args, callback, asyncState);
+                _args[1] = cnt;
+                System.IAsyncResult _result = base.BeginInvoke("SaveList", _args, callback, asyncState);
                 return _result;
             }
             
-            public string EndSaveOrUpdateList(System.IAsyncResult result) {
+            public string EndSaveList(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("SaveOrUpdateList", _args, result)));
+                string _result = ((string)(base.EndInvoke("SaveList", _args, result)));
                 return _result;
             }
             

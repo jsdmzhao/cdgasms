@@ -82,27 +82,24 @@ namespace PoliceSMS.Web.SMSWcf
         }
 
 
-        public virtual string SaveOrUpdateList(string json)
+        public virtual string SaveList(string json,int cnt)
         {
             using (ISession sess = HbmSessionFactory.OpenSession())
             {
                 ITransaction tx = null;
 
-                List<SMSRecord> list = JsonSerializerHelper.JsonToEntity<List<SMSRecord>>(json);
-
                 try
                 {
                     tx = sess.BeginTransaction();
-                    foreach (var entity in list)
+                    for (int i = 0; i < cnt; i++)
                     {
-                        if (entity.Id == 0)
-                        {
-                            entity.WorkDate = DateTime.Now;
-                            entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
-                        }
-                        sess.SaveOrUpdate(entity);
+                        SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
+                        entity.WorkDate = DateTime.Now;
+                        entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
                         
+                        sess.SaveOrUpdate(entity);
                     }
+                   
                     tx.Commit();
                     return PackJsonResult("true", "0", string.Empty);
                 }
