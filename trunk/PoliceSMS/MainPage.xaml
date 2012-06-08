@@ -60,16 +60,16 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!--<telerik:RadOutlookBar x:Name="bar" Width="150"  MaxWidth="760"
+                <telerik:RadOutlookBar x:Name="bar" Width="150"  MaxWidth="760"
                             
                             IsMinimized="False"
-                            IsMinimizable="False"
+                            IsMinimizable="True"
                             IsVerticalResizerVisible="False"
 							HorizontalAlignment="Stretch">
-                    <telerik:RadOutlookBarItem Header="如实立案" FontWeight="Bold"
-								Icon="/Images/add.png"
+                    <telerik:RadOutlookBarItem Header="" FontWeight="Bold"
+								Icon=""
 								SmallIcon="/Images/add.png"
-								Tag="SMS">-->
+								Tag="SMS">
                 <telerik:RadPanelBar Grid.Column="0"  x:Name="menu" VerticalAlignment="Stretch" Width="150"  MaxWidth="760"
 					            BorderBrush="#FFCBD8E8" BorderThickness="1 1 0 1" SelectionChanged="menu_SelectionChanged"
 					             >
@@ -105,16 +105,16 @@
                                                 <Image Source="/Images/add.png"  Stretch="None" />
                                             </Border>
                                             <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
-											Text="评分内容管理" />
+											Text="督查情况管理" />
                                         </StackPanel>
                                     </ListBoxItem>
                                 </ListBox>
                             </telerik:RadPanelBarItem>
                             
                         </telerik:RadPanelBar>
-                    <!--</telerik:RadOutlookBarItem>
+                    </telerik:RadOutlookBarItem>
 
-                </telerik:RadOutlookBar>-->
+                </telerik:RadOutlookBar>
 
                 <telerik:RadDocking  BorderThickness="0" Padding="0" Grid.Column="1">
                     <telerik:RadDocking.DocumentHost>

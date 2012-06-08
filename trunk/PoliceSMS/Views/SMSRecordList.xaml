@@ -13,7 +13,7 @@
         <local:ExportingModel x:Key="context" />
     </navigation:Page.Resources>
 
-    <telerik:RadBusyIndicator x:Name="buyRoot">
+    <!--<telerik:RadBusyIndicator x:Name="buyRoot">-->
         
 
     <Grid x:Name="LayoutRoot">
@@ -251,5 +251,5 @@
             </Grid>
         </Border>
     </Grid>
-    </telerik:RadBusyIndicator>
+    <!--</telerik:RadBusyIndicator>-->
 </navigation:Page>

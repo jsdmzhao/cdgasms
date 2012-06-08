@@ -32,7 +32,6 @@ namespace PoliceSMS.Views
             InitializeComponent();            
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
 
-            Tools.ShowMask(true);
             ser.GetListByHQLCompleted += new EventHandler<SMSRecordService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
@@ -169,7 +168,7 @@ namespace PoliceSMS.Views
             }
             finally
             {
-                buyRoot.IsBusy = false;
+                //buyRoot.IsBusy = false;
             }
         }
 
@@ -206,7 +205,7 @@ namespace PoliceSMS.Views
             }
             finally
             {
-                buyRoot.IsBusy = false;
+                //buyRoot.IsBusy = false;
             }
           
         }
@@ -336,7 +335,7 @@ namespace PoliceSMS.Views
             if (queryCondition != null)
             {
                 queryCondition.FirstResult = e.NewPageIndex * PageSize;
-                buyRoot.IsBusy = true;
+                //buyRoot.IsBusy = true;
                 QueryPaging(queryCondition);
             }
         }
@@ -347,7 +346,7 @@ namespace PoliceSMS.Views
             {
                 string condition = Newtonsoft.Json.JsonConvert.SerializeObject(qc);
 
-                buyRoot.IsBusy = true;
+                //buyRoot.IsBusy = true;
                 ser.GetListByHQLWithPagingAsync(condition);
             }
         }
