@@ -167,6 +167,10 @@ namespace PoliceSMS.Views
             {
                 Tools.ShowMessage(ex.Message, "", false);
             }
+            finally
+            {
+                buyRoot.IsBusy = false;
+            }
         }
 
         void ser_DeleteByIdCompleted(object sender, SMSRecordService.DeleteByIdCompletedEventArgs e)
@@ -187,7 +191,7 @@ namespace PoliceSMS.Views
 
                 foreach (var item in list)
                 {
-                    if(item.IsResponse)
+                    if (item.IsResponse)
                         item.CheckImage = new Uri(@"/Images/check.png", UriKind.Relative);
                 }
 
@@ -199,6 +203,10 @@ namespace PoliceSMS.Views
             catch (Exception ex)
             {
                 Tools.ShowMessage(ex.Message, "", false);//这里会出错，应该是分页控件的问题
+            }
+            finally
+            {
+                buyRoot.IsBusy = false;
             }
           
         }
@@ -328,7 +336,7 @@ namespace PoliceSMS.Views
             if (queryCondition != null)
             {
                 queryCondition.FirstResult = e.NewPageIndex * PageSize;
-
+                buyRoot.IsBusy = true;
                 QueryPaging(queryCondition);
             }
         }
@@ -339,6 +347,7 @@ namespace PoliceSMS.Views
             {
                 string condition = Newtonsoft.Json.JsonConvert.SerializeObject(qc);
 
+                buyRoot.IsBusy = true;
                 ser.GetListByHQLWithPagingAsync(condition);
             }
         }

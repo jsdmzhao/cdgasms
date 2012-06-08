@@ -13,6 +13,9 @@
         <local:ExportingModel x:Key="context" />
     </navigation:Page.Resources>
 
+    <telerik:RadBusyIndicator x:Name="buyRoot">
+        
+
     <Grid x:Name="LayoutRoot">
         <Border VerticalAlignment="Stretch" >
 
@@ -199,7 +202,7 @@
 
                     <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,10,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              IsFilteringAllowed="False" CanUserResizeColumns="True" CanUserReorderColumns="False"
-                                                IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single"
+                                                IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single" GridLinesVisibility="Both"
 								            AutoGenerateColumns="False" ShowColumnFooters="False" >
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewSelectColumn Header="" Width="40" />
@@ -248,4 +251,5 @@
             </Grid>
         </Border>
     </Grid>
+    </telerik:RadBusyIndicator>
 </navigation:Page>

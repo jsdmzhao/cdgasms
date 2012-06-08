@@ -43,6 +43,7 @@ namespace PoliceSMS.Views
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
+            Tools.ShowMask(true);
             LoadReport();
         }
 
@@ -85,7 +86,11 @@ namespace PoliceSMS.Views
                 Tools.ShowMessage("请选择单位!", "", false);
                 return;
             }
+<<<<<<< .mine
+            
+=======
             //Tools.ShowMask(true);
+>>>>>>> .r68
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
             
             Organization selOrg =(Organization) cmbStation.SelectedItem;
@@ -100,8 +105,13 @@ namespace PoliceSMS.Views
                     //Tools.ShowMask(false);
                 };
 
-            DateTime beginTime1 = dateStart.SelectedDate.Value;
-            DateTime endTime1 = dateEnd.SelectedDate.Value;
+            DateTime beginTime1 = DateTime.Now.AddDays(-1);
+            DateTime endTime1 = DateTime.Now;
+            if(dateStart.SelectedDate!=null)
+                beginTime1 = dateStart.SelectedDate.Value;
+            
+            if(dateEnd.SelectedDate!=null)
+                endTime1 = dateEnd.SelectedDate.Value;
 
             TimeSpan span = endTime1 - beginTime1;
             endTime1 = endTime1.AddDays(1);

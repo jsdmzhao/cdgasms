@@ -101,9 +101,10 @@
                 </Rectangle>
 
                 <Grid Grid.Row="2" >
+
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <Grid >
+                            <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="24"></RowDefinition>
                                     <RowDefinition Height="24"></RowDefinition>
@@ -112,22 +113,23 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="25"></ColumnDefinition>
                                     <ColumnDefinition Width="29"></ColumnDefinition>
+                                    <ColumnDefinition Width="0"></ColumnDefinition>
                                     <ColumnDefinition Width="150"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="61"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="51"></ColumnDefinition>
+                                    <ColumnDefinition MinWidth="20"  Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 0 1 1" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"  Margin="0 0 0 0">
@@ -143,178 +145,187 @@
                                         <TextBlock Text="排名" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
-                                <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                <!--<Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="单位" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="个人" FontWeight="Bold" FontFamily="simsun"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
-                                </Border>
+                                </Border>-->
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="3" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="满意率" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="单位" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="4" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="平均得分" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="满意率" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="5" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
+                                        <TextBlock Text="平均得分" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                    </Border>
+                                </Border>
+                                <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="6" Grid.RowSpan="3" Margin="0 0 0 0">
+                                    <Border Background="{StaticResource HeaderBackground}" 
+                                BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="受理总量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="10" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="10" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="评价" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                           BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="16" Grid.RowSpan="3" Margin="0 0 0 0">
+                           BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="17" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="回复率" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 1 1" Grid.Row="0" Grid.Column="17" Grid.RowSpan="3" Margin="0 0 0 0">
+                            BorderThickness ="1 0 1 1" Grid.Row="0" Grid.Column="18" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="" FontWeight="Bold"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="非常满意" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="满意" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="一般" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="2" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="业务不熟" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="2" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 0" Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="2" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="态度欠佳" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="6" Margin="0 0 0 0">
-                                    <Border Background="{StaticResource HeaderBackground}" 
-                                BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Border>
-                                <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="7" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="8" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="9" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="10" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="11" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="12" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="13" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="14" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
-                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="15" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
+                                        <TextBlock Text="数量" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                    </Border>
+                                </Border>
+                                <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            BorderThickness ="1 1 0 1" Grid.Row="2" Grid.Column="16" Margin="0 0 0 0">
+                                    <Border Background="{StaticResource HeaderBackground}" 
+                                BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="百分比" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
-                               
                             </Grid>
                             <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
-                                             CanUserResizeColumns="False" IsFilteringAllowed="False"
-                                                IsReadOnly="True"  SelectionMode="Single"
-                                         CanUserSelect="False" ShowColumnHeaders="False"
-                                         RowStyleSelector="{StaticResource rowStyleSelector}"  
-								            AutoGenerateColumns="False" ShowColumnFooters="False" >
+                                    CanUserResizeColumns="False" IsFilteringAllowed="False"
+                                    IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
+                                          CanUserSelect="False" ShowColumnHeaders="False"
+                                         
+								AutoGenerateColumns="False" ShowColumnFooters="False" >
                                 <!--<telerik:RadGridView.ColumnGroups>
-                                <telerik:GridViewColumnGroup Name="best" Header="非常满意" />
-                                <telerik:GridViewColumnGroup Name="better" Header="满意"/>
-                                <telerik:GridViewColumnGroup Name="normal" Header="一般"/>
-                                <telerik:GridViewColumnGroup Name="bad" Header="业务不熟"/>
-                                <telerik:GridViewColumnGroup Name="worst" Header="态度欠佳"/>
-                            </telerik:RadGridView.ColumnGroups>-->
+                            <telerik:GridViewColumnGroup Name="best3" Header="非常满意" />
+                            <telerik:GridViewColumnGroup Name="better3" Header="满意"/>
+                            <telerik:GridViewColumnGroup Name="normal3" Header="一般"/>
+                            <telerik:GridViewColumnGroup Name="bad3" Header="业务不熟"/>
+                            <telerik:GridViewColumnGroup Name="worst3" Header="态度欠佳"/>
+                        </telerik:RadGridView.ColumnGroups>-->
                                 <telerik:RadGridView.Columns>
 
+
                                     <telerik:GridViewDataColumn MinWidth="30" MaxWidth="30"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+
+                                    <telerik:GridViewDataColumn MinWidth="0" MaxWidth="0"  Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center" />
 
                                     <telerik:GridViewDataColumn MinWidth="150" MaxWidth="150"  Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Left" />
 
@@ -324,31 +335,237 @@
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best"/>
-                                    
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best" />
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Right" HeaderTextAlignment="Center" ColumnGroupName="best3" />
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="better3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="normal3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="bad3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Right" HeaderTextAlignment="Center"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Right" ColumnGroupName="worst3"/>
+
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Right" HeaderTextAlignment="Center"/>
                                 </telerik:RadGridView.Columns>
                             </telerik:RadGridView>
                         </StackPanel>
                     </ScrollViewer>
+
+                    <!--<telerik:RadGridView Name="gv" AutoGenerateColumns="False" GridLinesVisibility="Both">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewColumn Width="*">
+                                <telerik:GridViewColumn.Header>
+                                        <Grid  >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                            </Grid.RowDefinitions>
+                                            
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="160*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="20">
+                                            <TextBlock  Text="统计"  TextAlignment="Center" />
+                                        </Border>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
+                                            <TextBlock  Text="排名"  TextAlignment="Center" />
+                                        </Border>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+                                            <TextBlock  Text="单位"  TextAlignment="Center" />
+                                        </Border>
+
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2">
+                                            <TextBlock  Text="满意率"  TextAlignment="Center" />
+                                        </Border>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2">
+                                            <TextBlock  Text="平均得分"  TextAlignment="Center" />
+                                        </Border>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2">
+                                            <TextBlock  Text="受理总量"  TextAlignment="Center" />
+                                        </Border>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="5">
+                                            <TextBlock   Text="非常满意" TextAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1">
+                                            <TextBlock  Text="满意" TextAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="1">
+                                            <TextBlock  Text="一般" TextAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="1">
+                                            <TextBlock  Text="业务不熟" TextAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="1">
+                                            <TextBlock  Text="态度不好" TextAlignment="Center"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="5" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="数量"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="6" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="比例"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="7" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="数量"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="8" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="比例"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="9" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center"  Text="数量"/>
+                                        </Border>
+                                        <Border  BorderThickness="1" BorderBrush="Black" Grid.Column="10" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="比例"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="11" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="数量"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="12" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="比例"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="13" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="数量"/>
+                                        </Border>
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="14" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="比例"/>
+                                        </Border>
+
+                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="15" Grid.Row="2">
+                                            <TextBlock  TextAlignment="Center" Text="回复率"/>
+                                        </Border>
+
+                                    </Grid>
+                                </telerik:GridViewColumn.Header>
+                                
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="160*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="0">
+                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=Rank }" />
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="1">
+                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=UnitName }" />
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="2">
+                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=Score, StringFormat=F2 }" />
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="3">
+                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=StationRate, StringFormat=F2 }" />
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="4">
+                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=TotalCount }" />
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="5">
+                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=G1Count }" />
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="6">
+                                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=G1Rate, StringFormat=F2}"/>
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="7">
+                                                <TextBlock  HorizontalAlignment="Center" Text="{Binding Path=G2Count}"/>
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="8">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G2Rate, StringFormat=F2}"/>
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="9">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G3Count}"/>
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="10">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G3Rate, StringFormat=F2}"/>
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="11">
+                                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=G4Count}"/>
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="12">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G4Rate, StringFormat=F2}"/>
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="13">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G5Count}"/>
+                                            </Border>
+                                            
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="14">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G5Rate, StringFormat=F2}"/>
+                                            </Border>
+
+                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="15">
+                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=Rate, StringFormat=F2}"/>
+                                            </Border>
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                                
+                            </telerik:GridViewColumn>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>-->
                 </Grid>
                 </Grid>
         </Border>
