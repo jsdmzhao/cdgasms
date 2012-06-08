@@ -324,7 +324,7 @@ namespace PoliceSMS.Views
             if (obj != null)
             {
                 SupervisionForm form = new SupervisionForm(obj);
-
+                form.SaveCallBack = getData;
                 form.IsEnabled = false;
 
                 //允许政治处修改数据

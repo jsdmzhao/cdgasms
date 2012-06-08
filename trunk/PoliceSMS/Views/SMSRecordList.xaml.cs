@@ -361,7 +361,7 @@ namespace PoliceSMS.Views
                 if (obj.GradeType.IsSupervise)
                 {
                     SupervisionForm form = new SupervisionForm(obj);
-
+                    form.SaveCallBack = getData;
                     form.IsEnabled = false;
 
                     //允许政治处修改数据
@@ -373,7 +373,7 @@ namespace PoliceSMS.Views
                 else
                 {
                     SMSRecordForm form = new SMSRecordForm(obj);
-
+                    form.SaveCallBack = getData;
                     form.IsEnabled = false;
 
                     //允许政治处修改数据

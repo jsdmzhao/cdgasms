@@ -181,7 +181,7 @@ namespace PoliceSMS.Views
 
             SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
 
-            ser.SaveOrUpdateListCompleted += (object sender1, SMSRecordService.SaveOrUpdateListCompletedEventArgs e1) =>
+            ser.SaveListCompleted += (object sender1, SMSRecordService.SaveListCompletedEventArgs e1) =>
             {
                 string res = JsonSerializerHelper.JsonToEntity<string>(e1.Result);
                 if (SaveCallBack != null)
@@ -190,25 +190,17 @@ namespace PoliceSMS.Views
             };
 
             int cnt = Convert.ToInt32(count.Value.Value);
-            List<SMSRecord> list = new List<SMSRecord>();
-            for (int i = 0; i < cnt; i++)
-            {
-                SMSRecord obj = new SMSRecord();
-                obj.Id = 0;
-                obj.IsSend = true;
-                obj.IsResponse = true;
-                obj.LoginOfficer = AppGlobal.CurrentUser;
-                obj.Organization = smsRecord.Organization;
-                obj.GradeType = smsRecord.GradeType;
-                obj.WorkOfficer = smsRecord.WorkOfficer;
-                obj.PersonMobile = ""; //数据库不能为空
-                obj.WorkType = new WorkType { Id = 4 }; //数据库不能为空
-                obj.Leader = AppGlobal.CurrentUser; //数据库不能为空
-                list.Add(obj);
-            }
 
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(list);
-            ser.SaveOrUpdateListAsync(json);
+            smsRecord.IsSend = true;
+            smsRecord.IsResponse = true;
+            smsRecord.LoginOfficer = AppGlobal.CurrentUser;
+            smsRecord.PersonMobile = ""; //数据库不能为空
+            smsRecord.WorkType = new WorkType { Id = 4 }; //数据库不能为空
+            smsRecord.Leader = AppGlobal.CurrentUser; //数据库不能为空
+
+
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
+            ser.SaveListAsync(json, cnt);
             (this.Parent as RadWindow).Close();
 
         }

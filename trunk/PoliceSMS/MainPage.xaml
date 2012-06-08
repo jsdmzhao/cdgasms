@@ -98,7 +98,7 @@
 											Text="办事内容管理" />
                                         </StackPanel>
                                     </ListBoxItem>
-                                    <ListBoxItem Tag="SupervisionList">
+                                    <ListBoxItem Tag="SupervisionList" Visibility="Collapsed" x:Name="superVisionItem">
                                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                             <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
 											BorderThickness="1">

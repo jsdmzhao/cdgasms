@@ -73,10 +73,13 @@ namespace PoliceSMS.Views
 
             this.cmbWorkOrg.Text = (AppGlobal.CurrentUser.Organization).Name;
 
-            if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
+            if (isEdit)
             {
-                this.cmbGradeType.IsReadOnly = false;
-                this.cmbGradeType.IsEnabled = true;
+                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
+                {
+                    this.cmbGradeType.IsReadOnly = false;
+                    this.cmbGradeType.IsEnabled = true;
+                }
             }
         }
 

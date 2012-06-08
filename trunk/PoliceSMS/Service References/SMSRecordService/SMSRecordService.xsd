@@ -14,17 +14,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SaveOrUpdateList">
+  <xs:element name="SaveList">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cnt" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SaveOrUpdateListResponse">
+  <xs:element name="SaveListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SaveOrUpdateListResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SaveListResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
