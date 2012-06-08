@@ -86,11 +86,9 @@ namespace PoliceSMS.Views
                 Tools.ShowMessage("请选择单位!", "", false);
                 return;
             }
-<<<<<<< .mine
-            
-=======
-            //Tools.ShowMask(true);
->>>>>>> .r68
+
+            Tools.ShowMask(true);
+
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
             
             Organization selOrg =(Organization) cmbStation.SelectedItem;
@@ -100,6 +98,8 @@ namespace PoliceSMS.Views
                     int total = 0;
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                     gv.ItemsSource = result;
+
+                    int x = 1;
 
                     //gv.Items.Refresh();
                     //Tools.ShowMask(false);
