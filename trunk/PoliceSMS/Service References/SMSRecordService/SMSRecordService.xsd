@@ -14,6 +14,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SaveOrUpdateList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveOrUpdateListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveOrUpdateListResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeleteById">
     <xs:complexType>
       <xs:sequence>
