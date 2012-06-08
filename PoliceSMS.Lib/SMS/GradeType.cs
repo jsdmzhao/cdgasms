@@ -22,6 +22,6 @@ namespace PoliceSMS.Lib.SMS
         /// </summary>
         public virtual int Score { get; set; }
 
-
+        public virtual bool IsSupervise { get; set; }
     }
 }
