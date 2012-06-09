@@ -131,8 +131,9 @@
                                     <ColumnDefinition Width="40"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition MinWidth="20"  Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
@@ -206,7 +207,14 @@
                                     </Border>
                                 </Border>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            BorderThickness ="1 0 1 1" Grid.Row="0" Grid.Column="22" Grid.RowSpan="3" Margin="0 0 0 0">
+                            BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="22" Grid.RowSpan="3" Margin="0 0 0 0">
+                                    <Border Background="{StaticResource HeaderBackground}" 
+                                BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
+                                        <TextBlock Text="总得分" FontWeight="Bold"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                    </Border>
+                                </Border>
+                                <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            BorderThickness ="1 0 1 1" Grid.Row="0" Grid.Column="23" Grid.RowSpan="3" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
                                 BorderThickness ="0 1 0 0" BorderBrush="{StaticResource HeaderPanelInnerBorder}">
                                         <TextBlock Text="" FontWeight="Bold"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
@@ -414,9 +422,10 @@
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Center" HeaderTextAlignment="Center" />
 
-                                    <telerik:GridViewDataColumn MinWidth="70" MaxWidth="70"  Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" />
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="总得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" />
                                 </telerik:RadGridView.Columns>
                             </telerik:RadGridView>
                         </StackPanel>
