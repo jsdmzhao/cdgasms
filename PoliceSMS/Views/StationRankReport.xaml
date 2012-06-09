@@ -84,7 +84,7 @@
 
                         <telerik:RadButton  HorizontalAlignment="Right" Margin="0 0 20 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="80" Height="22" 
-                                       Click="btnExport_Click"
+                                       Click="btnExport_Click" x:Name="btnExport"
                                CommandParameter="{Binding ElementName=RadGridView1}">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="导出"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
