@@ -43,7 +43,7 @@ namespace PoliceSMS.Views
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            Tools.ShowMask(true);
+           
             LoadReport();
         }
 
@@ -87,6 +87,7 @@ namespace PoliceSMS.Views
                 return;
             }
 
+            btnExport.IsEnabled = false;
             Tools.ShowMask(true);
 
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
@@ -99,10 +100,9 @@ namespace PoliceSMS.Views
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                     gv.ItemsSource = result;
 
-                    int x = 1;
-
-                    //gv.Items.Refresh();
-                    //Tools.ShowMask(false);
+                    gv.Items.Refresh();
+                    Tools.ShowMask(false);
+                    btnExport.IsEnabled = true;
                 };
 
             DateTime beginTime1 = DateTime.Now.AddDays(-1);
