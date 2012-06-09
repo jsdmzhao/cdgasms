@@ -42,6 +42,12 @@ namespace PoliceSMS.Views
 
         public void LoadReport()
         {
+            if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
+            {
+                Tools.ShowMessage("时间不能为空!", "", false);
+                return;
+            }
+
             btnExport.IsEnabled = false;
             Tools.ShowMask(true);
             
@@ -58,6 +64,7 @@ namespace PoliceSMS.Views
                     btnExport.IsEnabled = true;
                 };
 
+           
             DateTime beginTime1 = dateStart.SelectedDate.Value;
             DateTime endTime1 = dateEnd.SelectedDate.Value;
 

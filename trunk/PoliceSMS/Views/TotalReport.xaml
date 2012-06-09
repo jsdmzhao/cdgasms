@@ -399,9 +399,9 @@
                                     <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
+                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="满意率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}"  TextAlignment="Center" HeaderTextAlignment="Center" />
 

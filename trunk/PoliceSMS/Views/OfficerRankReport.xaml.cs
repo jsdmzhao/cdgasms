@@ -81,6 +81,12 @@ namespace PoliceSMS.Views
 
         private void LoadReport()
         {
+            if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
+            {
+                Tools.ShowMessage("时间不能为空!", "", false);
+                return;
+            }
+
             if (cmbStation.SelectedItem == null)
             {
                 Tools.ShowMessage("请选择单位!", "", false);
