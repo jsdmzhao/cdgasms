@@ -264,12 +264,23 @@ namespace PoliceSMS.Views
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            edit();
+        }
+
+        private void edit()
+        {
             SMSRecord obj = gv.SelectedItem as SMSRecord;
             if (obj != null)
             {
-                SupervisionForm frm = new SupervisionForm(obj);
-                frm.SaveCallBack = getData;
-                Tools.OpenWindow("督查情况-编辑", frm, null, 400, 260);
+                SupervisionForm form = new SupervisionForm(obj);
+                form.SaveCallBack = getData;
+                form.IsEnabled = false;
+
+                //允许政治处修改数据
+                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
+                    form.IsEnabled = true;
+
+                Tools.OpenWindow("督查情况", form, null, 400, 260);
             }
         }
 
@@ -319,20 +330,7 @@ namespace PoliceSMS.Views
 
         public void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
         {
-            SMSRecord obj = gv.SelectedItem as SMSRecord;
-
-            if (obj != null)
-            {
-                SupervisionForm form = new SupervisionForm(obj);
-                form.SaveCallBack = getData;
-                form.IsEnabled = false;
-
-                //允许政治处修改数据
-                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
-                    form.IsEnabled = true;
-
-                Tools.OpenWindow("督查情况", form, null, 400, 260);
-            }
+            edit();
         }
 
         private void cboxStation_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
