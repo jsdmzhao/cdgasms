@@ -410,7 +410,7 @@
 
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center" />
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="总得分" DataMemberBinding="{Binding Score,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="总得分" DataMemberBinding="{Binding TotalScore,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" />
                                 </telerik:RadGridView.Columns>
                                 </telerik:RadGridView>
                             </StackPanel>
