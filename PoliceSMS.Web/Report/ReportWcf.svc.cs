@@ -185,9 +185,9 @@ namespace PoliceSMS.Web.Report
 
                 srr.Rate = (double)reader.GetDecimal(17);
 
-                srr.OfficerName = reader.IsDBNull(22) ? "" : reader.GetString(22);
+                srr.OfficerName = reader.IsDBNull(23) ? "" : reader.GetString(23);
 
-                srr.TotalScore = reader.GetInt32(23);
+                srr.TotalScore = reader.GetInt32(22);
 
                 result.Add(srr);
             }
