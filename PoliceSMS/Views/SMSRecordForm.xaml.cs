@@ -15,6 +15,7 @@ using System.ServiceModel;
 using PoliceSMS.Lib.SMS;
 using PoliceSMS.Lib.Organization;
 using Telerik.Windows.Controls;
+using System.Text.RegularExpressions;
 
 namespace PoliceSMS.Views
 {
@@ -57,7 +58,7 @@ namespace PoliceSMS.Views
                 SMSRecord obj = JsonSerializerHelper.JsonToEntity<SMSRecord>(e.Result);
                 this.smsRecord = obj;
                 DataContext = smsRecord;
-                chkIsResponse.IsChecked = smsRecord.GradeType != null;
+                chkIsResponse.IsChecked = smsRecord.IsResponse ;
                 
             };
             ser.GetByIdAsync(editObj.Id);
@@ -208,27 +209,30 @@ namespace PoliceSMS.Views
         {
             if (CheckVerify())
             {
+                //是否为防范科
+                bool flag = AppGlobal.CurrentUser.Organization.Name.Contains("防范");
                 if (string.IsNullOrEmpty(smsRecord.PersonName))
                 {
                     Tools.ShowMessage("请输入姓名!", "", false);
                     return;
                 }
-                if (string.IsNullOrEmpty(smsRecord.PersonMobile))
+                string s = @"^(1)\d{10}$";
+                if (!string.IsNullOrEmpty(smsRecord.PersonMobile) && !Regex.IsMatch(smsRecord.PersonMobile, s))
                 {
-                    Tools.ShowMessage("请输入电话!", "", false);
+                    Tools.ShowMessage("电话号码格式错误!", "", false);
                     return;
                 }
-                if (cmbWorkType.SelectedItem == null)
+                if (!flag && cmbWorkType.SelectedItem == null)
                 {
                     Tools.ShowMessage("请输入办事类别!", "", false);
                     return;
                 }
-                if (string.IsNullOrEmpty(smsRecord.WorkNo))
+                if (!flag && string.IsNullOrEmpty(smsRecord.WorkNo))
                 {
                     Tools.ShowMessage("请输入流水号!", "", false);
                     return;
                 }
-                if (cmbLeader.SelectedItem == null)
+                if (!flag && cmbLeader.SelectedItem == null)
                 {
                     Tools.ShowMessage("请输入值班领导!", "", false);
                     return;
@@ -254,9 +258,14 @@ namespace PoliceSMS.Views
                 {
                     smsRecord.LoginOfficer = AppGlobal.CurrentUser;
                     smsRecord.Organization = AppGlobal.CurrentUser.Organization;
-                    //smsRecord.WorkDate = DateTime.Now;
-                    //smsRecord.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
                     smsRecord.GradeType = new GradeType() { Id = 3 };
+
+                    if (string.IsNullOrEmpty(smsRecord.PersonMobile))
+                        smsRecord.PersonMobile = ""; //数据库不能为空
+                    if (smsRecord.WorkType == null)
+                        smsRecord.WorkType = new WorkType { Id = 4 }; //数据库不能为空
+                    if (smsRecord.Leader == null)
+                        smsRecord.Leader = smsRecord.WorkOfficer; //数据库不能为空
                 }
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
                 ser.SaveOrUpdateAsync(json);

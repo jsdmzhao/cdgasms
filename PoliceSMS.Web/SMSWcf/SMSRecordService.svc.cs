@@ -11,6 +11,7 @@ using PoliceSMS.Web.Serializable;
 using PoliceSMS.Lib.SMS;
 using PoliceSMS.Lib.Query;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace PoliceSMS.Web.SMSWcf
 {
@@ -51,14 +52,12 @@ namespace PoliceSMS.Web.SMSWcf
                 SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
                 if (entity.Id == 0)
                 {
+                    if (string.IsNullOrEmpty(entity.PersonMobile))
+                        entity.PersonMobile = defaultMobile;
+
                     entity.WorkDate = DateTime.Now;
                     entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
                 }
-                //DunLibrary.User.User u = sess.Get<DunLibrary.User.User>(2);
-
-                //DunLibrary.Dun.VisitRecord vr = entity as DunLibrary.Dun.VisitRecord;
-
-                //vr.Visitors.Add(u);
 
                 try
                 {
@@ -81,6 +80,7 @@ namespace PoliceSMS.Web.SMSWcf
             }
         }
 
+        private static readonly string defaultMobile = ConfigurationManager.AppSettings["DefaultMobile"];
 
         public virtual string SaveList(string json,int cnt)
         {
