@@ -196,7 +196,7 @@ namespace PoliceSMS.Views
             smsRecord.LoginOfficer = AppGlobal.CurrentUser;
             smsRecord.PersonMobile = ""; //数据库不能为空
             smsRecord.WorkType = new WorkType { Id = 4 }; //数据库不能为空
-            smsRecord.Leader = AppGlobal.CurrentUser; //数据库不能为空
+            smsRecord.Leader = smsRecord.WorkOfficer; //数据库不能为空
 
 
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
