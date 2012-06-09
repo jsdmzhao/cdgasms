@@ -105,6 +105,8 @@ namespace PoliceSMS.Web.Report
                 srr.G7Count = reader.GetInt32(20);
                 srr.G7Rate = (double)reader.GetDecimal(21);
 
+                srr.TotalScore = reader.GetInt32(22);
+
                 result.Add(srr);
             }
 
@@ -184,6 +186,9 @@ namespace PoliceSMS.Web.Report
                 srr.Rate = (double)reader.GetDecimal(17);
 
                 srr.OfficerName = reader.IsDBNull(22) ? "" : reader.GetString(22);
+
+                srr.TotalScore = reader.GetInt32(23);
+
                 result.Add(srr);
             }
 
@@ -241,6 +246,14 @@ namespace PoliceSMS.Web.Report
                 srr.G5Rate = (double)reader.GetDecimal(13);
 
                 srr.Rate = (double)reader.GetDecimal(14);
+
+                srr.G6Count = reader.GetInt32(15);
+                srr.G6Rate = (double)reader.GetDecimal(16);
+
+                srr.G7Count = reader.GetInt32(17);
+                srr.G7Rate = (double)reader.GetDecimal(18);
+
+                srr.TotalScore = reader.GetInt32(19);
                 result.Add(srr);
             }
 
