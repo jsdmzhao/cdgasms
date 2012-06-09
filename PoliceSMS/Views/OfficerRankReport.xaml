@@ -330,7 +330,7 @@
                             <telerik:RadGridView  BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
-                                          CanUserSelect="False" ShowColumnHeaders="True"
+                                          CanUserSelect="False" ShowColumnHeaders="False"
                                          
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
                                 <!--RowStyleSelector="{StaticResource rowStyleSelector}"-->
