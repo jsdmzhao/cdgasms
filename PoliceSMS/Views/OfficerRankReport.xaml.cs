@@ -104,9 +104,11 @@ namespace PoliceSMS.Views
                 {
                     int total = 0;
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
-                    gv.ItemsSource = result;
+                    //gv.ItemsSource = result;
 
-                    gv.Items.Refresh();
+                    //gv.Items.Refresh();
+                    rDataPager1.Source = result;
+
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
                 };
@@ -149,6 +151,10 @@ namespace PoliceSMS.Views
             }
 
             export.ExportWithHeader(gv, html);
+        }
+
+        private void rDataPager1_PageIndexChanged(object sender, Telerik.Windows.Controls.PageIndexChangedEventArgs e)
+        {
         }
 
     }
