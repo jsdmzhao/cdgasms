@@ -12,6 +12,8 @@ using PoliceSMS.Lib.SMS;
 using PoliceSMS.Lib.Query;
 using Newtonsoft.Json;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace PoliceSMS.Web.SMSWcf
 {
@@ -84,33 +86,80 @@ namespace PoliceSMS.Web.SMSWcf
 
         public virtual string SaveList(string json,int cnt)
         {
-            using (ISession sess = HbmSessionFactory.OpenSession())
+            using (var sess = HbmSessionFactory.OpenStatelessSession())
             {
-                ITransaction tx = null;
-
                 try
                 {
-                    tx = sess.BeginTransaction();
+                    SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
+                    if (entity.WorkDate == null)
+                        entity.WorkDate = DateTime.Now;
+                    entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
+                    DataTable table = new DataTable();
+                    table.Columns.Add(new DataColumn("Id"));
+                    table.Columns.Add(new DataColumn("YearMonth"));
+                    table.Columns.Add(new DataColumn("Name"));
+                    table.Columns.Add(new DataColumn("CreateTime"));
+                    table.Columns.Add(new DataColumn("TelPhone"));
+                    table.Columns.Add(new DataColumn("Address"));
+                    table.Columns.Add(new DataColumn("PersonIdCard"));
+                    table.Columns.Add(new DataColumn("Sex"));
+                    table.Columns.Add(new DataColumn("WorkTypeId"));
+                    table.Columns.Add(new DataColumn("WorkDetail"));
+                    table.Columns.Add(new DataColumn("PoliceManId"));
+                    table.Columns.Add(new DataColumn("ValuationId"));
+                    table.Columns.Add(new DataColumn("IsValuation"));
+                    table.Columns.Add(new DataColumn("UnitId"));
+                    table.Columns.Add(new DataColumn("Valuation"));
+                    table.Columns.Add(new DataColumn("IsSend"));
+                    table.Columns.Add(new DataColumn("Receiver"));
+                    table.Columns.Add(new DataColumn("Number"));
+                    table.Columns.Add(new DataColumn("WorkOfficerId"));
+                    table.Columns.Add(new DataColumn("LeaderId"));
+                    
                     for (int i = 0; i < cnt; i++)
                     {
-                        SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
-                        entity.WorkDate = DateTime.Now;
-                        entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
-                        
-                        sess.SaveOrUpdate(entity);
+                        DataRow row = table.NewRow();
+                        row[0] = 0;
+                        row[1] = entity.YearMonth;
+                        row[3] = entity.WorkDate;
+                        row[4] = entity.PersonMobile;
+                        row[8] = entity.WorkType.Id;
+                        row[10] = entity.LoginOfficer.Id;
+                        row[11] = entity.GradeType.Id;
+                        row[12] = entity.IsResponse;
+                        row[13] = entity.Organization.Id;
+                        row[15] = entity.IsSend;
+                        row[18] = entity.WorkOfficer.Id;
+                        row[19] = entity.Leader.Id;
+                        table.Rows.Add(row);
                     }
-                   
-                    tx.Commit();
+
+                    //只有sql server才能使用
+                    if (!(sess.Connection is SqlConnection))
+                        throw new Exception("目前只支持sql server数据库！");
+                    insertBulkTable(sess.Connection as SqlConnection, "SMS_Work", table);
                     return PackJsonResult("true", "0", string.Empty);
                 }
                 catch (Exception ex)
                 {
-                    if (tx != null && tx.IsActive)
-                        tx.Rollback();
-
                     return PackJsonResult("false", "0", ex.Message);
                 }
             }
+        }
+
+        private static void insertBulkTable(SqlConnection conn, string tableName, DataTable data)
+        {
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);
+            bulkCopy.DestinationTableName = tableName;
+            bulkCopy.BatchSize = data.Rows.Count;
+
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+            if (data != null && data.Rows.Count != 0)
+                bulkCopy.WriteToServer(data);
+
+            bulkCopy.Close();
+            
         }
 
         /// <summary>

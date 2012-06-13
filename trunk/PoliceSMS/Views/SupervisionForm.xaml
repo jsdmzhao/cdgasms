@@ -40,6 +40,7 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>    
                 <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -47,25 +48,34 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="受理单位:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="0"/>
-            <telerik:RadComboBox x:Name="cboxStation" Grid.Row="0" Grid.Column="1"
+            <TextBlock Text="扣分日期:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="0"/>
+            <telerik:RadDateTimePicker  InputMode="DatePicker" Grid.Row="0"  Grid.Column="1"
+                                                     DisplayFormat="Short"
+                                        SelectedDate = "{Binding Path=WorkDate,Mode=TwoWay}"
+                                                         x:Name="date"
+                                                          Height="24"
+                                                          Margin="5,0,5,0"
+                                                          VerticalAlignment="Center" />
+
+            <TextBlock Text="受理单位:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="1"/>
+            <telerik:RadComboBox x:Name="cboxStation" Grid.Row="1" Grid.Column="1"
                                                 VerticalAlignment="Center"  SelectedValue="{Binding Path=Organization,Mode=TwoWay}" DisplayMemberPath="Name"  
                                  SelectionChanged="cboxStation_SelectionChanged"
                                                           Height="24"
                                                           Margin="5,0,5,0">
             </telerik:RadComboBox>
             
-            <TextBlock Text="受理人:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="1"/>
+            <TextBlock Text="受理人:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="2"/>
             <telerik:RadComboBox x:Name="cmbWorkOfficer" VerticalAlignment="Center"  SelectedValue="{Binding Path=WorkOfficer,Mode=TwoWay}" DisplayMemberPath="Name"
-                                           Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="1" />
-
-            <TextBlock Text="扣分原因:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="2"/>
-            <telerik:RadComboBox x:Name="cmbGradeType" VerticalAlignment="Center"  SelectedValue="{Binding Path=GradeType,Mode=TwoWay}" DisplayMemberPath="Name"
                                            Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" />
 
-            <TextBlock Text="数量:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="3"/>
-            <telerik:RadMaskedNumericInput Grid.Row="3" Grid.Column="1"
-                                                        Mask="#3"
+            <TextBlock Text="扣分原因:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="3"/>
+            <telerik:RadComboBox x:Name="cmbGradeType" VerticalAlignment="Center"  SelectedValue="{Binding Path=GradeType,Mode=TwoWay}" DisplayMemberPath="Name"
+                                           Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" />
+
+            <TextBlock Text="数量:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="4"/>
+            <telerik:RadMaskedNumericInput Grid.Row="4" Grid.Column="1"
+                                                        Mask="#4"
                                                          IsClearButtonVisible="False"
                                             
                                            x:Name="count"
