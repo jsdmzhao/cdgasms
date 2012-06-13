@@ -45,6 +45,7 @@ namespace PoliceSMS.Views
             smsRecord = editObj;
             count.Value = 1;
             count.IsReadOnly = true;
+            date.IsEnabled = false;
             Loaded += new RoutedEventHandler(SupervisionForm_Loaded);
             SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
             ser.GetByIdCompleted +=
@@ -154,6 +155,12 @@ namespace PoliceSMS.Views
 
         private void save()
         {
+            if (date.SelectedDate == null)
+            {
+                Tools.ShowMessage("请输入扣分日期!", "", false);
+                return;
+            }
+
             if (cboxStation.SelectedItem == null)
             {
                 Tools.ShowMessage("请输入受理单位!", "", false);
