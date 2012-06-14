@@ -61,5 +61,19 @@ namespace PoliceSMS
 
             return binding;
         }
+
+        private static int pageSize = 15;
+        public static int PageSize
+        {
+            get
+            {
+                return pageSize;
+            }
+            set
+            {
+                if (value > 0)
+                    pageSize = value;
+            }
+        }
     }
 }

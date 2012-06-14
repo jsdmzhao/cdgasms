@@ -126,6 +126,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppGlobal.cs" />
+    <Compile Include="CookiesUtils.cs" />
     <Compile Include="Comm\BasePage.cs" />
     <Compile Include="Comm\Dict.cs" />
     <Compile Include="Comm\ILoadMask.cs" />

@@ -61,6 +61,8 @@ namespace PoliceSMS
                 return;
             }
 
+            
+
             OfficerService.OfficerServiceClient ser1 = new OfficerService.OfficerServiceClient();
             //登录完成的事件
             ser1.LoginCompleted += (object sender1, OfficerService.LoginCompletedEventArgs e1) =>
@@ -70,11 +72,40 @@ namespace PoliceSMS
                 {
                     isSuccess = true;
                     AppGlobal.CurrentUser = LoginUser;
+                    try
+                    {
+                        string cookie = CookiesUtils.GetCookie("PageSize");
+                        if (!string.IsNullOrEmpty(cookie))
+                        {
+                            foreach (var items in cookie.Split(','))
+                            {
+                                var item = items.Split(':');
+                                if (item[0] == LoginUser.Id.ToString())
+                                {
+                                    string size = item[1];
+                                    if (!string.IsNullOrEmpty(size))
+                                    {
+                                        int pageSize = 0;
+                                        if (int.TryParse(size, out pageSize) && pageSize > 0)
+                                            AppGlobal.PageSize = pageSize;
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    catch
+                    {
+                    }
                     CallBack();
                 }
             };
             ser1.LoginAsync(txtName.Text.Trim(), txtPass.Password.Trim());//异步调用服务器端登录
         }
+
+        
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

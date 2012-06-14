@@ -30,6 +30,8 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
 
+            rDataPager1.PageSize = AppGlobal.PageSize;
+
             DateTime preMonth = DateTime.Now.AddMonths(-1);
             DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
             DateTime endTime = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
@@ -164,7 +166,50 @@ namespace PoliceSMS.Views
             int size = 0;
 
             if (int.TryParse(text, out size) && size > 0)
+            {
+                if (size > 30)
+                    size = 30;
+                
                 rDataPager1.PageSize = size;
+                (sender as TextBox).Text = size.ToString();
+
+                try
+                {
+                    string cookie = CookiesUtils.GetCookie("PageSize");
+                    if (!string.IsNullOrEmpty(cookie))
+                    {
+                        var list = cookie.Split(',').ToList();
+                        bool isExist = false;
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            string items = list[i];
+                            var item = items.Split(':');
+                            if (item[0] == AppGlobal.CurrentUser.Id.ToString())
+                            {
+                                list[i] = string.Format("{0}:{1}", AppGlobal.CurrentUser.Id.ToString(), size.ToString());
+                                isExist = true;
+                                cookie = string.Join(",", list);
+                                break;
+                            }
+                        }
+                        if (!isExist)
+                        {
+                            list.Add(string.Format("{0}:{1}", AppGlobal.CurrentUser.Id.ToString(), size.ToString()));
+                            cookie = string.Join(",", list);
+                        }
+                        CookiesUtils.SetCookie("PageSize", cookie, new TimeSpan(90, 0, 0, 0));
+                    }
+                    else
+                    {
+                        cookie = string.Format("{0}:{1}", AppGlobal.CurrentUser.Id.ToString(), size.ToString());
+                        CookiesUtils.SetCookie("PageSize", cookie, new TimeSpan(90, 0, 0, 0));
+                    }
+                   
+                }
+                catch
+                {
+                }
+            }
         }
 
     }
