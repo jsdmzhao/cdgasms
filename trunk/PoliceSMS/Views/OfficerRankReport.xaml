@@ -460,7 +460,7 @@
                     <telerik:RadDataPager Grid.Column="0"
                                             x:Name="rDataPager1"
                                             BorderThickness="0"
-                                            PageSize="15"  PageIndexChanged="rDataPager1_PageIndexChanged"
+                                            PageIndexChanged="rDataPager1_PageIndexChanged"
                                             IsTotalItemCountFixed="True"
                                             DisplayMode="FirstLastPreviousNextNumeric"/>
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0"
