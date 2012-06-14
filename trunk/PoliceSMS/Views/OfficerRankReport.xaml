@@ -16,9 +16,6 @@
         <my:NegativeConverter x:Key="myConverter" />
     </navigation:Page.Resources>
 
-    <Grid x:Name="LayoutRoot">
-        <Border VerticalAlignment="Stretch" >
-
             <Grid  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -115,9 +112,13 @@
                 <Grid Grid.Row="2" >
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                                  >
-                        <StackPanel>
-                            <Grid>
+                                 HorizontalAlignment="Stretch" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="24"></RowDefinition>
                                     <RowDefinition Height="24"></RowDefinition>
@@ -128,7 +129,7 @@
                                     <ColumnDefinition Width="29"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="105"></ColumnDefinition>
-                                    
+
                                     <ColumnDefinition Width="35"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="35"></ColumnDefinition>
@@ -178,7 +179,7 @@
                                         <TextBlock Text="单位" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Border>
-                               
+
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             BorderThickness ="1 0 0 1" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="10" Margin="0 0 0 0">
                                     <Border Background="{StaticResource HeaderBackground}" 
@@ -383,7 +384,7 @@
                                     </Border>
                                 </Border>
                             </Grid>
-                            <telerik:RadGridView  BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                            <telerik:RadGridView Grid.Row="1"  BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
                                           CanUserSelect="False" ShowColumnHeaders="False"
@@ -399,7 +400,7 @@
                         </telerik:RadGridView.ColumnGroups>-->
                                 <telerik:RadGridView.Columns>
 
-                                    
+
                                     <telerik:GridViewDataColumn MinWidth="30" MaxWidth="30"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center" />
@@ -446,17 +447,29 @@
                                     <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="总得分" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
                                 </telerik:RadGridView.Columns>
                             </telerik:RadGridView>
-                        </StackPanel>
+                        </Grid>
                     </ScrollViewer>
                 </Grid>
 
-                <telerik:RadDataPager Grid.Row="3" 
-                                            x:Name="rDataPager1" Margin="0 0 0 4"
+                <StackPanel HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Bottom">
+                    <Grid Background="{Binding Background, ElementName=rDataPager1}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <telerik:RadDataPager Grid.Column="0"
+                                            x:Name="rDataPager1"
                                             BorderThickness="0"
                                             PageSize="15"  PageIndexChanged="rDataPager1_PageIndexChanged"
                                             IsTotalItemCountFixed="True"
                                             DisplayMode="FirstLastPreviousNextNumeric"/>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0"
+                                >
+                        <TextBlock Text="每页条数：" VerticalAlignment="Center"   HorizontalAlignment="Left"></TextBlock>
+                        <TextBox Width="80" Height="24" Text="{Binding PageSize, ElementName=rDataPager1}"  TextInput="TextBox_TextInput"  HorizontalAlignment="Left" ></TextBox>
+
+                    </StackPanel>
+                </Grid>
+                </StackPanel>
             </Grid>
-        </Border>
-    </Grid>
 </navigation:Page>

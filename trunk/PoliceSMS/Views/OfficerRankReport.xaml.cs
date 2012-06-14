@@ -157,5 +157,15 @@ namespace PoliceSMS.Views
         {
         }
 
+
+        private void TextBox_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            string text = (sender as TextBox).Text;
+            int size = 0;
+
+            if (int.TryParse(text, out size) && size > 0)
+                rDataPager1.PageSize = size;
+        }
+
     }
 }
