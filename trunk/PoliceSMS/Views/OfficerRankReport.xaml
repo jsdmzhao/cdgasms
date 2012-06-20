@@ -466,7 +466,9 @@
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0"
                                 >
                         <TextBlock Text="每页条数：" VerticalAlignment="Center"   HorizontalAlignment="Left"></TextBlock>
-                        <TextBox Width="80" Height="24" Text="{Binding PageSize, ElementName=rDataPager1}"  TextInput="TextBox_TextInput"  HorizontalAlignment="Left" ></TextBox>
+                        <TextBox Width="80" Height="24" Text="{Binding PageSize, ElementName=rDataPager1}"  
+                                 TextInput="TextBox_TextInput" LostFocus="TextBox_LostFocus"
+                                 HorizontalAlignment="Left" ></TextBox>
 
                     </StackPanel>
                 </Grid>

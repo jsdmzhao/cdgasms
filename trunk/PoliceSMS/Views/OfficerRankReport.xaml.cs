@@ -163,13 +163,24 @@ namespace PoliceSMS.Views
         private void TextBox_TextInput(object sender, TextCompositionEventArgs e)
         {
             string text = (sender as TextBox).Text;
+            pageSizeUpdate(sender, text);
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string text = (sender as TextBox).Text;
+            pageSizeUpdate(sender, text);
+        }
+
+        private void pageSizeUpdate(object sender, string text)
+        {
             int size = 0;
 
             if (int.TryParse(text, out size) && size > 0)
             {
                 if (size > 30)
                     size = 30;
-                
+
                 rDataPager1.PageSize = size;
                 (sender as TextBox).Text = size.ToString();
 
@@ -204,13 +215,15 @@ namespace PoliceSMS.Views
                         cookie = string.Format("{0}:{1}", AppGlobal.CurrentUser.Id.ToString(), size.ToString());
                         CookiesUtils.SetCookie("PageSize", cookie, new TimeSpan(90, 0, 0, 0));
                     }
-                   
+
                 }
                 catch
                 {
                 }
             }
         }
+
+       
 
     }
 }
