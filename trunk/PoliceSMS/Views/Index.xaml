@@ -70,7 +70,7 @@
                         <telerikNavigation:RadTabItem.Content>
                             <Grid>
                                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                                    <Image Source="http://10.65.81.20:2021/excel/dxpj.jpg" Margin="5,0,0,0" Stretch="None"  HorizontalAlignment="Left" />
+                                    <Image Source="/dxpj/dxpj.jpg" Margin="3,0,0,0" Stretch="None"  HorizontalAlignment="Left" />
                                 </ScrollViewer>
                             </Grid>
                         </telerikNavigation:RadTabItem.Content>
