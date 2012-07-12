@@ -93,7 +93,7 @@ namespace PoliceSMS.Web.SMSWcf
                     SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
                     if (entity.WorkDate == null)
                         entity.WorkDate = DateTime.Now;
-                    entity.YearMonth = (DateTime.Now.Year * 100 + DateTime.Now.Month).ToString();
+                    entity.YearMonth = (entity.WorkDate.Value.Year * 100 + entity.WorkDate.Value.Month).ToString();
                     DataTable table = new DataTable();
                     table.Columns.Add(new DataColumn("Id"));
                     table.Columns.Add(new DataColumn("YearMonth"));
