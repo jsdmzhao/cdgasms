@@ -63,10 +63,21 @@
                             <views:TotalReport></views:TotalReport>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="办证中心统计">
+                        <telerikNavigation:RadTabItem.Header>
+                            <TextBlock Text="办证中心统计" Margin="19 2 19 0" />
+                        </telerikNavigation:RadTabItem.Header>
+                        <telerikNavigation:RadTabItem.Content>
+                            <Grid>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <Image Source="http://10.65.81.20:2021/excel/dxpj.jpg" Margin="5,0,0,0" Stretch="None"  HorizontalAlignment="Left" />
+                                </ScrollViewer>
+                            </Grid>
+                        </telerikNavigation:RadTabItem.Content>
+                    </telerikNavigation:RadTabItem>
                 </telerikNavigation:RadTabControl>
 
             </Grid>
-
         </Border>
     </Grid>
 </navigation:Page>
