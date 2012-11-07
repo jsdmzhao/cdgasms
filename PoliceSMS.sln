@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceSMS", "PoliceSMS\Poli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceSMS.Web", "PoliceSMS.Web\PoliceSMS.Web.csproj", "{EF53DE58-B481-4F7D-A27F-605A723CBD91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vs08SMSService", "Vs08SMSService\Vs08SMSService\Vs08SMSService.csproj", "{1D8379AC-E180-45F0-936B-81057EC6E8CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF53DE58-B481-4F7D-A27F-605A723CBD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8379AC-E180-45F0-936B-81057EC6E8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8379AC-E180-45F0-936B-81057EC6E8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8379AC-E180-45F0-936B-81057EC6E8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8379AC-E180-45F0-936B-81057EC6E8CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

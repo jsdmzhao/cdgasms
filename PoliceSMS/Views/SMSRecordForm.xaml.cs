@@ -45,10 +45,12 @@ namespace PoliceSMS.Views
         }
 
         bool isEdit = false;
+        SMSRecord editObj;
         public SMSRecordForm(SMSRecord editObj)
         {
             InitializeComponent();
             isEdit = true;
+            this.editObj = editObj;
             smsRecord = editObj;
             Loaded += new RoutedEventHandler(SMSRecordForm_Loaded);
             SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
@@ -217,10 +219,29 @@ namespace PoliceSMS.Views
                     return;
                 }
                 string s = @"^(1)\d{10}$";
-                if (!string.IsNullOrEmpty(smsRecord.PersonMobile) && !Regex.IsMatch(smsRecord.PersonMobile, s))
+                //if (!string.IsNullOrEmpty(smsRecord.PersonMobile) && !Regex.IsMatch(smsRecord.PersonMobile, s))
+                if (!string.IsNullOrEmpty(smsRecord.PersonMobile))
                 {
-                    Tools.ShowMessage("电话号码格式错误!", "", false);
-                    return;
+                    //只能为数字
+                    foreach (var c in smsRecord.PersonMobile)
+                    {
+                        if (!char.IsDigit(c))
+                        {
+                            Tools.ShowMessage("电话号码格式错误!", "", false);
+                            return;
+                        }
+                    }
+
+                    //不是手机号改为已发送
+                    if (!Regex.IsMatch(smsRecord.PersonMobile, s))
+                        smsRecord.IsResponse = true;
+                    //如果将座机改为手机 将记录修改为 未发送
+                    if (isEdit)
+                    {
+                        if (Regex.IsMatch(smsRecord.PersonMobile, s) && smsRecord.PersonMobile != editObj.PersonMobile)
+                            smsRecord.IsResponse = false;
+                    }
+
                 }
                 if (!flag && cmbWorkType.SelectedItem == null)
                 {
