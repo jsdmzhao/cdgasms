@@ -234,12 +234,12 @@ namespace PoliceSMS.Views
 
                     //不是手机号改为已发送
                     if (!Regex.IsMatch(smsRecord.PersonMobile, s))
-                        smsRecord.IsResponse = true;
+                        smsRecord.IsSend = true;
                     //如果将座机改为手机 将记录修改为 未发送
                     if (isEdit)
                     {
                         if (Regex.IsMatch(smsRecord.PersonMobile, s) && smsRecord.PersonMobile != editObj.PersonMobile)
-                            smsRecord.IsResponse = false;
+                            smsRecord.IsSend = false;
                     }
 
                 }
