@@ -79,5 +79,8 @@ namespace PoliceSMS.Web.SMSWcf
         /// <returns></returns>
         [OperationContract]
         string GetListByProperties(string properties);
+
+        [OperationContract]
+        string Export(string query);
     }
 }

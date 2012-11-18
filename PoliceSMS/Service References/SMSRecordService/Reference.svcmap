@@ -24,8 +24,8 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="SMSRecordService.xsd" MetadataType="Schema" ID="475c8a7c-5dfa-494a-a550-fa0ed059dab5" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd0" />
-    <MetadataFile FileName="SMSRecordService1.xsd" MetadataType="Schema" ID="cbbde19b-7c48-4712-85e4-c798d0612225" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd1" />
     <MetadataFile FileName="SMSRecordService.wsdl" MetadataType="Wsdl" ID="bf9c1f86-e86a-4ff4-a36c-313f8563bb0b" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?wsdl" />
+    <MetadataFile FileName="SMSRecordService1.xsd" MetadataType="Schema" ID="cbbde19b-7c48-4712-85e4-c798d0612225" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?xsd=xsd1" />
     <MetadataFile FileName="SMSRecordService.disco" MetadataType="Disco" ID="12e3a796-8456-4674-adb6-886d6e98e288" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/SMSRecordService.svc?disco" />
   </Metadata>
   <Extensions>

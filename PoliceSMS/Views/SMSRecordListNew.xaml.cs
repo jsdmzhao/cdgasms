@@ -18,6 +18,7 @@ using PoliceSMS.Lib.SMS;
 using Telerik.Windows;
 using PoliceSMS.Lib.Organization;
 using System.Text;
+using System.Windows.Browser;
 
 namespace PoliceSMS.Views
 {
@@ -35,7 +36,7 @@ namespace PoliceSMS.Views
             ser.GetListByHQLCompleted += new EventHandler<SMSRecordService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
-
+            ser.ExportCompleted += new EventHandler<SMSRecordService.ExportCompletedEventArgs>(ser_ExportCompleted);
             
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
@@ -118,49 +119,10 @@ namespace PoliceSMS.Views
 
         private void BuildHql()
         {
-            StringBuilder hql = new StringBuilder();
-            hql.Append(string.Format(" from SMSRecord as r where 1=1 "));
-
-            if (conditionType.Text == "时间")
-            {
-                if (dateStart.SelectedDate != null)
-                {
-                    DateTime tmp = dateStart.SelectedDate.Value;
-                    DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
-                    hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
-                }
-                if (dateEnd.SelectedDate != null)
-                {
-                    DateTime tmp = dateEnd.SelectedDate.Value;
-                    DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
-                    hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
-                }
-            }
-            if (conditionType.Text == "电话")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.PersonMobile like '{0}%' ", tb.Text.Trim()));
-            }
-            if (conditionType.Text == "受理人")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.WorkOfficer.Name like '{0}%' ", tb.Text.Trim()));
-            }
-            if (conditionType.Text == "办案人")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.PersonName like '{0}%' ", tb.Text.Trim()));
-            }
-            if (conditionType.Text == "值班领导")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.Leader.Name like '{0}%' ", tb.Text.Trim()));
-            }
+            string hqlStr = generateBaseHql();
             
-
             queryCondition = new QueryCondition();
 
-            string hqlStr = hql.ToString();
             queryCondition.HQL = "select r " + hqlStr + " order by r.WorkDate desc";
 
             queryCondition.TotalHQL = "select count(r) " + hqlStr;
@@ -278,5 +240,80 @@ namespace PoliceSMS.Views
             }
         }
 
+
+        private void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            string bastHql = generateBaseHql();
+            string hql = "select r " + bastHql + " order by r.WorkDate desc";
+            ser.ExportAsync(hql);
+        }
+
+        
+
+        void ser_ExportCompleted(object sender, SMSRecordService.ExportCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Result.StartsWith("错误"))
+                    throw new Exception(e.Result);
+                string url = e.Result;
+                if (!string.IsNullOrEmpty(url))
+                    HtmlPage.Window.Eval("window.open('" + url + "','', 'top=" + (Application.Current.Host.Content.ActualHeight - 100) / 2 + ",left=" + (Application.Current.Host.Content.ActualWidth - 100) / 2
+                          + ",fullscreen=0, width=100, height=100,  toolbar=0,   location=0,   directories=0,   status=0,   menubar=0,   scrollbars=0,   resizable=0')");
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage(ex.Message, "", true);
+            }
+            finally
+            {
+                //buyRoot.IsBusy = false;
+            }
+        }
+
+        private string generateBaseHql()
+        {
+            StringBuilder hql = new StringBuilder();
+            hql.Append(string.Format(" from SMSRecord as r where 1=1 "));
+
+            if (conditionType.Text == "时间")
+            {
+                if (dateStart.SelectedDate != null)
+                {
+                    DateTime tmp = dateStart.SelectedDate.Value;
+                    DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
+                    hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
+                }
+                if (dateEnd.SelectedDate != null)
+                {
+                    DateTime tmp = dateEnd.SelectedDate.Value;
+                    DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
+                    hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
+                }
+            }
+            if (conditionType.Text == "电话")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.PersonMobile like '{0}%' ", tb.Text.Trim()));
+            }
+            if (conditionType.Text == "受理人")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.WorkOfficer.Name like '{0}%' ", tb.Text.Trim()));
+            }
+            if (conditionType.Text == "办案人")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.PersonName like '{0}%' ", tb.Text.Trim()));
+            }
+            if (conditionType.Text == "值班领导")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.Leader.Name like '{0}%' ", tb.Text.Trim()));
+            }
+
+            string hqlStr = hql.ToString();
+            return hqlStr;
+        }
     }
 }
