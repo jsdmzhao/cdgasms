@@ -123,16 +123,9 @@
                                 <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
                             </Rectangle.Effect>
                         </Rectangle>
-                        <TextBlock Visibility="Collapsed"  Text="导出格式:" Margin="0 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                        <telerik:RadComboBox Visibility="Collapsed"  Margin="0,2 10 0"  Width="60" HorizontalAlignment="Right"
-                                                          Height="24"
-                                 ItemsSource="{Binding ExportFormats, Source={StaticResource context}}"
-                                 SelectedItem="{Binding SelectedExportFormat, Source={StaticResource context}, Mode=TwoWay}" SelectedIndex="0" />
-
                         <telerik:RadButton  HorizontalAlignment="Right" Margin="0 0 10 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="60" Height="22" 
-                                       Command="{Binding ExportCommand, Source={StaticResource context}}"
-                               CommandParameter="{Binding ElementName=gv}">
+                                      Click="btnExport_Click">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="导出"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>

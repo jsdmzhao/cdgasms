@@ -14,6 +14,9 @@ using Newtonsoft.Json;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
 
 namespace PoliceSMS.Web.SMSWcf
 {
@@ -339,6 +342,73 @@ namespace PoliceSMS.Web.SMSWcf
                 sess.Close();
             }
         }
+
+        public virtual string Export(string query)
+        {
+            using (ISession sess = HbmSessionFactory.OpenSession())
+            {
+                try
+                {
+                    IList<SMSRecord> ls = sess.CreateQuery(query).List<SMSRecord>();
+                    const int max = 40000;
+                    if (ls.Count > max)
+                        return string.Format("错误：条数超出上限{0},请重新选择条件", max);
+                    //解决导出excel字符串转换成数字
+                    foreach (var item in ls)
+                    {
+                        item.PersonName = string.Format(@"=T(""{0}"")", item.PersonName);
+                        item.WorkContent = string.Format(@"=T(""{0}"")", item.WorkContent);
+                        item.WorkNo = string.Format(@"=T(""{0}"")", item.WorkNo);
+                        item.PersonMobile = string.Format(@"=T(""{0}"")", item.PersonMobile);
+                        item.Address = string.Format(@"=T(""{0}"")", item.Address);
+                        
+                    }
+
+                   
+                    
+                    GridView gv = new GridView();
+                    gv.AutoGenerateColumns = false;
+                    gv.Columns.Add(new BoundField() { HeaderText = "姓名", DataField = "PersonName" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "办事内容", DataField = "WorkType.Name" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "办事详情", DataField = "WorkContent" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "受理人", DataField = "WorkOfficer.Name" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "登记时间", DataField = "WorkDate" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "登记流水号", DataField = "WorkNo" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "单位", DataField = "Organization.Name" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "评价得分", DataField = "GradeType.Score" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "是否评价", DataField = "IsResponseStr" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "办事人电话", DataField = "PersonMobile" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "办事人地址", DataField = "Address" });
+
+                    gv.DataSource = ls;
+                    gv.DataBind();
+
+                    var request = System.Web.HttpContext.Current.Request;
+                    string fileName =  Guid.NewGuid().ToString()+".xls";
+                    string url = string.Format("http://{0}/Files/{1}", request.Url.Authority, fileName);
+                    using (StringWriter sw = new StringWriter())
+                    {
+                        using (HtmlTextWriter htw = new HtmlTextWriter(sw))
+                        {
+                            gv.RenderControl(htw);
+                            string physicalAddress = string.Format("{0}Files/{1}",System.Web.Hosting.HostingEnvironment.MapPath("~"), fileName);
+                            FileInfo fi = new FileInfo(physicalAddress);
+                            if (!fi.Directory.Exists)
+                                Directory.CreateDirectory(fi.Directory.FullName);
+                            File.WriteAllText(physicalAddress, sw.ToString());
+                        }
+                    }
+
+                    return url;
+                }
+                catch (Exception ex)
+                {
+                    return PackJsonListResult("false", "[]", ex.Message, 0);
+                }
+            }
+
+        }
+
         /// <summary>
         /// 暂不使用
         /// </summary>
