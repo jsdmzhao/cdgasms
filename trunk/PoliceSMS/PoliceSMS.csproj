@@ -210,6 +210,9 @@
     <Compile Include="Views\SMSRecordForm.xaml.cs">
       <DependentUpon>SMSRecordForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SMSRecordListNew.xaml.cs">
+      <DependentUpon>SMSRecordListNew.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StationRankReport.xaml.cs">
       <DependentUpon>StationRankReport.xaml</DependentUpon>
     </Compile>
@@ -303,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SMSRecordForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SMSRecordListNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

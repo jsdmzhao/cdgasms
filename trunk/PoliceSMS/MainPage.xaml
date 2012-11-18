@@ -78,7 +78,7 @@
                                     <TextBlock Text="短信评警" Margin="5 3" />
                                 </telerik:RadPanelBarItem.Header>
                                 <ListBox BorderThickness="0" BorderBrush="Transparent" SelectionChanged="ListBox_SelectionChanged">
-                                    <ListBoxItem Tag="SMSRecordList">
+                                    <ListBoxItem Tag="SMSRecordListNew">
                                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                             <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
 											BorderThickness="1">

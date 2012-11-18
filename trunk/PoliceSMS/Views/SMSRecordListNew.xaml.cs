@@ -10,24 +10,24 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
+using PoliceSMS.Lib.Query;
+using Telerik.Windows.Controls.GridView;
+using PoliceSMS.ViewModel;
 using PoliceSMS.Comm;
 using PoliceSMS.Lib.SMS;
-using PoliceSMS.Lib.Query;
-using System.Text;
-using PoliceSMS.Lib.Organization;
-using PoliceSMS.ViewModel;
-using Telerik.Windows.Controls.GridView;
 using Telerik.Windows;
+using PoliceSMS.Lib.Organization;
+using System.Text;
 
 namespace PoliceSMS.Views
 {
-    public partial class SMSRecordList : Page
+    public partial class SMSRecordListNew : Page
     {
-        SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
+       SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
         private const int PageSize = 19;
         private QueryCondition queryCondition = null;
 
-        public SMSRecordList()
+        public SMSRecordListNew()
         {
             InitializeComponent();            
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
@@ -36,12 +36,7 @@ namespace PoliceSMS.Views
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
 
-            LoadWorkTypes();
-            LoadStation();
-            LoadGradeType();
-
-            cboxMark.ItemsSource = MarkState.CreateAry();
-
+            
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
 
@@ -53,104 +48,6 @@ namespace PoliceSMS.Views
         void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
         {
            
-        }
-
-        private void LoadGradeType()
-        {
-            try
-            {
-                GradeTypeService.GradeTypeServiceClient ser = new GradeTypeService.GradeTypeServiceClient();
-                ser.GetListByHQLCompleted += (object sender, GradeTypeService.GetListByHQLCompletedEventArgs e) =>
-                {
-                    int total = 0;
-                    var list = JsonSerializerHelper.JsonToEntities<GradeType>(e.Result, out total);
-
-                    cboxGradeType.ItemsSource = list;
-
-                };
-
-                ser.GetListByHQLAsync("from GradeType where IsUsed = " + true);
-
-            }
-            catch (Exception ex)
-            {
-                Tools.ShowMessage("读取评分类别发生错误", ex.Message, false);
-            }
-        }
-
-        private void LoadWorkTypes()
-        {
-            try
-            {
-               WorkTypeService.WorkTypeServiceClient ser = new WorkTypeService.WorkTypeServiceClient();
-                ser.GetListByHQLCompleted += (object sender, WorkTypeService.GetListByHQLCompletedEventArgs e) =>
-                {
-                    int total = 0;
-                    var list = JsonSerializerHelper.JsonToEntities<WorkType>(e.Result, out total);
-
-                    cboxContent.ItemsSource = list;
-
-                };
-
-                ser.GetListByHQLAsync("from WorkType where IsUsed = " + true);
-
-            }
-            catch (Exception ex)
-            {
-                Tools.ShowMessage("读取办事类别发生错误", ex.Message, false);
-            }
-        }
-
-        private void LoadOfficers()
-        {
-            try
-            {
-                if (cboxStation.SelectedItem != null)
-                {
-                    OfficerService.OfficerServiceClient ser = new OfficerService.OfficerServiceClient();
-                    ser.GetListByHQLCompleted += (object sender, OfficerService.GetListByHQLCompletedEventArgs e) =>
-                    {
-                        int total = 0;
-                        var list = JsonSerializerHelper.JsonToEntities<Officer>(e.Result, out total);
-                        var removeList = list.Where(c => c.Name == "吴涛" || c.Name == "贾红兵").ToList();
-                        for (int i = 0; i < removeList.Count; i++)
-                            list.Remove(removeList[i]);
-                        cboxOper.ItemsSource = list;
-
-                    };
-
-                    ser.GetListByHQLAsync(string.Format("from Officer as e where e.Organization.id = {0} order by e.Name" , (cboxStation.SelectedItem as Organization).Id));
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Tools.ShowMessage("读取民警发生错误", ex.Message, false);
-            }
-        }
-
-        private void LoadStation()
-        {
-            try
-            {
-                OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
-                ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
-                {
-                    int total = 0;
-                    var list = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
-
-                    cboxStation.ItemsSource = list;
-
-                };
-
-                //这里没有考虑权限
-                ser.GetListByHQLAsync("from Organization where Name like '%青羊%' order by OrderIndex ");
-
-            }
-            catch (Exception ex)
-            {
-                Tools.ShowMessage("读取单位发生错误", ex.Message, false);
-            }
         }
 
         void ser_GetListByHQLCompleted(object sender, SMSRecordService.GetListByHQLCompletedEventArgs e)
@@ -224,59 +121,42 @@ namespace PoliceSMS.Views
             StringBuilder hql = new StringBuilder();
             hql.Append(string.Format(" from SMSRecord as r where 1=1 "));
 
-            if (dateStart.SelectedDate != null)
+            if (conditionType.Text == "时间")
             {
-                DateTime tmp = dateStart.SelectedDate.Value;
-                DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
-                hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
+                if (dateStart.SelectedDate != null)
+                {
+                    DateTime tmp = dateStart.SelectedDate.Value;
+                    DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
+                    hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
+                }
+                if (dateEnd.SelectedDate != null)
+                {
+                    DateTime tmp = dateEnd.SelectedDate.Value;
+                    DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
+                    hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
+                }
             }
-            if (dateEnd.SelectedDate != null)
+            if (conditionType.Text == "电话")
             {
-                DateTime tmp = dateEnd.SelectedDate.Value;
-                DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
-                hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.PersonMobile like '{0}%' ", tb.Text.Trim()));
+            }
+            if (conditionType.Text == "受理人")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.WorkOfficer.Name like '{0}%' ", tb.Text.Trim()));
+            }
+            if (conditionType.Text == "办案人")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.PersonName like '{0}%' ", tb.Text.Trim()));
+            }
+            if (conditionType.Text == "值班领导")
+            {
+                if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                    hql.Append(string.Format(" and r.Leader.Name like '{0}%' ", tb.Text.Trim()));
             }
             
-
-            if (cboxOper.SelectedItem != null)
-            {
-                Officer off = cboxOper.SelectedItem as Officer;
-                if(off != null)
-                    hql.Append(" and r.WorkOfficer.Id=" + off.Id);
-            }
-
-            if (cboxMark.SelectedItem != null)
-            {
-                MarkState mark = cboxMark.SelectedItem as MarkState;
-                if(mark != null)
-                 hql.Append(" and r.IsResponse =" + mark.IsMark);
-            }
-
-            if (cboxContent.SelectedItem != null)
-            {
-                WorkType wt = cboxContent.SelectedItem as WorkType;
-                if (wt != null)
-                    hql.Append(" and r.WorkType.Id =" + wt.Id);
-            }
-
-            if (cboxStation.SelectedItem!=null)
-            {
-                Organization org = cboxStation.SelectedItem as Organization;
-                if (org != null)
-                    hql.Append(" and r.Organization.Id =" + org.Id);
-            }
-
-            if ( cboxGradeType.SelectedItem != null)
-            {
-                GradeType grade = cboxGradeType.SelectedItem as GradeType;
-                if (grade != null)
-                    hql.Append(" and r.GradeType.Id =" + grade.Id);
-            }
-
-            if (!string.IsNullOrEmpty(cboxName.Text))
-            {
-                hql.Append(" and r.PersonName like '%" + cboxName.Text + "%'");
-            }
 
             queryCondition = new QueryCondition();
 
@@ -302,17 +182,6 @@ namespace PoliceSMS.Views
             frm.SaveCallBack = getData;
 
             Tools.OpenWindow("群众办事登记-新增", frm, null, 600, 400);
-        }
-
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            SMSRecord obj = gv.SelectedItem as SMSRecord;
-            if (obj != null)
-            {
-                SMSRecordForm frm = new SMSRecordForm(obj);
-                frm.SaveCallBack = getData;
-                Tools.OpenWindow("群众办事登记-编辑", frm, null, 600, 400);
-            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -392,9 +261,22 @@ namespace PoliceSMS.Views
             }
         }
 
-        private void cboxStation_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
+        private void conditionType_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
         {
-            LoadOfficers();
+            if (conditionType != null)
+            {
+                if (conditionType.Text == "时间")
+                {
+                    datePanel.Visibility = Visibility.Visible;
+                    tb.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    datePanel.Visibility = Visibility.Collapsed;
+                    tb.Visibility = Visibility.Visible;
+                }
+            }
         }
+
     }
 }

@@ -29,7 +29,7 @@
 
     <many-to-one name="Leader" column="LeaderId" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>
 
-    <!--<many-to-one name="OfficerType" column="OfficerType" not-found="ignore" class="PoliceSMS.Lib.Organization.Officer" cascade="none" lazy="proxy"/>-->
+    <many-to-one name="OfficerType" column="OfficerTypeId" not-found="ignore" class="PoliceSMS.Lib.Organization.OfficerType" cascade="none" lazy="proxy"/>
     
     <property name="IsResponse" column="IsValuation" type="bool"/>
 
