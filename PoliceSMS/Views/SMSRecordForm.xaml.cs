@@ -263,6 +263,12 @@ namespace PoliceSMS.Views
                     Tools.ShowMessage("请输入受理人!", "", false);
                     return;
                 }
+
+                if (cmbOfficerType.SelectedItem == null)
+                {
+                    Tools.ShowMessage("请输入警种!", "", false);
+                    return;
+                }
                 SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
 
                 ser.SaveOrUpdateCompleted += (object sender1, SMSRecordService.SaveOrUpdateCompletedEventArgs e1) =>

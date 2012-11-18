@@ -54,6 +54,13 @@ namespace PoliceSMS.Web.SMSWcf
                 SMSRecord entity = JsonSerializerHelper.JsonToEntity<SMSRecord>(json);
                 if (entity.Id == 0)
                 {
+                    //判断重复录入
+                    string hql = string.Format(" from SMSRecord as r where convert(varchar(50),CreatTime,112) = '{0}' and PersonName = '{1}' and WorkType.Id = {2} and PersonMobile = '{3}' "
+                        , DateTime.Now.ToString("yyyyMMdd"), entity.PersonName, entity.WorkType.Id, entity.PersonMobile);
+                    var existList =  sess.CreateQuery(hql).List<SMSRecord>();
+                    if(existList!=null && existList.Count>0)
+                        return PackJsonResult("false", "0", "此案件已经录入！");
+
                     if (string.IsNullOrEmpty(entity.PersonMobile))
                         entity.PersonMobile = defaultMobile;
 

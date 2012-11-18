@@ -18,6 +18,7 @@ namespace PoliceSMS.Comm
         static Dict()
         {
             dict.Add("SMSRecordList", "群众办事登记");
+            dict.Add("SMSRecordListNew", "群众办事登记");
             dict.Add("WorkTypeList", "办事内容管理");
             dict.Add("GradeTypeList", "评分内容管理");
             dict.Add("SupervisionList", "督查情况管理");
