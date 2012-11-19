@@ -135,7 +135,7 @@ namespace PoliceSMS.Views
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            query();
+            initialQuery();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -321,11 +321,14 @@ namespace PoliceSMS.Views
         {
             if (e.Key == Key.Enter)
             {
-                query();
+                initialQuery();
             }
         }
 
-        private void query()
+        /// <summary>
+        /// 初始化查询
+        /// </summary>
+        private void initialQuery()
         {
             rDataPager1.PageIndex = 0;
             getData();
