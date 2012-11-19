@@ -135,8 +135,7 @@ namespace PoliceSMS.Views
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            rDataPager1.PageIndex = 0;
-            getData();
+            query();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -291,22 +290,22 @@ namespace PoliceSMS.Views
             if (conditionType.Text == "电话")
             {
                 if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.PersonMobile like '{0}%' ", tb.Text.Trim()));
+                    hql.Append(string.Format(" and r.PersonMobile like '%{0}%' ", tb.Text.Trim()));
             }
             if (conditionType.Text == "受理人")
             {
                 if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.WorkOfficer.Name like '{0}%' ", tb.Text.Trim()));
+                    hql.Append(string.Format(" and r.WorkOfficer.Name like '%{0}%' ", tb.Text.Trim()));
             }
             if (conditionType.Text == "办案人")
             {
                 if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.PersonName like '{0}%' ", tb.Text.Trim()));
+                    hql.Append(string.Format(" and r.PersonName like '%{0}%' ", tb.Text.Trim()));
             }
             if (conditionType.Text == "值班领导")
             {
                 if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.Leader.Name like '{0}%' ", tb.Text.Trim()));
+                    hql.Append(string.Format(" and r.Leader.Name like '%{0}%' ", tb.Text.Trim()));
             }
 
             string hqlStr = hql.ToString();
@@ -317,5 +316,20 @@ namespace PoliceSMS.Views
         {
             edit();
         }
+
+        private void condition_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                query();
+            }
+        }
+
+        private void query()
+        {
+            rDataPager1.PageIndex = 0;
+            getData();
+        }
+
     }
 }
