@@ -52,6 +52,16 @@ namespace PoliceSMS
             }
         }
 
+        public static bool HasPermission()
+        {
+            if(currentUser == null)
+                return false;
+            if (currentUser.Code.ToLower() == "admin")
+                return true;
+            else
+                return false;
+        }
+
 
         public static BasicHttpBinding CreateHttpBinding()
         {

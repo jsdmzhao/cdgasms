@@ -95,17 +95,19 @@
                                 <TextBlock Text="查询"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
                         </telerik:RadButton>
-                        <Rectangle Width="1" VerticalAlignment="Stretch" Margin="0 0 10 0"
-                       Fill="{StaticResource GridViewSplitter}">
-                            <Rectangle.Effect>
-                                <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
-                            </Rectangle.Effect>
-                        </Rectangle>
                         <telerik:RadButton x:Name="btnAdd" HorizontalAlignment="Right" Margin="0 0 10 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="60" Height="22" 
                                        Click="btnAdd_Click">
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="新建"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
+                            </StackPanel>
+                        </telerik:RadButton>
+
+                        <telerik:RadButton x:Name="btnEdit" HorizontalAlignment="Right" Margin="0 0 10 0"
+                                       Style="{StaticResource ExampleButtonStyle}" Width="60" Height="22" 
+                                       Click="btnEdit_Click">
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="修改"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                             </StackPanel>
                         </telerik:RadButton>
 
@@ -117,12 +119,6 @@
                             </StackPanel>
                         </telerik:RadButton>
 
-                        <Rectangle Width="1" VerticalAlignment="Stretch" Margin="0 0 10 0"
-                            Fill="{StaticResource GridViewSplitter}">
-                            <Rectangle.Effect>
-                                <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
-                            </Rectangle.Effect>
-                        </Rectangle>
                         <telerik:RadButton  HorizontalAlignment="Right" Margin="0 0 10 0"
                                        Style="{StaticResource ExampleButtonStyle}" Width="60" Height="22" 
                                       Click="btnExport_Click">

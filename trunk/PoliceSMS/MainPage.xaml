@@ -88,7 +88,7 @@
 											Text="群众办事登记" />
                                         </StackPanel>
                                     </ListBoxItem>
-                                    <ListBoxItem Tag="WorkTypeList">
+                                    <ListBoxItem Tag="WorkTypeList" Visibility="Collapsed" x:Name="workTypeItem">
                                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                             <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
 											BorderThickness="1">

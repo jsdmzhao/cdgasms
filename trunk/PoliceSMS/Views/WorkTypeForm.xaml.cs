@@ -36,6 +36,8 @@ namespace PoliceSMS.Views
             obj.Id = editObj.Id;
             obj.Name = editObj.Name;
             obj.IsUsed = editObj.IsUsed;
+
+            this.IsEnabled = AppGlobal.HasPermission();
         }
 
         void WorkTypeFormForm_Loaded(object sender, RoutedEventArgs e)
