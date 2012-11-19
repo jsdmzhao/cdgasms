@@ -24,7 +24,7 @@ namespace PoliceSMS.Views
 {
     public partial class SMSRecordListNew : Page
     {
-       SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
+        SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
         private const int PageSize = 19;
         private QueryCondition queryCondition = null;
 
@@ -37,7 +37,9 @@ namespace PoliceSMS.Views
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
             ser.ExportCompleted += new EventHandler<SMSRecordService.ExportCompletedEventArgs>(ser_ExportCompleted);
-            
+
+            btnEdit.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
+            btnDelete.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
 
@@ -192,6 +194,11 @@ namespace PoliceSMS.Views
 
         public void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
         {
+            edit();
+        }
+
+        private void edit()
+        {
             SMSRecord obj = gv.SelectedItem as SMSRecord;
 
             if (obj != null)
@@ -200,11 +207,6 @@ namespace PoliceSMS.Views
                 {
                     SupervisionForm form = new SupervisionForm(obj);
                     form.SaveCallBack = getData;
-                    form.IsEnabled = false;
-
-                    //允许政治处修改数据
-                    if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
-                        form.IsEnabled = true;
 
                     Tools.OpenWindow("督查情况", form, null, 400, 290);
                 }
@@ -212,11 +214,6 @@ namespace PoliceSMS.Views
                 {
                     SMSRecordForm form = new SMSRecordForm(obj);
                     form.SaveCallBack = getData;
-                    form.IsEnabled = false;
-
-                    //允许政治处修改数据
-                    if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
-                        form.IsEnabled = true;
 
                     Tools.OpenWindow("群众办事登记", form, null, 600, 400);
                 }
@@ -314,6 +311,11 @@ namespace PoliceSMS.Views
 
             string hqlStr = hql.ToString();
             return hqlStr;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            edit();
         }
     }
 }

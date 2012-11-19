@@ -274,11 +274,6 @@ namespace PoliceSMS.Views
             {
                 SupervisionForm form = new SupervisionForm(obj);
                 form.SaveCallBack = getData;
-                form.IsEnabled = false;
-
-                //允许政治处修改数据
-                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
-                    form.IsEnabled = true;
 
                 Tools.OpenWindow("督查情况", form, null, 400, 290);
             }

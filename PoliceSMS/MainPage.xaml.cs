@@ -46,8 +46,8 @@ namespace PoliceSMS
                 userPnl.Visibility = Visibility.Visible;
                 dataGrid.Visibility = Visibility.Visible;
                 (logFrm.Parent as RadWindow).Close();
-                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
-                    superVisionItem.Visibility = Visibility.Visible;
+                if (AppGlobal.HasPermission())
+                    superVisionItem.Visibility = workTypeItem.Visibility = Visibility.Visible;
             };
             Tools.OpenWindow("登录", logFrm, null);
             

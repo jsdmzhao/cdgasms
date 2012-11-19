@@ -82,7 +82,7 @@
 
             <TextBlock Text="得分:"  VerticalAlignment="Center"  TextAlignment="Right" Height="24" Grid.Column="0" Margin="5,0,5,0" Grid.Row="6"/>
             <telerik:RadComboBox x:Name="cmbGradeType" VerticalAlignment="Center"  SelectedValue="{Binding Path=GradeType,Mode=TwoWay}" DisplayMemberPath="Name"
-                                           Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="6" IsReadOnly="True" IsEnabled="False"/>
+                                           Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="6" />
 
             <TextBlock Text="是否反馈:" VerticalAlignment="Center" TextAlignment="Right"  Height="24" Grid.Column="2" Margin="5,0,5,0" Grid.Row="6"/>
             <CheckBox Name="chkIsResponse" VerticalAlignment="Center"   Height="24" Margin="5,0,5,0" Grid.Column="3" Grid.Row="6"  IsEnabled="False"/>

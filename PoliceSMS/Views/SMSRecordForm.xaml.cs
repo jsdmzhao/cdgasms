@@ -63,6 +63,8 @@ namespace PoliceSMS.Views
                 chkIsResponse.IsChecked = smsRecord.IsResponse ;
                 
             };
+            this.IsEnabled = AppGlobal.HasPermission();
+            //查询一次，避免在form更改了数据点击取消后原list界面数据更改（界面双向绑定，但没有提交到数据库）
             ser.GetByIdAsync(editObj.Id);
         }
 
@@ -76,14 +78,7 @@ namespace PoliceSMS.Views
 
             this.cmbWorkOrg.Text = (AppGlobal.CurrentUser.Organization).Name;
 
-            if (isEdit)
-            {
-                if ((AppGlobal.CurrentUser.Organization).Name.Contains("政治处") || (AppGlobal.CurrentUser.Organization).Name.Contains("成都市公安局青羊区分局"))
-                {
-                    this.cmbGradeType.IsReadOnly = false;
-                    this.cmbGradeType.IsEnabled = true;
-                }
-            }
+            
         }
 
         private void LoadSexs()
@@ -298,6 +293,10 @@ namespace PoliceSMS.Views
                 ser.SaveOrUpdateAsync(json);
                 (this.Parent as RadWindow).Close();
             }
+            else
+            {
+                Tools.ShowMessage("没有权限", "", false);
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -307,7 +306,7 @@ namespace PoliceSMS.Views
 
         private bool CheckVerify()
         {
-            return true;//temp!
+            return AppGlobal.HasPermission();
         }
     }
 }
