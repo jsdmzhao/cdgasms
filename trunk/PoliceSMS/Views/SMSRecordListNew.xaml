@@ -46,6 +46,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="80"></ColumnDefinition>
                         <ColumnDefinition Width="120"></ColumnDefinition>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
                         <ColumnDefinition Width="300"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
@@ -64,9 +65,11 @@
                         <telerik:RadComboBoxItem Content="值班领导" />
                     </telerik:RadComboBox>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="2" x:Name="datePanel">
+                    <TextBlock Text="条件:" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="3" x:Name="datePanel">
                         <telerik:RadDateTimePicker  InputMode="DatePicker"
                                                      DisplayFormat="Long"
+                                                    KeyDown="condition_KeyDown"
                                                           Width="115"
                                                          x:Name="dateStart"
                                                           Height="22"
@@ -74,18 +77,20 @@
                                                           VerticalAlignment="Center" />
                         <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
                         <telerik:RadDateTimePicker  InputMode="DatePicker" DisplayFormat="Long"
+                                                    KeyDown="condition_KeyDown"
                                                           Width="115"
                                                          x:Name="dateEnd"
                                                           Height="22"
                                                           Margin="0,0,0,0"
                                                           VerticalAlignment="Center" />
                     </StackPanel>
-                    
-                    
-                    <TextBox Visibility="Collapsed"  HorizontalAlignment="Left" Grid.Column="2" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="tb" Width="200" Height="24" Margin="5,0,0,0">
+
+
+                    <TextBox Visibility="Collapsed" KeyDown="condition_KeyDown"
+                             HorizontalAlignment="Left" Grid.Column="3" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="tb" Width="200" Height="24" Margin="5,0,0,0">
                     </TextBox>
 
-                    <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="20 0 0 0"
+                    <StackPanel Orientation="Horizontal" Grid.Column="4" Margin="20 0 0 0"
                                     HorizontalAlignment="Right" VerticalAlignment="Center" >
 
                         <telerik:RadButton x:Name="btnQuery" HorizontalAlignment="Right" Margin="0 0 10 0"
