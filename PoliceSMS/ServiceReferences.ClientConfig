@@ -34,6 +34,10 @@
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
+                <binding name="BasicHttpBinding_INoticeService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
             </basicHttpBinding>
         </bindings>
         <client>
@@ -61,6 +65,9 @@
             <endpoint address="http://localhost:1415/SMSWcf/SMSRecordService.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ISMSRecordService"
                 contract="SMSRecordService.ISMSRecordService" name="BasicHttpBinding_ISMSRecordService" />
+            <endpoint address="http://localhost:1415/SMSWcf/NoticeService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_INoticeService"
+                contract="NoticeService.INoticeService" name="BasicHttpBinding_INoticeService" />
         </client>
     </system.serviceModel>
 </configuration>

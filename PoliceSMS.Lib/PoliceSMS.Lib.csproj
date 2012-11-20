@@ -69,6 +69,7 @@
     <Compile Include="Query\QueryCondition.cs" />
     <Compile Include="Report\StationReportResult.cs" />
     <Compile Include="SMS\GradeType.cs" />
+    <Compile Include="SMS\Notice.cs" />
     <Compile Include="SMS\SMSRecord.cs" />
     <Compile Include="SMS\WorkType.cs" />
   </ItemGroup>
@@ -96,7 +97,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="SMS\Notice.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

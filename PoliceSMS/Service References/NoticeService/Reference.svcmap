@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1c4bfb1a-4c38-4f9e-9189-bd6e5f955331" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1415/SMSWcf/NoticeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NoticeService.xsd" MetadataType="Schema" ID="dc4b15e7-1cca-4615-a659-faa51da9a252" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/NoticeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="NoticeService.disco" MetadataType="Disco" ID="270c2c35-b395-469b-b103-5ce7501cd429" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/NoticeService.svc?disco" />
+    <MetadataFile FileName="NoticeService1.xsd" MetadataType="Schema" ID="8538a3cc-53af-44c2-abcd-837951367023" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/NoticeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="NoticeService.wsdl" MetadataType="Wsdl" ID="21f560cf-4938-466d-b57e-01f62266bb77" SourceId="1" SourceUrl="http://localhost:1415/SMSWcf/NoticeService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

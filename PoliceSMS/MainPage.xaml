@@ -98,6 +98,16 @@
 											Text="办事内容管理" />
                                         </StackPanel>
                                     </ListBoxItem>
+                                    <ListBoxItem Tag="NoticeList" Visibility="Visible" x:Name="NoticeItem">
+                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
+											BorderThickness="1">
+                                                <Image Source="/Images/add.png"  Stretch="None" />
+                                            </Border>
+                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
+											Text="系统通告" />
+                                        </StackPanel>
+                                    </ListBoxItem>
                                     <ListBoxItem Tag="SupervisionList" Visibility="Collapsed" x:Name="superVisionItem">
                                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                             <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
@@ -120,8 +130,9 @@
                     <telerik:RadDocking.DocumentHost>
 
                         <telerik:RadSplitContainer>
-                            <telerik:RadPaneGroup x:Name="tabGroup">
+                            <telerik:RadPaneGroup x:Name="tabGroup" >
                                 <telerik:RadDocumentPane Header="排名表" Title="排名表" CanFloat="False" CanUserClose="False" 
+                                                         
                                                          Tag="Index" >
                                     <navigation:Frame  Source="/Views/Index.xaml"
                                                        HorizontalAlignment="Stretch" BorderThickness="0" VerticalAlignment="Stretch" >

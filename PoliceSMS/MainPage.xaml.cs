@@ -94,7 +94,6 @@ namespace PoliceSMS
         /// <returns></returns>
         private bool VerifyRight(string tag)
         {
-            
             return true;
         }
         
