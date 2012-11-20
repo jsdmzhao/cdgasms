@@ -147,6 +147,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\NoticeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\OfficerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +191,12 @@
     <Compile Include="ViewModel\ExportintModel.cs" />
     <Compile Include="ViewModel\MarkState.cs" />
     <Compile Include="ViewModel\UsedState.cs" />
+    <Compile Include="Views\NoticeForm.xaml.cs">
+      <DependentUpon>NoticeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NoticeList.xaml.cs">
+      <DependentUpon>NoticeList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GradeTypeForm.xaml.cs">
       <DependentUpon>GradeTypeForm.xaml</DependentUpon>
     </Compile>
@@ -277,6 +288,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\NoticeForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NoticeList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\GradeTypeForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -345,6 +364,13 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GradeTypeService\GradeTypeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NoticeService\NoticeService.wsdl" />
+    <None Include="Service References\NoticeService\NoticeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NoticeService\NoticeService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OfficerService\OfficerService.wsdl" />
@@ -448,6 +474,13 @@
     <EmbeddedResource Include="HeaderTemplate\StationHeader.htm" />
     <EmbeddedResource Include="HeaderTemplate\OfficerHeader.htm" />
     <EmbeddedResource Include="HeaderTemplate\TotalHeader.htm" />
+    <None Include="Service References\NoticeService\NoticeService.disco" />
+    <None Include="Service References\NoticeService\configuration91.svcinfo" />
+    <None Include="Service References\NoticeService\configuration.svcinfo" />
+    <None Include="Service References\NoticeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\WorkTypeService\WorkTypeService.wsdl" />
     <None Include="Service References\WorkTypeService\WorkTypeService.xsd">
@@ -468,6 +501,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\GradeTypeService\" />
+    <WCFMetadataStorage Include="Service References\NoticeService\" />
     <WCFMetadataStorage Include="Service References\OfficerService\" />
     <WCFMetadataStorage Include="Service References\OfficerTypeService\" />
     <WCFMetadataStorage Include="Service References\OrganizationService\" />

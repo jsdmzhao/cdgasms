@@ -105,6 +105,7 @@
     <Content Include="PoliceSMSTestPage.html" />
     <Content Include="Report\ReportWcf.svc" />
     <Content Include="Silverlight.js" />
+    <Content Include="SMSWcf\NoticeService.svc" />
     <Content Include="SMSWcf\GradeTypeService.svc" />
     <Content Include="SMSWcf\SMSRecordService.svc" />
     <Content Include="SMSWcf\WorkTypeService.svc" />
@@ -149,6 +150,10 @@
     <Compile Include="Serializable\NhbSerialzableHelper.cs" />
     <Compile Include="Serializable\NHibernateContractResolver.cs" />
     <Compile Include="Serializable\NHibernateProxyJsonConverter.cs" />
+    <Compile Include="SMSWcf\INoticeService.cs" />
+    <Compile Include="SMSWcf\NoticeService.svc.cs">
+      <DependentUpon>NoticeService.svc</DependentUpon>
+    </Compile>
     <Compile Include="SMSWcf\GradeTypeService.svc.cs">
       <DependentUpon>GradeTypeService.svc</DependentUpon>
     </Compile>

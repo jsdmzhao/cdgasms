@@ -81,6 +81,7 @@ namespace PoliceSMS.Views
             }
         }
 
+        IList<StationReportResult> list;
         private void LoadReport()
         {
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
@@ -105,11 +106,9 @@ namespace PoliceSMS.Views
             ser.LoadOfficerReportResultCompleted+= (object sender, ReportService.LoadOfficerReportResultCompletedEventArgs e) =>
                 {
                     int total = 0;
-                    IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
-                    //gv.ItemsSource = result;
-
-                    //gv.Items.Refresh();
-                    rDataPager1.Source = result;
+                    list = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
+                    
+                    rDataPager1.Source = list;
 
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
@@ -140,6 +139,8 @@ namespace PoliceSMS.Views
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
+            if (list == null || list.Count == 0)
+                return;
             ExportingModel export = new ExportingModel();
             export.SelectedExportFormat = "Excel";
 
@@ -152,7 +153,8 @@ namespace PoliceSMS.Views
                 html = Encoding.UTF8.GetString(bsHtml, 0, bsHtml.Length);
             }
 
-            export.ExportWithHeader(gv, html);
+            gvtmp.ItemsSource = list;
+            export.ExportWithHeader(gvtmp, html);
         }
 
         private void rDataPager1_PageIndexChanged(object sender, Telerik.Windows.Controls.PageIndexChangedEventArgs e)
