@@ -54,6 +54,10 @@ namespace PoliceSMS.Views
                 }
 
                 gv.ItemsSource = list;
+                if (list == null || list.Count == 0)
+                {
+                    Tools.ShowMessage("没有系统通告!","",true);
+                }
 
             }
             catch (Exception ex)
