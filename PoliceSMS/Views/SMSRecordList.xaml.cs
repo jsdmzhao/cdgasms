@@ -197,6 +197,13 @@ namespace PoliceSMS.Views
 
                 rDataPager1.ItemCount = total;
                 Tools.ShowMask(false);
+
+                // 增加
+                if (list == null || list.Count == 0)
+                {
+                    Tools.ShowMessage("没有找到相对应的数据！", "", true);
+                }
+                // 结束
             }
             catch (Exception ex)
             {

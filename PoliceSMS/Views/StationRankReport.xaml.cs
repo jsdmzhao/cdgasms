@@ -38,10 +38,13 @@ namespace PoliceSMS.Views
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
             LoadReport();
+            Tools.ShowMask(true, "正在查找数据,请稍等...");
         }
 
-        public void LoadReport()
+        bool showTooltip = true;
+        public void LoadReport(bool showTooltip = true)
         {
+            this.showTooltip = showTooltip;
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
             {
                 Tools.ShowMessage("时间不能为空!", "", false);
@@ -62,6 +65,10 @@ namespace PoliceSMS.Views
                     gv.Items.Refresh();
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
+                    if (result == null || result.Count == 0 && showTooltip == true)
+                    {
+                        Tools.ShowMessage("没有找到相对应的数据！", "", true);
+                    }
                 };
 
            

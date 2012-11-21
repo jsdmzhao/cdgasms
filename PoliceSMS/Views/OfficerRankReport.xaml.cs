@@ -97,7 +97,7 @@ namespace PoliceSMS.Views
             }
 
             btnExport.IsEnabled = false;
-            Tools.ShowMask(true);
+            Tools.ShowMask(true,"正在查找数据,请稍等...");
 
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
             
@@ -112,6 +112,10 @@ namespace PoliceSMS.Views
 
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
+                    if (list == null || list.Count == 0)
+                    {
+                        Tools.ShowMessage("没有找到相对应的数据！","",true);
+                    }
                 };
 
             DateTime beginTime1 = DateTime.Now.AddDays(-1);

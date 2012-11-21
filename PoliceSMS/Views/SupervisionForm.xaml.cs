@@ -128,6 +128,9 @@ namespace PoliceSMS.Views
                     for (int i = 0; i < removeList.Count; i++)
                         officers.Remove(removeList[i]);
                     cmbWorkOfficer.ItemsSource = officers;
+                    // 增加
+                    cmbLeader.ItemsSource = officers;
+                    // 结束
 
                 };
 
@@ -172,6 +175,13 @@ namespace PoliceSMS.Views
                 Tools.ShowMessage("请输入受理人!", "", false);
                 return;
             }
+            // 增加
+            if (cmbLeader.SelectedItem == null)
+            {
+                Tools.ShowMessage("请输入值班领导!", "", false);
+                return;
+            }
+            // 结束
 
             if (cmbGradeType.SelectedItem == null)
             {
@@ -203,7 +213,6 @@ namespace PoliceSMS.Views
             smsRecord.LoginOfficer = AppGlobal.CurrentUser;
             smsRecord.PersonMobile = ""; //数据库不能为空
             smsRecord.WorkType = new WorkType { Id = 4 }; //数据库不能为空
-            smsRecord.Leader = smsRecord.WorkOfficer; //数据库不能为空
 
 
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(smsRecord);
@@ -225,7 +234,13 @@ namespace PoliceSMS.Views
                 Tools.ShowMessage("请输入受理人!", "", false);
                 return;
             }
-
+            // 增加
+            if (cmbLeader.SelectedItem == null)
+            {
+                Tools.ShowMessage("请输入值班领导!", "", false);
+                return;
+            }
+            // 结束
             if (cmbGradeType.SelectedItem == null)
             {
                 Tools.ShowMessage("请输入扣分原因!", "", false);
