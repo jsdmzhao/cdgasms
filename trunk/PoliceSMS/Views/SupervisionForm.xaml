@@ -41,6 +41,9 @@
                 <RowDefinition Height="30"/>    
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
+                <!--增加一行-->
+                <RowDefinition Height="30"/>
+                <!--结束-->
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -68,13 +71,17 @@
             <TextBlock Text="受理人:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="2"/>
             <telerik:RadComboBox x:Name="cmbWorkOfficer" VerticalAlignment="Center"  SelectedValue="{Binding Path=WorkOfficer,Mode=TwoWay}" DisplayMemberPath="Name"
                                            Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" />
+            <!--增加值班领导-->
+            <TextBlock Text="值班领导:" VerticalAlignment="Center" TextAlignment="Right" Grid.Column="0" Margin="5,0,5,0" Grid.Row="3"></TextBlock>
+            <telerik:RadComboBox x:Name="cmbLeader" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" SelectedValue="{Binding Path=Leader,Mode=TwoWay}" DisplayMemberPath="Name" Height="24" Margin="5,0,5,0"></telerik:RadComboBox>
+            <!--结束-->
 
-            <TextBlock Text="扣分原因:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="3"/>
+            <TextBlock Text="扣分原因:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="4"/>
             <telerik:RadComboBox x:Name="cmbGradeType" VerticalAlignment="Center"  SelectedValue="{Binding Path=GradeType,Mode=TwoWay}" DisplayMemberPath="Name"
-                                           Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" />
+                                           Height="24" Margin="5,0,5,0" Grid.Column="1" Grid.Row="4" />
 
-            <TextBlock Text="数量:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="4"/>
-            <telerik:RadMaskedNumericInput Grid.Row="4" Grid.Column="1"
+            <TextBlock Text="数量:"  VerticalAlignment="Center"  TextAlignment="Right"  Grid.Column="0" Margin="5,0,5,0" Grid.Row="5"/>
+            <telerik:RadMaskedNumericInput Grid.Row="5" Grid.Column="1"
                                                         Mask="#4"
                                                          IsClearButtonVisible="False"
                                             

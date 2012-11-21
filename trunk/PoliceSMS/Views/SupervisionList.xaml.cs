@@ -96,7 +96,8 @@ namespace PoliceSMS.Views
                         var removeList = list.Where(c => c.Name == "吴涛" || c.Name == "贾红兵").ToList();
                         for (int i = 0; i < removeList.Count; i++)
                             list.Remove(removeList[i]);
-                        cboxOper.ItemsSource = list;
+                        // 屏蔽
+                        //cboxOper.ItemsSource = list;
 
                     };
 
@@ -178,6 +179,8 @@ namespace PoliceSMS.Views
 
                 rDataPager1.ItemCount = total;
                 Tools.ShowMask(false);
+                if (list == null || list.Count == 0)
+                    Tools.ShowMessage("没有找到相对应的数据！", "", true);
             }
             catch (Exception ex)
             {
@@ -192,7 +195,7 @@ namespace PoliceSMS.Views
 
         void getData()
         {
-            Tools.ShowMask(true);
+            Tools.ShowMask(true, "正在查找数据,请稍等...");
             BuildHql();
 
             queryCondition.FirstResult = rDataPager1.PageIndex * PageSize; ;
@@ -211,14 +214,13 @@ namespace PoliceSMS.Views
 
             hql.Append(string.Format(" from SMSRecord as r where r.GradeType.IsSupervise = {0} and  r.WorkDate between '{1}' and '{2}' ",
                  true,start, end));
-
-            if (cboxOper.SelectedItem != null)
-            {
-                Officer off = cboxOper.SelectedItem as Officer;
-                if (off != null)
-                    hql.Append(" and r.WorkOfficer.Id=" + off.Id);
-            }
-
+            // 屏蔽
+            //if (cboxOper.SelectedItem != null)
+            //{
+            //    Officer off = cboxOper.SelectedItem as Officer;
+            //    if (off != null)
+            //        hql.Append(" and r.WorkOfficer.Id=" + off.Id);
+            //}
           
 
             if (cboxStation.SelectedItem != null)
@@ -234,7 +236,16 @@ namespace PoliceSMS.Views
                 if (grade != null)
                     hql.Append(" and r.GradeType.Id =" + grade.Id);
             }
-
+            if (txtOper.Text != "")
+            {
+                if (!string.IsNullOrEmpty(txtOper.Text.Trim()))
+                    hql.Append(string.Format(" and r.WorkOfficer.Name like '%{0}%' ", txtOper.Text.Trim()));
+            }
+            if (txtLeader.Text != "")
+            {
+                if (!string.IsNullOrEmpty(txtLeader.Text.Trim()))
+                    hql.Append(string.Format(" and r.Leader.Name like '%{0}%' ", txtLeader.Text.Trim()));
+            }
 
             queryCondition = new QueryCondition();
 
@@ -259,7 +270,7 @@ namespace PoliceSMS.Views
             rDataPager1.PageIndex = 0;
             frm.SaveCallBack = getData;
 
-            Tools.OpenWindow("督查情况-新增", frm, null, 400, 290);
+            Tools.OpenWindow("督查情况-新增", frm, null, 400, 320);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -275,7 +286,7 @@ namespace PoliceSMS.Views
                 SupervisionForm form = new SupervisionForm(obj);
                 form.SaveCallBack = getData;
 
-                Tools.OpenWindow("督查情况", form, null, 400, 290);
+                Tools.OpenWindow("督查情况", form, null, 400, 320);
             }
         }
 
@@ -302,6 +313,7 @@ namespace PoliceSMS.Views
 
         private void rDataPager1_PageIndexChanged(object sender, Telerik.Windows.Controls.PageIndexChangedEventArgs e)
         {
+            Tools.ShowMask(true);
             if (queryCondition != null)
             {
                 queryCondition.FirstResult = e.NewPageIndex * PageSize;

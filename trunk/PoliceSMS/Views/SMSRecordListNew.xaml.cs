@@ -97,6 +97,10 @@ namespace PoliceSMS.Views
 
                 rDataPager1.ItemCount = total;
                 Tools.ShowMask(false);
+                if (list == null || list.Count == 0)
+                {
+                    Tools.ShowMessage("没有找到相对应的数据！","",true);
+                }
             }
             catch (Exception ex)
             {
@@ -111,7 +115,7 @@ namespace PoliceSMS.Views
 
         void getData()
         {
-            Tools.ShowMask(true);
+            Tools.ShowMask(true, "正在查找数据,请稍等...");
             BuildHql();
 
             queryCondition.FirstResult = rDataPager1.PageIndex * PageSize; ;
@@ -170,6 +174,7 @@ namespace PoliceSMS.Views
           
         private void rDataPager1_PageIndexChanged(object sender, Telerik.Windows.Controls.PageIndexChangedEventArgs e)
         {
+            Tools.ShowMask(true);
             if (queryCondition != null)
             {
                 queryCondition.FirstResult = e.NewPageIndex * PageSize;

@@ -39,6 +39,7 @@ namespace PoliceSMS.Views
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
             LoadReport();
+            Tools.ShowMask(true, "正在查找数据,请稍等...");
         }
 
         public void LoadReport()
@@ -62,6 +63,10 @@ namespace PoliceSMS.Views
                 gv.Items.Refresh();
                 Tools.ShowMask(false);
                 btnExport.IsEnabled = true;
+                if (result == null || result.Count == 0)
+                {
+                    Tools.ShowMessage("没有找到相对应的数据！","",true);
+                }
             };
 
             DateTime beginTime = dateStart.SelectedDate.Value;
