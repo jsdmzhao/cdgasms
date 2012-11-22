@@ -15,25 +15,108 @@ using PoliceSMS.ViewModel;
 using PoliceSMS.Lib.Report;
 using Telerik.Windows.Controls;
 using System.Reflection;
+using Telerik.Windows.Controls.Charting;
+using PoliceSMS.Lib.Organization;
+using Telerik.Windows.Controls.Animation;
 
 namespace PoliceSMS.Views
 {
     public partial class StationRankReport : Page
     {
-        public int UnitType { get; set; }
+        private int unitType = -1;
+        public int UnitType
+        {
+            get
+            {
+                return unitType;
+            }
+            set
+            {
+                unitType = value;
+                LoadStation();
+            }
+        }
 
         public StationRankReport()
         {
             InitializeComponent();
+            
             DateTime preMonth = DateTime.Now.AddMonths(-1);
             DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
             DateTime endTime = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
 
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
-            
+
+            LoadStation();
         }
 
+        private void LoadStation()
+        {
+            if (unitType == -1)
+                return;
+            if (unitType == 1)
+            {
+                try
+                {
+                    OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
+                    ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
+                    {
+                        int total = 0;
+                        var stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
+                        foreach (var station in stations)
+                        {
+                            //去掉‘青羊区分局’
+                            if (station.Name.StartsWith("青羊区分局"))
+                                station.Name = station.Name.Replace("青羊区分局", "");
+                        }
+
+
+                        lb.ItemsSource = stations;
+
+                    };
+
+                    //这里没有考虑权限
+                    ser.GetListByHQLAsync(string.Format("from Organization where Name like '%青羊%' and SMSUnitType={0} order by OrderIndex ", unitType));
+
+                }
+                catch (Exception ex)
+                {
+                    Tools.ShowMessage("读取单位发生错误", ex.Message, false);
+                }
+            }
+            if (unitType == 3)
+            {
+                try
+                {
+                    OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
+                    ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
+                    {
+                        int total = 0;
+                        var stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
+                        foreach (var station in stations)
+                        {
+                            if (station.Name.StartsWith("青羊区分局"))
+                                station.Name = station.Name.Replace("青羊区分局", "");
+                            if (station.Name.StartsWith("成都市公安局"))
+                                station.Name = station.Name.Replace("成都市公安局", "");
+                        }
+
+
+                        lb.ItemsSource = stations;
+
+                    };
+
+                    //这里没有考虑权限
+                    ser.GetListByHQLAsync(string.Format("select distinct  o from SMSRecord r inner join r.Organization as o where o.Name like '%青羊%' and o.SMSUnitType={0} order by o.OrderIndex ", unitType));
+
+                }
+                catch (Exception ex)
+                {
+                    Tools.ShowMessage("读取单位发生错误", ex.Message, false);
+                }
+            }
+        }
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
@@ -61,8 +144,10 @@ namespace PoliceSMS.Views
                     int total = 0;
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                     gv.ItemsSource = result;
-
                     gv.Items.Refresh();
+
+                    rc.ItemsSource = result;
+
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
                     if (result == null || result.Count == 0 && showTooltip == true)
@@ -103,6 +188,41 @@ namespace PoliceSMS.Views
             }
 
             export.ExportWithHeader(gv, html);
+        }
+
+        private void list_Checked(object sender, RoutedEventArgs e)
+        {
+            if (rc != null)
+                rc.Visibility = Visibility.Collapsed;
+            if (sv != null)
+                sv.Visibility = Visibility.Visible;
+        }
+
+        private void chart_Checked(object sender, RoutedEventArgs e)
+        {
+            if (rc != null)
+                rc.Visibility = Visibility.Visible;
+            if (sv != null)
+                sv.Visibility = Visibility.Collapsed;
+        }
+
+        private void lb_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems != null && e.AddedItems.Count > 0)
+            {
+                Organization org = e.AddedItems[0] as Organization;
+                if (org != null)
+                {
+                    AppGlobal.CurrentDialogPage = new OfficerRankReport(org, dateStart.SelectedDate, dateEnd.SelectedDate);
+
+                    Tools.OpenCustomWindow(string.Format("{0}个人排名表", org.Name), AppGlobal.CurrentDialogPage, new Action(() =>
+                        {
+                            lb.SelectedIndex = -1;
+                            //必须置空，否则RadBusyIndicator不会正常显示
+                            AppGlobal.CurrentDialogPage = null;
+                        }));
+                }
+            }
         }
 
     }

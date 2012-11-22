@@ -11,11 +11,22 @@ using System.Windows.Shapes;
 using System.Text;
 using PoliceSMS.Lib.Organization;
 using System.ServiceModel;
+using Telerik.Windows.Controls;
 
 namespace PoliceSMS
 {
     public static class AppGlobal
     {
+        /// <summary>
+        /// 用于弹出的Dialog
+        /// 因为BusyIndicator包含在MainWindow中
+        /// 弹出的新Window如果使用BusyIndicator会调用MainWindow中的BusyIndicator
+        /// 此属性和Tools.OpenCustomWindow一起使用
+        /// 在弹出的新窗口调用此Page中的BusyIndicator，需保证此Page中包含BusyIndicator
+        /// 注意需要手动将此属性置空，否则出现BusyIndicator引用错误
+        /// </summary>
+        public static Page CurrentDialogPage { get; set; }
+
         /// <summary>
         /// 清除缓存数据
         /// </summary>

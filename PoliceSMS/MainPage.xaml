@@ -191,6 +191,6 @@
 
         <telerik:RadBusyIndicator x:Name="busyIndicator" 
 								  IsBusy="False"
-								  telerik:AnimationManager.IsAnimationEnabled="False" DisplayAfter="0:0:0.2" />
+								  telerik:AnimationManager.IsAnimationEnabled="False"  />
     </Grid>
 </UserControl>

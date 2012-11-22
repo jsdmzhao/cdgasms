@@ -42,15 +42,25 @@ namespace PoliceSMS.Views
             LoadStation();
         }
 
+        public OfficerRankReport(Organization org,DateTime? start ,DateTime? end)
+        {
+            InitializeComponent();
+            rDataPager1.PageSize = AppGlobal.PageSize;
+            if (start != null)
+                dateStart.SelectedDate = start.Value;
+            if (end != null)
+                dateEnd.SelectedDate = end.Value;
+            LoadStation(org);
+        }
+
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-           
             LoadReport();
         }
 
 
-        private void LoadStation()
+        private void LoadStation(Organization org=null)
         {
             try
             {
@@ -66,8 +76,18 @@ namespace PoliceSMS.Views
 
                     
                     cmbStation.ItemsSource = stations;
-                    if (cmbStation.Items.Count > 0)
-                        cmbStation.SelectedIndex = 0;
+                    if (org == null)
+                    {
+                        if (cmbStation.Items.Count > 0)
+                            cmbStation.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        var o = stations.SingleOrDefault(c => c.Id == org.Id);
+                        if(o!=null)
+                            cmbStation.SelectedItem = o;
+                        LoadReport();
+                    }
 
                 };
 

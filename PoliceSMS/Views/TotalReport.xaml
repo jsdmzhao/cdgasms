@@ -31,6 +31,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
@@ -63,8 +64,30 @@
                         </StackPanel>
 
                     </Grid>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="20 0 0 0"
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <TextBlock Text="展示方式:" VerticalAlignment="Center"  HorizontalAlignment="Right"
+                                   Width="80" TextAlignment="Right"
+                                   Margin="20 0 0 0"></TextBlock>
+                        <telerik:RadButtonGroup telerik:StyleManager.Theme="Office_Blue" Margin="5 0 0 0" Height="22"
+                                                   HorizontalAlignment="Left"   x:Name="rbShowType">
+                            <telerik:RadRadioButton Width="30" IsChecked="True" Checked="list_Checked"
+                                                          x:Name="listShowType" >
+                                <telerik:RadRadioButton.Content>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Image Source="/Images/edit-list.png" Height="14" Width="14" />
+                                    </StackPanel>
+                                </telerik:RadRadioButton.Content>
+                            </telerik:RadRadioButton>
+                            <telerik:RadRadioButton Width="30" Checked="chart_Checked">
+                                <telerik:RadRadioButton.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Images/chart.png" Height="14" Width="14" />
+                                    </StackPanel>
+                                </telerik:RadRadioButton.Content>
+                            </telerik:RadRadioButton>
+                        </telerik:RadButtonGroup>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="20 0 0 0"
                                     HorizontalAlignment="Right" VerticalAlignment="Center" >
 
                         <telerik:RadButton x:Name="btnQuery" HorizontalAlignment="Right" Margin="0 0 20 0"
@@ -103,16 +126,9 @@
                 </Rectangle>
 
                 <Grid Grid.Row="2" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="130" MinWidth="130" MaxWidth="130"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <ListBox FontSize="13" >
-                        <ListBoxItem Content="太升"/>
-                        <ListBoxItem Content="黄瓦"/>
-                    </ListBox>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                                  Grid.Column="1">
+                    <ScrollViewer x:Name="sv"
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                  >
                         <StackPanel>
                             <Grid >
                                 <Grid.RowDefinitions>
@@ -426,6 +442,51 @@
                             </telerik:RadGridView>
                         </StackPanel>
                     </ScrollViewer>
+                    <telerik:RadChart x:Name="rc" BorderThickness="0"  Background="Transparent" Grid.Column="1"
+                                      Visibility="Collapsed" >
+                        <telerik:RadChart.SeriesMappings>
+                            <telerik:SeriesMapping>
+                                <telerik:SeriesMapping.SeriesDefinition>
+                                    <telerik:BarSeriesDefinition ItemLabelFormat="0.#" ShowItemLabels="True" ShowItemToolTips="True"
+                                                  />
+                                </telerik:SeriesMapping.SeriesDefinition>
+                                <telerik:SeriesMapping.ItemMappings>
+                                    <telerik:ItemMapping FieldName="X" DataPointMember="XCategory" />
+                                    <telerik:ItemMapping FieldName="IntY" DataPointMember="YValue" />
+                                </telerik:SeriesMapping.ItemMappings>
+                            </telerik:SeriesMapping>
+                        </telerik:RadChart.SeriesMappings>
+
+                        <telerik:RadChart.DefaultView>
+                            <telerik:ChartDefaultView >
+                                <telerik:ChartDefaultView.ChartTitle>
+                                    <telerik:ChartTitle Content="" HorizontalAlignment="Center"/>
+                                </telerik:ChartDefaultView.ChartTitle>
+                                <telerik:ChartDefaultView.ChartLegend>
+                                    <telerik:ChartLegend Visibility="Collapsed" />
+                                </telerik:ChartDefaultView.ChartLegend>
+                                <telerik:ChartDefaultView.ChartArea>
+                                    <telerik:ChartArea>
+                                        <telerik:ChartArea.AxisY>
+                                            <telerik:AxisY Title="受理总数" ExtendDirection="None" 
+                                                           MinValue="0"
+                                                            IsZeroBased="True">
+                                                <telerik:AxisY.AxisStyles>
+                                                    <telerik:AxisStyles TitleStyle="{ StaticResource  AxisTitleStyle}"/>
+                                                </telerik:AxisY.AxisStyles>
+                                            </telerik:AxisY>
+                                        </telerik:ChartArea.AxisY>
+                                        <telerik:ChartArea.AxisX>
+                                            <telerik:AxisX LabelRotationAngle="45">
+
+                                            </telerik:AxisX>
+                                        </telerik:ChartArea.AxisX>
+                                    </telerik:ChartArea>
+                                </telerik:ChartDefaultView.ChartArea>
+                            </telerik:ChartDefaultView>
+                        </telerik:RadChart.DefaultView>
+                    </telerik:RadChart>
+
                 </Grid>
             </Grid>
         </Border>
