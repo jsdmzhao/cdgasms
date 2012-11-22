@@ -145,12 +145,21 @@
                                  SelectionChanged="lbSort_SelectionChanged"
                          BorderThickness="0" 
                          x:Name="lbSort">
-                        <ListBoxItem FontSize="14" Height="24"  IsSelected="True" Foreground="Blue" VerticalAlignment="Center"  VerticalContentAlignment="Center"  Content="差评"></ListBoxItem>
-                        <ListBoxItem FontSize="14" Height="24" Foreground="Blue" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="满意率"></ListBoxItem>
-                        <ListBoxItem FontSize="14" Height="24" Foreground="Blue" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="受理总量"></ListBoxItem>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid  Height="24">
+                                    <StackPanel Orientation="Horizontal" Margin="2" >
+                                        <TextBlock Foreground="Black" FontSize="14" >
+                                                <Run Foreground="Blue" Text="{Binding Name}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal" >
+                                <StackPanel Orientation="Horizontal" Margin="2">
 
                                 </StackPanel>
                             </ItemsPanelTemplate>
