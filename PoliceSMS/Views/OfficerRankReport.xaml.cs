@@ -17,6 +17,7 @@ using Telerik.Windows.Controls;
 using PoliceSMS.Lib.Organization;
 using System.Reflection;
 using System.Text;
+using PoliceSMS.Lib.Core;
 
 namespace PoliceSMS.Views
 {
@@ -41,6 +42,7 @@ namespace PoliceSMS.Views
 
             LoadStation();
             LoadOfficerTypes();
+            LoadSortTypes();
         }
 
         public OfficerRankReport(Organization org,DateTime? start ,DateTime? end)
@@ -53,6 +55,7 @@ namespace PoliceSMS.Views
                 dateEnd.SelectedDate = end.Value;
             LoadStation(org);
             LoadOfficerTypes();
+            LoadSortTypes();
         }
 
 
@@ -281,6 +284,14 @@ namespace PoliceSMS.Views
             }
         }
 
+        private void LoadSortTypes()
+        {
+            SortType[] objs = new SortType[] { new SortType {Id=1, Name = "差评" }, new SortType {Id=2, Name = "满意率" }, 
+                new SortType {Id=3, Name = "受理总量" } };
+            lbSort.ItemsSource = objs;
+            lbSort.SelectedIndex = 0;
+        }
+
 
         private void lbType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -295,4 +306,5 @@ namespace PoliceSMS.Views
        
 
     }
+
 }

@@ -191,6 +191,7 @@
     <Compile Include="ViewModel\ChartModel.cs" />
     <Compile Include="ViewModel\ExportintModel.cs" />
     <Compile Include="ViewModel\MarkState.cs" />
+    <Compile Include="ViewModel\SortType.cs" />
     <Compile Include="ViewModel\UsedState.cs" />
     <Compile Include="Views\NoticeForm.xaml.cs">
       <DependentUpon>NoticeForm.xaml</DependentUpon>
