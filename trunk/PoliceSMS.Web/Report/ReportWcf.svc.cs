@@ -197,6 +197,101 @@ namespace PoliceSMS.Web.Report
             return PackJsonListResult("true", json, string.Empty, result.Count);
         }
 
+        /// <summary>
+        /// 增加警种，排序条件
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        /// 
+        public string LoadOfficerByOrderReportResult(int UnitId, DateTime beginTime1, DateTime endTime1, string officerName, int officerType, int orderIndex)
+        {
+            ISession session = HbmSessionFactory.OpenSession();
+
+            IDbCommand cmd = session.Connection.CreateCommand();
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            //exec (SMS_UnitReportWithCompare @UnitType,@BeginTim1,@EndTime1,@BeginTime2,@EndTime2)
+            cmd.CommandText = "SMS_OfficerReportWithCompare";
+
+            SqlParameter pUnitId = new SqlParameter("@unitId", SqlDbType.Int);
+            SqlParameter pBeginTime1 = new SqlParameter("@beginTime1", SqlDbType.DateTime);
+            SqlParameter pEndTime1 = new SqlParameter("@endTime1", SqlDbType.DateTime);
+            SqlParameter pOfficerName = new SqlParameter("@OfficerName", SqlDbType.NVarChar);
+            SqlParameter pOfficerType = new SqlParameter("@OfficerType", SqlDbType.Int);
+            SqlParameter pOrderIndex = new SqlParameter("@orderIndex", SqlDbType.Int);
+
+            pUnitId.Value = UnitId;
+            pBeginTime1.Value = beginTime1;
+            pEndTime1.Value = endTime1;
+            pOfficerName.Value = officerName;
+            pOfficerType.Value = officerType;
+            pOrderIndex.Value = orderIndex;
+
+            cmd.Parameters.Add(pUnitId);
+            cmd.Parameters.Add(pBeginTime1);
+            cmd.Parameters.Add(pEndTime1);
+            cmd.Parameters.Add(pOfficerName);
+            /////////警种
+            cmd.Parameters.Add(pOfficerType);
+            ////////排序方式
+            cmd.Parameters.Add(pOrderIndex);
+
+            IDataReader reader = cmd.ExecuteReader();
+
+            IList<StationReportResult> result = new List<StationReportResult>();
+
+            while (reader.Read())
+            {
+                StationReportResult srr = new StationReportResult();
+
+                srr.UpRank = reader.IsDBNull(0) ? null : (int?)reader.GetInt32(0);
+                srr.UnitName = reader.IsDBNull(1) ? "" : reader.GetString(1).Substring(5);
+                srr.Rank = reader.GetInt32(2);
+                srr.UnitId = reader.GetInt32(3);
+                srr.TotalCount = reader.GetInt32(4);
+                srr.StationRate = (double)reader.GetDecimal(5);
+                srr.Score = (double)reader.GetDecimal(6);
+
+                srr.G1Count = reader.GetInt32(7);
+                srr.G1Rate = (double)reader.GetDecimal(8);
+
+                srr.G2Count = reader.GetInt32(9);
+                srr.G2Rate = (double)reader.GetDecimal(10);
+
+                srr.G3Count = reader.GetInt32(11);
+                srr.G3Rate = (double)reader.GetDecimal(12);
+
+                srr.G4Count = reader.GetInt32(13);
+                srr.G4Rate = (double)reader.GetDecimal(14);
+
+                srr.G5Count = reader.GetInt32(15);
+                srr.G5Rate = (double)reader.GetDecimal(16);
+
+                srr.G6Count = reader.GetInt32(18);
+                srr.G6Rate = (double)reader.GetDecimal(19);
+
+                srr.G7Count = reader.GetInt32(20);
+                srr.G7Rate = (double)reader.GetDecimal(21);
+
+                srr.Rate = (double)reader.GetDecimal(17);
+
+                srr.OfficerName = reader.IsDBNull(23) ? "" : reader.GetString(23);
+
+                srr.TotalScore = reader.GetInt32(22);
+
+                result.Add(srr);
+            }
+
+            string json = JsonSerializerHelper.EntityToJson(result);
+
+            return PackJsonListResult("true", json, string.Empty, result.Count);
+        }
+
+
+
+
+
         public string LoadTotalReportResult(int start,int end)
         {
             ISession session = HbmSessionFactory.OpenSession();

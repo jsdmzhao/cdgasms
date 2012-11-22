@@ -18,6 +18,12 @@
   <wsdl:message name="IReportWcf_LoadOfficerReportResult_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoadOfficerReportResultResponse" />
   </wsdl:message>
+  <wsdl:message name="IReportWcf_LoadOfficerByOrderReportResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadOfficerByOrderReportResult" />
+  </wsdl:message>
+  <wsdl:message name="IReportWcf_LoadOfficerByOrderReportResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadOfficerByOrderReportResultResponse" />
+  </wsdl:message>
   <wsdl:message name="IReportWcf_LoadTotalReportResult_InputMessage">
     <wsdl:part name="parameters" element="tns:LoadTotalReportResult" />
   </wsdl:message>
@@ -32,6 +38,10 @@
     <wsdl:operation name="LoadOfficerReportResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IReportWcf/LoadOfficerReportResult" message="tns:IReportWcf_LoadOfficerReportResult_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReportWcf/LoadOfficerReportResultResponse" message="tns:IReportWcf_LoadOfficerReportResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadOfficerByOrderReportResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportWcf/LoadOfficerByOrderReportResult" message="tns:IReportWcf_LoadOfficerByOrderReportResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportWcf/LoadOfficerByOrderReportResultResponse" message="tns:IReportWcf_LoadOfficerByOrderReportResult_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LoadTotalReportResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IReportWcf/LoadTotalReportResult" message="tns:IReportWcf_LoadTotalReportResult_InputMessage" />
@@ -51,6 +61,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoadOfficerReportResult">
       <soap:operation soapAction="http://tempuri.org/IReportWcf/LoadOfficerReportResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadOfficerByOrderReportResult">
+      <soap:operation soapAction="http://tempuri.org/IReportWcf/LoadOfficerByOrderReportResult" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
