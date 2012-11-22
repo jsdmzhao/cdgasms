@@ -28,11 +28,15 @@
             <Grid Margin="10 6" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="320" />
                     <ColumnDefinition Width="195"/>
                     <ColumnDefinition Width="195"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="时间:" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
@@ -101,6 +105,57 @@
                             <TextBlock Text="导出"  FontSize="12" TextOptions.TextHintingMode="Fixed"></TextBlock>
                         </StackPanel>
                     </telerik:RadButton>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="警种:" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+                    
+                    <ListBox Background="Transparent"  telerik:StyleManager.Theme="Summer" Grid.Column="0"
+                             
+                                 SelectionChanged="lbType_SelectionChanged"
+                         BorderThickness="0" 
+                         x:Name="lbType">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid  Height="24">
+                                    <StackPanel Orientation="Horizontal" Margin="2" >
+                                        <TextBlock Foreground="Black" FontSize="14" >
+                                                <Run Foreground="Blue" Text="{Binding Name}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="2">
+
+                                </StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                    <TextBlock Text="排序方式:" VerticalAlignment="Center"  HorizontalAlignment="Right"></TextBlock>
+
+                    <ListBox Background="Transparent"  telerik:StyleManager.Theme="Summer" Grid.Column="0"
+                             VerticalContentAlignment="Center"
+                                 SelectionChanged="lbSort_SelectionChanged"
+                         BorderThickness="0" 
+                         x:Name="lbSort">
+                        <ListBoxItem FontSize="14" Height="24"  IsSelected="True" Foreground="Blue" VerticalAlignment="Center"  VerticalContentAlignment="Center"  Content="差评"></ListBoxItem>
+                        <ListBoxItem FontSize="14" Height="24" Foreground="Blue" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="满意率"></ListBoxItem>
+                        <ListBoxItem FontSize="14" Height="24" Foreground="Blue" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="受理总量"></ListBoxItem>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" >
+
+                                </StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
                 </StackPanel>
             </Grid>
 

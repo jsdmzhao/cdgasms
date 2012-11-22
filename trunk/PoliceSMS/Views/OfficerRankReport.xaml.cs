@@ -40,6 +40,7 @@ namespace PoliceSMS.Views
             dateStart.SelectedDate = beginTime;
 
             LoadStation();
+            LoadOfficerTypes();
         }
 
         public OfficerRankReport(Organization org,DateTime? start ,DateTime? end)
@@ -51,6 +52,7 @@ namespace PoliceSMS.Views
             if (end != null)
                 dateEnd.SelectedDate = end.Value;
             LoadStation(org);
+            LoadOfficerTypes();
         }
 
 
@@ -251,6 +253,43 @@ namespace PoliceSMS.Views
                 {
                 }
             }
+        }
+
+        private void LoadOfficerTypes()
+        {
+            try
+            {
+                //WorkTypeService.WorkTypeServiceClient ser = new WorkTypeService.WorkTypeServiceClient(AppGlobal.CreateHttpBinding(), new EndpointAddress(new Uri(Application.Current.Host.Source, "../SMSWcf/WorkTypeService.svc")));
+                OfficerTypeService.OfficerTypeServiceClient ser = new OfficerTypeService.OfficerTypeServiceClient();
+                ser.GetListByHQLCompleted += (object sender, OfficerTypeService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    var officerTypes = JsonSerializerHelper.JsonToEntities<OfficerType>(e.Result, out total);
+
+                    officerTypes.Insert(0, new OfficerType { Id = 0, Name = "全部" });
+                    lbType.ItemsSource = officerTypes;
+                    lbType.SelectedIndex = 0;
+
+                };
+
+                ser.GetListByHQLAsync("from OfficerType");
+
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取警种发生错误", ex.Message, false);
+            }
+        }
+
+
+        private void lbType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lbSort_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
 
        
