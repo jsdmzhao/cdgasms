@@ -103,7 +103,7 @@ namespace PoliceSMS.Views
             
             Organization selOrg =(Organization) cmbStation.SelectedItem;
             
-            ser.LoadOfficerReportResultCompleted+= (object sender, ReportService.LoadOfficerReportResultCompletedEventArgs e) =>
+            ser.LoadOfficerByOrderReportResultCompleted+= (object sender, ReportService.LoadOfficerByOrderReportResultCompletedEventArgs e) =>
                 {
                     int total = 0;
                     list = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
@@ -135,8 +135,12 @@ namespace PoliceSMS.Views
             DateTime beginTime2 = endTime2.Add(-span);
 
             int unitId = selOrg == null ? 0 : selOrg.Id;
+            //////////警种
+            int officerType = 0;
+            //////////排序条件
+            int orderIndex = 1;
 
-            ser.LoadOfficerReportResultAsync(unitId, beginTime1, endTime1, beginTime2, endTime2, string.Format("{0}%", tbOfficerName.Text));
+            ser.LoadOfficerByOrderReportResultAsync(unitId, beginTime1, endTime1, string.Format("{0}%", tbOfficerName.Text), officerType, orderIndex);
 
         }
 

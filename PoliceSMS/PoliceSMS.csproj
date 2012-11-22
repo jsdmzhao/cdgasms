@@ -464,13 +464,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ReportService\ReportWcf.disco" />
-    <None Include="Service References\ReportService\configuration91.svcinfo" />
-    <None Include="Service References\ReportService\configuration.svcinfo" />
-    <None Include="Service References\ReportService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <EmbeddedResource Include="HeaderTemplate\StationHeader.htm" />
     <EmbeddedResource Include="HeaderTemplate\OfficerHeader.htm" />
     <EmbeddedResource Include="HeaderTemplate\TotalHeader.htm" />
@@ -478,6 +471,13 @@
     <None Include="Service References\NoticeService\configuration91.svcinfo" />
     <None Include="Service References\NoticeService\configuration.svcinfo" />
     <None Include="Service References\NoticeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ReportService\ReportWcf.disco" />
+    <None Include="Service References\ReportService\configuration91.svcinfo" />
+    <None Include="Service References\ReportService\configuration.svcinfo" />
+    <None Include="Service References\ReportService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
