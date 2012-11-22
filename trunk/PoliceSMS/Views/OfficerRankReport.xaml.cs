@@ -26,6 +26,7 @@ namespace PoliceSMS.Views
 
         public int UnitType { get; set; }
         public IList<Organization> stations;
+        bool autoReport = false;
 
         public OfficerRankReport()
         {
@@ -116,13 +117,13 @@ namespace PoliceSMS.Views
         {
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
             {
-                Tools.ShowMessage("时间不能为空!", "", false);
+                //Tools.ShowMessage("时间不能为空!", "", false);
                 return;
             }
 
             if (cmbStation.SelectedItem == null)
             {
-                Tools.ShowMessage("请选择单位!", "", false);
+                //Tools.ShowMessage("请选择单位!", "", false);
                 return;
             }
 
@@ -146,6 +147,8 @@ namespace PoliceSMS.Views
                     {
                         Tools.ShowMessage("没有找到相对应的数据！","",true);
                     }
+
+                    autoReport = true;
                 };
 
             DateTime beginTime1 = DateTime.Now.AddDays(-1);
@@ -167,8 +170,20 @@ namespace PoliceSMS.Views
             int unitId = selOrg == null ? 0 : selOrg.Id;
             //////////警种
             int officerType = 0;
+            if (lbType.SelectedItem != null)
+            {
+                var obj = lbType.SelectedItem as OfficerType;
+                if (obj != null)
+                    officerType = obj.Id;
+            }
             //////////排序条件
-            int orderIndex = 1;
+            int orderIndex = 0;
+            if (lbSort.SelectedItem != null)
+            {
+                var obj = lbSort.SelectedItem as SortType;
+                if (obj != null)
+                    orderIndex = obj.Id;
+            }
 
             ser.LoadOfficerByOrderReportResultAsync(unitId, beginTime1, endTime1, string.Format("{0}%", tbOfficerName.Text), officerType, orderIndex);
 
@@ -300,12 +315,14 @@ namespace PoliceSMS.Views
 
         private void lbType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            if (autoReport)
+                 LoadReport();
         }
 
         private void lbSort_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            if(autoReport)
+                LoadReport();
         }
 
        
