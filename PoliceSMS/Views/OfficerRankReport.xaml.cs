@@ -53,7 +53,14 @@ namespace PoliceSMS.Views
                 dateStart.SelectedDate = start.Value;
             if (end != null)
                 dateEnd.SelectedDate = end.Value;
-            LoadStation(org);
+            LoadStation(new Action(() =>
+                {
+                    var o = stations.SingleOrDefault(c => c.Id == org.Id);
+                    if (o != null)
+                        cmbStation.SelectedItem = o;
+                    LoadReport();
+                    
+                }));
             LoadOfficerTypes();
             LoadSortTypes();
         }
@@ -65,7 +72,7 @@ namespace PoliceSMS.Views
         }
 
 
-        private void LoadStation(Organization org=null)
+        private void LoadStation(Action action = null)
         {
             try
             {
@@ -81,17 +88,15 @@ namespace PoliceSMS.Views
 
                     
                     cmbStation.ItemsSource = stations;
-                    if (org == null)
+                    if (action == null)
                     {
                         if (cmbStation.Items.Count > 0)
                             cmbStation.SelectedIndex = 0;
                     }
                     else
                     {
-                        var o = stations.SingleOrDefault(c => c.Id == org.Id);
-                        if(o!=null)
-                            cmbStation.SelectedItem = o;
-                        LoadReport();
+                        
+                        action();
                     }
 
                 };
