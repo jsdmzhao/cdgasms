@@ -88,7 +88,9 @@
     <Content Include="ClientBin\Images\blue-folder-horizontal.png" />
     <Content Include="ClientBin\Images\cancel.png" />
     <Content Include="ClientBin\Images\chart.png" />
+    <Content Include="ClientBin\Images\check.png" />
     <Content Include="ClientBin\Images\del.png" />
+    <Content Include="ClientBin\Images\edit-list.png" />
     <Content Include="ClientBin\Images\edit.png" />
     <Content Include="ClientBin\Images\jihui.jpg" />
     <Content Include="ClientBin\Images\jihui.png" />

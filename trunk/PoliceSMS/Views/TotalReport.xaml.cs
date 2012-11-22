@@ -15,6 +15,7 @@ using PoliceSMS.Lib.Report;
 using PoliceSMS.ViewModel;
 using System.Reflection;
 using System.Text;
+using PoliceSMS.Lib.Organization;
 
 namespace PoliceSMS.Views
 {
@@ -42,6 +43,14 @@ namespace PoliceSMS.Views
             Tools.ShowMask(true, "正在查找数据,请稍等...");
         }
 
+        private string getFromatDate(string date)
+        {
+            int yearMonth = int.Parse(date);
+            int year = yearMonth / 100;
+            int month = yearMonth % 100;
+            return string.Format("{0}年{1}月", year, month);
+        }
+
         public void LoadReport()
         {
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
@@ -59,8 +68,10 @@ namespace PoliceSMS.Views
                 int total = 0;
                 IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                 gv.ItemsSource = result;
-
                 gv.Items.Refresh();
+
+                rc.ItemsSource = result.OrderBy(c => int.Parse(c.UnitName)).Select(c => new ChartModel{ X = getFromatDate(c.UnitName), IntY = c.TotalCount });
+
                 Tools.ShowMask(false);
                 btnExport.IsEnabled = true;
                 if (result == null || result.Count == 0)
@@ -98,5 +109,25 @@ namespace PoliceSMS.Views
             export.ExportWithHeader(gv, html);
         }
 
+        private void list_Checked(object sender, RoutedEventArgs e)
+        {
+            if (rc != null)
+                rc.Visibility = Visibility.Collapsed;
+            if (sv != null)
+                sv.Visibility = Visibility.Visible;
+        }
+
+        private void chart_Checked(object sender, RoutedEventArgs e)
+        {
+            if (rc != null)
+                rc.Visibility = Visibility.Visible;
+            if (sv != null)
+                sv.Visibility = Visibility.Collapsed;
+        }
+
+        private void lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

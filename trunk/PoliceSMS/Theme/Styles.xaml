@@ -247,6 +247,63 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Thickness x:Key="AxisTitleMargin">10,3,10,3</Thickness>
+    <Style x:Key="AxisTitleBorderStyle"
+       TargetType="Border">
+        <Setter Property="Margin"
+            Value="0,5,0,0" />
+        <Setter Property="CornerRadius"
+            Value="2" />
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                    <GradientStop Color="Transparent"
+                              Offset="0.3" />
+                    <GradientStop Color="Black"
+                              Offset="0.7" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness"
+            Value="2,0,2,2" />
+    </Style>
+    <Style x:Key="AxisTitleInnerBorderStyle"
+       TargetType="Border">
+        <Setter Property="CornerRadius"
+            Value="1" />
+    </Style>
+    <Style x:Key="AxisTitleStyle"
+       TargetType="telerik:AxisTitle">
+        <Setter Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter Property="VerticalAlignment"
+            Value="Center" />
+        <Setter Property="Margin"
+            Value="{StaticResource AxisTitleMargin}" />
+        <Setter Property="BorderStyle"
+            Value="{StaticResource AxisTitleBorderStyle}" />
+        <Setter Property="InnerBorderStyle"
+            Value="{StaticResource AxisTitleInnerBorderStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="telerik:AxisTitle">
+                    <Border Style="{TemplateBinding BorderStyle}">
+                        <Border Style="{TemplateBinding InnerBorderStyle}">
+                            <ContentControl Margin="{TemplateBinding Margin}"
+                                        FontFamily="{TemplateBinding FontFamily}"
+                                        FontSize="{TemplateBinding FontSize}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground"
+            Value="Black" />
+        <Setter Property="FontSize"
+            Value="14" />
+    </Style>
 
 </ResourceDictionary>

@@ -88,6 +88,12 @@
                         </telerik:GridViewDataColumn>
                     </telerik:RadGridView.Columns>
                 </telerik:RadGridView>
+                <telerik:RadDataPager Source="{Binding ItemSource, ElementName=gv}" Grid.Row="3" 
+                                            x:Name="rDataPager1" Margin="0 0 0 4"
+                                            BorderThickness="0"
+                                            PageSize="19"  PageIndexChanged="rDataPager1_PageIndexChanged"
+                                            IsTotalItemCountFixed="True"
+                                            DisplayMode="FirstLastPreviousNextNumeric"/>
             </Grid>
         </Border>
 

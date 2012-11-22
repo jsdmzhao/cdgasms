@@ -16,7 +16,9 @@
     <navigation:Page.Resources>
         <local:ExportingModel x:Key="context" />
         <my:NegativeConverter x:Key="myConverter" />
+        <my:StationConverter x:Key="stationConverter" />
     </navigation:Page.Resources>
+    
 
     <Grid x:Name="LayoutRoot">
         <Border VerticalAlignment="Stretch" >
@@ -33,6 +35,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
@@ -63,8 +66,31 @@
                         </StackPanel>
 
                     </Grid>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <TextBlock Text="展示方式:" VerticalAlignment="Center"  HorizontalAlignment="Right"
+                                   Width="80" TextAlignment="Right"
+                                   Margin="20 0 0 0"></TextBlock>
+                        <telerik:RadButtonGroup telerik:StyleManager.Theme="Office_Blue" Margin="5 0 0 0" Height="22"
+                                          HorizontalAlignment="Left"   x:Name="rbShowType">
+                            <telerik:RadRadioButton Width="30" IsChecked="True" Checked="list_Checked"
+                                                          x:Name="listShowType" >
+                                <telerik:RadRadioButton.Content>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Image Source="/Images/edit-list.png" Height="14" Width="14" />
+                                    </StackPanel>
+                                </telerik:RadRadioButton.Content>
+                            </telerik:RadRadioButton>
+                            <telerik:RadRadioButton Width="30" Checked="chart_Checked">
+                                <telerik:RadRadioButton.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Images/chart.png" Height="14" Width="14" />
+                                    </StackPanel>
+                                </telerik:RadRadioButton.Content>
+                            </telerik:RadRadioButton>
+                        </telerik:RadButtonGroup>
+                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="20 0 0 0"
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="20 0 0 0"
                                     HorizontalAlignment="Right" VerticalAlignment="Center" >
 
                         <telerik:RadButton x:Name="btnQuery" HorizontalAlignment="Right" Margin="0 0 20 0"
@@ -102,18 +128,45 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <Grid Grid.Row="2" >
+                <Grid Grid.Row="2" x:Name="mainGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="130"/>
                         <ColumnDefinition Width="*"/>                       
                     </Grid.ColumnDefinitions>
-                    <ListBox>
-                        <ListBoxItem Content=""/>
-                        <ListBoxItem Content=""/>
+                    <ListBox Background="White"  telerik:StyleManager.Theme="Summer" Grid.Column="0"
+                             
+                                 SelectionChanged="lb_SelectionChanged"
+                         BorderThickness="0" 
+                         x:Name="lb">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid>
+                                    <StackPanel Orientation="Horizontal" Margin="2" >
+                                        <TextBlock Foreground="Black" FontSize="14" >
+                                                <Run Text="{Binding Name}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" Margin="2">
+
+                                </StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
                     </ListBox>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="1">
-                        <StackPanel>
-                            <Grid>
+
+                    <ScrollViewer x:Name="sv" 
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="1">
+                        <Grid VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="24"></RowDefinition>
                                     <RowDefinition Height="24"></RowDefinition>
@@ -123,7 +176,7 @@
                                     <ColumnDefinition Width="25"></ColumnDefinition>
                                     <ColumnDefinition Width="29"></ColumnDefinition>
                                     <ColumnDefinition Width="0"></ColumnDefinition>
-                                    <ColumnDefinition Width="105"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
                                     <ColumnDefinition Width="35"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="35"></ColumnDefinition>
@@ -377,25 +430,19 @@
                                     </Border>
                                 </Border>
                             </Grid>
-                            <telerik:RadGridView BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
+                            <telerik:RadGridView Grid.Row="1"
+                                BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
                                           CanUserSelect="False" ShowColumnHeaders="False"
                                          
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
-                                <!--<telerik:RadGridView.ColumnGroups>
-                            <telerik:GridViewColumnGroup Name="best3" Header="非常满意" />
-                            <telerik:GridViewColumnGroup Name="better3" Header="满意"/>
-                            <telerik:GridViewColumnGroup Name="normal3" Header="一般"/>
-                            <telerik:GridViewColumnGroup Name="bad3" Header="业务不熟"/>
-                            <telerik:GridViewColumnGroup Name="worst3" Header="态度欠佳"/>
-                        </telerik:RadGridView.ColumnGroups>-->
                                 <telerik:RadGridView.Columns>
 
 
                                     <telerik:GridViewDataColumn MinWidth="30" MaxWidth="30"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
-                                    <telerik:GridViewDataColumn MinWidth="105" MaxWidth="105"  Header="单位" DataMemberBinding="{Binding UnitName}" HeaderTextAlignment="Left" />
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" />
 
 
 
@@ -437,214 +484,55 @@
                                     <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="总得分" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
                                 </telerik:RadGridView.Columns>
                             </telerik:RadGridView>
-                        </StackPanel>
+                        </Grid>
                     </ScrollViewer>
+                    <telerik:RadChart x:Name="rc" BorderThickness="0"  Background="Transparent" Grid.Column="1"
+                                      Visibility="Collapsed" >
+                        <telerik:RadChart.SeriesMappings>
+                            <telerik:SeriesMapping>
+                                <telerik:SeriesMapping.SeriesDefinition>
+                                    <telerik:BarSeriesDefinition  ShowItemLabels="True" ShowItemToolTips="True"
+                                               ItemLabelFormat="#Y%}" ItemToolTipFormat="#Y%"   />
+                                </telerik:SeriesMapping.SeriesDefinition>
+                                <telerik:SeriesMapping.ItemMappings>
+                                    <telerik:ItemMapping FieldName="UnitName" DataPointMember="XCategory" />
+                                    <telerik:ItemMapping FieldName="StationRate" DataPointMember="YValue" />
+                                </telerik:SeriesMapping.ItemMappings>
+                            </telerik:SeriesMapping>
+                        </telerik:RadChart.SeriesMappings>
 
-                    <!--<telerik:RadGridView Name="gv" AutoGenerateColumns="False" GridLinesVisibility="Both">
-                        <telerik:RadGridView.Columns>
-                            <telerik:GridViewColumn Width="*">
-                                <telerik:GridViewColumn.Header>
-                                        <Grid  >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                            </Grid.RowDefinitions>
+                        <telerik:RadChart.DefaultView>
+                            <telerik:ChartDefaultView>
+                                <telerik:ChartDefaultView.ChartTitle>
+                                    <telerik:ChartTitle Content="" HorizontalAlignment="Center"/>
+                                </telerik:ChartDefaultView.ChartTitle>
+                                <telerik:ChartDefaultView.ChartLegend>
+                                    <telerik:ChartLegend Visibility="Collapsed" />
+                                </telerik:ChartDefaultView.ChartLegend>
+                                <telerik:ChartDefaultView.ChartArea>
+                                    <telerik:ChartArea>
+                                        
+                                        <telerik:ChartArea.AxisY>
+                                            <telerik:AxisY Title="满意率" ExtendDirection="None"
+                                                           MinValue="0.0" MaxValue="100.0" Step="10.0"
+                                                            IsZeroBased="True">
+                                                <telerik:AxisY.AxisStyles>
+                                                    <telerik:AxisStyles TitleStyle="{ StaticResource  AxisTitleStyle}"/>
+                                                </telerik:AxisY.AxisStyles>
+                                            </telerik:AxisY>
                                             
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="160*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                
-                                        </Grid.ColumnDefinitions>
+                                        </telerik:ChartArea.AxisY>
+                                        <telerik:ChartArea.AxisX>
+                                            <telerik:AxisX LabelRotationAngle="45">
 
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="20">
-                                            <TextBlock  Text="统计"  TextAlignment="Center" />
-                                        </Border>
+                                            </telerik:AxisX>
+                                        </telerik:ChartArea.AxisX>
+                                    </telerik:ChartArea>
+                                </telerik:ChartDefaultView.ChartArea>
+                            </telerik:ChartDefaultView>
+                        </telerik:RadChart.DefaultView>
+                    </telerik:RadChart>
 
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
-                                            <TextBlock  Text="排名"  TextAlignment="Center" />
-                                        </Border>
-
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
-                                            <TextBlock  Text="单位"  TextAlignment="Center" />
-                                        </Border>
-
-
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2">
-                                            <TextBlock  Text="满意率"  TextAlignment="Center" />
-                                        </Border>
-
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2">
-                                            <TextBlock  Text="平均得分"  TextAlignment="Center" />
-                                        </Border>
-
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2">
-                                            <TextBlock  Text="受理总量"  TextAlignment="Center" />
-                                        </Border>
-
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="5">
-                                            <TextBlock   Text="非常满意" TextAlignment="Center"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1">
-                                            <TextBlock  Text="满意" TextAlignment="Center"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="1">
-                                            <TextBlock  Text="一般" TextAlignment="Center"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="1">
-                                            <TextBlock  Text="业务不熟" TextAlignment="Center"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="1">
-                                            <TextBlock  Text="态度不好" TextAlignment="Center"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="5" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="数量"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="6" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="比例"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="7" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="数量"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="8" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="比例"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="9" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center"  Text="数量"/>
-                                        </Border>
-                                        <Border  BorderThickness="1" BorderBrush="Black" Grid.Column="10" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="比例"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="11" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="数量"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="12" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="比例"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="13" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="数量"/>
-                                        </Border>
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="14" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="比例"/>
-                                        </Border>
-
-                                        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="15" Grid.Row="2">
-                                            <TextBlock  TextAlignment="Center" Text="回复率"/>
-                                        </Border>
-
-                                    </Grid>
-                                </telerik:GridViewColumn.Header>
-                                
-                                <telerik:GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-
-
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="160*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="50*"/>
-                                            </Grid.ColumnDefinitions>
-
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="0">
-                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=Rank }" />
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="1">
-                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=UnitName }" />
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="2">
-                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=Score, StringFormat=F2 }" />
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="3">
-                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=StationRate, StringFormat=F2 }" />
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="4">
-                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=TotalCount }" />
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="5">
-                                                <TextBlock  HorizontalAlignment="Center"   Text="{Binding Path=G1Count }" />
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="6">
-                                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=G1Rate, StringFormat=F2}"/>
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="7">
-                                                <TextBlock  HorizontalAlignment="Center" Text="{Binding Path=G2Count}"/>
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="8">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G2Rate, StringFormat=F2}"/>
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="9">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G3Count}"/>
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="10">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G3Rate, StringFormat=F2}"/>
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="11">
-                                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=G4Count}"/>
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="12">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G4Rate, StringFormat=F2}"/>
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="13">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G5Count}"/>
-                                            </Border>
-                                            
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="14">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=G5Rate, StringFormat=F2}"/>
-                                            </Border>
-
-                                            <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="15">
-                                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Path=Rate, StringFormat=F2}"/>
-                                            </Border>
-
-                                        </Grid>
-                                    </DataTemplate>
-                                </telerik:GridViewColumn.CellTemplate>
-                                
-                            </telerik:GridViewColumn>
-                        </telerik:RadGridView.Columns>
-                    </telerik:RadGridView>-->
                 </Grid>
                 </Grid>
         </Border>

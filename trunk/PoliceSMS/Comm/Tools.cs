@@ -10,6 +10,7 @@ using System.Windows.Controls.Primitives;
 using Telerik.Windows.Controls;
 using System.IO;
 using System.Text;
+using Telerik.Windows.Controls.Animation;
 
 namespace PoliceSMS.Comm
 {
@@ -106,12 +107,29 @@ namespace PoliceSMS.Comm
         }
         public static void ShowMask(bool isMask,string message)
         {
-            RadBusyIndicator busy = App.Current.RootVisual.FindChildByType<RadBusyIndicator>();
-            busy.IsBusy = isMask;
-            busy.BusyContent = "正在加载数据...";
-            if (!string.IsNullOrEmpty(message))
+            UIElement ui = null;
+            if (AppGlobal.CurrentDialogPage == null)
             {
-                busy.BusyContent = message;
+                ui = App.Current.RootVisual;
+               
+            }
+            else
+            {
+                ui = AppGlobal.CurrentDialogPage;
+            }
+
+            if (ui != null)
+            {
+                RadBusyIndicator busy = ui.FindChildByType<RadBusyIndicator>();
+                if (busy != null)
+                {
+                    busy.IsBusy = isMask;
+                    busy.BusyContent = "正在加载数据...";
+                    if (!string.IsNullOrEmpty(message))
+                    {
+                        busy.BusyContent = message;
+                    }
+                }
             }
         }
         
@@ -172,7 +190,38 @@ namespace PoliceSMS.Comm
             }
         }
 
+        public static RadWindow OpenCustomWindow(string header, Page page, Action callback)
+        {
+            try
+            {
+                RadWindow window = new RadWindow();
 
+                window.Style = Application.Current.Resources["DefaultWindowStyle"] as Style;
+              
+                window.Header = header;
+                window.WindowStartupLocation = Telerik.Windows.Controls.WindowStartupLocation.CenterScreen;
+                window.WindowState = WindowState.Maximized;
+
+                window.Content = page;
+                window.Opacity = 1;
+                window.Closed += (o, e) =>
+                {
+                    Tools.PerformOutEffect(window).Begin();
+                    
+                    if (callback != null)
+                        callback();
+                };
+
+
+                window.ShowDialog();
+                Tools.PerformInEffect(window).Begin();
+                return window;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public static void OpenConfirm(object content, EventHandler<WindowClosedEventArgs> closedCallblack)
         {
             DialogParameters p = new DialogParameters();

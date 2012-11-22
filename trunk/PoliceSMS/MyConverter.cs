@@ -111,6 +111,35 @@ namespace PoliceSMS
             }
         }
 
+
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    public class StationConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is string)
+            {
+                string v = value as string;
+                if (v.StartsWith("巡警"))
+                    return "巡大";
+                if (v.Length > 2)
+                    return v.Substring(0, 2);
+                return value;
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return value;
