@@ -7,6 +7,7 @@
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
              xmlns:sp="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
     xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation" 
+             xmlns:views="clr-namespace:PoliceSMS.Views"
     mc:Ignorable="d"
              
     d:DesignHeight="800" d:DesignWidth="1000">
@@ -134,7 +135,17 @@
                                 <telerik:RadDocumentPane Header="排名表" Title="排名表" CanFloat="False" CanUserClose="False" 
                                                          
                                                          Tag="Index" >
-                                    <navigation:Frame  Source="/Views/Index.xaml"
+                                    <telerik:RadDocumentPane.Content>
+                                        <views:Index></views:Index>
+                                        
+                                    </telerik:RadDocumentPane.Content>
+                                    <telerik:RadDocumentPane.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                                        </LinearGradientBrush>
+                                    </telerik:RadDocumentPane.Background>
+                                    <!--<navigation:Frame  Source="/Views/Index.xaml"
                                                        HorizontalAlignment="Stretch" BorderThickness="0" VerticalAlignment="Stretch" >
                                         <navigation:Frame.Background>
                                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -143,7 +154,7 @@
                                             </LinearGradientBrush>
                                         </navigation:Frame.Background>
 
-                                    </navigation:Frame>
+                                    </navigation:Frame>-->
                                 </telerik:RadDocumentPane>
                             </telerik:RadPaneGroup>
                         </telerik:RadSplitContainer>
