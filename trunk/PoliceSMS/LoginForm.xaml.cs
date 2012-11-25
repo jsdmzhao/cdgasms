@@ -96,8 +96,9 @@ namespace PoliceSMS
                         }
 
                     }
-                    catch
+                    catch(Exception e)
                     {
+
                     }
                     CallBack();
                 }

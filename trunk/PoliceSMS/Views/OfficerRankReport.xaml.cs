@@ -26,14 +26,16 @@ namespace PoliceSMS.Views
 
         public int UnitType { get; set; }
         public IList<Organization> stations;
+
+        bool isOfficerSelected = false;
         bool autoReport = false;
+        
 
         public OfficerRankReport()
         {
             InitializeComponent();
 
             rDataPager1.PageSize = AppGlobal.PageSize;
-
             DateTime preMonth = DateTime.Now.AddMonths(-1);
             DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
             DateTime endTime = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
@@ -41,29 +43,101 @@ namespace PoliceSMS.Views
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
 
-            LoadStation();
-            LoadOfficerTypes();
-            LoadSortTypes();
+            this.Loaded += new RoutedEventHandler(OfficerRankReport_Loaded);
         }
 
-        public OfficerRankReport(Organization org,DateTime? start ,DateTime? end)
+        void OfficerRankReport_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-            rDataPager1.PageSize = AppGlobal.PageSize;
-            if (start != null)
-                dateStart.SelectedDate = start.Value;
-            if (end != null)
-                dateEnd.SelectedDate = end.Value;
-            LoadStation(new Action(() =>
+            isOfficerSelected = false;
+            autoReport = false;
+            int orgId = 0;
+            DateTime? start = null;
+            DateTime? end = null;
+            if (this.NavigationContext != null)
+            {
+                if (this.NavigationContext.QueryString.Keys.Contains("OrgId"))
+                    int.TryParse(this.NavigationContext.QueryString["OrgId"], out orgId);
+                if (this.NavigationContext.QueryString.Keys.Contains("Start"))
                 {
-                    var o = stations.SingleOrDefault(c => c.Id == org.Id);
-                    if (o != null)
-                        cmbStation.SelectedItem = o;
-                    LoadReport();
-                    
-                }));
-            LoadOfficerTypes();
-            LoadSortTypes();
+                    DateTime tmp;
+                    if (DateTime.TryParse(this.NavigationContext.QueryString["Start"], out tmp))
+                        start = tmp;
+                }
+                if (this.NavigationContext.QueryString.Keys.Contains("End"))
+                {
+                    DateTime tmp;
+                    if (DateTime.TryParse(this.NavigationContext.QueryString["End"], out tmp))
+                        end = tmp;
+                }
+            }
+
+            if (start != null)
+                dateStart.SelectedDate = start;
+            if (end != null)
+                dateEnd.SelectedDate = end;
+
+            if (orgId == 0)
+            {
+                LoadSortTypes();
+                Action action = new Action(
+                    () =>
+                    {
+                        LoadStation(new Action(() =>
+                        {
+                            autoReport = true;
+                        }
+                        ));
+                    }
+                );
+                LoadOfficerTypes(action);
+            }
+            else
+            {
+                this.dateStart.IsEnabled = false;
+                this.dateEnd.IsEnabled = false;
+                this.cmbStation.IsEnabled = false;
+                LoadSortTypes();
+                Action action = new Action(
+                    () =>
+                    {
+                        LoadStation(new Action(() =>
+                        {
+                            var o = stations.SingleOrDefault(c => c.Id == orgId);
+                            if (o != null)
+                                cmbStation.SelectedItem = o;
+                            LoadReport(new Action(() => autoReport = true));
+
+                        }
+                        ));
+                    }
+                );
+                LoadOfficerTypes(action);
+            }
+        }
+
+
+        void gv_SelectionChanged(object sender, SelectionChangeEventArgs e)
+        {
+            if (this.NavigationService != null)
+            {
+                if (isOfficerSelected)
+                {
+                    if (e.AddedItems != null && e.AddedItems.Count > 0)
+                    {
+                        StationReportResult obj = e.AddedItems[0] as StationReportResult;
+                        if (obj != null)
+                        {
+                            string str = string.Empty;
+                            if (dateStart.SelectedDate != null && dateEnd.SelectedDate != null)
+                                str = string.Format("{0}录入记录（{1}-{2}）", obj.OfficerName, dateStart.SelectedDate.Value.ToString("yy年MM月dd日"), dateEnd.SelectedDate.Value.ToString("yy年MM月dd日"));
+                            else
+                                str = string.Format("{0}录入记录（{1}-{2}）", obj.OfficerName, dateStart.SelectedDate, dateEnd.SelectedDate);
+                            string uri = string.Format("/Views/SMSRecordListNew.xaml?OfficerId={0}&Start={1}&End={2}", obj.UnitId, dateStart.SelectedDate, dateEnd.SelectedDate);
+                            this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
+                        }
+                    }
+                }
+            }
         }
 
 
@@ -89,14 +163,11 @@ namespace PoliceSMS.Views
 
                     
                     cmbStation.ItemsSource = stations;
-                    if (action == null)
+                    if (cmbStation.Items.Count > 0)
+                        cmbStation.SelectedIndex = 0;
+
+                    if (action != null)
                     {
-                        if (cmbStation.Items.Count > 0)
-                            cmbStation.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        
                         action();
                     }
 
@@ -113,17 +184,17 @@ namespace PoliceSMS.Views
         }
 
         IList<StationReportResult> list;
-        private void LoadReport()
+        private void LoadReport(Action action = null)
         {
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
             {
-                //Tools.ShowMessage("时间不能为空!", "", false);
+                Tools.ShowMessage("时间不能为空!", "", false);
                 return;
             }
 
             if (cmbStation.SelectedItem == null)
             {
-                //Tools.ShowMessage("请选择单位!", "", false);
+                Tools.ShowMessage("请选择单位!", "", false);
                 return;
             }
 
@@ -141,6 +212,12 @@ namespace PoliceSMS.Views
                     
                     rDataPager1.Source = list;
 
+                    isOfficerSelected = true;
+                    if(action!=null)
+                    {
+                        action();
+                    }
+
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
                     if (list == null || list.Count == 0)
@@ -148,7 +225,6 @@ namespace PoliceSMS.Views
                         Tools.ShowMessage("没有找到相对应的数据！","",true);
                     }
 
-                    autoReport = true;
                 };
 
             DateTime beginTime1 = DateTime.Now.AddDays(-1);
@@ -187,6 +263,7 @@ namespace PoliceSMS.Views
 
             ser.LoadOfficerByOrderReportResultAsync(unitId, beginTime1, endTime1, string.Format("{0}%", tbOfficerName.Text), officerType, orderIndex);
 
+            isOfficerSelected = false;
         }
 
 
@@ -278,7 +355,7 @@ namespace PoliceSMS.Views
             }
         }
 
-        private void LoadOfficerTypes()
+        private void LoadOfficerTypes(Action action = null)
         {
             try
             {
@@ -293,6 +370,8 @@ namespace PoliceSMS.Views
                     lbType.ItemsSource = officerTypes;
                     lbType.SelectedIndex = 0;
 
+                    if (action != null)
+                        action();
                 };
 
                 ser.GetListByHQLAsync("from OfficerType");

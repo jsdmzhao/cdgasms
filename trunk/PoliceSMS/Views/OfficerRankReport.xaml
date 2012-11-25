@@ -450,27 +450,19 @@
                             </Border>
                         </Grid>
                         <telerik:RadGridView Grid.Row="1"  BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" 
-                                         CanUserFreezeColumns="False" 
+                                         CanUserFreezeColumns="False" SelectionChanged="gv_SelectionChanged"
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
-                                          CanUserSelect="False" ShowColumnHeaders="False"
+                                          CanUserSelect="True" ShowColumnHeaders="False"
                                          ItemsSource="{Binding PagedSource, ElementName=rDataPager1}"
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
-                            <!--RowStyleSelector="{StaticResource rowStyleSelector}"-->
-                            <!--<telerik:RadGridView.ColumnGroups>
-                            <telerik:GridViewColumnGroup Name="best3" Header="非常满意" />
-                            <telerik:GridViewColumnGroup Name="better3" Header="满意"/>
-                            <telerik:GridViewColumnGroup Name="normal3" Header="一般"/>
-                            <telerik:GridViewColumnGroup Name="bad3" Header="业务不熟"/>
-                            <telerik:GridViewColumnGroup Name="worst3" Header="态度欠佳"/>
-                        </telerik:RadGridView.ColumnGroups>-->
                             <telerik:RadGridView.Columns>
 
 
                                 <telerik:GridViewDataColumn MinWidth="30" MaxWidth="30"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
                                 <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center" />
-
+                                
                                 <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" />
 
 
@@ -595,9 +587,6 @@
                 </Grid>
             </StackPanel>
         </Grid>
-        <telerik:RadBusyIndicator x:Name="busyIndicator" 
-								  IsBusy="False"
-								  telerik:AnimationManager.IsAnimationEnabled="False"  />
     </Grid>
 
 </navigation:Page>
