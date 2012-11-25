@@ -24,18 +24,13 @@ namespace PoliceSMS.Views
     public partial class StationRankReport : Page
     {
         private int unitType = -1;
-        public int UnitType
-        {
-            get
-            {
-                return unitType;
-            }
-            set
-            {
-                unitType = value;
-                LoadStation();
-            }
-        }
+        private bool showToolTip = false;
+
+        //silverlight没有keepalive属性
+        //在页面跳转时保存条件
+        private static DateTime? m_start;
+        private static DateTime? m_end;
+        private static string m_showType;
 
         public StationRankReport()
         {
@@ -48,7 +43,38 @@ namespace PoliceSMS.Views
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
 
+            this.Loaded += new RoutedEventHandler(StationRankReport_Loaded);
+
+            
+        }
+
+        void StationRankReport_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.NavigationContext != null)
+            {
+                if (this.NavigationContext.QueryString.Keys.Contains("UnitTypeId"))
+                    int.TryParse(this.NavigationContext.QueryString["UnitTypeId"], out unitType);
+            }
             LoadStation();
+
+            if (m_start != null)
+                dateStart.SelectedDate = m_start;
+            if (m_end != null)
+                dateEnd.SelectedDate = m_end;
+            if (m_showType != null)
+            {
+                if (listShowType.Name == m_showType)
+                    listShowType.IsChecked = true;
+                if (chartShowType.Name == m_showType)
+                    chartShowType.IsChecked = true;
+
+            }
+            else
+            {
+                listShowType.IsChecked = true;
+            }
+
+            LoadReport();
         }
 
         private void LoadStation()
@@ -124,10 +150,8 @@ namespace PoliceSMS.Views
             Tools.ShowMask(true, "正在查找数据,请稍等...");
         }
 
-        bool showTooltip = true;
-        public void LoadReport(bool showTooltip = true)
+        public void LoadReport()
         {
-            this.showTooltip = showTooltip;
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
             {
                 Tools.ShowMessage("时间不能为空!", "", false);
@@ -150,10 +174,11 @@ namespace PoliceSMS.Views
 
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
-                    if (result == null || result.Count == 0 && showTooltip == true)
+                    if (result == null || result.Count == 0 && showToolTip == true)
                     {
                         Tools.ShowMessage("没有找到相对应的数据！", "", true);
                     }
+                    showToolTip = true;
                 };
 
            
@@ -167,7 +192,7 @@ namespace PoliceSMS.Views
 
             DateTime beginTime2 = endTime2.Add(-span);
 
-            ser.LoadStationReportResultAsync(UnitType, beginTime1, endTime1, beginTime2, endTime2);
+            ser.LoadStationReportResultAsync(unitType, beginTime1, endTime1, beginTime2, endTime2);
 
         }
 
@@ -213,16 +238,22 @@ namespace PoliceSMS.Views
                 Organization org = e.AddedItems[0] as Organization;
                 if (org != null)
                 {
-                    AppGlobal.CurrentDialogPage = new OfficerRankReport(org, dateStart.SelectedDate, dateEnd.SelectedDate);
+                    m_start = dateStart.SelectedDate;
+                    m_end = dateEnd.SelectedDate;
+                    if (listShowType.IsChecked == true)
+                        m_showType = listShowType.Name;
+                    if (chartShowType.IsChecked == true)
+                        m_showType = chartShowType.Name;
 
-                    Tools.OpenCustomWindow(string.Format("{0}个人排名表", org.Name), AppGlobal.CurrentDialogPage, new Action(() =>
-                        {
-                            lb.SelectedIndex = -1;
-                            //必须置空，否则RadBusyIndicator不会正常显示
-                            AppGlobal.CurrentDialogPage = null;
-                        }));
+                    string uri = string.Format("/Views/OfficerRankReport.xaml?OrgId={0}&Start={1}&End={2}", org.Id, dateStart.SelectedDate, dateEnd.SelectedDate);
+                    this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
                 }
             }
+        }
+
+        private void listShowType_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
     }

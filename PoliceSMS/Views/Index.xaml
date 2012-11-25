@@ -22,29 +22,23 @@
             <Grid>
                 <telerikNavigation:RadTabControl Grid.Row="1" VerticalAlignment="Top"
 				DisplayMemberPath="Content" DropDownDisplayMode="Visible" ScrollMode="Viewport"
-				Background="#dde1ea" BorderThickness="0">
-                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="派出所排名统计">
+				Background="#dde1ea" BorderThickness="0" >
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="派出所排名统计" TabNavigation="Cycle">
                         <telerikNavigation:RadTabItem.Header>
                             <TextBlock Text="派出所排名统计" Margin="19 2 19 0" />
                         </telerikNavigation:RadTabItem.Header>
                         <telerikNavigation:RadTabItem.Content>
-                            <views:StationRankReport x:Name="page1"></views:StationRankReport>
+                            <views:DrillContainer UnitTypeId="1" ShowTooltip="True">
+                            </views:DrillContainer>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>
-                    <!--<telerikNavigation:RadTabItem Padding="4 1" DropDownContent="巡大排名统计">
-                        <telerikNavigation:RadTabItem.Header>
-                            <TextBlock Text="巡大排名统计" Margin="19 2 19 0" />
-                        </telerikNavigation:RadTabItem.Header>
-                        <telerikNavigation:RadTabItem.Content>
-                            <views:StationRankReport x:Name="page2"></views:StationRankReport>
-                        </telerikNavigation:RadTabItem.Content>
-                    </telerikNavigation:RadTabItem>-->
-                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="科队排名统计">
+                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="科队排名统计" TabNavigation="Local">
                         <telerikNavigation:RadTabItem.Header>
                             <TextBlock Text="科队排名统计" Margin="19 2 19 0" />
                         </telerikNavigation:RadTabItem.Header>
                         <telerikNavigation:RadTabItem.Content>
-                            <views:StationRankReport x:Name="page3"></views:StationRankReport>
+                            <views:DrillContainer UnitTypeId="3" ShowTooltip="False">
+                            </views:DrillContainer>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>
                     <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="个人排名统计" x:Name="officerRank">

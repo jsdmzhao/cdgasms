@@ -27,12 +27,16 @@ namespace PoliceSMS.Views
         SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
         private const int PageSize = 19;
         private QueryCondition queryCondition = null;
-
+        
         public SMSRecordListNew()
         {
             InitializeComponent();            
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
+   
+        }
 
+        void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
+        {
             ser.GetListByHQLCompleted += new EventHandler<SMSRecordService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
@@ -43,14 +47,40 @@ namespace PoliceSMS.Views
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
 
-            getData();
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
-        
-        }
 
-        void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
-        {
-           
+            int officerId = 0;
+
+            DateTime? start = null;
+            DateTime? end = null;
+            if (this.NavigationContext != null)
+            {
+                if (this.NavigationContext.QueryString.Keys.Contains("OfficerId"))
+                    int.TryParse(this.NavigationContext.QueryString["OfficerId"], out officerId);
+                if (this.NavigationContext.QueryString.Keys.Contains("Start"))
+                {
+                    DateTime tmp;
+                    if (DateTime.TryParse(this.NavigationContext.QueryString["Start"], out tmp))
+                        start = tmp;
+                }
+                if (this.NavigationContext.QueryString.Keys.Contains("End"))
+                {
+                    DateTime tmp;
+                    if (DateTime.TryParse(this.NavigationContext.QueryString["End"], out tmp))
+                        end = tmp;
+                }
+                mainGrid.RowDefinitions[0].Height = new GridLength(0);
+                mainGrid.RowDefinitions[1].Height = new GridLength(0);
+                mainGrid.RowDefinitions[2].Height = new GridLength(0);
+            }
+
+            if (start != null)
+                dateStart.SelectedDate = start;
+            if (end != null)
+                dateEnd.SelectedDate = end;
+
+
+            getData(officerId);
         }
 
         void ser_GetListByHQLCompleted(object sender, SMSRecordService.GetListByHQLCompletedEventArgs e)
@@ -115,17 +145,22 @@ namespace PoliceSMS.Views
 
         void getData()
         {
+            getData(0);
+        }
+
+        void getData(int offcerId)
+        {
             Tools.ShowMask(true, "正在查找数据,请稍等...");
-            BuildHql();
+            BuildHql(offcerId);
 
             queryCondition.FirstResult = rDataPager1.PageIndex * PageSize; ;
 
             QueryPaging(queryCondition);
         }
 
-        private void BuildHql()
+        private void BuildHql(int offcerId = 0)
         {
-            string hqlStr = generateBaseHql();
+            string hqlStr = generateBaseHql(offcerId);
             
             queryCondition = new QueryCondition();
 
@@ -272,47 +307,54 @@ namespace PoliceSMS.Views
             }
         }
 
-        private string generateBaseHql()
+        private string generateBaseHql(int offcerId = 0)
         {
             StringBuilder hql = new StringBuilder();
             hql.Append(string.Format(" from SMSRecord as r where 1=1 "));
 
-            if (conditionType.Text == "时间")
+            if (offcerId != 0)
             {
-                if (dateStart.SelectedDate != null)
+                //跳转到个人录入记录时使用
+                hql.Append(string.Format(" and r.WorkOfficer.Id = {0} ", offcerId));
+            }
+            else
+            {
+                if (conditionType.Text == "时间")
                 {
-                    DateTime tmp = dateStart.SelectedDate.Value;
-                    DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
-                    hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
+                    if (dateStart.SelectedDate != null)
+                    {
+                        DateTime tmp = dateStart.SelectedDate.Value;
+                        DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
+                        hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
+                    }
+                    if (dateEnd.SelectedDate != null)
+                    {
+                        DateTime tmp = dateEnd.SelectedDate.Value;
+                        DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
+                        hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
+                    }
                 }
-                if (dateEnd.SelectedDate != null)
+                if (conditionType.Text == "电话")
                 {
-                    DateTime tmp = dateEnd.SelectedDate.Value;
-                    DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
-                    hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
+                    if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                        hql.Append(string.Format(" and r.PersonMobile like '%{0}%' ", tb.Text.Trim()));
+                }
+                if (conditionType.Text == "受理人")
+                {
+                    if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                        hql.Append(string.Format(" and r.WorkOfficer.Name like '%{0}%' ", tb.Text.Trim()));
+                }
+                if (conditionType.Text == "办案人")
+                {
+                    if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                        hql.Append(string.Format(" and r.PersonName like '%{0}%' ", tb.Text.Trim()));
+                }
+                if (conditionType.Text == "值班领导")
+                {
+                    if (!string.IsNullOrEmpty(tb.Text.Trim()))
+                        hql.Append(string.Format(" and r.Leader.Name like '%{0}%' ", tb.Text.Trim()));
                 }
             }
-            if (conditionType.Text == "电话")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.PersonMobile like '%{0}%' ", tb.Text.Trim()));
-            }
-            if (conditionType.Text == "受理人")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.WorkOfficer.Name like '%{0}%' ", tb.Text.Trim()));
-            }
-            if (conditionType.Text == "办案人")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.PersonName like '%{0}%' ", tb.Text.Trim()));
-            }
-            if (conditionType.Text == "值班领导")
-            {
-                if (!string.IsNullOrEmpty(tb.Text.Trim()))
-                    hql.Append(string.Format(" and r.Leader.Name like '%{0}%' ", tb.Text.Trim()));
-            }
-
             string hqlStr = hql.ToString();
             return hqlStr;
         }

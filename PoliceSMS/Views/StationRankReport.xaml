@@ -11,14 +11,15 @@
                   xmlns:my="clr-namespace:PoliceSMS"
                  xmlns:views="clr-namespace:PoliceSMS.Views"
              Title ="阳光民意评警"
-    d:DesignHeight="1024" d:DesignWidth="1000">
+    d:DesignHeight="1024" d:DesignWidth="1000"
+                 >
 
     <navigation:Page.Resources>
         <local:ExportingModel x:Key="context" />
         <my:NegativeConverter x:Key="myConverter" />
         <my:StationConverter x:Key="stationConverter" />
     </navigation:Page.Resources>
-    
+
 
     <Grid x:Name="LayoutRoot">
         <Border VerticalAlignment="Stretch" >
@@ -48,8 +49,9 @@
 
                         <TextBlock Text="时间:" VerticalAlignment="Center"  HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"></TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1">
+
                             <telerik:RadDateTimePicker  InputMode="DatePicker"
-                                                     DisplayFormat="Long"
+                                                     DisplayFormat="Long" 
                                                           Width="120"
                                                          x:Name="dateStart"
                                                           Height="22"
@@ -71,8 +73,9 @@
                                    Width="80" TextAlignment="Right"
                                    Margin="20 0 0 0"></TextBlock>
                         <telerik:RadButtonGroup telerik:StyleManager.Theme="Office_Blue" Margin="5 0 0 0" Height="22"
-                                          HorizontalAlignment="Left"   x:Name="rbShowType">
-                            <telerik:RadRadioButton Width="30" IsChecked="True" Checked="list_Checked"
+                                          HorizontalAlignment="Left"   x:Name="rbShowType"
+                                                >
+                            <telerik:RadRadioButton Width="30"  Checked="list_Checked"
                                                           x:Name="listShowType" >
                                 <telerik:RadRadioButton.Content>
                                     <StackPanel Orientation="Horizontal" >
@@ -80,7 +83,7 @@
                                     </StackPanel>
                                 </telerik:RadRadioButton.Content>
                             </telerik:RadRadioButton>
-                            <telerik:RadRadioButton Width="30" Checked="chart_Checked">
+                            <telerik:RadRadioButton Width="30" Checked="chart_Checked" x:Name="chartShowType">
                                 <telerik:RadRadioButton.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Images/chart.png" Height="14" Width="14" />
@@ -128,10 +131,10 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <Grid Grid.Row="2" x:Name="mainGrid">
+                <Grid  Grid.Row="2" x:Name="mainGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="130"/>
-                        <ColumnDefinition Width="*"/>                       
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox Background="White"  telerik:StyleManager.Theme="Summer" Grid.Column="0"
                              
@@ -511,7 +514,7 @@
                                 </telerik:ChartDefaultView.ChartLegend>
                                 <telerik:ChartDefaultView.ChartArea>
                                     <telerik:ChartArea>
-                                        
+
                                         <telerik:ChartArea.AxisY>
                                             <telerik:AxisY Title="满意率" ExtendDirection="None"
                                                            MinValue="0.0" MaxValue="100.0" Step="10.0"
@@ -520,7 +523,7 @@
                                                     <telerik:AxisStyles TitleStyle="{ StaticResource  AxisTitleStyle}"/>
                                                 </telerik:AxisY.AxisStyles>
                                             </telerik:AxisY>
-                                            
+
                                         </telerik:ChartArea.AxisY>
                                         <telerik:ChartArea.AxisX>
                                             <telerik:AxisX LabelRotationAngle="45">
@@ -534,7 +537,8 @@
                     </telerik:RadChart>
 
                 </Grid>
-                </Grid>
+            </Grid>
+
         </Border>
     </Grid>
 </navigation:Page>

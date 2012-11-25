@@ -107,20 +107,10 @@ namespace PoliceSMS.Comm
         }
         public static void ShowMask(bool isMask,string message)
         {
-            UIElement ui = null;
-            if (AppGlobal.CurrentDialogPage == null)
-            {
-                ui = App.Current.RootVisual;
-               
-            }
-            else
-            {
-                ui = AppGlobal.CurrentDialogPage;
-            }
 
-            if (ui != null)
+            if (App.Current.RootVisual != null)
             {
-                RadBusyIndicator busy = ui.FindChildByType<RadBusyIndicator>();
+                RadBusyIndicator busy = App.Current.RootVisual.FindChildByType<RadBusyIndicator>();
                 if (busy != null)
                 {
                     busy.IsBusy = isMask;

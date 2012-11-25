@@ -34,6 +34,11 @@ namespace PoliceSMS.Views
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
         }
 
+        // Executes when the user navigates to this page.
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+        }
+
         void NoticeList_Loaded(object sender, RoutedEventArgs e)
         {
             if (AppGlobal.HasPermission())

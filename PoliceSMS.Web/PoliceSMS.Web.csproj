@@ -95,6 +95,8 @@
     <Content Include="ClientBin\Images\jihui.jpg" />
     <Content Include="ClientBin\Images\jihui.png" />
     <Content Include="ClientBin\Images\jinghui.png" />
+    <Content Include="ClientBin\Images\Next.png" />
+    <Content Include="ClientBin\Images\Pre.png" />
     <Content Include="ClientBin\Images\refresh.png" />
     <Content Include="ClientBin\Images\save.png" />
     <Content Include="ClientBin\Images\search.png" />

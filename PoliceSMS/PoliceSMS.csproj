@@ -193,6 +193,9 @@
     <Compile Include="ViewModel\MarkState.cs" />
     <Compile Include="ViewModel\SortType.cs" />
     <Compile Include="ViewModel\UsedState.cs" />
+    <Compile Include="Views\DrillContainer.xaml.cs">
+      <DependentUpon>DrillContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NoticeForm.xaml.cs">
       <DependentUpon>NoticeForm.xaml</DependentUpon>
     </Compile>
@@ -289,6 +292,10 @@
     <Page Include="Theme\Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DrillContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NoticeForm.xaml">
       <Generator>MSBuild:Compile</Generator>
