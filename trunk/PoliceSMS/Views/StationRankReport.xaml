@@ -51,7 +51,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Margin="10 6" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
+                <Grid Margin="10 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
@@ -145,7 +145,7 @@
                     </StackPanel>
                 </Grid>
 
-                <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="1" Margin="0 3 0 3"
+                <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="1" Margin="0 3 0 0"
                        Fill="{StaticResource GridViewSplitter}">
                     <Rectangle.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>

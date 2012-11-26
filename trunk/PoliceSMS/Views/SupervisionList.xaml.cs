@@ -31,27 +31,25 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
 
-            this.Loaded += new RoutedEventHandler(SupervisionList_Loaded);
-
             ser.GetListByHQLCompleted += new EventHandler<SMSRecordService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
 
-            LoadOfficers();
-            LoadStation();
-            LoadGradeType();
-
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
-
-            getData();
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
-        
+
+            this.Loaded += new RoutedEventHandler(SupervisionList_Loaded);
+
         }
 
         void SupervisionList_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            LoadOfficers();
+            LoadStation();
+            LoadGradeType();
+
+            getData();
         }
 
         // Executes when the user navigates to this page.

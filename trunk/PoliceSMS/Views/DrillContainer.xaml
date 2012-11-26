@@ -11,26 +11,26 @@
         <Border VerticalAlignment="Stretch" >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="24"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="0">
                     <Button Grid.Row="0" x:Name="btnBack"  Click="btnBack_Click" Margin="5 3 0 0"
-                            HorizontalAlignment="Right" Width="110"  Style="{StaticResource OrangeButton}">
+                            HorizontalAlignment="Right" Width="90"  Style="{StaticResource GreenButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="返 回" VerticalAlignment="Center" ></TextBlock>
-                                <Image Source="/Images/Pre.png" Margin="14 0 0 0" 
+                                <TextBlock FontSize="12" Text="返回" VerticalAlignment="Center" ></TextBlock>
+                                <Image Source="/Images/Pre.png" Margin="0 0 0 0" 
                                     Stretch="None" VerticalAlignment="Center"></Image>
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button Grid.Row="0" x:Name="btnNxt"  Click="btnNxt_Click" Margin="5 3 0 0"
-                            HorizontalAlignment="Right" Width="110"  Style="{StaticResource OrangeButton}">
+                            HorizontalAlignment="Right" Width="90"  Style="{StaticResource GreenButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="前 进" VerticalAlignment="Center" ></TextBlock>
-                                <Image Source="/Images/Next.png" Margin="14 0 0 0" 
+                                <TextBlock FontSize="12" Text="前进" VerticalAlignment="Center" ></TextBlock>
+                                <Image Source="/Images/Next.png" Margin="0 0 0 0" 
                                     Stretch="None" VerticalAlignment="Center"></Image>
                             </StackPanel>
                         </Button.Content>
