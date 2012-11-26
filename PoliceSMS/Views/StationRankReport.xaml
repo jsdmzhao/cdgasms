@@ -4,6 +4,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+                 xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
+                 xmlns:common="clr-namespace:System.Windows;assembly=System.Windows.Controls"
 	xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
      xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
@@ -18,6 +20,25 @@
         <local:ExportingModel x:Key="context" />
         <my:NegativeConverter x:Key="myConverter" />
         <my:StationConverter x:Key="stationConverter" />
+
+        <Style TargetType="telerik:RadTreeViewItem">
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
+            <Setter Property="IsSelected" Value="{Binding IsActive}" />
+        </Style>
+
+
+        <telerik:HierarchicalDataTemplate x:Key="OrgTemplate1" >
+            <StackPanel Orientation="Horizontal"  >
+                <TextBlock Text="{Binding Name}" FontWeight="Light" FontSize="14" HorizontalAlignment="Left" />
+            </StackPanel>
+        </telerik:HierarchicalDataTemplate>
+        <telerik:HierarchicalDataTemplate x:Key="OfficeTemplate1"  ItemsSource="{Binding Childs}" ItemTemplate="{StaticResource OrgTemplate1}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}" FontWeight="Light" FontSize="14" />
+            </StackPanel>
+        </telerik:HierarchicalDataTemplate>
+        
     </navigation:Page.Resources>
 
 
@@ -133,34 +154,13 @@
 
                 <Grid  Grid.Row="2" x:Name="mainGrid">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Background="White"  telerik:StyleManager.Theme="Summer" Grid.Column="0"
-                             
-                                 SelectionChanged="lb_SelectionChanged"
-                         BorderThickness="0" 
-                         x:Name="lb">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-
-                                <Grid>
-                                    <StackPanel Orientation="Horizontal" Margin="2" >
-                                        <TextBlock Foreground="Black" FontSize="14" >
-                                                <Run Text="{Binding Name}"></Run>
-                                        </TextBlock>
-                                    </StackPanel>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Vertical" Margin="2">
-
-                                </StackPanel>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                    </ListBox>
+                    <telerik:RadTreeView Grid.Column="0" BorderThickness="0" 
+                                          ItemTemplate="{StaticResource OfficeTemplate1}"
+                                         x:Name="tree" SelectionChanged="tree_SelectionChanged"
+                                         ></telerik:RadTreeView>
 
                     <ScrollViewer x:Name="sv" 
                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="1">

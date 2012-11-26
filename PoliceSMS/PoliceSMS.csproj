@@ -192,6 +192,7 @@
     <Compile Include="ViewModel\ExportintModel.cs" />
     <Compile Include="ViewModel\MarkState.cs" />
     <Compile Include="ViewModel\SortType.cs" />
+    <Compile Include="ViewModel\TreeViewItemModel.cs" />
     <Compile Include="ViewModel\UsedState.cs" />
     <Compile Include="Views\DrillContainer.xaml.cs">
       <DependentUpon>DrillContainer.xaml</DependentUpon>

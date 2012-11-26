@@ -37,7 +37,7 @@
                     </Button>
                 </StackPanel>
                 <navigation:Frame Grid.Row="1" x:Name="mainFrame"
-                                  JournalOwnership="OwnsJournal" 
+                                  JournalOwnership="Automatic" 
                                   Navigated="mainFrame_Navigated">
                     
                 </navigation:Frame>

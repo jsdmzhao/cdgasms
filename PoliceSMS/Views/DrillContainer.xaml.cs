@@ -15,27 +15,13 @@ namespace PoliceSMS.Views
 {
     public partial class DrillContainer : UserControl
     {
-        public int UnitTypeId { get; set; }
-        public bool ShowTooltip { get; set; }
-
+     
         public DrillContainer()
         {
             InitializeComponent();
-
-            this.Loaded += new RoutedEventHandler(DrillContainer_Loaded);
+            this.mainFrame.Source = new Uri("/Views/StationRankReport.xaml",UriKind.RelativeOrAbsolute);
         }
 
-        private bool isInit = false;
-
-        void DrillContainer_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!isInit)
-            {
-                isInit = true;
-                string uri = string.Format("/Views/StationRankReport.xaml?UnitTypeId={0}&ShowTooltip={1}", UnitTypeId, ShowTooltip);
-                mainFrame.Source = new Uri(uri, UriKind.RelativeOrAbsolute);
-            }
-        }
 
         private void mainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {

@@ -23,9 +23,6 @@ namespace PoliceSMS.Views
 {
     public partial class StationRankReport : Page
     {
-        private int unitType = -1;
-        private bool showToolTip = false;
-
         //silverlight没有keepalive属性
         //在页面跳转时保存条件
         private static DateTime? m_start;
@@ -50,11 +47,6 @@ namespace PoliceSMS.Views
 
         void StationRankReport_Loaded(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationContext != null)
-            {
-                if (this.NavigationContext.QueryString.Keys.Contains("UnitTypeId"))
-                    int.TryParse(this.NavigationContext.QueryString["UnitTypeId"], out unitType);
-            }
             LoadStation();
 
             if (m_start != null)
@@ -74,83 +66,74 @@ namespace PoliceSMS.Views
                 listShowType.IsChecked = true;
             }
 
-            LoadReport();
         }
 
         private void LoadStation()
         {
-            if (unitType == -1)
-                return;
-            if (unitType == 1)
+
+            try
             {
-                try
+                OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
+                ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
                 {
-                    OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
-                    ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
+                    int total = 0;
+                    var stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
+                    foreach (var station in stations)
                     {
-                        int total = 0;
-                        var stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
-                        foreach (var station in stations)
-                        {
-                            //去掉‘青羊区分局’
-                            if (station.Name.StartsWith("青羊区分局"))
-                                station.Name = station.Name.Replace("青羊区分局", "");
-                        }
+                        if (station.Name.StartsWith("青羊区分局"))
+                            station.Name = station.Name.Replace("青羊区分局", "");
+                        if (station.Name.StartsWith("成都市公安局"))
+                            station.Name = station.Name.Replace("成都市公安局", "");
+                    }
 
+                    List<TreeViewItemModel> list = new List<TreeViewItemModel>();
+                    list.Add(new TreeViewItemModel
+                    {
+                        Id = 0,
+                        SMSUnitType = 1,
+                        Name = "派出所",
+                        Childs = stations.Where(c => c.SMSUnitType == 1).OrderBy(c=>c.OrderIndex).ToList(),
+                        IsExpanded = true,
+                        IsActive = true
+                    });
+                    list.Add(new TreeViewItemModel
+                    {
+                        Id = 0,
+                        SMSUnitType = 3,
+                        Name = "科队",
+                        Childs = stations.Where(c => c.SMSUnitType == 3).OrderBy(c => c.OrderIndex).ToList(),
+                        IsExpanded = true,
+                        IsActive = false
+                    });
 
-                        lb.ItemsSource = stations;
+                    tree.ItemsSource = list;
+                };
 
-                    };
+                //这里没有考虑权限
+                ser.GetListByHQLAsync(string.Format(" select distinct  o from SMSRecord r inner join r.Organization as o where o.Name like '%青羊%' and o.SMSUnitType in ({0},{1})  ", 1,3));
 
-                    //这里没有考虑权限
-                    ser.GetListByHQLAsync(string.Format("from Organization where Name like '%青羊%' and SMSUnitType={0} order by OrderIndex ", unitType));
-
-                }
-                catch (Exception ex)
-                {
-                    Tools.ShowMessage("读取单位发生错误", ex.Message, false);
-                }
             }
-            if (unitType == 3)
+            catch (Exception ex)
             {
-                try
-                {
-                    OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
-                    ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
-                    {
-                        int total = 0;
-                        var stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
-                        foreach (var station in stations)
-                        {
-                            if (station.Name.StartsWith("青羊区分局"))
-                                station.Name = station.Name.Replace("青羊区分局", "");
-                            if (station.Name.StartsWith("成都市公安局"))
-                                station.Name = station.Name.Replace("成都市公安局", "");
-                        }
-
-
-                        lb.ItemsSource = stations;
-
-                    };
-
-                    //这里没有考虑权限
-                    ser.GetListByHQLAsync(string.Format("select distinct  o from SMSRecord r inner join r.Organization as o where o.Name like '%青羊%' and o.SMSUnitType={0} order by o.OrderIndex ", unitType));
-
-                }
-                catch (Exception ex)
-                {
-                    Tools.ShowMessage("读取单位发生错误", ex.Message, false);
-                }
+                Tools.ShowMessage("读取单位发生错误", ex.Message, false);
             }
+
         }
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            LoadReport();
-            Tools.ShowMask(true, "正在查找数据,请稍等...");
+            if (tree.SelectedItem != null)
+            {
+                Organization org = tree.SelectedItem as Organization;
+                if (org != null)
+                {
+                    if (org.Id == 0)
+                        LoadReport(org.SMSUnitType);
+                }
+            }
         }
 
-        public void LoadReport()
+        public void LoadReport(int unitType)
         {
             if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
             {
@@ -174,11 +157,10 @@ namespace PoliceSMS.Views
 
                     Tools.ShowMask(false);
                     btnExport.IsEnabled = true;
-                    if (result == null || result.Count == 0 && showToolTip == true)
+                    if (result == null || result.Count == 0)
                     {
                         Tools.ShowMessage("没有找到相对应的数据！", "", true);
                     }
-                    showToolTip = true;
                 };
 
            
@@ -192,6 +174,7 @@ namespace PoliceSMS.Views
 
             DateTime beginTime2 = endTime2.Add(-span);
 
+            Tools.ShowMask(true, "正在查找数据,请稍等...");
             ser.LoadStationReportResultAsync(unitType, beginTime1, endTime1, beginTime2, endTime2);
 
         }
@@ -231,13 +214,19 @@ namespace PoliceSMS.Views
                 sv.Visibility = Visibility.Collapsed;
         }
 
-        private void lb_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void tree_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems != null && e.AddedItems.Count > 0)
             {
-                Organization org = e.AddedItems[0] as Organization;
-                if (org != null)
+                if (e.AddedItems[0] is TreeViewItemModel)
                 {
+                    TreeViewItemModel org = e.AddedItems[0] as TreeViewItemModel;
+                    LoadReport(org.SMSUnitType);
+                }
+                else if (e.AddedItems[0] is Organization)
+                {
+                    Organization org = e.AddedItems[0] as Organization;
+
                     m_start = dateStart.SelectedDate;
                     m_end = dateEnd.SelectedDate;
                     if (listShowType.IsChecked == true)
@@ -248,12 +237,8 @@ namespace PoliceSMS.Views
                     string uri = string.Format("/Views/OfficerRankReport.xaml?OrgId={0}&Start={1}&End={2}", org.Id, dateStart.SelectedDate, dateEnd.SelectedDate);
                     this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
                 }
+
             }
-        }
-
-        private void listShowType_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
         }
 
     }
