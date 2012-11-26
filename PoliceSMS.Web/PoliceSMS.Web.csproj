@@ -84,6 +84,7 @@
     <Content Include="BaseWcf\SexService.svc" />
     <Content Include="ClientBin\Images\1.png" />
     <Content Include="ClientBin\Images\add.png" />
+    <Content Include="ClientBin\Images\announce.png" />
     <Content Include="ClientBin\Images\blue-folder-horizontal-open.png" />
     <Content Include="ClientBin\Images\blue-folder-horizontal.png" />
     <Content Include="ClientBin\Images\cancel.png" />
@@ -95,9 +96,13 @@
     <Content Include="ClientBin\Images\jihui.jpg" />
     <Content Include="ClientBin\Images\jihui.png" />
     <Content Include="ClientBin\Images\jinghui.png" />
+    <Content Include="ClientBin\Images\manage.png" />
+    <Content Include="ClientBin\Images\monitor.png" />
+    <Content Include="ClientBin\Images\ranking.png" />
     <Content Include="ClientBin\Images\Next.png" />
     <Content Include="ClientBin\Images\Pre.png" />
     <Content Include="ClientBin\Images\refresh.png" />
+    <Content Include="ClientBin\Images\register.png" />
     <Content Include="ClientBin\Images\save.png" />
     <Content Include="ClientBin\Images\search.png" />
     <Content Include="ClientBin\PoliceSMS.xap" />
