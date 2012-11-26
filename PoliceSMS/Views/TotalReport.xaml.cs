@@ -70,7 +70,7 @@ namespace PoliceSMS.Views
                 gv.ItemsSource = result;
                 gv.Items.Refresh();
 
-                rc.ItemsSource = result.OrderBy(c => int.Parse(c.UnitName)).Select(c => new ChartModel{ X = getFromatDate(c.UnitName), IntY = c.TotalCount });
+                rc.ItemsSource = result.OrderBy(c => int.Parse(c.UnitName)).Select(c => new ChartModel { X = getFromatDate(c.UnitName), IntY = c.TotalCount, DoubleY = c.StationRate });
 
                 Tools.ShowMask(false);
                 btnExport.IsEnabled = true;
