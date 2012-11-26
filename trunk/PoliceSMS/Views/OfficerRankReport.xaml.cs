@@ -113,6 +113,7 @@ namespace PoliceSMS.Views
                 );
                 LoadOfficerTypes(action);
             }
+
         }
 
 
@@ -211,7 +212,7 @@ namespace PoliceSMS.Views
                     list = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                     
                     rDataPager1.Source = list;
-
+                    gv.CurrentItem = null;
                     isOfficerSelected = true;
                     if(action!=null)
                     {
