@@ -30,8 +30,19 @@ namespace PoliceSMS.Views
         public NoticeList()
         {
             InitializeComponent();
-            this.Loaded += new RoutedEventHandler(NoticeList_Loaded);
+
+            if (AppGlobal.HasPermission())
+                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Visible;
+            else
+                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Collapsed;
+            ser.GetListByHQLWithPagingCompleted += new EventHandler<NoticeService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
+
+            ser.DeleteByIdCompleted += new EventHandler<NoticeService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
+
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
+
+            this.Loaded += new RoutedEventHandler(NoticeList_Loaded);
+           
         }
 
         // Executes when the user navigates to this page.
@@ -41,14 +52,7 @@ namespace PoliceSMS.Views
 
         void NoticeList_Loaded(object sender, RoutedEventArgs e)
         {
-            if (AppGlobal.HasPermission())
-                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Visible;
-            else
-                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Collapsed;
-            ser.GetListByHQLWithPagingCompleted+=new EventHandler<NoticeService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted); 
-            
-            ser.DeleteByIdCompleted += new EventHandler<NoticeService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
-
+           
             getData();
         }
 

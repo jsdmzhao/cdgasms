@@ -30,13 +30,8 @@ namespace PoliceSMS.Views
         
         public SMSRecordListNew()
         {
-            InitializeComponent();            
-            this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
-   
-        }
+            InitializeComponent();
 
-        void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
-        {
             ser.GetListByHQLCompleted += new EventHandler<SMSRecordService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
             ser.DeleteByIdCompleted += new EventHandler<SMSRecordService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
@@ -49,6 +44,12 @@ namespace PoliceSMS.Views
 
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
 
+            this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
+   
+        }
+
+        void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
+        {
             int officerId = 0;
 
             DateTime? start = null;

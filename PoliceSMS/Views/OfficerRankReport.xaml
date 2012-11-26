@@ -25,7 +25,7 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Margin="10 6" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
+            <Grid Margin="10 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="320" />

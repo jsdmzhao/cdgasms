@@ -24,15 +24,18 @@ namespace PoliceSMS.Views
         public WorkTypeList()
         {
             InitializeComponent();
-            this.Loaded += new RoutedEventHandler(WorkTypeList_Loaded);
+
+            ser.GetListByHQLCompleted += new EventHandler<WorkTypeService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
+            ser.DeleteByIdCompleted += new EventHandler<WorkTypeService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
+
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
+
+            this.Loaded += new RoutedEventHandler(WorkTypeList_Loaded);
         }
 
         void WorkTypeList_Loaded(object sender, RoutedEventArgs e)
         {
-            ser.GetListByHQLCompleted += new EventHandler<WorkTypeService.GetListByHQLCompletedEventArgs>(ser_GetListByHQLCompleted);
-            ser.DeleteByIdCompleted += new EventHandler<WorkTypeService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
-
+            
             getData();
         }
 
