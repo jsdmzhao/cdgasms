@@ -102,7 +102,7 @@ namespace PoliceSMS.Views
                         SMSUnitType = 3,
                         Name = "科队",
                         Childs = stations.Where(c => c.SMSUnitType == 3).OrderBy(c => c.OrderIndex).ToList(),
-                        IsExpanded = true,
+                        IsExpanded = false,
                         IsActive = false
                     });
 
@@ -152,6 +152,7 @@ namespace PoliceSMS.Views
                     IList<StationReportResult> result = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
                     gv.ItemsSource = result;
                     gv.Items.Refresh();
+
 
                     rc.ItemsSource = result;
 
@@ -218,28 +219,68 @@ namespace PoliceSMS.Views
         {
             if (e.AddedItems != null && e.AddedItems.Count > 0)
             {
-                if (e.AddedItems[0] is TreeViewItemModel)
+                object o = e.AddedItems[0];
+                if (o is TreeViewItemModel)
                 {
-                    TreeViewItemModel org = e.AddedItems[0] as TreeViewItemModel;
+                    TreeViewItemModel org = o as TreeViewItemModel;
                     LoadReport(org.SMSUnitType);
                 }
-                else if (e.AddedItems[0] is Organization)
+                else if (o is Organization)
                 {
-                    Organization org = e.AddedItems[0] as Organization;
+                    Organization org = o as Organization;
 
-                    m_start = dateStart.SelectedDate;
-                    m_end = dateEnd.SelectedDate;
-                    if (listShowType.IsChecked == true)
-                        m_showType = listShowType.Name;
-                    if (chartShowType.IsChecked == true)
-                        m_showType = chartShowType.Name;
+                    drill(org.Id);
+                }
 
-                    string uri = string.Format("/Views/OfficerRankReport.xaml?OrgId={0}&Start={1}&End={2}", org.Id, dateStart.SelectedDate, dateEnd.SelectedDate);
-                    this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
+            }
+
+        }
+
+        
+
+        private void gv_SelectionChanged(object sender, SelectionChangeEventArgs e)
+        {
+            if (e.AddedItems != null && e.AddedItems.Count > 0)
+            {
+                object o = e.AddedItems[0];
+                if (o is StationReportResult)
+                {
+                    StationReportResult item = o as StationReportResult;
+                    
+                    drill(item.UnitId);
+                }
+               
+            }
+
+        }
+       
+
+        private void ChartArea_ItemClick(object sender, ChartItemClickEventArgs e)
+        {
+            if (e.DataPoint !=null && e.DataPoint.DataItem!=null)
+            {
+                object o = e.DataPoint.DataItem;
+                if (o is StationReportResult)
+                {
+                    StationReportResult item = o as StationReportResult;
+
+                    drill(item.UnitId);
                 }
 
             }
         }
 
+        private void drill(int orgId)
+        {
+            m_start = dateStart.SelectedDate;
+            m_end = dateEnd.SelectedDate;
+            if (listShowType.IsChecked == true)
+                m_showType = listShowType.Name;
+            if (chartShowType.IsChecked == true)
+                m_showType = chartShowType.Name;
+
+            string uri = string.Format("/Views/OfficerRankReport.xaml?OrgId={0}&Start={1}&End={2}", orgId, dateStart.SelectedDate, dateEnd.SelectedDate);
+            this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
+        }
     }
 }

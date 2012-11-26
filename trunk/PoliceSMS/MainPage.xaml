@@ -66,9 +66,9 @@
                                                          ContextMenuTemplate="{x:Null}" Tag="Index" >
                                     <telerik:RadPane.HeaderTemplate>
                                         <DataTemplate >
-                                            <StackPanel Orientation="Horizontal" Height="30">
+                                            <StackPanel Orientation="Horizontal" Height="24">
                                                 <Image Source="/Images/ranking.png"  Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="排名表" VerticalAlignment="Center" FontSize="16"/>
+                                                <TextBlock Margin="5 0 0 0" Text="排名表" VerticalAlignment="Center" FontSize="14"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </telerik:RadPane.HeaderTemplate>
@@ -88,9 +88,9 @@
                                                          Tag="SMSRecordListNew" x:Name="RecordListNew"  >
                                     <telerik:RadPane.HeaderTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Height="30">
+                                            <StackPanel Orientation="Horizontal" Height="24">
                                                 <Image Source="/Images/register.png"  Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="群众办事登记" VerticalAlignment="Center" FontSize="16"/>
+                                                <TextBlock Margin="5 0 0 0" Text="群众办事登记" VerticalAlignment="Center" FontSize="14"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </telerik:RadPane.HeaderTemplate>
@@ -110,9 +110,9 @@
                                                          ContextMenuTemplate="{x:Null}" Tag="NoticeList"  x:Name="NoticeItem" >
                                     <telerik:RadPane.HeaderTemplate>
                                         <DataTemplate >
-                                            <StackPanel Orientation="Horizontal" Height="30">
+                                            <StackPanel Orientation="Horizontal" Height="24">
                                                 <Image Source="/Images/announce.png"  Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="系统通告" VerticalAlignment="Center" FontSize="16"/>
+                                                <TextBlock Margin="5 0 0 0" Text="系统通告" VerticalAlignment="Center" FontSize="14"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </telerik:RadPane.HeaderTemplate>
@@ -132,9 +132,9 @@
                                                       ContextMenuTemplate="{x:Null}"   Tag="WorkTypeList" x:Name="workTypeItem">
                                     <telerik:RadPane.HeaderTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Height="30">
+                                            <StackPanel Orientation="Horizontal" Height="24">
                                                 <Image Source="/Images/manage.png" Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="办事内容管理" VerticalAlignment="Center" FontSize="16" />
+                                                <TextBlock Margin="5 0 0 0" Text="办事内容管理" VerticalAlignment="Center" FontSize="14" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </telerik:RadPane.HeaderTemplate>
@@ -154,9 +154,9 @@
 
                                     <telerik:RadPane.HeaderTemplate>
                                         <DataTemplate >
-                                            <StackPanel Orientation="Horizontal" Height="30">
+                                            <StackPanel Orientation="Horizontal" Height="24">
                                                 <Image Source="/Images/monitor.png"  Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="督察情况管理" VerticalAlignment="Center" FontSize="16"/>
+                                                <TextBlock Margin="5 0 0 0" Text="督察情况管理" VerticalAlignment="Center" FontSize="14"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </telerik:RadPane.HeaderTemplate>
