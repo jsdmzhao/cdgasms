@@ -212,9 +212,6 @@
     <Compile Include="Views\Index.xaml.cs">
       <DependentUpon>Index.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginForm.xaml.cs">
-      <DependentUpon>LoginForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\OfficerRankReport.xaml.cs">
       <DependentUpon>OfficerRankReport.xaml</DependentUpon>
     </Compile>
@@ -315,10 +312,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Index.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\LoginForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
