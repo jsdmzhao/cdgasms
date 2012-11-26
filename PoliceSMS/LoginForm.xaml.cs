@@ -23,6 +23,17 @@ namespace PoliceSMS
         public LoginForm()
         {
             InitializeComponent();
+
+            this.Loaded += new RoutedEventHandler(LoginForm_Loaded);
+
+            
+        }
+
+        void LoginForm_Loaded(object sender, RoutedEventArgs e)
+        {
+            HtmlPage.Plugin.Focus();
+
+            txtName.Focus(); 
         }
         public bool IsSuccess
         {
@@ -121,12 +132,17 @@ namespace PoliceSMS
             }
         }
 
-        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        private void txt_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 login();
             }
+        }
+
+        private void txtPass_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txtPass.ClearValue(PasswordBox.PasswordProperty);
         }
     }
 }
