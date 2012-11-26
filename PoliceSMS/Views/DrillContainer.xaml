@@ -11,7 +11,7 @@
         <Border VerticalAlignment="Stretch" >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="28"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="0">
@@ -19,7 +19,7 @@
                             HorizontalAlignment="Right" Width="90"  Style="{StaticResource GreenButton}">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="返回" VerticalAlignment="Center" ></TextBlock>
+                                <TextBlock FontSize="11" Text="返回" VerticalAlignment="Center" ></TextBlock>
                                 <Image Source="/Images/Pre.png" Margin="0 0 0 0" 
                                     Stretch="None" VerticalAlignment="Center"></Image>
                             </StackPanel>

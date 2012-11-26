@@ -74,7 +74,7 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
                     <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
-                    <TextBox Height="24" Margin="5,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"
+                    <TextBox Height="26" Margin="5,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"
                                  FontSize="11"  Width="120" x:Name="tbOfficerName"/>
                 </StackPanel>
 

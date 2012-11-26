@@ -105,26 +105,7 @@
                                         </LinearGradientBrush>
                                     </telerik:RadPane.Background>
                                 </telerik:RadPane>
-                                <telerik:RadPane Title="办事内容管理" CanFloat="False" CanUserClose="False"
-                                                      ContextMenuTemplate="{x:Null}"   Tag="WorkTypeList" x:Name="workTypeItem">
-                                    <telerik:RadPane.HeaderTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Height="30">
-                                                <Image Source="/Images/manage.png" Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="办事内容管理" VerticalAlignment="Center" FontSize="16" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </telerik:RadPane.HeaderTemplate>
-                                    <telerik:RadPane.Content>
-                                        <views:WorkTypeList></views:WorkTypeList>
-                                    </telerik:RadPane.Content>
-                                    <telerik:RadPane.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
-                                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
-                                        </LinearGradientBrush>
-                                    </telerik:RadPane.Background>
-                                </telerik:RadPane>
+                                
                                 <telerik:RadPane Title="系统通告" CanFloat="False" CanUserClose="False"  
                                                          ContextMenuTemplate="{x:Null}" Tag="NoticeList"  x:Name="NoticeItem" >
                                     <telerik:RadPane.HeaderTemplate>
@@ -146,7 +127,29 @@
                                         </LinearGradientBrush>
                                     </telerik:RadPane.Background>
                                 </telerik:RadPane>
-                                <telerik:RadPane Title="督察情况管理" CanFloat="False" CanUserClose="False" 
+
+                                <telerik:RadPane Title="办事内容管理" CanFloat="False" CanUserClose="False" Visibility="Collapsed"
+                                                      ContextMenuTemplate="{x:Null}"   Tag="WorkTypeList" x:Name="workTypeItem">
+                                    <telerik:RadPane.HeaderTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Height="30">
+                                                <Image Source="/Images/manage.png" Stretch="None" VerticalAlignment="Center"/>
+                                                <TextBlock Margin="5 0 0 0" Text="办事内容管理" VerticalAlignment="Center" FontSize="16" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </telerik:RadPane.HeaderTemplate>
+                                    <telerik:RadPane.Content>
+                                        <views:WorkTypeList></views:WorkTypeList>
+                                    </telerik:RadPane.Content>
+                                    <telerik:RadPane.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                                        </LinearGradientBrush>
+                                    </telerik:RadPane.Background>
+                                </telerik:RadPane>
+
+                                <telerik:RadPane Title="督察情况管理" CanFloat="False" CanUserClose="False" Visibility="Collapsed"
                                                          ContextMenuTemplate="{x:Null}" Tag="SupervisionList" x:Name="superVisionItem" >
 
                                     <telerik:RadPane.HeaderTemplate>

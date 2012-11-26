@@ -306,7 +306,7 @@ namespace PoliceSMS.Views
 
         private bool CheckVerify()
         {
-            return AppGlobal.HasPermission();
+            return true;
         }
     }
 }
