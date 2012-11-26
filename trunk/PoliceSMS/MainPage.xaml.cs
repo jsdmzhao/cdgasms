@@ -33,7 +33,7 @@ namespace PoliceSMS
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             onLoad();
-
+            
         }
 
 
@@ -96,56 +96,5 @@ namespace PoliceSMS
         {
             return true;
         }
-        
-        private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            mc.ListBox lb = sender as mc.ListBox;
-            mc.ListBoxItem item = lb.SelectedItem as mc.ListBoxItem;
-            if (item != null && item.Tag != null)
-            {
-                string tag = item.Tag.ToString();
-                //如果不存在tab创建一个，否则直接跳转
-                var existTab = tabGroup.Items.SingleOrDefault(c => (c as RadDocumentPane).Tag.ToString() == tag) as RadDocumentPane;
-                if (existTab == null)
-                {
-                    RadDocumentPane tab = cretateTab(tag);
-                    tab.Tag = tag;
-                    tabGroup.Items.Add(tab);
-                    
-                }
-                else
-                {
-                    tabGroup.SelectedItem = existTab;
-                }
-            }
-        }
-
-        private void menu_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            var bar = (sender as RadPanelBar);
-            var baritem = bar.SelectedItem as RadPanelBarItem;
-            foreach (var item in baritem.Items)
-            {
-                if (item is mc.ListBox)
-                {
-                    (item as mc.ListBox).SelectedIndex = -1;
-                    break;
-                }
-            }
-        }
-
-        //创建一个tab页
-        RadDocumentPane cretateTab(string key)
-        {
-            RadDocumentPane tab = new RadDocumentPane();
-            tab.Header = tab.Title = Dict.GetStr(key);
-
-            Type ttt = Type.GetType("PoliceSMS.Views." + key);
-            var obj = ttt.GetConstructor(Type.EmptyTypes).Invoke(null);
-            tab.Content = obj;
-            return tab;
-
-        }
-
     }
 }

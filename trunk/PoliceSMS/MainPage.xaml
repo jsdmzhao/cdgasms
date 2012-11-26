@@ -12,7 +12,6 @@
              
     d:DesignHeight="800" d:DesignWidth="1000">
 
-
     <Grid Background="{StaticResource background}">
 
         <Grid x:Name="contentGrid" >
@@ -43,125 +42,130 @@
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
-				 	<StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <Image  Height="75" Width="75" Source="/Images/jihui.png" Margin="10,0,0,0" />
                         <StackPanel VerticalAlignment="Center">
-							<TextBlock  Margin="10,5,100,5" Foreground="White"  FontSize="24"  Text="   阳光民意评警" VerticalAlignment="Center" FontWeight="Bold"/>
-							<TextBlock  Margin="10,5,100,5" Foreground="White"  FontSize="18"  Text="成都市公安局青羊区分局" VerticalAlignment="Center"/>
-						</StackPanel>
-					</StackPanel>	
-                    
+                            <TextBlock  Margin="10,5,100,5" Foreground="White"  FontSize="24"  Text="   阳光民意评警" VerticalAlignment="Center" FontWeight="Bold"/>
+                            <TextBlock  Margin="10,5,100,5" Foreground="White"  FontSize="18"  Text="成都市公安局青羊区分局" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+
                 </Grid>
             </Border>
 
             <Grid Margin="0 86 0 0" x:Name ="dataGrid" Visibility="Collapsed">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
 
-                <telerik:RadOutlookBar x:Name="bar" Width="150"  MaxWidth="760"
-                            
-                            IsMinimized="False"
-                            IsMinimizable="True"
-                            IsVerticalResizerVisible="False"
-							HorizontalAlignment="Stretch">
-                    <telerik:RadOutlookBarItem Header="" FontWeight="Bold"
-								Icon=""
-								SmallIcon="/Images/add.png"
-								Tag="SMS">
-                <telerik:RadPanelBar Grid.Column="0"  x:Name="menu" VerticalAlignment="Stretch" Width="150"  MaxWidth="760"
-					            BorderBrush="#FFCBD8E8" BorderThickness="1 1 0 1" SelectionChanged="menu_SelectionChanged"
-					             >
-                            <telerik:RadPanelBarItem IsExpanded="True">
-                                <telerik:RadPanelBarItem.Header>
-                                    <TextBlock Text="短信评警" Margin="5 3" />
-                                </telerik:RadPanelBarItem.Header>
-                                <ListBox BorderThickness="0" BorderBrush="Transparent" SelectionChanged="ListBox_SelectionChanged">
-                                    <ListBoxItem Tag="SMSRecordListNew">
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
-											BorderThickness="1">
-                                                <Image Source="/Images/add.png"  Stretch="None" />
-                                            </Border>
-                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
-											Text="群众办事登记" />
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Tag="WorkTypeList" Visibility="Collapsed" x:Name="workTypeItem">
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
-											BorderThickness="1">
-                                                <Image Source="/Images/add.png"  Stretch="None" />
-                                            </Border>
-                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
-											Text="办事内容管理" />
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Tag="NoticeList" Visibility="Visible" x:Name="NoticeItem">
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
-											BorderThickness="1">
-                                                <Image Source="/Images/add.png"  Stretch="None" />
-                                            </Border>
-                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
-											Text="系统通告" />
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Tag="SupervisionList" Visibility="Collapsed" x:Name="superVisionItem">
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                            <Border Margin="10 5 15 5" BorderBrush="#FFA1A1A1"
-											BorderThickness="1">
-                                                <Image Source="/Images/add.png"  Stretch="None" />
-                                            </Border>
-                                            <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI"
-											Text="督查情况管理" />
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                </ListBox>
-                            </telerik:RadPanelBarItem>
-                            
-                        </telerik:RadPanelBar>
-                    </telerik:RadOutlookBarItem>
+                <telerik:RadPaneGroup x:Name="tabGroup"  BorderThickness="0" Padding="0" Grid.Column="1"
+                                      TabStripPlacement="Top"
+                                      IsContentPreserved="True">
+                    <telerik:RadDocumentPane Title="排名表" CanFloat="False" CanUserClose="False" 
+                                                         ContextMenuTemplate="{x:Null}" Tag="Index" >
+                        <telerik:RadDocumentPane.HeaderTemplate>
+                            <DataTemplate >
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Image Source="/Images/ranking.png"  Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0 0 0" Text="排名表" VerticalAlignment="Center" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:RadDocumentPane.HeaderTemplate>
+                        <telerik:RadDocumentPane.Content>
+                            <views:Index></views:Index>
 
-                </telerik:RadOutlookBar>
+                        </telerik:RadDocumentPane.Content>
+                        <telerik:RadDocumentPane.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </telerik:RadDocumentPane.Background>
+                    </telerik:RadDocumentPane>
+                    <telerik:RadDocumentPane Title="群众办事登记" CanFloat="False" CanUserClose="False" 
+                                                         ContextMenuTemplate="{x:Null}"
+                                                         Tag="SMSRecordListNew" x:Name="RecordListNew"  >
+                        <telerik:RadDocumentPane.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Image Source="/Images/register.png"  Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0 0 0" Text="群众办事登记" VerticalAlignment="Center" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:RadDocumentPane.HeaderTemplate>
+                        <telerik:RadDocumentPane.Content>
+                            <views:SMSRecordListNew></views:SMSRecordListNew>
 
-                <telerik:RadDocking  BorderThickness="0" Padding="0" Grid.Column="1">
-                    <telerik:RadDocking.DocumentHost>
+                        </telerik:RadDocumentPane.Content>
+                        <telerik:RadDocumentPane.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </telerik:RadDocumentPane.Background>
+                    </telerik:RadDocumentPane>
+                    <telerik:RadDocumentPane Title="办事内容管理" CanFloat="False" CanUserClose="False"
+                                                      ContextMenuTemplate="{x:Null}"   Tag="WorkTypeList" x:Name="workTypeItem">
+                        <telerik:RadDocumentPane.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Image Source="/Images/manage.png" Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0 0 0" Text="办事内容管理" VerticalAlignment="Center" FontSize="16" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:RadDocumentPane.HeaderTemplate>
+                        <telerik:RadDocumentPane.Content>
+                            <views:WorkTypeList></views:WorkTypeList>
+                        </telerik:RadDocumentPane.Content>
+                        <telerik:RadDocumentPane.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </telerik:RadDocumentPane.Background>
+                    </telerik:RadDocumentPane>
+                    <telerik:RadDocumentPane Title="系统通告" CanFloat="False" CanUserClose="False"  
+                                                         ContextMenuTemplate="{x:Null}" Tag="NoticeList"  x:Name="NoticeItem" >
+                        <telerik:RadDocumentPane.HeaderTemplate>
+                            <DataTemplate >
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Image Source="/Images/announce.png"  Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0 0 0" Text="系统通告" VerticalAlignment="Center" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:RadDocumentPane.HeaderTemplate>
+                        <telerik:RadDocumentPane.Content>
+                            <views:NoticeList></views:NoticeList>
 
-                        <telerik:RadSplitContainer>
-                            <telerik:RadPaneGroup x:Name="tabGroup" >
-                                <telerik:RadDocumentPane Header="排名表" Title="排名表" CanFloat="False" CanUserClose="False" 
-                                                         
-                                                         Tag="Index" >
-                                    <telerik:RadDocumentPane.Content>
-                                        <views:Index></views:Index>
-                                        
-                                    </telerik:RadDocumentPane.Content>
-                                    <telerik:RadDocumentPane.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
-                                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
-                                        </LinearGradientBrush>
-                                    </telerik:RadDocumentPane.Background>
-                                    <!--<navigation:Frame  Source="/Views/Index.xaml"
-                                                       HorizontalAlignment="Stretch" BorderThickness="0" VerticalAlignment="Stretch" >
-                                        <navigation:Frame.Background>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
-                                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
-                                            </LinearGradientBrush>
-                                        </navigation:Frame.Background>
+                        </telerik:RadDocumentPane.Content>
+                        <telerik:RadDocumentPane.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </telerik:RadDocumentPane.Background>
+                    </telerik:RadDocumentPane>
+                    <telerik:RadDocumentPane Title="督察情况管理" CanFloat="False" CanUserClose="False" 
+                                                         ContextMenuTemplate="{x:Null}" Tag="SupervisionList" x:Name="superVisionItem" >
 
-                                    </navigation:Frame>-->
-                                </telerik:RadDocumentPane>
-                            </telerik:RadPaneGroup>
-                        </telerik:RadSplitContainer>
+                        <telerik:RadDocumentPane.HeaderTemplate>
+                            <DataTemplate >
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Image Source="/Images/monitor.png"  Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0 0 0" Text="督察情况管理" VerticalAlignment="Center" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:RadDocumentPane.HeaderTemplate>
+                        <telerik:RadDocumentPane.Content>
+                            <views:SupervisionList></views:SupervisionList>
 
-                    </telerik:RadDocking.DocumentHost>
-                </telerik:RadDocking>
-
+                        </telerik:RadDocumentPane.Content>
+                        <telerik:RadDocumentPane.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </telerik:RadDocumentPane.Background>
+                    </telerik:RadDocumentPane>
+                </telerik:RadPaneGroup>
 
 
 
