@@ -122,9 +122,9 @@ namespace PoliceSMS.Views
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            if (tree.SelectedItem != null)
+            if (tree.SelectedItem is TreeViewItemModel)
             {
-                Organization org = tree.SelectedItem as Organization;
+                TreeViewItemModel org = tree.SelectedItem as TreeViewItemModel;
                 if (org != null)
                 {
                     if (org.Id == 0)

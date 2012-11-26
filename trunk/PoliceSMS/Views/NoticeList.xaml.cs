@@ -31,10 +31,7 @@ namespace PoliceSMS.Views
         {
             InitializeComponent();
 
-            if (AppGlobal.HasPermission())
-                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Visible;
-            else
-                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Collapsed;
+           
             ser.GetListByHQLWithPagingCompleted += new EventHandler<NoticeService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
 
             ser.DeleteByIdCompleted += new EventHandler<NoticeService.DeleteByIdCompletedEventArgs>(ser_DeleteByIdCompleted);
@@ -52,7 +49,10 @@ namespace PoliceSMS.Views
 
         void NoticeList_Loaded(object sender, RoutedEventArgs e)
         {
-           
+            if (AppGlobal.HasPermission())
+                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Visible;
+            else
+                btnAdd.Visibility = btnEdit.Visibility = btnDelete.Visibility = Visibility.Collapsed;
             getData();
         }
 

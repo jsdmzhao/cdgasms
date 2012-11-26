@@ -22,7 +22,10 @@ namespace PoliceSMS.Views
         public LoginForm()
         {
             InitializeComponent();
+            txtName.UpdateLayout();
+            txtName.Focus();
             Loaded += new RoutedEventHandler(LoginForm_Loaded);
+            
         }
 
         public bool IsSuccess
@@ -44,7 +47,6 @@ namespace PoliceSMS.Views
 
         void LoginForm_Loaded(object sender, RoutedEventArgs e)
         {
-            
         }
         /// <summary>
         /// 登录用户
@@ -86,12 +88,13 @@ namespace PoliceSMS.Views
             Show.InvokeSelf();
         }
 
-        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        private void txt_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 login();
             }
         }
+
     }
 }
