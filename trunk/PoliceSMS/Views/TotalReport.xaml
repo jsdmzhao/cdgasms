@@ -151,9 +151,9 @@
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="55"></ColumnDefinition>
                                     <ColumnDefinition Width="70"></ColumnDefinition>
@@ -421,12 +421,12 @@
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Center" HeaderTextAlignment="Center"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
 
-                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
                                     <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst"/>
 
@@ -448,7 +448,7 @@
                             <telerik:SeriesMapping LegendLabel="满意率" >
                                 <telerik:SeriesMapping.SeriesDefinition>
                                     <telerik:BarSeriesDefinition AxisName="y1" ShowItemLabels="True" ShowItemToolTips="True"
-                                               ItemLabelFormat="#Y%}" ItemToolTipFormat="#Y%" LegendDisplayMode="SeriesLabel"  >
+                                               ItemLabelFormat="#Y%" ItemToolTipFormat="#Y%" LegendDisplayMode="SeriesLabel"  >
                                     </telerik:BarSeriesDefinition>
                                 </telerik:SeriesMapping.SeriesDefinition>
                                 <telerik:SeriesMapping.ItemMappings>
@@ -459,7 +459,7 @@
                             <telerik:SeriesMapping LegendLabel="受理总量">
                                 <telerik:SeriesMapping.SeriesDefinition>
                                     <telerik:BarSeriesDefinition AxisName="y2" ShowItemLabels="True" ShowItemToolTips="True"
-                                               ItemLabelFormat="#Y}" ItemToolTipFormat="#Y"  LegendDisplayMode="SeriesLabel" >
+                                               ItemLabelFormat="#Y" ItemToolTipFormat="#Y"  LegendDisplayMode="SeriesLabel" >
                                     </telerik:BarSeriesDefinition>
                                 </telerik:SeriesMapping.SeriesDefinition>
                                 <telerik:SeriesMapping.ItemMappings>
