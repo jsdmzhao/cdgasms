@@ -306,4 +306,10 @@
             Value="14" />
     </Style>
 
+    <Style TargetType="telerik:GridViewCell" x:Key="cellStyle">
+        <Setter Property="FontSize" Value="20"></Setter>
+    </Style>
+    <Style TargetType="telerik:GridViewRow" x:Key="rowStyle">
+        <Setter Property="FontSize" Value="20"></Setter>
+    </Style>
 </ResourceDictionary>

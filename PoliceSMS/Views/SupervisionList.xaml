@@ -113,9 +113,7 @@
                         <ColumnDefinition Width="70"></ColumnDefinition>
                         <ColumnDefinition Width="240"></ColumnDefinition>
                         <ColumnDefinition Width="70"></ColumnDefinition>
-                        <!-- qdg增加一条 -->
                         <ColumnDefinition Width="240"></ColumnDefinition>
-                        <!--结束-->
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
@@ -137,42 +135,24 @@
                                                           VerticalAlignment="Center" />
                     </StackPanel>
 
-                    <TextBlock Text="评分类型:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2"></TextBlock>
-                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3"
+                    <TextBlock Text="评分类型:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2" ></TextBlock>
+                    <telerik:RadComboBox IsEditable="False" Visibility="Visible" SelectedValuePath="Id" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3"
                                                 DisplayMemberPath="Name"  x:Name="cboxGradeType"
                                                           Width="140"
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
-
-
-                    <!--原为Grid.Row="1" Grid.Column="0",改为Grid.Row="0" Grid.Column="3"-->
                     <TextBlock Text="受理单位:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="3"></TextBlock>
-                    <!--原为Grid.Row="1" Grid.Column="1",改为Grid.Row="0" Grid.Column="4"-->
-                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="4"
+                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="False" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="4"
                                                 DisplayMemberPath="Name"  x:Name="cboxStation" SelectionChanged="cboxStation_SelectionChanged"
                                                           Width="140"
                                                           Height="24"
                                                           Margin="5,0,0,0">
                     </telerik:RadComboBox>
-
-                    <!--原为Grid.Row="1" Grid.Column="2",改为Grid.Row="1" Grid.Column="0"-->
                     <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"></TextBlock>
-                    <!--原样
-                    <telerik:RadComboBox SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3"
-                                                DisplayMemberPath="Name"  x:Name="cboxOper"
-                                                          Width="140" 
-                                                          Height="24"
-                                                          Margin="5,0,0,0">
-                    </telerik:RadComboBox>
-                    结束-->
-                    <!--修改-->
                     <TextBox x:Name="txtOper" Text="" Width="140" Height="24" Margin="5,0,95,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
-                    <!--结束-->
-                    <!--增加值班领导-->
                     <TextBlock Text="值班领导:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
                     <TextBox x:Name="txtLeader" Text="" Width="140" Height="24" Margin="5,0,95,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center"/>
-                    <!--结束-->
                 </Grid>
                 <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="3" Margin="0 3 0 3"
                        Fill="{StaticResource GridViewSplitter}">
@@ -190,9 +170,7 @@
                             <telerik:GridViewSelectColumn Header="" Width="40" />
                             <telerik:GridViewDataColumn Header="受理单位" MinWidth="150" DataMemberBinding="{Binding Organization.Name}" HeaderTextAlignment="Center" />
                             <telerik:GridViewDataColumn Header="受理人" MinWidth="100" DataMemberBinding="{Binding WorkOfficer.Name}" HeaderTextAlignment="Center" />
-                            <!--增加值班领导-->
                             <telerik:GridViewDataColumn Header="值班领导" MinWidth="100" DataMemberBinding="{Binding Leader.Name}" HeaderTextAlignment="Center"/>
-                            <!--结束-->
 
                             <telerik:GridViewDataColumn DataFormatString="yyyy-MM-dd"  Header="扣分日期"  MinWidth="120" DataMemberBinding="{Binding WorkDate}" HeaderTextAlignment="Center" />
                             <telerik:GridViewDataColumn Header="扣分原因" MinWidth="80" DataMemberBinding="{Binding GradeType.Name}"  HeaderTextAlignment="Center" />
@@ -207,10 +185,6 @@
                                             PageSize="19"  PageIndexChanged="rDataPager1_PageIndexChanged"
                                             IsTotalItemCountFixed="True"
                                             DisplayMode="FirstLastPreviousNextNumeric"/>
-                <!--<Rectangle Height="1" VerticalAlignment="Top" Grid.Row="3"
-                       Fill="{StaticResource GridViewSplitter}"
-                       Margin="0 0 0 0" >
-                        </Rectangle>-->
             </Grid>
         </Border>
     </Grid>
