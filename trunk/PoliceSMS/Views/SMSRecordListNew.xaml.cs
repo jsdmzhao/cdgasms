@@ -249,7 +249,7 @@ namespace PoliceSMS.Views
                     SupervisionForm form = new SupervisionForm(obj);
                     form.SaveCallBack = getData;
 
-                    Tools.OpenWindow("督查情况", form, null, 400, 290);
+                    Tools.OpenWindow("督查情况", form, null, 400, 320);
                 }
                 else
                 {
