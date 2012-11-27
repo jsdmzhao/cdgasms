@@ -489,7 +489,7 @@
                             <telerik:SeriesMapping LegendLabel="满意率" >
                                 <telerik:SeriesMapping.SeriesDefinition>
                                     <telerik:BarSeriesDefinition AxisName="y1" ShowItemLabels="True" ShowItemToolTips="True"
-                                               ItemLabelFormat="#Y%}" ItemToolTipFormat="#Y%" LegendDisplayMode="SeriesLabel"  >
+                                               ItemLabelFormat="#Y%" ItemToolTipFormat="#Y%" LegendDisplayMode="SeriesLabel"  >
                                     </telerik:BarSeriesDefinition>
                                 </telerik:SeriesMapping.SeriesDefinition>
                                 <telerik:SeriesMapping.ItemMappings>
@@ -500,7 +500,7 @@
                             <telerik:SeriesMapping LegendLabel="受理总量">
                                 <telerik:SeriesMapping.SeriesDefinition>
                                     <telerik:BarSeriesDefinition AxisName="y2" ShowItemLabels="True" ShowItemToolTips="True"
-                                               ItemLabelFormat="#Y}" ItemToolTipFormat="#Y"  LegendDisplayMode="SeriesLabel" >
+                                               ItemLabelFormat="#Y" ItemToolTipFormat="#Y"  LegendDisplayMode="SeriesLabel" >
                                     </telerik:BarSeriesDefinition>
                                 </telerik:SeriesMapping.SeriesDefinition>
                                 <telerik:SeriesMapping.ItemMappings>
