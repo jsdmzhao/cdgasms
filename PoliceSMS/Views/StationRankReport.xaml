@@ -177,28 +177,28 @@
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="25"></ColumnDefinition>
-                                    <ColumnDefinition Width="44"></ColumnDefinition>
+                                    <ColumnDefinition Width="39"></ColumnDefinition>
                                     <ColumnDefinition Width="0"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="40"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
-                                    <ColumnDefinition Width="65"></ColumnDefinition>
-                                    <ColumnDefinition Width="65"></ColumnDefinition>
-                                    <ColumnDefinition Width="45"></ColumnDefinition>
                                     <ColumnDefinition MinWidth="20"  Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Border BorderBrush="{StaticResource HeaderPanelOuterBorder}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
@@ -436,49 +436,49 @@
                                 <telerik:RadGridView.Columns>
 
 
-                                    <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="排名"  
+                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="排名"  
                                                                 DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" />
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" />
 
 
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3"/>
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3" />
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3" />
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                    <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Center" HeaderTextAlignment="Center"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Center" HeaderTextAlignment="Center"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="评价数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="评价数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="评价数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Center" HeaderTextAlignment="Center" />
 
-                                    <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
 
-                                    <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center" />
-                                    <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="总得分" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="总得分" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
                                 </telerik:RadGridView.Columns>
                             </telerik:RadGridView>
                         </Grid>
