@@ -47,11 +47,12 @@ namespace PoliceSMS.Views
    
         }
 
+        int officerId = 0;
         void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
         {
             btnEdit.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
             btnDelete.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
-            int officerId = 0;
+            
 
             DateTime? start = null;
             DateTime? end = null;
@@ -147,7 +148,7 @@ namespace PoliceSMS.Views
 
         void getData()
         {
-            getData(0);
+            getData(officerId);
         }
 
         void getData(int offcerId)
