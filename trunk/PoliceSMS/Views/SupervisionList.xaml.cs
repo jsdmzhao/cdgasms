@@ -94,8 +94,6 @@ namespace PoliceSMS.Views
                         var removeList = list.Where(c => c.Name == "吴涛" || c.Name == "贾红兵").ToList();
                         for (int i = 0; i < removeList.Count; i++)
                             list.Remove(removeList[i]);
-                        // 屏蔽
-                        //cboxOper.ItemsSource = list;
 
                     };
 
@@ -212,13 +210,6 @@ namespace PoliceSMS.Views
 
             hql.Append(string.Format(" from SMSRecord as r where r.GradeType.IsSupervise = {0} and  r.WorkDate between '{1}' and '{2}' ",
                  true,start, end));
-            // 屏蔽
-            //if (cboxOper.SelectedItem != null)
-            //{
-            //    Officer off = cboxOper.SelectedItem as Officer;
-            //    if (off != null)
-            //        hql.Append(" and r.WorkOfficer.Id=" + off.Id);
-            //}
           
 
             if (cboxStation.SelectedItem != null)
