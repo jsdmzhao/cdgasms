@@ -192,7 +192,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="25"></ColumnDefinition>
                                 <ColumnDefinition Width="49"></ColumnDefinition>
-                                <ColumnDefinition Width="55"></ColumnDefinition>
+                                <ColumnDefinition Width="65"></ColumnDefinition>
                                 <ColumnDefinition Width="45"></ColumnDefinition>
 
                                 <ColumnDefinition Width="45"></ColumnDefinition>
@@ -456,53 +456,276 @@
                                           CanUserSelect="True" ShowColumnHeaders="False"
                                          ItemsSource="{Binding PagedSource, ElementName=rDataPager1}"
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
+                            <telerik:RadGridView.RowStyle>
+                                <Style TargetType="telerik:GridViewRow">
+                                    <Setter Property="MinHeight" Value="35"/>
+                                </Style>
+                            </telerik:RadGridView.RowStyle>
                             <telerik:RadGridView.Columns>
 
 
-                                <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                                <telerik:GridViewDataColumn  MinWidth="50" MaxWidth="50" DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="排名" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding Rank}" TextAlignment="Right"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center" />
-                                
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Center" />
+                                <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="个人" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding OfficerName}" TextAlignment="Left"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center" />-->
 
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="单位" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding UnitName,Converter={StaticResource stationConverter}}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Center" />-->
 
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G1Count}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G1Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G1Count}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G1Rate,StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3" />-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G1Rate,StringFormat=F2}" TextAlignment="Center" HeaderTextAlignment="Center" ColumnGroupName="best3" />
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G2Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G2Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G2Rate,StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G2Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="better3"/>
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G3Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G3Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G3Rate,StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G3Rate,StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="normal3"/>
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G4Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G4Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G4Rate, StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G4Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="bad3"/>
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G5Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G5Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G5Rate, StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G5Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Center" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="回复率" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding Rate}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Center" HeaderTextAlignment="Center"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="回复率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding Rate}" TextAlignment="Center" HeaderTextAlignment="Center"/>
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G6Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G6Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G6Rate, StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G6Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="评价数量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G7Count}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="评价数量" DataMemberBinding="{Binding G7Count}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="百分比" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding G7Rate, StringFormat=F2}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="百分比" DataFormatString="{}{0:N2}%"  DataMemberBinding="{Binding G7Rate, StringFormat=F2}" HeaderTextAlignment="Center" TextAlignment="Center" ColumnGroupName="worst3"/>
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Center" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="满意率" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding StationRate}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Center" HeaderTextAlignment="Center" />-->
 
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="满意率" DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65" DataMemberBinding="{Binding Score,StringFormat=F2, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="平均得分" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding Score,StringFormat=F2, Converter={StaticResource myConverter}}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />-->
 
-                                <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  Header="平均得分" DataMemberBinding="{Binding Score,StringFormat=F2, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
-
-                                <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center" />
-                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="总得分" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />
+                                <telerik:GridViewDataColumn MinWidth="65" MaxWidth="65" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="受理总量" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding STotalCount}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="65" MaxWidth="65"  Header="受理总量" DataMemberBinding="{Binding TotalCount}" TextAlignment="Center" HeaderTextAlignment="Center" />-->
+                                <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center">
+                                    <telerik:GridViewDataColumn.Header>
+                                        <TextBlock FontSize="14" Text="总得分" TextAlignment="Center" ></TextBlock>
+                                    </telerik:GridViewDataColumn.Header>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="14" Text="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <!--<telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="总得分" DataMemberBinding="{Binding TotalScore, Converter={StaticResource myConverter}}" TextAlignment="Center" HeaderTextAlignment="Center" />-->
                             </telerik:RadGridView.Columns>
                         </telerik:RadGridView>
                         <telerik:RadGridView Grid.Row="1"  BorderThickness="0 1 1 0" x:Name="gvtmp" Margin="0,0,0,0" ShowGroupPanel="False" 
