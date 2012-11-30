@@ -23,7 +23,7 @@
                 <telerikNavigation:RadTabControl Grid.Row="1" VerticalAlignment="Top" IsContentPreserved="True"
 				DisplayMemberPath="Content" DropDownDisplayMode="Visible" ScrollMode="Viewport" 
 				Background="#dde1ea" BorderThickness="0"  SelectedItemRemoveBehaviour="SelectLast">
-                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="派出所排名统计" TabNavigation="Local">
+                    <telerikNavigation:RadTabItem Padding="4 1" Cursor="Hand" DropDownContent="派出所排名统计" TabNavigation="Local">
                         <telerikNavigation:RadTabItem.Header>
                             <TextBlock Text="单位排名统计" Margin="19 2 19 0" />
                         </telerikNavigation:RadTabItem.Header>
@@ -41,7 +41,7 @@
                             </views:DrillContainer>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>-->
-                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="个人排名统计" x:Name="officerRank">
+                    <telerikNavigation:RadTabItem Padding="4 1" Cursor="Hand" DropDownContent="个人排名统计" x:Name="officerRank">
                         <telerikNavigation:RadTabItem.Header>
                             <TextBlock Text="个人排名统计" Margin="19 2 19 0" />
                         </telerikNavigation:RadTabItem.Header>
@@ -49,7 +49,7 @@
                             <views:OfficerRankReport></views:OfficerRankReport>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>
-                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="全局统计">
+                    <telerikNavigation:RadTabItem Padding="4 1" Cursor="Hand" DropDownContent="全局统计">
                         <telerikNavigation:RadTabItem.Header>
                             <TextBlock Text="全局统计" Margin="19 2 19 0" />
                         </telerikNavigation:RadTabItem.Header>
@@ -57,7 +57,7 @@
                             <views:TotalReport></views:TotalReport>
                         </telerikNavigation:RadTabItem.Content>
                     </telerikNavigation:RadTabItem>
-                    <telerikNavigation:RadTabItem Padding="4 1" DropDownContent="办证中心统计">
+                    <telerikNavigation:RadTabItem Padding="4 1" Cursor="Hand" DropDownContent="办证中心统计">
                         <telerikNavigation:RadTabItem.Header>
                             <TextBlock Text="办证中心统计" Margin="19 2 19 0" />
                         </telerikNavigation:RadTabItem.Header>
