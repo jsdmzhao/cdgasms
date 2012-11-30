@@ -433,11 +433,27 @@
                                           CanUserSelect="True" ShowColumnHeaders="False"
                                          SelectionChanged="gv_SelectionChanged"  telerik:StyleManager.Theme="Windows7" FontSize="20"
 								AutoGenerateColumns="False" ShowColumnFooters="False"  >
+                                <telerik:RadGridView.RowStyle>
+                                    <Style TargetType="telerik:GridViewRow">
+                                        <Setter Property="MinHeight" Value="40"/>
+                                    </Style>
+                                </telerik:RadGridView.RowStyle>
                                 <telerik:RadGridView.Columns>
 
-
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="排名"  
-                                                                DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                                    <telerik:GridViewDataColumn  HeaderTextAlignment="Center" TextAlignment="Center"
+                                                        DataMemberBinding="{Binding Rank}" Width="40">
+                                        <telerik:GridViewDataColumn.Header>
+                                            <TextBlock FontSize="28" Text="排名" TextAlignment="Center" ></TextBlock>
+                                        </telerik:GridViewDataColumn.Header>
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock FontSize="28" Text="{Binding Rank}" TextAlignment="Center"></TextBlock>
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    
+                                    <!--<telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="排名"  
+                                                                DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />-->
 
                                     <telerik:GridViewDataColumn MinWidth="35" MaxWidth="35"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" />
 
