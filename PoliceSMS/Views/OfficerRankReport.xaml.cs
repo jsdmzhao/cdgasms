@@ -128,7 +128,10 @@ namespace PoliceSMS.Views
                         StationReportResult obj = e.AddedItems[0] as StationReportResult;
                         if (obj != null)
                         {
-                            string uri = string.Format("/Views/SMSRecordListNew.xaml?OfficerId={0}&Start={1}&End={2}", obj.UnitId, dateStart.SelectedDate, dateEnd.SelectedDate);
+                            OfficerType type = lbType.SelectedItem as OfficerType;
+
+                            string uri = string.Format("/Views/SMSRecordListNew.xaml?OfficerId={0}&Start={1}&End={2}&OfficerTypeId={3}",
+                                obj.UnitId, dateStart.SelectedDate, dateEnd.SelectedDate, type == null ? "" : type.Id.ToString());
                             this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
                         }
                     }
