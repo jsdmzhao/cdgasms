@@ -78,7 +78,12 @@ namespace PoliceSMS.Views
 
             this.cmbWorkOrg.Text = (AppGlobal.CurrentUser.Organization).Name;
 
-            
+
+            bool hasPsermission = AppGlobal.HasPermission();
+            this.cmbGradeType.IsReadOnly = !hasPsermission;
+            this.cmbGradeType.IsEnabled = hasPsermission;
+
+
         }
 
         private void LoadSexs()
