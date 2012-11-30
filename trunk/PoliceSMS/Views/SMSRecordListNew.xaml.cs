@@ -54,10 +54,11 @@ namespace PoliceSMS.Views
             btnDelete.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
             
 
-            DateTime? start = null;
-            DateTime? end = null;
+           
             if (this.NavigationContext != null)
             {
+                DateTime? start = null;
+                DateTime? end = null;
                 if (this.NavigationContext.QueryString.Keys.Contains("OfficerId"))
                     int.TryParse(this.NavigationContext.QueryString["OfficerId"], out officerId);
                 if (this.NavigationContext.QueryString.Keys.Contains("Start"))
@@ -75,12 +76,12 @@ namespace PoliceSMS.Views
                 mainGrid.RowDefinitions[0].Height = new GridLength(0);
                 mainGrid.RowDefinitions[1].Height = new GridLength(0);
                 mainGrid.RowDefinitions[2].Height = new GridLength(0);
+
+                dateStart.SelectedDate = start;
+                dateEnd.SelectedDate = end;
             }
 
-            if (start != null)
-                dateStart.SelectedDate = start;
-            if (end != null)
-                dateEnd.SelectedDate = end;
+            
 
 
             getData(officerId);
@@ -319,6 +320,18 @@ namespace PoliceSMS.Views
             {
                 //跳转到个人录入记录时使用
                 hql.Append(string.Format(" and r.WorkOfficer.Id = {0} ", offcerId));
+                if (dateStart.SelectedDate != null)
+                {
+                    DateTime tmp = dateStart.SelectedDate.Value;
+                    DateTime start = new DateTime(tmp.Year, tmp.Month, tmp.Day, 0, 0, 0);
+                    hql.Append(string.Format(" and r.WorkDate >= '{0}' ", start));
+                }
+                if (dateEnd.SelectedDate != null)
+                {
+                    DateTime tmp = dateEnd.SelectedDate.Value;
+                    DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
+                    hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
+                }
             }
             else
             {

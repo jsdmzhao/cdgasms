@@ -430,7 +430,7 @@
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
                                           CanUserSelect="True" ShowColumnHeaders="False"
-                                         SelectionChanged="gv_SelectionChanged"  telerik:StyleManager.Theme="Windows7" FontSize="20"
+                                         SelectionChanged="gv_SelectionChanged"  telerik:StyleManager.Theme="Windows7" 
 								AutoGenerateColumns="False" ShowColumnFooters="False"  >
                                 <telerik:RadGridView.RowStyle>
                                     <Style TargetType="telerik:GridViewRow">
