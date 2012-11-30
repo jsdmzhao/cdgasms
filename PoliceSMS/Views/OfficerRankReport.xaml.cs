@@ -51,10 +51,11 @@ namespace PoliceSMS.Views
             isOfficerSelected = false;
             autoReport = false;
             int orgId = 0;
-            DateTime? start = null;
-            DateTime? end = null;
+            
             if (this.NavigationContext != null)
             {
+                DateTime? start = null;
+                DateTime? end = null;
                 if (this.NavigationContext.QueryString.Keys.Contains("OrgId"))
                     int.TryParse(this.NavigationContext.QueryString["OrgId"], out orgId);
                 if (this.NavigationContext.QueryString.Keys.Contains("Start"))
@@ -69,12 +70,11 @@ namespace PoliceSMS.Views
                     if (DateTime.TryParse(this.NavigationContext.QueryString["End"], out tmp))
                         end = tmp;
                 }
+                dateStart.SelectedDate = start;
+                dateEnd.SelectedDate = end;
             }
 
-            if (start != null)
-                dateStart.SelectedDate = start;
-            if (end != null)
-                dateEnd.SelectedDate = end;
+            
 
             if (orgId == 0)
             {
@@ -128,11 +128,6 @@ namespace PoliceSMS.Views
                         StationReportResult obj = e.AddedItems[0] as StationReportResult;
                         if (obj != null)
                         {
-                            string str = string.Empty;
-                            if (dateStart.SelectedDate != null && dateEnd.SelectedDate != null)
-                                str = string.Format("{0}录入记录（{1}-{2}）", obj.OfficerName, dateStart.SelectedDate.Value.ToString("yy年MM月dd日"), dateEnd.SelectedDate.Value.ToString("yy年MM月dd日"));
-                            else
-                                str = string.Format("{0}录入记录（{1}-{2}）", obj.OfficerName, dateStart.SelectedDate, dateEnd.SelectedDate);
                             string uri = string.Format("/Views/SMSRecordListNew.xaml?OfficerId={0}&Start={1}&End={2}", obj.UnitId, dateStart.SelectedDate, dateEnd.SelectedDate);
                             this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
                         }
@@ -187,12 +182,6 @@ namespace PoliceSMS.Views
         IList<StationReportResult> list;
         private void LoadReport(Action action = null)
         {
-            if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
-            {
-                Tools.ShowMessage("时间不能为空!", "", false);
-                return;
-            }
-
             if (cmbStation.SelectedItem == null)
             {
                 Tools.ShowMessage("请选择单位!", "", false);
@@ -228,21 +217,16 @@ namespace PoliceSMS.Views
 
                 };
 
-            DateTime beginTime1 = DateTime.Now.AddDays(-1);
-            DateTime endTime1 = DateTime.Now;
+            DateTime beginTime1 = new DateTime().SqlMinValue();
+            DateTime endTime1 = new DateTime().SqlMaxValue();
             if(dateStart.SelectedDate!=null)
                 beginTime1 = dateStart.SelectedDate.Value;
-            
-            if(dateEnd.SelectedDate!=null)
-                endTime1 = dateEnd.SelectedDate.Value;
 
-            TimeSpan span = endTime1 - beginTime1;
-            endTime1 = endTime1.AddDays(1);
-
-            
-            DateTime endTime2 = beginTime1.AddDays(-1);
-
-            DateTime beginTime2 = endTime2.Add(-span);
+            if (dateEnd.SelectedDate != null)
+            {
+                var tmp = dateEnd.SelectedDate.Value;
+                endTime1 = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
+            }
 
             int unitId = selOrg == null ? 0 : selOrg.Id;
             //////////警种

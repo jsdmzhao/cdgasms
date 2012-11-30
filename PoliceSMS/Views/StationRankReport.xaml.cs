@@ -25,6 +25,7 @@ namespace PoliceSMS.Views
     {
         //silverlight没有keepalive属性
         //在页面跳转时保存条件
+        private static bool isInit = false;
         private static DateTime? m_start;
         private static DateTime? m_end;
         private static string m_showType;
@@ -32,27 +33,24 @@ namespace PoliceSMS.Views
         public StationRankReport()
         {
             InitializeComponent();
-            
-            DateTime preMonth = DateTime.Now.AddMonths(-1);
-            DateTime beginTime = new DateTime(preMonth.Year, preMonth.Month, 1);
-            DateTime endTime = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
 
-            dateEnd.SelectedDate = endTime;
-            dateStart.SelectedDate = beginTime;
-
+            if (!isInit)
+            {
+                DateTime preMonth = DateTime.Now.AddMonths(-1);
+                m_start = new DateTime(preMonth.Year, preMonth.Month, 1);
+                m_end = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
+                isInit = true;
+            }
             this.Loaded += new RoutedEventHandler(StationRankReport_Loaded);
-
-            
         }
 
         void StationRankReport_Loaded(object sender, RoutedEventArgs e)
         {
             LoadStation();
 
-            if (m_start != null)
-                dateStart.SelectedDate = m_start;
-            if (m_end != null)
-                dateEnd.SelectedDate = m_end;
+            dateStart.SelectedDate = m_start;
+            dateEnd.SelectedDate = m_end;
+
             if (m_showType != null)
             {
                 if (listShowType.Name == m_showType)
@@ -135,12 +133,6 @@ namespace PoliceSMS.Views
 
         public void LoadReport(int unitType)
         {
-            if (dateStart.SelectedDate == null || dateEnd.SelectedDate == null)
-            {
-                Tools.ShowMessage("时间不能为空!", "", false);
-                return;
-            }
-
             btnExport.IsEnabled = false;
             Tools.ShowMask(true);
             
@@ -165,18 +157,22 @@ namespace PoliceSMS.Views
                 };
 
            
-            DateTime beginTime1 = dateStart.SelectedDate.Value;
-            DateTime endTime1 = dateEnd.SelectedDate.Value;
+            DateTime beginTime1 = new DateTime().SqlMinValue();
+            DateTime endTime1 = new DateTime().SqlMaxValue();
+            if (dateStart.SelectedDate != null)
+                beginTime1 = dateStart.SelectedDate.Value;
 
-            TimeSpan span = endTime1 - beginTime1;
-            endTime1 = endTime1.AddDays(1);
+            if (dateEnd.SelectedDate != null)
+            {
+                var tmp = dateEnd.SelectedDate.Value;
+                endTime1 = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
+            }
 
-            DateTime endTime2 = beginTime1.AddDays(-1);
-
-            DateTime beginTime2 = endTime2.Add(-span);
+            //DateTime endTime2 = beginTime1.AddSeconds(-1);
+            //DateTime beginTime2 = endTime2 - (endTime1 - beginTime1);
 
             Tools.ShowMask(true, "正在查找数据,请稍等...");
-            ser.LoadStationReportResultAsync(unitType, beginTime1, endTime1, beginTime2, endTime2);
+            ser.LoadStationReportResultAsync(unitType, beginTime1, endTime1, beginTime1, endTime1);
 
         }
 

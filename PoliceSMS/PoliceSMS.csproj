@@ -190,6 +190,7 @@
     <Compile Include="Themes\FarmerItemStyleSelector.cs" />
     <Compile Include="ViewModel\ChartModel.cs" />
     <Compile Include="ViewModel\ExportintModel.cs" />
+    <Compile Include="ViewModel\ExtDateTime.cs" />
     <Compile Include="ViewModel\MarkState.cs" />
     <Compile Include="ViewModel\SortType.cs" />
     <Compile Include="ViewModel\TreeViewItemModel.cs" />
