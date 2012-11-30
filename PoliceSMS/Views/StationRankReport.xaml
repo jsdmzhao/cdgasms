@@ -26,7 +26,7 @@
             <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
             <Setter Property="IsSelected" Value="{Binding IsActive}" />
         </Style>
-        
+
         <telerik:HierarchicalDataTemplate x:Key="OrgTemplate1" >
             <StackPanel Orientation="Horizontal"  >
                 <TextBlock Text="{Binding Name}" FontWeight="Light"  FontSize="14" HorizontalAlignment="Left" />
@@ -485,7 +485,7 @@
                                         </telerik:GridViewDataColumn.Header>
                                         <telerik:GridViewDataColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock FontSize="14" Text="{Binding G1Rate,StringFormat=P}" TextAlignment="Center"></TextBlock>
+                                                <TextBlock FontSize="14" Text="{Binding G1Rate,StringFormat=\{0:N2\}%}" TextAlignment="Center"></TextBlock>
                                             </DataTemplate>
                                         </telerik:GridViewDataColumn.CellTemplate>
                                     </telerik:GridViewDataColumn>
