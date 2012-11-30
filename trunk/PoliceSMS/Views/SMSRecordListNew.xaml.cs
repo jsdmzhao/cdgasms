@@ -48,6 +48,7 @@ namespace PoliceSMS.Views
         }
 
         int officerId = 0;
+        int officerTypeId = 0;
         void SMSRecordList_Loaded(object sender, RoutedEventArgs e)
         {
             btnEdit.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
@@ -73,6 +74,9 @@ namespace PoliceSMS.Views
                     if (DateTime.TryParse(this.NavigationContext.QueryString["End"], out tmp))
                         end = tmp;
                 }
+                if (this.NavigationContext.QueryString.Keys.Contains("OfficerTypeId"))
+                    int.TryParse(this.NavigationContext.QueryString["OfficerTypeId"], out officerTypeId);
+                
                 mainGrid.RowDefinitions[0].Height = new GridLength(0);
                 mainGrid.RowDefinitions[1].Height = new GridLength(0);
                 mainGrid.RowDefinitions[2].Height = new GridLength(0);
@@ -81,10 +85,7 @@ namespace PoliceSMS.Views
                 dateEnd.SelectedDate = end;
             }
 
-            
-
-
-            getData(officerId);
+            getData();
         }
 
         void ser_GetListByHQLCompleted(object sender, SMSRecordService.GetListByHQLCompletedEventArgs e)
@@ -147,24 +148,20 @@ namespace PoliceSMS.Views
           
         }
 
+
         void getData()
         {
-            getData(officerId);
-        }
-
-        void getData(int offcerId)
-        {
             Tools.ShowMask(true, "正在查找数据,请稍等...");
-            BuildHql(offcerId);
+            BuildHql();
 
             queryCondition.FirstResult = rDataPager1.PageIndex * PageSize; ;
 
             QueryPaging(queryCondition);
         }
 
-        private void BuildHql(int offcerId = 0)
+        private void BuildHql()
         {
-            string hqlStr = generateBaseHql(offcerId);
+            string hqlStr = generateBaseHql();
             
             queryCondition = new QueryCondition();
 
@@ -311,15 +308,15 @@ namespace PoliceSMS.Views
             }
         }
 
-        private string generateBaseHql(int offcerId = 0)
+        private string generateBaseHql()
         {
             StringBuilder hql = new StringBuilder();
             hql.Append(string.Format(" from SMSRecord as r where 1=1 "));
 
-            if (offcerId != 0)
+            if (officerId != 0)
             {
                 //跳转到个人录入记录时使用
-                hql.Append(string.Format(" and r.WorkOfficer.Id = {0} ", offcerId));
+                hql.Append(string.Format(" and r.WorkOfficer.Id = {0} ", officerId));
                 if (dateStart.SelectedDate != null)
                 {
                     DateTime tmp = dateStart.SelectedDate.Value;
@@ -332,6 +329,8 @@ namespace PoliceSMS.Views
                     DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
                     hql.Append(string.Format(" and r.WorkDate <= '{0}' ", end));
                 }
+                if (officerTypeId != 0)
+                    hql.Append(string.Format(" and r.OfficerType.Id = {0} ", officerTypeId));
             }
             else
             {
