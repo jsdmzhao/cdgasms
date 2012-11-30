@@ -119,7 +119,7 @@
                             <DataTemplate>
 
                                 <Grid  Height="24">
-                                    <StackPanel Orientation="Horizontal" Margin="2" >
+                                    <StackPanel Orientation="Horizontal" Cursor="Hand" Margin="2" >
                                         <TextBlock Foreground="Black" FontSize="14" >
                                                 <Run Foreground="Blue" Text="{Binding Name}"></Run>
                                         </TextBlock>
@@ -149,7 +149,7 @@
                             <DataTemplate>
 
                                 <Grid  Height="24">
-                                    <StackPanel Orientation="Horizontal" Margin="2" >
+                                    <StackPanel Orientation="Horizontal" Cursor="Hand" Margin="2" >
                                         <TextBlock Foreground="Black" FontSize="14" >
                                                 <Run Foreground="Blue" Text="{Binding Name}"></Run>
                                         </TextBlock>

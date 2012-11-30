@@ -26,11 +26,10 @@
             <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
             <Setter Property="IsSelected" Value="{Binding IsActive}" />
         </Style>
-
-
+        
         <telerik:HierarchicalDataTemplate x:Key="OrgTemplate1" >
             <StackPanel Orientation="Horizontal"  >
-                <TextBlock Text="{Binding Name}" FontWeight="Light" FontSize="14" HorizontalAlignment="Left" />
+                <TextBlock Text="{Binding Name}" FontWeight="Light"  FontSize="14" HorizontalAlignment="Left" />
             </StackPanel>
         </telerik:HierarchicalDataTemplate>
         <telerik:HierarchicalDataTemplate x:Key="OfficeTemplate1"  ItemsSource="{Binding Childs}" ItemTemplate="{StaticResource OrgTemplate1}">
@@ -96,7 +95,7 @@
                         <telerik:RadButtonGroup telerik:StyleManager.Theme="Office_Blue" Margin="5 0 0 0" Height="22"
                                           HorizontalAlignment="Left"   x:Name="rbShowType"
                                                 >
-                            <telerik:RadRadioButton Width="30"  Checked="list_Checked"
+                            <telerik:RadRadioButton  Width="30" Cursor="Hand" ToolTipService.ToolTip="按列表查看"  Checked="list_Checked"
                                                           x:Name="listShowType" >
                                 <telerik:RadRadioButton.Content>
                                     <StackPanel Orientation="Horizontal" >
@@ -104,7 +103,7 @@
                                     </StackPanel>
                                 </telerik:RadRadioButton.Content>
                             </telerik:RadRadioButton>
-                            <telerik:RadRadioButton Width="30" Checked="chart_Checked" x:Name="chartShowType">
+                            <telerik:RadRadioButton  Width="30" Cursor="Hand" ToolTipService.ToolTip="按图表查看" Checked="chart_Checked" x:Name="chartShowType">
                                 <telerik:RadRadioButton.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Images/chart.png" Height="14" Width="14" />
@@ -451,7 +450,7 @@
                                             </DataTemplate>
                                         </telerik:GridViewDataColumn.CellTemplate>
                                     </telerik:GridViewDataColumn>
-                                    
+
                                     <!--<telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="排名"  
                                                                 DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />-->
 
@@ -525,9 +524,9 @@
                                 </telerik:SeriesMapping.ItemMappings>
                             </telerik:SeriesMapping>
                         </telerik:RadChart.SeriesMappings>
-                        
+
                         <telerik:RadChart.DefaultView>
-                            <telerik:ChartDefaultView>
+                            <telerik:ChartDefaultView >
                                 <telerik:ChartDefaultView.ChartTitle>
                                     <telerik:ChartTitle Content="" HorizontalAlignment="Center"/>
                                 </telerik:ChartDefaultView.ChartTitle>
