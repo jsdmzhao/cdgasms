@@ -56,9 +56,6 @@
                                                               Height="22"
                                                               Margin="0,0,0,0"
                                                               VerticalAlignment="Center" />
-
-
-
                     </StackPanel>
                 </StackPanel>
 
@@ -451,15 +448,14 @@
                         </Grid>
                         <telerik:RadGridView Grid.Row="1"  BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" 
                                          CanUserFreezeColumns="False" SelectionChanged="gv_SelectionChanged"
-                                    CanUserResizeColumns="False" IsFilteringAllowed="False"
+                                    CanUserResizeColumns="False" IsFilteringAllowed="False" 
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
-                                          CanUserSelect="True" ShowColumnHeaders="False"
+                                          CanUserSelect="True" ShowColumnHeaders="False" RowStyle="{StaticResource rowHeight}"
                                          ItemsSource="{Binding PagedSource, ElementName=rDataPager1}"
 								AutoGenerateColumns="False" ShowColumnFooters="False" >
                             <telerik:RadGridView.Columns>
 
-
-                                <telerik:GridViewDataColumn MinWidth="50" MaxWidth="50"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
+                                <telerik:GridViewDataColumn  MinWidth="50" MaxWidth="50"  Header="排名"  DataMemberBinding="{Binding Rank}" TextAlignment="Right" HeaderTextAlignment="Center" />
 
                                 <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="个人"  DataMemberBinding="{Binding OfficerName}" TextAlignment="Left" HeaderTextAlignment="Center" />
 

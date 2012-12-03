@@ -37,6 +37,11 @@
     <Style TargetType="TextBlock" x:Key="myFontSize">
         <Setter Property="FontSize" Value="14"></Setter>
     </Style>
+
+    <Style TargetType="telerik:GridViewRow" x:Key="rowHeight">
+        <Setter Property="Height" Value="30" />
+    </Style>
+
     <System:Double x:Key="ContentMaxWidth">960</System:Double>
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="12"></Setter>

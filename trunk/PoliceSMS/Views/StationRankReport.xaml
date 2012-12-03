@@ -430,7 +430,7 @@
                                 BorderThickness="0 1 1 0" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
-                                          CanUserSelect="True" ShowColumnHeaders="False"
+                                          CanUserSelect="True" ShowColumnHeaders="False" RowStyle="{StaticResource rowHeight}"
                                          SelectionChanged="gv_SelectionChanged"  telerik:StyleManager.Theme="Windows7" FontSize="20"
 								AutoGenerateColumns="False" ShowColumnFooters="False"  >
                                 <telerik:RadGridView.Columns>
