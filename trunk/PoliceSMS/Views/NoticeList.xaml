@@ -78,16 +78,16 @@
                             </telerik:GridViewDataColumn.Header>
                             <telerik:GridViewDataColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Path=Title}" TextAlignment="Left"></TextBlock>
+                                    <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Path=Title}" TextAlignment="Center"></TextBlock>
                                 </DataTemplate>
                             </telerik:GridViewDataColumn.CellTemplate>
                         </telerik:GridViewDataColumn>
-                        <telerik:GridViewDataColumn Header="" MaxWidth="200"  MinWidth="200"
+                        <telerik:GridViewDataColumn Header="" MaxWidth="100"  MinWidth="100"
                                 HeaderTextAlignment="Center">
                             <telerik:GridViewDataColumn.CellTemplate>
                                 <DataTemplate>
                                         <HyperlinkButton Tag="{Binding Path=Url}" Click="HyperlinkButton_Click"
-                                                         Content="打开" 
+                                                         Content="打开"  HorizontalAlignment="Center"
                                                        Foreground="Blue" FontSize="14" ></HyperlinkButton>
                                     
                                 </DataTemplate>
