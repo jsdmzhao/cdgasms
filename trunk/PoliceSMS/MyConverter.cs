@@ -128,6 +128,8 @@ namespace PoliceSMS
                 string v = value as string;
                 if (v.StartsWith("巡警"))
                     return "巡大";
+                if (v.StartsWith("局青羊区分局"))
+                    return "分局";
                 if (v.Length > 2)
                     return v.Substring(0, 2);
                 return value;
