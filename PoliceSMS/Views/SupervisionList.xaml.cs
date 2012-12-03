@@ -172,7 +172,10 @@ namespace PoliceSMS.Views
                 }
 
                 gv.ItemsSource = list;
-
+                //清空已选择的内容
+                cboxStation.SelectedItem = null;
+                cboxGradeType.SelectedItem = null;
+                
                 rDataPager1.ItemCount = total;
                 Tools.ShowMask(false);
                 if (list == null || list.Count == 0)
