@@ -69,14 +69,32 @@
                 <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              CanUserResizeColumns="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
 								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True">
+                    <telerik:RadGridView.RowStyle>
+                        <Style TargetType="telerik:GridViewRow">
+                            <Setter Property="MinHeight" Value="30"/>
+                        </Style>
+                    </telerik:RadGridView.RowStyle>
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewSelectColumn/>
-                        <telerik:GridViewDataColumn Header="办事内容" MinWidth="240"  DataMemberBinding="{Binding Path=Name}" >
-
+                        <telerik:GridViewDataColumn MinWidth="240">
+                            <telerik:GridViewDataColumn.Header>
+                                <TextBlock FontSize="13" Text="办事内容" TextAlignment="Center" ></TextBlock>
+                            </telerik:GridViewDataColumn.Header>
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Path=Name}" TextAlignment="Left"></TextBlock>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
                         </telerik:GridViewDataColumn>
-
-                        <telerik:GridViewDataColumn Header="是否使用" MinWidth="100"  DataMemberBinding="{Binding Path=Description}" HeaderTextAlignment="Center">
-
+                        <telerik:GridViewDataColumn MinWidth="100">
+                            <telerik:GridViewDataColumn.Header>
+                                <TextBlock FontSize="13" Text="是否使用" TextAlignment="Center" ></TextBlock>
+                            </telerik:GridViewDataColumn.Header>
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Path=Description}" TextAlignment="Center"></TextBlock>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
                         </telerik:GridViewDataColumn>
                     </telerik:RadGridView.Columns>
                 </telerik:RadGridView>

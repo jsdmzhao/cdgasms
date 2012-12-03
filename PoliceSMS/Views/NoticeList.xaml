@@ -61,27 +61,34 @@
                         </StackPanel>
                     </telerik:RadRibbonButton>
                 </StackPanel>
-
-                <!--<Rectangle Height="1" VerticalAlignment="Top" Grid.Row="1"
-                       Fill="{StaticResource GridViewSplitter}"
-                       Margin="0 0 0 0" >
-                        </Rectangle>-->
                 <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              CanUserResizeColumns="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
 								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True">
+                    <telerik:RadGridView.RowStyle>
+                        <Style TargetType="telerik:GridViewRow">
+                            <Setter Property="MinHeight" Value="30"/>
+                        </Style>
+                    </telerik:RadGridView.RowStyle>
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewSelectColumn/>
-                        <telerik:GridViewDataColumn Header="标题" MinWidth="400"  DataMemberBinding="{Binding Path=Title}" >
 
+                        <telerik:GridViewDataColumn MinWidth="400">
+                            <telerik:GridViewDataColumn.Header>
+                                <TextBlock FontSize="13" Text="标题" TextAlignment="Center" ></TextBlock>
+                            </telerik:GridViewDataColumn.Header>
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Path=Title}" TextAlignment="Left"></TextBlock>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
                         </telerik:GridViewDataColumn>
-
                         <telerik:GridViewDataColumn Header="" MaxWidth="200"  MinWidth="200"
                                 HeaderTextAlignment="Center">
                             <telerik:GridViewDataColumn.CellTemplate>
                                 <DataTemplate>
                                         <HyperlinkButton Tag="{Binding Path=Url}" Click="HyperlinkButton_Click"
                                                          Content="打开" 
-                                                       Foreground="Blue" ></HyperlinkButton>
+                                                       Foreground="Blue" FontSize="14" ></HyperlinkButton>
                                     
                                 </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
