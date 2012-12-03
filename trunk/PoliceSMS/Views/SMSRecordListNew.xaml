@@ -147,36 +147,124 @@
                                              IsFilteringAllowed="False" CanUserResizeColumns="True" CanUserReorderColumns="False"
                                                 IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single" GridLinesVisibility="Both"
 								            AutoGenerateColumns="False" ShowColumnFooters="False" >
+                        <telerik:RadGridView.RowStyle>
+                            <Style TargetType="telerik:GridViewRow">
+                                <Setter Property="MinHeight" Value="30"/>
+                            </Style>
+                        </telerik:RadGridView.RowStyle>
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewSelectColumn Header="" Width="40" />
 
-                            <telerik:GridViewDataColumn Header="姓名" MinWidth="60" DataMemberBinding="{Binding PersonName}"
-                                                    HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="办事内容" MinWidth="100" MaxWidth="140" DataMemberBinding="{Binding WorkType.Name}" HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="办事详情" MinWidth="160" MaxWidth="160"  DataMemberBinding="{Binding WorkContent}" HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="受理人" MinWidth="100" DataMemberBinding="{Binding WorkOfficer.Name}" HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="登记时间" MinWidth="120" DataMemberBinding="{Binding WorkDate}" HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="登记流水号" MinWidth="100" DataMemberBinding="{Binding WorkNo}" TextAlignment="Right"  HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="单位" MinWidth="150" DataMemberBinding="{Binding Organization.Name}" HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="评价得分" MinWidth="80" DataMemberBinding="{Binding GradeType.Score}" TextAlignment="Right"  HeaderTextAlignment="Center" />
-
-                            <!--<telerik:GridViewDataColumn Header="是否评价" MinWidth="80" DataMemberBinding="{Binding IsResponse}" HeaderTextAlignment="Center" />-->
-
-                            <!--<telerik:GridViewImageColumn Header="是否评价" IsVisible="False"  MinWidth="80" DataMemberBinding="{Binding CheckImage}" HeaderTextAlignment="Center" />-->
-
-                            <telerik:GridViewDataColumn Header="是否评价" MinWidth="80" DataMemberBinding="{Binding IsResponseStr}" TextAlignment="Right"  HeaderTextAlignment="Center" />
-
-
-                            <telerik:GridViewDataColumn Header="办事人电话" MinWidth="120" DataMemberBinding="{Binding PersonMobile}" TextAlignment="Right"  HeaderTextAlignment="Center" />
-
-                            <telerik:GridViewDataColumn Header="办事人地址" MinWidth="200" MaxWidth="200"  DataMemberBinding="{Binding Address}" HeaderTextAlignment="Center" />
+                            <telerik:GridViewDataColumn MinWidth="60">
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="姓名" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding PersonName}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="100" MaxWidth="140" >
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="办事内容" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkType.Name}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="160" MaxWidth="160">
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="办事详情" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkContent}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="100" >
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="受理人" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkOfficer.Name}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="120" >
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="登记时间" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkDate}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="100" >
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="登记流水号" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkNo}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="150">
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="单位" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Organization.Name}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="80">
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="评价得分" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding GradeType.Score}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="80">
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="是否评价" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding IsResponseStr}" TextAlignment="Right"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="120" >
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="办事人电话" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding PersonMobile}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="200" MaxWidth="200">
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="办事人地址" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Address}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
                         </telerik:RadGridView.Columns>
                     </telerik:RadGridView>
 
@@ -187,12 +275,7 @@
                                             PageSize="19"  PageIndexChanged="rDataPager1_PageIndexChanged"
                                             IsTotalItemCountFixed="True"
                                             DisplayMode="FirstLastPreviousNextNumeric"/>
-                <!--<Rectangle Height="1" VerticalAlignment="Top" Grid.Row="3"
-                       Fill="{StaticResource GridViewSplitter}"
-                       Margin="0 0 0 0" >
-                        </Rectangle>-->
             </Grid>
         </Border>
     </Grid>
-    <!--</telerik:RadBusyIndicator>-->
 </navigation:Page>

@@ -34,6 +34,9 @@
     <SolidColorBrush x:Key="HeaderPanelInnerBorder" Color="White" />
     <SolidColorBrush x:Key="HeaderPanelOuterBorder" telerik:MetroColors.Color="Accent"/>
 
+    <Style TargetType="TextBlock" x:Key="myFontSize">
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
     <System:Double x:Key="ContentMaxWidth">960</System:Double>
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="12"></Setter>
