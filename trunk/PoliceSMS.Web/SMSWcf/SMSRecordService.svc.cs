@@ -60,8 +60,8 @@ namespace PoliceSMS.Web.SMSWcf
                     //判断重复录入
                     string hql = string.Format(" from SMSRecord as r where convert(varchar(50),CreatTime,112) = '{0}' and PersonName = '{1}' and WorkType.Id = {2} and PersonMobile = '{3}' "
                         , DateTime.Now.ToString("yyyyMMdd"), entity.PersonName, entity.WorkType.Id, entity.PersonMobile);
-                    var existList =  sess.CreateQuery(hql).List<SMSRecord>();
-                    if(existList!=null && existList.Count>0)
+                    var existList = sess.CreateQuery(hql).List<SMSRecord>();
+                    if (existList != null && existList.Count > 0)
                         return PackJsonResult("false", "0", "此案件已经录入！");
 
                     if (string.IsNullOrEmpty(entity.PersonMobile))
@@ -94,7 +94,7 @@ namespace PoliceSMS.Web.SMSWcf
 
         private static readonly string defaultMobile = ConfigurationManager.AppSettings["DefaultMobile"];
 
-        public virtual string SaveList(string json,int cnt)
+        public virtual string SaveList(string json, int cnt)
         {
             using (var sess = HbmSessionFactory.OpenStatelessSession())
             {
@@ -125,7 +125,7 @@ namespace PoliceSMS.Web.SMSWcf
                     table.Columns.Add(new DataColumn("Number"));
                     table.Columns.Add(new DataColumn("WorkOfficerId"));
                     table.Columns.Add(new DataColumn("LeaderId"));
-                    
+
                     for (int i = 0; i < cnt; i++)
                     {
                         DataRow row = table.NewRow();
@@ -169,7 +169,7 @@ namespace PoliceSMS.Web.SMSWcf
                 bulkCopy.WriteToServer(data);
 
             bulkCopy.Close();
-            
+
         }
 
         /// <summary>
@@ -353,45 +353,58 @@ namespace PoliceSMS.Web.SMSWcf
                     const int max = 40000;
                     if (ls.Count > max)
                         return string.Format("错误：条数超出上限{0},请重新选择条件", max);
-                    //解决导出excel字符串转换成数字
-                    foreach (var item in ls)
-                    {
-                        item.PersonName = string.Format(@"=T(""{0}"")", item.PersonName);
-                        item.WorkContent = string.Format(@"=T(""{0}"")", item.WorkContent);
-                        item.WorkNo = string.Format(@"=T(""{0}"")", item.WorkNo);
-                        item.PersonMobile = string.Format(@"=T(""{0}"")", item.PersonMobile);
-                        item.Address = string.Format(@"=T(""{0}"")", item.Address);
-                        
-                    }
+                    ////解决导出excel字符串转换成数字
+                    //foreach (var item in ls)
+                    //{
+                    //    item.PersonName = string.Format(@"=T(""{0}"")", item.PersonName);
+                    //    item.WorkContent = string.Format(@"=T(""{0}"")", item.WorkContent);
+                    //    item.WorkNo = string.Format(@"=T(""{0}"")", item.WorkNo);
+                    //    item.PersonMobile = string.Format(@"=T(""{0}"")", item.PersonMobile);
+                    //    item.Address = string.Format(@"=T(""{0}"")", item.Address);
+                    //}
 
-                   
-                    
+                    var obj = (from item in ls
+                               select new
+                                   {
+                                       PersonName = item.PersonName,
+                                       WorkTypeName = item.WorkType.Name,
+                                       WorkContent = item.WorkContent,
+                                       WorkOfficerName = item.WorkOfficer.Name,
+                                       WorkDate = item.WorkDate,
+                                       WorkNo = item.WorkNo,
+                                       OrganizationName = item.Organization.Name,
+                                       GradeTypeScore = item.GradeType.Score,
+                                       IsResponseStr = item.IsResponseStr,
+                                       PersonMobile = item.PersonMobile,
+                                       Address = item.Address
+                                   }).ToList();
+
                     GridView gv = new GridView();
                     gv.AutoGenerateColumns = false;
                     gv.Columns.Add(new BoundField() { HeaderText = "姓名", DataField = "PersonName" });
-                    gv.Columns.Add(new BoundField() { HeaderText = "办事内容", DataField = "WorkType.Name" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "办事内容", DataField = "WorkTypeName" });
                     gv.Columns.Add(new BoundField() { HeaderText = "办事详情", DataField = "WorkContent" });
-                    gv.Columns.Add(new BoundField() { HeaderText = "受理人", DataField = "WorkOfficer.Name" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "受理人", DataField = "WorkOfficerName" });
                     gv.Columns.Add(new BoundField() { HeaderText = "登记时间", DataField = "WorkDate" });
                     gv.Columns.Add(new BoundField() { HeaderText = "登记流水号", DataField = "WorkNo" });
-                    gv.Columns.Add(new BoundField() { HeaderText = "单位", DataField = "Organization.Name" });
-                    gv.Columns.Add(new BoundField() { HeaderText = "评价得分", DataField = "GradeType.Score" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "单位", DataField = "OrganizationName" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "评价得分", DataField = "GradeTypeScore" });
                     gv.Columns.Add(new BoundField() { HeaderText = "是否评价", DataField = "IsResponseStr" });
                     gv.Columns.Add(new BoundField() { HeaderText = "办事人电话", DataField = "PersonMobile" });
                     gv.Columns.Add(new BoundField() { HeaderText = "办事人地址", DataField = "Address" });
 
-                    gv.DataSource = ls;
+                    gv.DataSource = obj;
                     gv.DataBind();
 
                     var request = System.Web.HttpContext.Current.Request;
-                    string fileName =  Guid.NewGuid().ToString()+".xls";
+                    string fileName = Guid.NewGuid().ToString() + ".xls";
                     string url = string.Format("http://{0}/Files/{1}", request.Url.Authority, fileName);
                     using (StringWriter sw = new StringWriter())
                     {
                         using (HtmlTextWriter htw = new HtmlTextWriter(sw))
                         {
                             gv.RenderControl(htw);
-                            string physicalAddress = string.Format("{0}Files/{1}",System.Web.Hosting.HostingEnvironment.MapPath("~"), fileName);
+                            string physicalAddress = string.Format("{0}Files/{1}", System.Web.Hosting.HostingEnvironment.MapPath("~"), fileName);
                             FileInfo fi = new FileInfo(physicalAddress);
                             if (!fi.Directory.Exists)
                                 Directory.CreateDirectory(fi.Directory.FullName);
