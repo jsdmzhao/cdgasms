@@ -147,11 +147,6 @@
                                              IsFilteringAllowed="False" CanUserResizeColumns="True" CanUserReorderColumns="False"
                                                 IsReadOnly="True" FrozenColumnCount="2" SelectionMode="Single" GridLinesVisibility="Both"
 								            AutoGenerateColumns="False" ShowColumnFooters="False" >
-                        <telerik:RadGridView.RowStyle>
-                            <Style TargetType="telerik:GridViewRow">
-                                <Setter Property="MinHeight" Value="30"/>
-                            </Style>
-                        </telerik:RadGridView.RowStyle>
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewSelectColumn Header="" Width="40" />
 
