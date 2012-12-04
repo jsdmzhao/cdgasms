@@ -156,7 +156,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding PersonName}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding PersonName}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -166,7 +166,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkType.Name}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding WorkType.Name}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -176,7 +176,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkContent}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding WorkContent}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -186,7 +186,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkOfficer.Name}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding WorkOfficer.Name}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -196,7 +196,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkDate}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding WorkDate}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -206,7 +206,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding WorkNo}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding WorkNo}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -216,7 +216,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Organization.Name}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding Organization.Name}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -226,7 +226,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding GradeType.Score}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding GradeType.Score}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -236,7 +236,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding IsResponseStr}" TextAlignment="Right"></TextBlock>
+                                        <TextBlock Text="{Binding IsResponseStr}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -246,7 +246,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding PersonMobile}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding PersonMobile}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
@@ -256,7 +256,7 @@
                                 </telerik:GridViewDataColumn.Header>
                                 <telerik:GridViewDataColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource myFontSize}" Text="{Binding Address}" TextAlignment="Center"></TextBlock>
+                                        <TextBlock Text="{Binding Address}" TextAlignment="Center"></TextBlock>
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
