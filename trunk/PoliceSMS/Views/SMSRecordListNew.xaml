@@ -62,7 +62,7 @@
                         <telerik:RadComboBoxItem Content="时间" IsSelected="True"/>
                         <telerik:RadComboBoxItem Content="电话" />
                         <telerik:RadComboBoxItem Content="受理人" />
-                        <telerik:RadComboBoxItem Content="办案人" />
+                        <telerik:RadComboBoxItem Content="办事人" />
                         <telerik:RadComboBoxItem Content="值班领导" />
                     </telerik:RadComboBox>
 

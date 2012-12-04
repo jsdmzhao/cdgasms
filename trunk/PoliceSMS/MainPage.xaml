@@ -106,27 +106,7 @@
                                     </telerik:RadPane.Background>
                                 </telerik:RadPane>
                                 
-                                <telerik:RadPane Title="系统通告" CanFloat="False" CanUserClose="False"  
-                                                         ContextMenuTemplate="{x:Null}" Tag="NoticeList"  x:Name="NoticeItem" >
-                                    <telerik:RadPane.HeaderTemplate>
-                                        <DataTemplate >
-                                            <StackPanel Orientation="Horizontal" Cursor="Hand" Height="24">
-                                                <Image Source="/Images/announce.png"  Stretch="None" VerticalAlignment="Center"/>
-                                                <TextBlock Margin="5 0 0 0" Text="系统通告" VerticalAlignment="Center" FontSize="14"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </telerik:RadPane.HeaderTemplate>
-                                    <telerik:RadPane.Content>
-                                        <views:NoticeList></views:NoticeList>
-
-                                    </telerik:RadPane.Content>
-                                    <telerik:RadPane.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
-                                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
-                                        </LinearGradientBrush>
-                                    </telerik:RadPane.Background>
-                                </telerik:RadPane>
+                                
 
                                 <telerik:RadPane Title="办事内容管理" CanFloat="False" CanUserClose="False" Visibility="Collapsed"
                                                       ContextMenuTemplate="{x:Null}"   Tag="WorkTypeList" x:Name="workTypeItem">
@@ -162,6 +142,28 @@
                                     </telerik:RadPane.HeaderTemplate>
                                     <telerik:RadPane.Content>
                                         <views:SupervisionList></views:SupervisionList>
+
+                                    </telerik:RadPane.Content>
+                                    <telerik:RadPane.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFF8F8F8" Offset="0.15"/>
+                                            <GradientStop Color="#FFE9E9E9" Offset="0.75"/>
+                                        </LinearGradientBrush>
+                                    </telerik:RadPane.Background>
+                                </telerik:RadPane>
+
+                                <telerik:RadPane Title="通知通告" CanFloat="False" CanUserClose="False"  
+                                                         ContextMenuTemplate="{x:Null}" Tag="NoticeList"  x:Name="NoticeItem" >
+                                    <telerik:RadPane.HeaderTemplate>
+                                        <DataTemplate >
+                                            <StackPanel Orientation="Horizontal" Cursor="Hand" Height="24">
+                                                <Image Source="/Images/announce.png"  Stretch="None" VerticalAlignment="Center"/>
+                                                <TextBlock Margin="5 0 0 0" Text="通知通告" VerticalAlignment="Center" FontSize="14"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </telerik:RadPane.HeaderTemplate>
+                                    <telerik:RadPane.Content>
+                                        <views:NoticeList></views:NoticeList>
 
                                     </telerik:RadPane.Content>
                                     <telerik:RadPane.Background>
