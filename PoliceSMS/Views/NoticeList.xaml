@@ -7,7 +7,7 @@
                  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
                   xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            d:DesignWidth="640" d:DesignHeight="480"
-           Title="系统通告">
+           Title="通知通告">
     <Grid x:Name="LayoutRoot">
         <Border VerticalAlignment="Stretch" >
 
@@ -20,7 +20,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Margin="10 4" Orientation="Horizontal" VerticalAlignment="Top">
-                    <TextBlock Text="系统通告" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{StaticResource DarkBackground}"  FontSize="20" 
+                    <TextBlock Text="通知通告" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{StaticResource DarkBackground}"  FontSize="20" 
                                Margin="0 0 0 0"/>
 
                 </StackPanel>
@@ -72,7 +72,7 @@
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewSelectColumn/>
 
-                        <telerik:GridViewDataColumn MinWidth="400">
+                        <telerik:GridViewDataColumn MinWidth="800">
                             <telerik:GridViewDataColumn.Header>
                                 <TextBlock FontSize="13" Text="标题" TextAlignment="Center" ></TextBlock>
                             </telerik:GridViewDataColumn.Header>
