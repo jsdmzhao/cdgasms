@@ -155,7 +155,7 @@
                                     <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="55"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
@@ -527,7 +527,7 @@
                                         </telerik:GridViewDataColumn.CellTemplate>
                                     </telerik:GridViewDataColumn>
 
-                                    <telerik:GridViewDataColumn MinWidth="55" MaxWidth="55"  Header="满意率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}"  TextAlignment="Center" HeaderTextAlignment="Center" >
+                                    <telerik:GridViewDataColumn MinWidth="60" MaxWidth="60"  Header="满意率"  DataFormatString="{}{0:N2}%" DataMemberBinding="{Binding StationRate}"  TextAlignment="Center" HeaderTextAlignment="Center" >
                                         <telerik:GridViewDataColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Style="{StaticResource myFontSize}" Text="{Binding StationRate,StringFormat=\{0:N2\}%}" TextAlignment="Center"></TextBlock>
