@@ -127,9 +127,38 @@ namespace PoliceSMS
             {
                 string v = value as string;
                 if (v.StartsWith("巡警"))
-                    return "巡大";
+                    return "巡警大队";
                 if (v.StartsWith("局青羊区分局"))
                     return "分局";
+                if (v.StartsWith("办公室"))
+                    return "办公室";
+                if (v.StartsWith("法制科"))
+                    return "法制科";
+                if (v.StartsWith("国内安全保卫大队"))
+                    return "国保大队";
+                if (v.StartsWith("纪检组、监察室"))
+                    return "纪检组";
+                if (v.StartsWith("禁毒大队"))
+                    return "禁毒大队";
+                if (v.StartsWith("经济犯罪侦查大队"))
+                    return "经侦大队";
+                if (v.StartsWith("信息通信科"))
+                    return "信通科";
+                if (v.StartsWith("刑警大队"))
+                    return "刑警大队";
+                if (v.StartsWith("政治处"))
+                    return "政治处";
+                if (v.StartsWith("治安大队"))
+                    return "治安大队";
+                if (v.StartsWith("治安防范人口管理科"))
+                    return "防范科";
+                if (v.StartsWith("治安科"))
+                    return "治安科";
+                if (v.StartsWith("装备财务科"))
+                    return "装财科";
+                if (v.StartsWith("公共信息网络安全监察大队"))
+                    return "网监大队";
+                
                 if (v.Length > 2)
                     return v.Substring(0, 2);
                 return value;
