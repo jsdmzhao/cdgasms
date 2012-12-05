@@ -129,8 +129,6 @@ namespace PoliceSMS.Views
             btnEdit.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
             btnDelete.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
 
-            this.Focus();
-
             if (this.NavigationContext != null)
             {
                 DateTime? start = null;
