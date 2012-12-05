@@ -247,6 +247,12 @@ namespace PoliceSMS.Views
                 return;
             }
 
+            smsRecord.IsSend = true;
+            smsRecord.IsResponse = true;
+            smsRecord.LoginOfficer = AppGlobal.CurrentUser;
+            smsRecord.PersonMobile = ""; //数据库不能为空
+            smsRecord.WorkType = new WorkType { Id = 4 }; //数据库不能为空
+
             SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
 
             ser.SaveOrUpdateCompleted += (object sender1, SMSRecordService.SaveOrUpdateCompletedEventArgs e1) =>
