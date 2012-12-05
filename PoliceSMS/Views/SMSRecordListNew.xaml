@@ -7,7 +7,7 @@
            xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
            xmlns:local="clr-namespace:PoliceSMS.ViewModel"
-           d:DesignWidth="1000" d:DesignHeight="600" KeyDown="condition_KeyDown"
+           d:DesignWidth="1000" d:DesignHeight="600" 
            Title="群众办事登记">
     <navigation:Page.Resources>
         <local:ExportingModel x:Key="context" />
@@ -122,7 +122,7 @@
                                                          x:Name="dateStart"
                                                           Height="22"
                                                           Margin="-25,0,0,0"
-                                                          VerticalAlignment="Center" />
+                                                          VerticalAlignment="Center" KeyDown="condition_KeyDown" />
                         <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
                         <telerik:RadDateTimePicker  InputMode="DatePicker" DisplayFormat="Long"
                                                     KeyDown="condition_KeyDown"
@@ -130,7 +130,7 @@
                                                          x:Name="dateEnd"
                                                           Height="22"
                                                           Margin="0,0,0,0"
-                                                          VerticalAlignment="Center" />
+                                                          VerticalAlignment="Center"/>
                     </StackPanel>
                     <TextBox Visibility="Collapsed" KeyDown="condition_KeyDown"
                              HorizontalAlignment="Left" Grid.Column="3" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="tb" Width="200" Height="24" Margin="-25,0,0,0">
