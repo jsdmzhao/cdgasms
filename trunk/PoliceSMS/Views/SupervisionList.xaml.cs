@@ -116,7 +116,10 @@ namespace PoliceSMS.Views
                 {
                     int total = 0;
                     var list = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
-
+                    foreach (var item in list)
+                    {
+                        item.Name = item.Name.Substring(5, item.Name.Length - 5);
+                    }
                     cboxStation.ItemsSource = list;
 
                 };
@@ -175,7 +178,7 @@ namespace PoliceSMS.Views
                 //清空已选择的内容
                 cboxStation.SelectedItem = null;
                 cboxGradeType.SelectedItem = null;
-                
+
                 rDataPager1.ItemCount = total;
                 Tools.ShowMask(false);
                 if (list == null || list.Count == 0)
@@ -212,8 +215,8 @@ namespace PoliceSMS.Views
             DateTime end = new DateTime(tmp.Year, tmp.Month, tmp.Day, 23, 59, 59);
 
             hql.Append(string.Format(" from SMSRecord as r where r.GradeType.IsSupervise = {0} and  r.WorkDate between '{1}' and '{2}' ",
-                 true,start, end));
-          
+                 true, start, end));
+
 
             if (cboxStation.SelectedItem != null)
             {
