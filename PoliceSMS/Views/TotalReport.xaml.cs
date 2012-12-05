@@ -129,5 +129,14 @@ namespace PoliceSMS.Views
         {
 
         }
+
+        private void All_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoadReport();
+                Tools.ShowMask(true, "正在查找数据,请稍等...");
+            }            
+        }
     }
 }

@@ -77,7 +77,7 @@
                                                          x:Name="dateStart"
                                                           Height="22"
                                                           Margin="5,0,0,0"
-                                                          VerticalAlignment="Center" />
+                                                          VerticalAlignment="Center" KeyDown="All_KeyDown" />
                             <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
                             <telerik:RadDateTimePicker  InputMode="DatePicker"
                                                      DisplayFormat="Long"

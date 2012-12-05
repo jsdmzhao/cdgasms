@@ -132,7 +132,7 @@
                                                          x:Name="dateStart"
                                                           Height="22"
                                                           Margin="5,0,0,0"
-                                                          VerticalAlignment="Center" />
+                                                          VerticalAlignment="Center" KeyDown="All_KeyDown" />
                         <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
                         <telerik:RadDateTimePicker  InputMode="DatePicker" DisplayFormat="Long"
                                                           Width="115"
@@ -147,19 +147,19 @@
                                                 DisplayMemberPath="Name"  x:Name="cboxGradeType"
                                                           Width="140"
                                                           Height="24"
-                                                          Margin="5,0,0,0">
+                                                          Margin="5,0,0,0" KeyDown="All_KeyDown">
                     </telerik:RadComboBox>
                     <TextBlock Text="受理单位:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="3"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="False" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="4"
                                                 DisplayMemberPath="Name"  x:Name="cboxStation" SelectionChanged="cboxStation_SelectionChanged"
                                                           Width="140"
                                                           Height="24"
-                                                          Margin="5,0,0,0">
+                                                          Margin="5,0,0,0" KeyDown="All_KeyDown">
                     </telerik:RadComboBox>
                     <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"></TextBlock>
-                    <TextBox x:Name="txtOper" Text="" Width="140" Height="24" Margin="5,0,95,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtOper" Text="" Width="140" Height="24" Margin="5,0,95,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" KeyDown="All_KeyDown"/>
                     <TextBlock Text="值班领导:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
-                    <TextBox x:Name="txtLeader" Text="" Width="140" Height="24" Margin="5,0,95,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtLeader" Text="" Width="140" Height="24" Margin="5,0,95,0" telerik:StyleManager.Theme="{StaticResource STheme}" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" KeyDown="All_KeyDown"/>
                 </Grid>
                 <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="3" Margin="0 3 0 3"
                        Fill="{StaticResource GridViewSplitter}">

@@ -392,7 +392,13 @@ namespace PoliceSMS.Views
                 LoadReport();
         }
 
-       
+        private void All_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoadReport();
+            }            
+        }      
 
     }
 

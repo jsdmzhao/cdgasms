@@ -141,21 +141,21 @@
                                                 DisplayMemberPath="Name"  x:Name="cboxStation" 
                                                           Width="140"
                                                           Height="24"
-                                                          Margin="5,0,0,0">
+                                                          Margin="5,0,0,0" KeyDown="condition_KeyDown">
                     </telerik:RadComboBox>
                     <TextBlock Text="办事内容:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="6"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left"  Grid.Column="7"
                                                 DisplayMemberPath="Name"  x:Name="cboxContent"
                                                           Width="180"
                                                           Height="24"
-                                                          Margin="5,0,0,0">
+                                                          Margin="5,0,0,0" KeyDown="condition_KeyDown">
                     </telerik:RadComboBox>
                     <TextBlock Text="评分类型:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="8"></TextBlock>
                     <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Column="9"
                                                 DisplayMemberPath="Name"  x:Name="cboxGradeType"
                                                           Width="140"
                                                           Height="24"
-                                                          Margin="5,0,0,0">
+                                                          Margin="5,0,0,0" KeyDown="condition_KeyDown">
                     </telerik:RadComboBox>
                     
                 </Grid>
