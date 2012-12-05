@@ -370,6 +370,7 @@ namespace PoliceSMS.Web.SMSWcf
                                        WorkTypeName = item.WorkType.Name,
                                        WorkContent = item.WorkContent,
                                        WorkOfficerName = item.WorkOfficer.Name,
+                                       LeaderName = item.Leader.Name,
                                        WorkDate = item.WorkDate,
                                        WorkNo = item.WorkNo,
                                        OrganizationName = item.Organization.Name,
@@ -385,6 +386,7 @@ namespace PoliceSMS.Web.SMSWcf
                     gv.Columns.Add(new BoundField() { HeaderText = "办事内容", DataField = "WorkTypeName" });
                     gv.Columns.Add(new BoundField() { HeaderText = "办事详情", DataField = "WorkContent" });
                     gv.Columns.Add(new BoundField() { HeaderText = "受理人", DataField = "WorkOfficerName" });
+                    gv.Columns.Add(new BoundField() { HeaderText = "值班领导", DataField = "LeaderName" });
                     gv.Columns.Add(new BoundField() { HeaderText = "登记时间", DataField = "WorkDate" });
                     gv.Columns.Add(new BoundField() { HeaderText = "登记流水号", DataField = "WorkNo" });
                     gv.Columns.Add(new BoundField() { HeaderText = "单位", DataField = "OrganizationName" });

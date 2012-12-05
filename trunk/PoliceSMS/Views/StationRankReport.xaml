@@ -21,11 +21,11 @@
         <my:NegativeConverter x:Key="myConverter" />
         <my:StationConverter x:Key="stationConverter" />
 
-        <!--<Style TargetType="telerik:RadTreeViewItem">
+        <Style TargetType="telerik:RadTreeViewItem">
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
             <Setter Property="IsSelected" Value="{Binding IsActive}" />
-        </Style>-->
+        </Style>
 
 
         <telerik:HierarchicalDataTemplate x:Key="OrgTemplate1" >
