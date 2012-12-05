@@ -29,8 +29,7 @@ namespace PoliceSMS.Views
 
         void Index_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Focus();
         }
-
-
     }
 }
