@@ -27,7 +27,7 @@ namespace PoliceSMS.Views
         SMSRecordService.SMSRecordServiceClient ser = new SMSRecordService.SMSRecordServiceClient();
         private const int PageSize = 19;
         private QueryCondition queryCondition = null;
-        
+
         public SMSRecordListNew()
         {
             InitializeComponent();
@@ -40,14 +40,14 @@ namespace PoliceSMS.Views
             LoadStation();
             LoadWorkTypes();
             LoadGradeType();
-           
+
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
 
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
 
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
-   
+
         }
 
         private void LoadStation()
@@ -59,7 +59,10 @@ namespace PoliceSMS.Views
                 {
                     int total = 0;
                     var list = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
-
+                    foreach (var item in list)
+                    {
+                        item.Name = item.Name.Substring(5, item.Name.Length - 5);
+                    }
                     cboxStation.ItemsSource = list;
 
                 };
@@ -126,9 +129,9 @@ namespace PoliceSMS.Views
         {
             btnEdit.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
             btnDelete.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
-            
 
-           
+
+
             if (this.NavigationContext != null)
             {
                 DateTime? start = null;
@@ -149,7 +152,7 @@ namespace PoliceSMS.Views
                 }
                 if (this.NavigationContext.QueryString.Keys.Contains("OfficerTypeId"))
                     int.TryParse(this.NavigationContext.QueryString["OfficerTypeId"], out officerTypeId);
-                
+
                 mainGrid.RowDefinitions[0].Height = new GridLength(0);
                 mainGrid.RowDefinitions[1].Height = new GridLength(0);
                 mainGrid.RowDefinitions[2].Height = new GridLength(0);
@@ -207,7 +210,7 @@ namespace PoliceSMS.Views
                 Tools.ShowMask(false);
                 if (list == null || list.Count == 0)
                 {
-                    Tools.ShowMessage("没有找到相对应的数据！","",true);
+                    Tools.ShowMessage("没有找到相对应的数据！", "", true);
                 }
             }
             catch (Exception ex)
@@ -218,7 +221,7 @@ namespace PoliceSMS.Views
             {
                 //buyRoot.IsBusy = false;
             }
-          
+
         }
 
 
@@ -235,7 +238,7 @@ namespace PoliceSMS.Views
         private void BuildHql()
         {
             string hqlStr = generateBaseHql();
-            
+
             queryCondition = new QueryCondition();
 
             queryCondition.HQL = "select r " + hqlStr + " order by r.WorkDate desc";
@@ -280,7 +283,7 @@ namespace PoliceSMS.Views
                         ));
             }
         }
-          
+
         private void rDataPager1_PageIndexChanged(object sender, Telerik.Windows.Controls.PageIndexChangedEventArgs e)
         {
             Tools.ShowMask(true);
@@ -358,7 +361,7 @@ namespace PoliceSMS.Views
             ser.ExportAsync(hql);
         }
 
-        
+
 
         void ser_ExportCompleted(object sender, SMSRecordService.ExportCompletedEventArgs e)
         {
