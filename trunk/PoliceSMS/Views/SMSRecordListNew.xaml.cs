@@ -37,6 +37,9 @@ namespace PoliceSMS.Views
             ser.GetListByHQLWithPagingCompleted += new EventHandler<SMSRecordService.GetListByHQLWithPagingCompletedEventArgs>(ser_GetListByHQLWithPagingCompleted);
             ser.ExportCompleted += new EventHandler<SMSRecordService.ExportCompletedEventArgs>(ser_ExportCompleted);
 
+            LoadStation();
+            LoadWorkTypes();
+            LoadGradeType();
            
             dateStart.SelectedDate = DateTime.Now.AddDays(-7);
             dateEnd.SelectedDate = DateTime.Now;
@@ -45,6 +48,76 @@ namespace PoliceSMS.Views
 
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
    
+        }
+
+        private void LoadStation()
+        {
+            try
+            {
+                OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
+                ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    var list = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
+
+                    cboxStation.ItemsSource = list;
+
+                };
+
+                //这里没有考虑权限
+                ser.GetListByHQLAsync("from Organization where Name like '%青羊%' order by OrderIndex ");
+
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取单位发生错误", ex.Message, false);
+            }
+        }
+
+        private void LoadWorkTypes()
+        {
+            try
+            {
+                WorkTypeService.WorkTypeServiceClient ser = new WorkTypeService.WorkTypeServiceClient();
+                ser.GetListByHQLCompleted += (object sender, WorkTypeService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    var list = JsonSerializerHelper.JsonToEntities<WorkType>(e.Result, out total);
+
+                    cboxContent.ItemsSource = list;
+
+                };
+
+                ser.GetListByHQLAsync("from WorkType where IsUsed = " + true);
+
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取办事类别发生错误", ex.Message, false);
+            }
+        }
+
+        private void LoadGradeType()
+        {
+            try
+            {
+                GradeTypeService.GradeTypeServiceClient ser = new GradeTypeService.GradeTypeServiceClient();
+                ser.GetListByHQLCompleted += (object sender, GradeTypeService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    var list = JsonSerializerHelper.JsonToEntities<GradeType>(e.Result, out total);
+
+                    cboxGradeType.ItemsSource = list;
+
+                };
+
+                ser.GetListByHQLAsync("from GradeType where IsUsed = " + true);
+
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取评分类别发生错误", ex.Message, false);
+            }
         }
 
         int officerId = 0;
@@ -359,7 +432,7 @@ namespace PoliceSMS.Views
                     if (!string.IsNullOrEmpty(tb.Text.Trim()))
                         hql.Append(string.Format(" and r.WorkOfficer.Name like '%{0}%' ", tb.Text.Trim()));
                 }
-                if (conditionType.Text == "办案人")
+                if (conditionType.Text == "办事人")
                 {
                     if (!string.IsNullOrEmpty(tb.Text.Trim()))
                         hql.Append(string.Format(" and r.PersonName like '%{0}%' ", tb.Text.Trim()));
@@ -369,6 +442,27 @@ namespace PoliceSMS.Views
                     if (!string.IsNullOrEmpty(tb.Text.Trim()))
                         hql.Append(string.Format(" and r.Leader.Name like '%{0}%' ", tb.Text.Trim()));
                 }
+            }
+
+            if (cboxStation.SelectedItem != null)
+            {
+                Organization org = cboxStation.SelectedItem as Organization;
+                if (org != null)
+                    hql.Append(" and r.Organization.Id =" + org.Id);
+            }
+
+            if (cboxContent.SelectedItem != null)
+            {
+                WorkType wt = cboxContent.SelectedItem as WorkType;
+                if (wt != null)
+                    hql.Append(" and r.WorkType.Id =" + wt.Id);
+            }
+
+            if (cboxGradeType.SelectedItem != null)
+            {
+                GradeType grade = cboxGradeType.SelectedItem as GradeType;
+                if (grade != null)
+                    hql.Append(" and r.GradeType.Id =" + grade.Id);
             }
             string hqlStr = hql.ToString();
             return hqlStr;

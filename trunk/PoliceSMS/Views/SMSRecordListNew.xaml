@@ -33,64 +33,6 @@
                     <TextBlock x:Name="tbTitle"
                         Text="群众办事登记" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{StaticResource DarkBackground}"  FontSize="20" 
                                Margin="0 0 0 0" />
-
-                   
-                </Grid>
-
-                <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="1" Margin="0 3 0 3"
-                       Fill="{StaticResource GridViewSplitter}">
-                    <Rectangle.Effect>
-                        <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
-                    </Rectangle.Effect>
-                </Rectangle>
-                <Grid Grid.Row="2" Margin="20 0 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="80"></ColumnDefinition>
-                        <ColumnDefinition Width="120"></ColumnDefinition>
-                        <ColumnDefinition Width="60"></ColumnDefinition>
-                        <ColumnDefinition Width="300"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-
-                    <TextBlock Text="条件类型:" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
-                    <telerik:RadComboBox  IsEditable="False" HorizontalAlignment="Left"  Grid.Column="1"
-                                                x:Name="conditionType" SelectionChanged="conditionType_SelectionChanged"
-                                                          Width="100"
-                                                          Height="24"
-                                                          Margin="5,0,0,0">
-                        <telerik:RadComboBoxItem Content="时间" IsSelected="True"/>
-                        <telerik:RadComboBoxItem Content="电话" />
-                        <telerik:RadComboBoxItem Content="受理人" />
-                        <telerik:RadComboBoxItem Content="办事人" />
-                        <telerik:RadComboBoxItem Content="值班领导" />
-                    </telerik:RadComboBox>
-
-                    <TextBlock Text="条件:" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="3" x:Name="datePanel">
-                        <telerik:RadDateTimePicker  InputMode="DatePicker"
-                                                     DisplayFormat="Long"
-                                                    KeyDown="condition_KeyDown"
-                                                          Width="115"
-                                                         x:Name="dateStart"
-                                                          Height="22"
-                                                          Margin="5,0,0,0"
-                                                          VerticalAlignment="Center" />
-                        <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
-                        <telerik:RadDateTimePicker  InputMode="DatePicker" DisplayFormat="Long"
-                                                    KeyDown="condition_KeyDown"
-                                                          Width="115"
-                                                         x:Name="dateEnd"
-                                                          Height="22"
-                                                          Margin="0,0,0,0"
-                                                          VerticalAlignment="Center" />
-                    </StackPanel>
-
-
-                    <TextBox Visibility="Collapsed" KeyDown="condition_KeyDown"
-                             HorizontalAlignment="Left" Grid.Column="3" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="tb" Width="200" Height="24" Margin="5,0,0,0">
-                    </TextBox>
-
                     <StackPanel Orientation="Horizontal" Grid.Column="4" Margin="20 0 0 0"
                                     HorizontalAlignment="Right" VerticalAlignment="Center" >
 
@@ -134,6 +76,88 @@
                         </telerik:RadButton>
                     </StackPanel>
 
+                   
+                </Grid>
+
+                <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="1" Margin="0 3 0 3"
+                       Fill="{StaticResource GridViewSplitter}">
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.8"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Grid.Row="2" Margin="20 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="220"></ColumnDefinition>
+                        <ColumnDefinition Width="55"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Margin="0 0 20 0" Text="条件类型:" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                    <telerik:RadComboBox  IsEditable="False" HorizontalAlignment="Left"  Grid.Column="1"
+                                                x:Name="conditionType" SelectionChanged="conditionType_SelectionChanged"
+                                                          Width="80"
+                                                          Height="24"
+                                                          Margin="-15,0,0,0">
+                        <telerik:RadComboBoxItem Content="时间" IsSelected="True"/>
+                        <telerik:RadComboBoxItem Content="电话" />
+                        <telerik:RadComboBoxItem Content="受理人" />
+                        <telerik:RadComboBoxItem Content="办事人" />
+                        <telerik:RadComboBoxItem Content="值班领导" />
+                    </telerik:RadComboBox>
+
+                    <TextBlock Margin="0 0 30 0" Text="条件:" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="3" x:Name="datePanel">
+                        <telerik:RadDateTimePicker  InputMode="DatePicker"
+                                                     DisplayFormat="Long"
+                                                    KeyDown="condition_KeyDown"
+                                                          Width="115"
+                                                         x:Name="dateStart"
+                                                          Height="22"
+                                                          Margin="-25,0,0,0"
+                                                          VerticalAlignment="Center" />
+                        <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
+                        <telerik:RadDateTimePicker  InputMode="DatePicker" DisplayFormat="Long"
+                                                    KeyDown="condition_KeyDown"
+                                                          Width="115"
+                                                         x:Name="dateEnd"
+                                                          Height="22"
+                                                          Margin="0,0,0,0"
+                                                          VerticalAlignment="Center" />
+                    </StackPanel>
+                    <TextBox Visibility="Collapsed" KeyDown="condition_KeyDown"
+                             HorizontalAlignment="Left" Grid.Column="3" telerik:StyleManager.Theme="{StaticResource STheme}"  x:Name="tb" Width="200" Height="24" Margin="-25,0,0,0">
+                    </TextBox>
+                    <TextBlock Text="单位:" Grid.Column="4"  VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
+                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Column="5"
+                                                DisplayMemberPath="Name"  x:Name="cboxStation" 
+                                                          Width="140"
+                                                          Height="24"
+                                                          Margin="5,0,0,0">
+                    </telerik:RadComboBox>
+                    <TextBlock Text="办事内容:" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="6"></TextBlock>
+                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left"  Grid.Column="7"
+                                                DisplayMemberPath="Name"  x:Name="cboxContent"
+                                                          Width="180"
+                                                          Height="24"
+                                                          Margin="5,0,0,0">
+                    </telerik:RadComboBox>
+                    <TextBlock Text="评分类型:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="8"></TextBlock>
+                    <telerik:RadComboBox Visibility="Visible" SelectedValuePath="Id" IsEditable="True" HorizontalAlignment="Left" Grid.Column="9"
+                                                DisplayMemberPath="Name"  x:Name="cboxGradeType"
+                                                          Width="140"
+                                                          Height="24"
+                                                          Margin="5,0,0,0">
+                    </telerik:RadComboBox>
+                    
                 </Grid>
                 <Rectangle Height="1" HorizontalAlignment="Stretch" Grid.Row="3" Margin="0 3 0 3"
                        Fill="{StaticResource GridViewSplitter}">
@@ -150,7 +174,7 @@
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewSelectColumn Header="" Width="40" />
 
-                            <telerik:GridViewDataColumn MinWidth="60">
+                            <telerik:GridViewDataColumn MinWidth="80" MaxWidth="80">
                                 <telerik:GridViewDataColumn.Header>
                                     <TextBlock FontSize="13" Text="姓名" TextAlignment="Center" ></TextBlock>
                                 </telerik:GridViewDataColumn.Header>
@@ -160,7 +184,7 @@
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn MinWidth="100" MaxWidth="140" >
+                            <telerik:GridViewDataColumn MinWidth="140">
                                 <telerik:GridViewDataColumn.Header>
                                     <TextBlock FontSize="13" Text="办事内容" TextAlignment="Center" ></TextBlock>
                                 </telerik:GridViewDataColumn.Header>
@@ -170,7 +194,7 @@
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn MinWidth="160" MaxWidth="160">
+                            <telerik:GridViewDataColumn MinWidth="160">
                                 <telerik:GridViewDataColumn.Header>
                                     <TextBlock FontSize="13" Text="办事详情" TextAlignment="Center" ></TextBlock>
                                 </telerik:GridViewDataColumn.Header>
@@ -180,7 +204,7 @@
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn MinWidth="100" >
+                            <telerik:GridViewDataColumn MinWidth="80" MaxWidth="80" >
                                 <telerik:GridViewDataColumn.Header>
                                     <TextBlock FontSize="13" Text="受理人" TextAlignment="Center" ></TextBlock>
                                 </telerik:GridViewDataColumn.Header>
@@ -190,7 +214,17 @@
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn MinWidth="120" >
+                            <telerik:GridViewDataColumn MinWidth="80" MaxWidth="80" >
+                                <telerik:GridViewDataColumn.Header>
+                                    <TextBlock FontSize="13" Text="值班领导" TextAlignment="Center" ></TextBlock>
+                                </telerik:GridViewDataColumn.Header>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Leader.Name}" TextAlignment="Center"></TextBlock>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn MinWidth="120" MaxWidth="120" >
                                 <telerik:GridViewDataColumn.Header>
                                     <TextBlock FontSize="13" Text="登记时间" TextAlignment="Center" ></TextBlock>
                                 </telerik:GridViewDataColumn.Header>
@@ -250,7 +284,7 @@
                                     </DataTemplate>
                                 </telerik:GridViewDataColumn.CellTemplate>
                             </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn MinWidth="200" MaxWidth="200">
+                            <telerik:GridViewDataColumn MinWidth="200">
                                 <telerik:GridViewDataColumn.Header>
                                     <TextBlock FontSize="13" Text="办事人地址" TextAlignment="Center" ></TextBlock>
                                 </telerik:GridViewDataColumn.Header>
