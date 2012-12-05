@@ -339,5 +339,14 @@ namespace PoliceSMS.Views
         {
             LoadOfficers();
         }
+
+        private void All_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                rDataPager1.PageIndex = 0;
+                getData();
+            }
+        }
     }
 }

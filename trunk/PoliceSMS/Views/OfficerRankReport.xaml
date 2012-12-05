@@ -47,7 +47,7 @@
                                                              x:Name="dateStart"
                                                               Height="22"
                                                               Margin="5,0,0,0"
-                                                              VerticalAlignment="Center" />
+                                                              VerticalAlignment="Center" KeyDown="All_KeyDown" />
                         <TextBlock Text="-" Margin="0 3 0 0"></TextBlock>
                         <telerik:RadDateTimePicker  InputMode="DatePicker"
                                                          DisplayFormat="Long"
@@ -65,14 +65,14 @@
                                                     DisplayMemberPath="Name"  
                                                               Width="140" x:Name="cmbStation"
                                                               Height="24"
-                                                              Margin="5,0,0,0">
+                                                              Margin="5,0,0,0" KeyDown="All_KeyDown">
                     </telerik:RadComboBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
                     <TextBlock Text="受理人:" VerticalAlignment="Center" HorizontalAlignment="Right" ></TextBlock>
                     <TextBox Height="26" Margin="5,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"
-                                 FontSize="12" Foreground="Black"  Width="120" x:Name="tbOfficerName"/>
+                                 FontSize="12" Foreground="Black"  Width="120" x:Name="tbOfficerName" KeyDown="All_KeyDown"/>
                 </StackPanel>
 
 

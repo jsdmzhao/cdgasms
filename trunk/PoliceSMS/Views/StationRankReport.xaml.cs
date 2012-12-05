@@ -278,5 +278,20 @@ namespace PoliceSMS.Views
             string uri = string.Format("/Views/OfficerRankReport.xaml?OrgId={0}&Start={1}&End={2}", orgId, dateStart.SelectedDate, dateEnd.SelectedDate);
             this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
         }
+        private void All_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (tree.SelectedItem is TreeViewItemModel)
+                {
+                    TreeViewItemModel org = tree.SelectedItem as TreeViewItemModel;
+                    if (org != null)
+                    {
+                        if (org.Id == 0)
+                            LoadReport(org.SMSUnitType);
+                    }
+                }
+            }            
+        }
     }
 }
