@@ -47,7 +47,6 @@ namespace PoliceSMS.Views
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
 
             this.Loaded += new RoutedEventHandler(SMSRecordList_Loaded);
-
         }
 
         private void LoadStation()
@@ -130,7 +129,7 @@ namespace PoliceSMS.Views
             btnEdit.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
             btnDelete.Visibility = AppGlobal.HasPermission() ? Visibility.Visible : Visibility.Collapsed;
 
-
+            this.Focus();
 
             if (this.NavigationContext != null)
             {
@@ -492,6 +491,6 @@ namespace PoliceSMS.Views
             rDataPager1.PageIndex = 0;
             getData();
         }
-
+        
     }
 }
