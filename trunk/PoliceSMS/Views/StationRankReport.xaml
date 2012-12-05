@@ -21,11 +21,11 @@
         <my:NegativeConverter x:Key="myConverter" />
         <my:StationConverter x:Key="stationConverter" />
 
-        <Style TargetType="telerik:RadTreeViewItem">
+        <!--<Style TargetType="telerik:RadTreeViewItem">
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
             <Setter Property="IsSelected" Value="{Binding IsActive}" />
-        </Style>
+        </Style>-->
 
 
         <telerik:HierarchicalDataTemplate x:Key="OrgTemplate1" >
@@ -94,17 +94,16 @@
                                    Width="80" TextAlignment="Right"
                                    Margin="20 0 0 0"></TextBlock>
                         <telerik:RadButtonGroup telerik:StyleManager.Theme="Office_Blue" Margin="5 0 0 0" Height="22"
-                                          HorizontalAlignment="Left"   x:Name="rbShowType"
+                                          HorizontalAlignment="Left"   x:Name="rbShowType" 
                                                 >
-                            <telerik:RadRadioButton Width="30"  Checked="list_Checked"
-                                                          x:Name="listShowType" >
+                            <telerik:RadRadioButton Width="30" Checked="list_Checked" ToolTipService.ToolTip="按列表展示" Cursor="Hand" x:Name="listShowType" >
                                 <telerik:RadRadioButton.Content>
                                     <StackPanel Orientation="Horizontal" >
                                         <Image Source="/Images/edit-list.png" Height="14" Width="14" />
                                     </StackPanel>
                                 </telerik:RadRadioButton.Content>
                             </telerik:RadRadioButton>
-                            <telerik:RadRadioButton Width="30" Checked="chart_Checked" x:Name="chartShowType">
+                            <telerik:RadRadioButton Width="30" Checked="chart_Checked" ToolTipService.ToolTip="按图表展示" Cursor="Hand" x:Name="chartShowType">
                                 <telerik:RadRadioButton.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Images/chart.png" Height="14" Width="14" />
@@ -179,7 +178,7 @@
                                     <ColumnDefinition Width="25"></ColumnDefinition>
                                     <ColumnDefinition Width="39"></ColumnDefinition>
                                     <ColumnDefinition Width="0"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
                                     <ColumnDefinition Width="40"></ColumnDefinition>
                                     <ColumnDefinition Width="60"></ColumnDefinition>
                                     <ColumnDefinition Width="40"></ColumnDefinition>
@@ -444,7 +443,7 @@
                                             </DataTemplate>
                                         </telerik:GridViewDataColumn.CellTemplate>
                                     </telerik:GridViewDataColumn>
-                                    <telerik:GridViewDataColumn MinWidth="40" MaxWidth="40"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" >
+                                    <telerik:GridViewDataColumn MinWidth="80" MaxWidth="80"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Left" >
                                         <telerik:GridViewDataColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Style="{StaticResource myFontSize}" Text="{Binding UnitName,Converter={StaticResource stationConverter}}" TextAlignment="Center"></TextBlock>
