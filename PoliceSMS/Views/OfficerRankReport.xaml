@@ -190,7 +190,7 @@
                                 <ColumnDefinition Width="25"></ColumnDefinition>
                                 <ColumnDefinition Width="44"></ColumnDefinition>
                                 <ColumnDefinition Width="65"></ColumnDefinition>
-                                <ColumnDefinition Width="45"></ColumnDefinition>
+                                <ColumnDefinition Width="80"></ColumnDefinition>
 
                                 <ColumnDefinition Width="40"></ColumnDefinition>
                                 <ColumnDefinition Width="60"></ColumnDefinition>
@@ -471,7 +471,7 @@
                                     </telerik:GridViewDataColumn.CellTemplate>
                                 </telerik:GridViewDataColumn>
 
-                                <telerik:GridViewDataColumn MinWidth="45" MaxWidth="45"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Center" >
+                                <telerik:GridViewDataColumn MinWidth="80" MaxWidth="80"  Header="单位" DataMemberBinding="{Binding UnitName,Converter={StaticResource stationConverter}}" HeaderTextAlignment="Center" >
                                     <telerik:GridViewDataColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Style="{StaticResource myFontSize}" Text="{Binding UnitName,Converter={StaticResource stationConverter}}" TextAlignment="Center"></TextBlock>
