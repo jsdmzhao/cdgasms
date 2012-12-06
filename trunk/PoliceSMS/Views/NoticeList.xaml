@@ -62,8 +62,8 @@
                     </telerik:RadRibbonButton>
                 </StackPanel>
                 <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
-                                             CanUserResizeColumns="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
-								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True">
+                                             CanUserResizeColumns="True" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
+								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True" CanUserReorderColumns="False">
                     <telerik:RadGridView.RowStyle>
                         <Style TargetType="telerik:GridViewRow">
                             <Setter Property="MinHeight" Value="30"/>
@@ -72,7 +72,7 @@
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewSelectColumn/>
 
-                        <telerik:GridViewDataColumn MinWidth="800">
+                        <telerik:GridViewDataColumn MinWidth="600">
                             <telerik:GridViewDataColumn.Header>
                                 <TextBlock FontSize="13" Text="标题" TextAlignment="Center" ></TextBlock>
                             </telerik:GridViewDataColumn.Header>

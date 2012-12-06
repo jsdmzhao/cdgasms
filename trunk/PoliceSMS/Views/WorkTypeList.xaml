@@ -68,7 +68,7 @@
                         </Rectangle>-->
                 <telerik:RadGridView Grid.Row="2" BorderThickness="0 1" x:Name="gv" Margin="0,0,0,0" ShowGroupPanel="False" CanUserFreezeColumns="False" 
                                              CanUserResizeColumns="False" RowIndicatorVisibility="Collapsed" IsFilteringAllowed="False"
-								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True">
+								            AutoGenerateColumns="False" ShowColumnFooters="False"  AlternationCount="2" FontSize="12" IsReadOnly="True" CanUserReorderColumns="False">
                     <telerik:RadGridView.RowStyle>
                         <Style TargetType="telerik:GridViewRow">
                             <Setter Property="MinHeight" Value="30"/>
