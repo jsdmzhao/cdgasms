@@ -91,7 +91,9 @@ namespace Vs08SMSService
             for (int i = 0; i < works.Count; i++)
             {
                 int valuationId = GetIdByCode(works[i].Value);
-                string sql = "update [case].[dbo].[SMS_Work] set Valuation = '" + works[i].Value + "' , ValuationId = " + valuationId + ", IsValuation = 1 where IsValuation =0 and TelPhone = '" + works[i].TelNumber + "'";
+                //string sql = "update [case].[dbo].[SMS_Work] set Valuation = '" + works[i].Value + "' , ValuationId = " + valuationId + ", IsValuation = 1 where IsValuation =0 and TelPhone = '" + works[i].TelNumber + "'";
+                //修改更新回复短信的记录，更新时间最近的一条记录
+                string sql = "update [case].[dbo].[SMS_Work] set Valuation = '" + works[i].Value + "' , ValuationId = " + valuationId + ", IsValuation = 1 where id in (select top 1 Id from SMS_Work where IsValuation = 0 and TelPhone =" + works[i].TelNumber + "' order by CreatTime Desc) ";
 
                 if (SqlNoQuery(sql))
                     UpdateSmsRecv(works[i].SMSId);
