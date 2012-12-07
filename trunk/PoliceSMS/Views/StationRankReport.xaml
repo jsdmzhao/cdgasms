@@ -21,11 +21,11 @@
         <my:NegativeConverter x:Key="myConverter" />
         <my:StationConverter x:Key="stationConverter" />
 
-        <Style TargetType="telerik:RadTreeViewItem">
+        <!--<Style TargetType="telerik:RadTreeViewItem">
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
             <Setter Property="IsSelected" Value="{Binding IsActive}" />
-        </Style>
+        </Style>-->
 
 
         <telerik:HierarchicalDataTemplate x:Key="OrgTemplate1" >
@@ -430,7 +430,7 @@
                                     CanUserResizeColumns="False" IsFilteringAllowed="False"
                                     IsReadOnly="True"  SelectionMode="Single" GridLinesVisibility="Both"
                                           CanUserSelect="True" ShowColumnHeaders="False" RowStyle="{StaticResource rowHeight}"
-                                         SelectionChanged="gv_SelectionChanged"  telerik:StyleManager.Theme="Windows7" FontSize="20"
+                                          telerik:StyleManager.Theme="Windows7" FontSize="20"
 								AutoGenerateColumns="False" ShowColumnFooters="False"  >
                                 <telerik:RadGridView.Columns>
 

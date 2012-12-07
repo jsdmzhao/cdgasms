@@ -18,6 +18,8 @@ using System.Reflection;
 using Telerik.Windows.Controls.Charting;
 using PoliceSMS.Lib.Organization;
 using Telerik.Windows.Controls.Animation;
+using Telerik.Windows.Controls.GridView;
+using Telerik.Windows;
 
 namespace PoliceSMS.Views
 {
@@ -41,6 +43,7 @@ namespace PoliceSMS.Views
                 m_end = new DateTime(preMonth.Year, preMonth.Month, DateTime.DaysInMonth(preMonth.Year, preMonth.Month));
                 isInit = true;
             }
+            this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
             this.Loaded += new RoutedEventHandler(StationRankReport_Loaded);
         }
 
@@ -90,7 +93,7 @@ namespace PoliceSMS.Views
                         Id = 0,
                         SMSUnitType = 1,
                         Name = "派出所",
-                        Childs = stations.Where(c => c.SMSUnitType == 1).OrderBy(c=>c.OrderIndex).ToList(),
+                        Childs = stations.Where(c => c.SMSUnitType == 1).OrderBy(c => c.OrderIndex).ToList(),
                         IsExpanded = true,
                         IsActive = true
                     });
@@ -108,7 +111,7 @@ namespace PoliceSMS.Views
                 };
 
                 //这里没有考虑权限
-                ser.GetListByHQLAsync(string.Format(" select distinct  o from SMSRecord r inner join r.Organization as o where o.Name like '%青羊%' and o.SMSUnitType in ({0},{1})  ", 1,3));
+                ser.GetListByHQLAsync(string.Format(" select distinct  o from SMSRecord r inner join r.Organization as o where o.Name like '%青羊%' and o.SMSUnitType in ({0},{1})  ", 1, 3));
 
             }
             catch (Exception ex)
@@ -135,7 +138,7 @@ namespace PoliceSMS.Views
         {
             btnExport.IsEnabled = false;
             Tools.ShowMask(true);
-            
+
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
 
             ser.LoadStationReportResultCompleted += (object sender, ReportService.LoadStationReportResultCompletedEventArgs e) =>
@@ -156,7 +159,7 @@ namespace PoliceSMS.Views
                     }
                 };
 
-           
+
             DateTime beginTime1 = new DateTime().SqlMinValue();
             DateTime endTime1 = new DateTime().SqlMaxValue();
             if (dateStart.SelectedDate != null)
@@ -232,28 +235,22 @@ namespace PoliceSMS.Views
 
         }
 
-        
 
-        private void gv_SelectionChanged(object sender, SelectionChangeEventArgs e)
+
+        private void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
         {
-            if (e.AddedItems != null && e.AddedItems.Count > 0)
+            StationReportResult obj = gv.SelectedItem as StationReportResult;
+            if (obj != null)
             {
-                object o = e.AddedItems[0];
-                if (o is StationReportResult)
-                {
-                    StationReportResult item = o as StationReportResult;
-                    
-                    drill(item.UnitId);
-                }
-               
+                StationReportResult item = obj as StationReportResult;
+                drill(item.UnitId);
             }
-
         }
-       
+
 
         private void ChartArea_ItemClick(object sender, ChartItemClickEventArgs e)
         {
-            if (e.DataPoint !=null && e.DataPoint.DataItem!=null)
+            if (e.DataPoint != null && e.DataPoint.DataItem != null)
             {
                 object o = e.DataPoint.DataItem;
                 if (o is StationReportResult)
@@ -291,7 +288,7 @@ namespace PoliceSMS.Views
                             LoadReport(org.SMSUnitType);
                     }
                 }
-            }            
+            }
         }
     }
 }
