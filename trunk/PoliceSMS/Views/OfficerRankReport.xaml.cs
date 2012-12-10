@@ -18,6 +18,8 @@ using PoliceSMS.Lib.Organization;
 using System.Reflection;
 using System.Text;
 using PoliceSMS.Lib.Core;
+using Telerik.Windows.Controls.GridView;
+using Telerik.Windows;
 
 namespace PoliceSMS.Views
 {
@@ -29,7 +31,7 @@ namespace PoliceSMS.Views
 
         bool isOfficerSelected = false;
         bool autoReport = false;
-        
+
 
         public OfficerRankReport()
         {
@@ -42,7 +44,7 @@ namespace PoliceSMS.Views
 
             dateEnd.SelectedDate = endTime;
             dateStart.SelectedDate = beginTime;
-
+            this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
             this.Loaded += new RoutedEventHandler(OfficerRankReport_Loaded);
         }
 
@@ -51,7 +53,7 @@ namespace PoliceSMS.Views
             isOfficerSelected = false;
             autoReport = false;
             int orgId = 0;
-            
+
             if (this.NavigationContext != null)
             {
                 DateTime? start = null;
@@ -74,7 +76,7 @@ namespace PoliceSMS.Views
                 dateEnd.SelectedDate = end;
             }
 
-            
+
 
             if (orgId == 0)
             {
@@ -116,7 +118,24 @@ namespace PoliceSMS.Views
 
         }
 
+        private void OnCellDoubleClick(object sender, RadRoutedEventArgs e)
+        {
+            if (this.NavigationService != null)
+            {
+                if (isOfficerSelected)
+                {
+                    StationReportResult obj = this.gv.SelectedItem as StationReportResult;
+                    if (obj != null)
+                    {
+                        OfficerType type = lbType.SelectedItem as OfficerType;
 
+                        string uri = string.Format("/Views/SMSRecordListNew.xaml?OfficerId={0}&Start={1}&End={2}&OfficerTypeId={3}",
+                            obj.UnitId, dateStart.SelectedDate, dateEnd.SelectedDate, type == null ? "" : type.Id.ToString());
+                        this.NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
+                    }
+                }
+            }
+        }
         void gv_SelectionChanged(object sender, SelectionChangeEventArgs e)
         {
             if (this.NavigationService != null)
@@ -160,7 +179,7 @@ namespace PoliceSMS.Views
 
                     stations.Insert(0, orgNull);
 
-                    
+
                     cmbStation.ItemsSource = stations;
                     if (cmbStation.Items.Count > 0)
                         cmbStation.SelectedIndex = 0;
@@ -192,21 +211,21 @@ namespace PoliceSMS.Views
             }
 
             btnExport.IsEnabled = false;
-            Tools.ShowMask(true,"正在查找数据,请稍等...");
+            Tools.ShowMask(true, "正在查找数据,请稍等...");
 
             ReportService.ReportWcfClient ser = new ReportService.ReportWcfClient();
-            
-            Organization selOrg =(Organization) cmbStation.SelectedItem;
-            
-            ser.LoadOfficerByOrderReportResultCompleted+= (object sender, ReportService.LoadOfficerByOrderReportResultCompletedEventArgs e) =>
+
+            Organization selOrg = (Organization)cmbStation.SelectedItem;
+
+            ser.LoadOfficerByOrderReportResultCompleted += (object sender, ReportService.LoadOfficerByOrderReportResultCompletedEventArgs e) =>
                 {
                     int total = 0;
                     list = JsonSerializerHelper.JsonToEntities<StationReportResult>(e.Result, out total);
-                    
+
                     rDataPager1.Source = list;
                     gv.CurrentItem = null;
                     isOfficerSelected = true;
-                    if(action!=null)
+                    if (action != null)
                     {
                         action();
                     }
@@ -215,14 +234,14 @@ namespace PoliceSMS.Views
                     btnExport.IsEnabled = true;
                     if (list == null || list.Count == 0)
                     {
-                        Tools.ShowMessage("没有找到相对应的数据！","",true);
+                        Tools.ShowMessage("没有找到相对应的数据！", "", true);
                     }
 
                 };
 
             DateTime beginTime1 = new DateTime().SqlMinValue();
             DateTime endTime1 = new DateTime().SqlMaxValue();
-            if(dateStart.SelectedDate!=null)
+            if (dateStart.SelectedDate != null)
                 beginTime1 = dateStart.SelectedDate.Value;
 
             if (dateEnd.SelectedDate != null)
@@ -383,12 +402,12 @@ namespace PoliceSMS.Views
         private void lbType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (autoReport)
-                 LoadReport();
+                LoadReport();
         }
 
         private void lbSort_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if(autoReport)
+            if (autoReport)
                 LoadReport();
         }
 
@@ -397,8 +416,8 @@ namespace PoliceSMS.Views
             if (e.Key == Key.Enter)
             {
                 LoadReport();
-            }            
-        }      
+            }
+        }
 
     }
 
