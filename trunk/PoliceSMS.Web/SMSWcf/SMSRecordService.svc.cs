@@ -367,14 +367,14 @@ namespace PoliceSMS.Web.SMSWcf
                                select new
                                    {
                                        PersonName = item.PersonName,
-                                       WorkTypeName = item.WorkType.Name,
+                                       WorkTypeName = item.WorkType == null ? "" : item.WorkType.Name,
                                        WorkContent = item.WorkContent,
-                                       WorkOfficerName = item.WorkOfficer.Name,
-                                       LeaderName = item.Leader.Name,
+                                       WorkOfficerName = item.WorkOfficer == null ? "" : item.WorkOfficer.Name,
+                                       LeaderName = item.Leader == null ? "" : item.Leader.Name,
                                        WorkDate = item.WorkDate,
                                        WorkNo = item.WorkNo,
-                                       OrganizationName = item.Organization.Name,
-                                       GradeTypeScore = item.GradeType.Score,
+                                       OrganizationName = item.Organization == null ? "" : item.Organization.Name,
+                                       GradeTypeScore = item.GradeType == null ? 0 : item.GradeType.Score,
                                        IsResponseStr = item.IsResponseStr,
                                        PersonMobile = item.PersonMobile,
                                        Address = item.Address
