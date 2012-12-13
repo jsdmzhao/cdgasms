@@ -46,7 +46,7 @@ namespace PoliceSMS.Views
             this.gv.AddHandler(GridViewCellBase.CellDoubleClickEvent, new EventHandler<RadRoutedEventArgs>(OnCellDoubleClick), true);
             this.Loaded += new RoutedEventHandler(StationRankReport_Loaded);
         }
-
+        
         void StationRankReport_Loaded(object sender, RoutedEventArgs e)
         {
             LoadStation();
@@ -108,6 +108,7 @@ namespace PoliceSMS.Views
                     });
 
                     tree.ItemsSource = list;
+                    this.tree.SelectedItem = this.tree.Items[0];
                 };
 
                 //这里没有考虑权限
