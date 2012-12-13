@@ -400,13 +400,13 @@ namespace PoliceSMS.Web.SMSWcf
 
                     var request = System.Web.HttpContext.Current.Request;
                     string fileName = Guid.NewGuid().ToString() + ".xls";
-                    string url = string.Format("http://{0}/Files/{1}", request.Url.Authority, fileName);
+                    string url = string.Format("http://{0}/ClientBin/Files/{1}", request.Url.Authority, fileName);
                     using (StringWriter sw = new StringWriter())
                     {
                         using (HtmlTextWriter htw = new HtmlTextWriter(sw))
                         {
                             gv.RenderControl(htw);
-                            string physicalAddress = string.Format("{0}Files/{1}", System.Web.Hosting.HostingEnvironment.MapPath("~"), fileName);
+                            string physicalAddress = string.Format("{0}ClientBin/Files/{1}", System.Web.Hosting.HostingEnvironment.MapPath("~"), fileName);
                             FileInfo fi = new FileInfo(physicalAddress);
                             if (!fi.Directory.Exists)
                                 Directory.CreateDirectory(fi.Directory.FullName);

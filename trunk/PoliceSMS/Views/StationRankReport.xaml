@@ -23,8 +23,9 @@
 
         <Style TargetType="telerik:RadTreeViewItem">
             <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
-            <Setter Property="IsSelected" Value="{Binding IsActive}" />
+            <!--<Setter Property="IsExpanded" Value="{Binding IsExpanded}" />-->
+            <Setter Property="IsSelected" Value="False" />
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
 
 
@@ -156,7 +157,7 @@
                         <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <telerik:RadTreeView Grid.Column="0" BorderThickness="0" 
+                    <telerik:RadTreeView Grid.Column="0" BorderThickness="0"  
                                           ItemTemplate="{StaticResource OfficeTemplate1}"
                                          x:Name="tree" SelectionChanged="tree_SelectionChanged"
                                          ></telerik:RadTreeView>

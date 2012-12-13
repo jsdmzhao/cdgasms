@@ -368,8 +368,9 @@ namespace PoliceSMS.Views
                     throw new Exception(e.Result);
                 string url = e.Result;
                 if (!string.IsNullOrEmpty(url))
-                    HtmlPage.Window.Eval("window.open('" + url + "','', 'top=" + (Application.Current.Host.Content.ActualHeight - 100) / 2 + ",left=" + (Application.Current.Host.Content.ActualWidth - 100) / 2
-                          + ",fullscreen=0, width=100, height=100,  toolbar=0,   location=0,   directories=0,   status=0,   menubar=0,   scrollbars=0,   resizable=0')");
+                    HtmlPage.Window.Navigate(new Uri(url, UriKind.Absolute), "_blank");
+                //HtmlPage.Window.Eval("window.open('" + url + "','', 'top=" + (Application.Current.Host.Content.ActualHeight - 100) / 2 + ",left=" + (Application.Current.Host.Content.ActualWidth - 100) / 2
+                // + ",fullscreen=0, width=100, height=100,  toolbar=0,   location=0,   directories=0,   status=0,   menubar=0,   scrollbars=0,   resizable=0')");
             }
             catch (Exception ex)
             {
@@ -489,6 +490,6 @@ namespace PoliceSMS.Views
             rDataPager1.PageIndex = 0;
             getData();
         }
-        
+
     }
 }
