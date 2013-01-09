@@ -243,6 +243,12 @@ namespace PoliceSMS.Views
                     }
 
                 }
+
+                if (!flag && string.IsNullOrEmpty(smsRecord.PersonMobile))
+                {
+                    Tools.ShowMessage("请输入电话号码", "", false);
+                    return;
+                }
                 if (!flag && cmbWorkType.SelectedItem == null)
                 {
                     Tools.ShowMessage("请输入办事类别!", "", false);
