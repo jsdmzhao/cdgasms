@@ -41,7 +41,7 @@ namespace PoliceSMS.Views
             Loaded += new RoutedEventHandler(SMSRecordForm_Loaded);
             smsRecord = new SMSRecord();
             DataContext = smsRecord;
-            
+
         }
 
         bool isEdit = false;
@@ -60,8 +60,8 @@ namespace PoliceSMS.Views
                 SMSRecord obj = JsonSerializerHelper.JsonToEntity<SMSRecord>(e.Result);
                 this.smsRecord = obj;
                 DataContext = smsRecord;
-                chkIsResponse.IsChecked = smsRecord.IsResponse ;
-                
+                chkIsResponse.IsChecked = smsRecord.IsResponse;
+
             };
             this.IsEnabled = AppGlobal.HasPermission();
             //查询一次，避免在form更改了数据点击取消后原list界面数据更改（界面双向绑定，但没有提交到数据库）
@@ -74,16 +74,42 @@ namespace PoliceSMS.Views
             LoadGradeTypes();
             LoadWorkTypes();
             LoadOfficerTypes();
-            LoadOfficers();
 
-            this.cmbWorkOrg.Text = (AppGlobal.CurrentUser.Organization).Name;
-
+            LoadStation();
 
             bool hasPsermission = AppGlobal.HasPermission();
             this.cmbGradeType.IsReadOnly = !hasPsermission;
             this.cmbGradeType.IsEnabled = hasPsermission;
 
 
+        }
+
+        private void LoadStation()
+        {
+            try
+            {
+                OrganizationService.OrganizationServiceClient ser = new OrganizationService.OrganizationServiceClient();
+                ser.GetListByHQLCompleted += (object sender, OrganizationService.GetListByHQLCompletedEventArgs e) =>
+                {
+                    int total = 0;
+                    IList<Organization> stations = JsonSerializerHelper.JsonToEntities<Organization>(e.Result, out total);
+
+                    cmbWorkOrg.ItemsSource = stations;
+                    cmbWorkOrg.SelectedItem = smsRecord.Organization;
+                    if (!isEdit && !AppGlobal.HasPermission())
+                    {
+                        cmbWorkOrg.SelectedItem = AppGlobal.CurrentUser.Organization;
+                        cmbWorkOrg.IsEnabled = false;
+                    }
+                };
+
+                //这里没有考虑权限
+                ser.GetListByHQLAsync("from Organization where Name like '%青羊%' and SMSUnitType>0 order by OrderIndex ");
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowMessage("读取性别发生错误", ex.Message, false);
+            }
         }
 
         private void LoadSexs()
@@ -180,11 +206,10 @@ namespace PoliceSMS.Views
             }
         }
 
-        private void LoadOfficers()
+        private void LoadOfficers(int orgId)
         {
             try
             {
-                //WorkTypeService.WorkTypeServiceClient ser = new WorkTypeService.WorkTypeServiceClient(AppGlobal.CreateHttpBinding(), new EndpointAddress(new Uri(Application.Current.Host.Source, "../SMSWcf/WorkTypeService.svc")));
                 OfficerService.OfficerServiceClient ser = new OfficerService.OfficerServiceClient();
                 ser.GetListByHQLCompleted += (object sender, OfficerService.GetListByHQLCompletedEventArgs e) =>
                 {
@@ -197,7 +222,6 @@ namespace PoliceSMS.Views
 
                 };
 
-                int orgId = isEdit ? smsRecord.Organization.Id : AppGlobal.CurrentUser.Organization.Id;
                 ser.GetListByHQLAsync(string.Format("from Officer as e where e.Organization.id = {0} order by e.Name", orgId));
 
             }
@@ -318,6 +342,14 @@ namespace PoliceSMS.Views
         private bool CheckVerify()
         {
             return true;
+        }
+
+        private void cmbWorkOrg_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (cmbWorkOrg.SelectedItem != null && (cmbWorkOrg.SelectedItem as Organization) != null)
+            {
+                LoadOfficers((cmbWorkOrg.SelectedItem as Organization).Id);
+            }
         }
     }
 }
